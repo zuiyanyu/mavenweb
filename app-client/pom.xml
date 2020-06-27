@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mavenweb</artifactId>
+        <groupId>com.maven.mavenweb</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>app-client</artifactId>
+    <packaging>war</packaging>
+
+    <name>app-client Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <dependencies>
+        <!--导出Excel文件-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <!--读取Excel 只支持2003版本(.xls)文件-->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.10</version>
+        </dependency>
+
+        <!-- 配置dubbo 组件的依赖-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <!-- zookeeper的服务端-->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <!-- zookeeper的客户端，访问zookeeper的服务端-->
+        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+        <!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+        </dependency>
+
+        <!--文件上传依赖的两个jar包-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <!--jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!--=====上传组件包 -文件上传下载的支持====-->
+        <!--上传组件包 end-->
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+       <!-- Caused by: org.apache.catalina.LifecycleException: A child container failed during start
+          <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>8.5.32</version>
+    </dependency>-->
+    </dependencies>
+
+    <build>
+        <finalName>app-client</finalName>
+        <plugins>
+            <!--内置tomcat启动web项目-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>${app.client.run.port}</port>
+                    <path>${app.run.path}</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
