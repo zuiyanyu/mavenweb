@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mavenweb</artifactId>
+        <groupId>com.maven.mavenweb</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mybatis-generator-maven-plugin-extend</artifactId>
+
+    <packaging>jar</packaging>
+    <name>mybatis-generator-maven-plugin-extend</name>
+
+    <dependencies>
+        <!--===================================================================-->
+        <!--mybatis 逆向工程的实现-->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.name}-${project.version}</finalName>
+        <!--配置打包静态资源：maven打包的时候将静态资源也进行打包-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                    <!--<include>**/*.xml</include>-->
+                    <!--<include>**/*.properties</include>-->
+                </includes>
+            </resource>
+        </resources>
+
+    </build>
+</project>

@@ -1,0 +1,8 @@
+User:
+  school: 学校
+  name: 张三
+  age: [12,13,14]
+
+School:
+  schoolName: 育英双语学校
+  schoolAddress: 学校的地址

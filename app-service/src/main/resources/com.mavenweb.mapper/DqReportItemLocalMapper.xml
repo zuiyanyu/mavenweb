@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mavenweb.mapper.DqReportItemLocalMapper" >
+    <resultMap id="DqReportItemLocalMapper" type="com.mavenweb.domain.DqReportItemLocal">
+        <result property="repItemId" column="rep_Item_Id"/>
+        <result property="repItemName" column="rep_Item_Name"/>
+        <result property="rpeName" column="rpe_Name"/>
+        <result property="repSname" column="rep_Sname"/>
+        <result property="rpeLineId" column="rpe_Line_Id"/>
+        <result property="repLineName" column="rep_Line_Name"/>
+        <result property="repItemAddr" column="rep_Item_Addr"/>
+        <result property="rpeItemIndex" column="rpe_Item_Index"/>
+        <result property="repItemEquOrigin" column="rep_Item_Equ_Origin"/>
+        <result property="repItemEqu" column="rep_Item_Equ"/>
+        <result property="isok" column="isok"/>
+    </resultMap>
+
+    <update id="updateItemId" parameterType="com.mavenweb.domain.DqReportItemLocal">
+        update dq_report_item_local
+           set rep_item_id = "${repItemId}"
+        where rep_sname ="${repSname}" and rep_item_addr= "${repItemAddr}"
+
+    </update>
+
+    <select id = "getMaxID" resultType ="String" >
+        select max(rep_item_id) from dq_report_item_local
+    </select>
+    <select id="getWillBeUpdatedItems" resultMap="DqReportItemLocalMapper">
+         select * from dq_report_item_local where rep_item_id is null or rep_item_id =''
+    </select>
+</mapper>

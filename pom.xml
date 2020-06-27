@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+        <groupId>com.maven.mavenweb</groupId>
+        <artifactId>mavenweb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <modules>
+              <module>app-client</module>
+              <module>app-service</module>
+              <module>app-java</module>
+              <module>hbase-plugin</module>
+              <module>SSM</module>
+            <module>mybatis-generator-maven-plugin</module>
+            <module>scala-module</module>
+        </modules>
+        <packaging>pom</packaging>
+        <name>mavenweb</name>
+
+        <!-- FIXME change it to the project's website -->
+        <url>http://www.example.com</url>
+
+      <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+
+            <app.name>ssm项目练习</app.name>
+            <app.version>${project.version}</app.version>
+
+            <app.client.run.port>8080</app.client.run.port>
+            <app.service.run.port>8081</app.service.run.port>
+            <app.run.path>/</app.run.path>
+            <tomcat7.version>2.2</tomcat7.version>
+
+            <spring.version>4.3.17.RELEASE</spring.version>
+            <junit.version>4.12</junit.version>
+            <mybatis.version>3.2.6</mybatis.version>
+            <slf4j.version>1.7.7</slf4j.version>
+            <log4j.version>1.2.17</log4j.version>
+            <javax.servlet-api>3.1.0</javax.servlet-api>
+            <mysql.version>5.1.47</mysql.version>
+            <jackson.version>2.9.8</jackson.version>
+            <dubbo.version>2.5.10</dubbo.version>
+            <zookeeper.version>3.4.10</zookeeper.version>
+            <!--<spring-test>4.3.25.RELEASE</spring-test>-->
+
+      </properties>
+
+  <!--子工程自动继承的依赖jar包-->
+  <dependencies>
+  </dependencies>
+
+
+  <!--子工程选择性继承的依赖jar包-->
+  <dependencyManagement>
+    <dependencies>
+        <!-- ============打印日志===================-->
+        <!-- log4j 来打印日志(不推荐使用) -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!--slf4j打印日志 (推荐使用) slf4j-api提供接口，slf4j-log4j提供具体的实现。-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- 很有用（推荐使用）
+               跟java.lang这个包的作用类似，Commons Lang这一组API也是提供一些基础的、通用的操作和处理，
+              如自动生成toString()的结果、自动实现hashCode()和equals()方法、数组操作、枚举、日期和时间的处理等等。-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <!-- Commons Collections增强了Java集合框架-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+
+
+        <!-- 添加此jar包报异常，和tomcat中的jar冲突了：
+            java.lang.LinkageError: loader constraint violation: loader (instance of org/apache/jasper/servlet/JasperLoader)
+            previously initiated loading for a different type with name "javax/servlet/http/HttpServletRequest"
+            <dependency>-->
+        <!--<groupId>javax.servlet</groupId>-->
+        <!--<artifactId>javax.servlet-api</artifactId>-->
+        <!--<version>${javax.servlet-api}</version>-->
+        <!--</dependency>-->
+        <!-- junit测试包-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+        </dependency>
+        <!-- ===========spring的核心包依赖 ======  -->
+        <!-- spring的四个容器包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--Beans模块是所有应用都要用到的，它包含访问配置文件、创建和管理bean以及进行（IoC/DI）操作相关的所有类-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- spring 的上下文依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- spring 的表达式-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- spring 的注解功能  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--一个spring的日志包-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- 配置dubbo 组件的依赖-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <!-- zookeeper的服务端-->
+         <dependency>
+             <groupId>org.apache.zookeeper</groupId>
+             <artifactId>zookeeper</artifactId>
+             <version>${zookeeper.version}</version>
+         </dependency>
+        <!-- zookeeper的客户端，访问zookeeper的服务端-->
+        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+        <!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.10</version>
+        </dependency>
+      <!-- ===========spring的核心包依赖 ======  -->
+      <!--Spring的AOP功能，需要导入4个包 start-->
+      <!--
+          spring的两个aop包 （上方已经导入）
+               org.springframework:spring-aspects:${spring.version}
+               org.springframework:spring-aop:${spring.version}
+          spring需要的第三方jar包
+               org.aopalliance:com.springsource.org.aopalliance:1.0.0
+       -->
+      <!-- https://mvnrepository.com/artifact/org.aopalliance/com.springsource.org.aopalliance -->
+      <!-- spring的aop联盟-->
+      <dependency>
+        <groupId>org.aopalliance</groupId>
+        <artifactId>com.springsource.org.aopalliance</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.aspectj/com.springsource.org.aspectj.weaver -->
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>com.springsource.org.aspectj.weaver</artifactId>
+        <version>1.6.8.RELEASE</version>
+      </dependency>
+      <!-- 基于class类进行的动态代理  spring的aop要使用-->
+      <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>2.1_3</version>
+      </dependency>
+      <!-- end-->
+      <!-- Spring JDBC包和tx事务包：start -->
+      <!-- spring的事务管理-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <!-- spring使用java jdbc连接数据库-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <!-- end-->
+      <!-- spring 连接数据库 start-->
+      <!-- JDBC整合配置c3p0连接池-->
+      <dependency>
+        <groupId>c3p0</groupId>
+        <artifactId>c3p0</artifactId>
+        <version>0.9.1.2</version>
+      </dependency>
+      <!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
+      <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>1.2.2</version>
+      </dependency>
+      <!-- end-->
+      <!-- spring 其他参考选择的依赖jar包 start-->
+      <!-- Spring 3.0 的一个新特性是 O/X Mapper。O/X 映射器这个概念并不新鲜，O 代表 Object，X 代表 XML。
+       它的目的是在 Java 对象（plain old Java object，或简写为 POJO）和 XML 文档之间来回转换。-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jms</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <!--spring 整合 Junit功能-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--   end     -->
+      <!-- ============mybatis依赖============ -->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>${mybatis.version}</version>
+      </dependency>
+
+      <!-- spring 与mybatis的整合-->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.2.2</version>
+      </dependency>
+      <!-- ==========springMVC的依赖============ -->
+      <!-- spring 与spring-mvc的整合-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--=====上传组件包 -文件上传下载的支持====-->
+        <!--这是一个核心 jar包，实现文件上传的核心类及方法都在这里面。-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!--这是一个依赖 jar包，是为了辅助 commons-fileupload 包，此包主要是进行 IO操作的，是 commons-fileupload 的依赖包。-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <!--上传组件包 end-->
+        <!--jackson-->
+        <!--数据绑定包（可选），提供基于“对象绑定”和“树模型”相关API。-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!--注解包（可选），提供注解功能 @JsonIgnoreProperties 等-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <!-- ==========springMVC的依赖 end ============ -->
+
+      <!-- =======配置数据库连接驱动=========== -->
+      <!-- 连接oracle数据库的驱动包-->
+      <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc6</artifactId>
+        <version>11.2.0.3</version>
+      </dependency>
+      <!-- 连接mysql数据库的驱动包 https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+
+      <!--===========配置jason操作  ========== -->
+      <!--配置Jackson start （推荐使用） -->
+      <!-- 配置fastjson start（推荐使用） 。解析与生成json使用的jar包 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.1.26</version>
+      </dependency>
+      <!-- 配置fastjson end -->
+
+      <!-- ========配置其他的========= -->
+
+
+      <!-- commons-codec是Apache开源组织提供的用于摘要运算、编码解码的包。
+      常见的编码解码工具Base64、MD5、Hex、SHA1、DES等。-->
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.9</version>
+      </dependency>
+
+
+      <!-- 配置支持servlet的jar包。应该叫servlet-api.jar
+           编写servlet要用到HttpServletRequest和HttpServletResponse等对象，这些对象都是要靠这个jar包才能使用的。
+           如果安装了Tomcat,这个jar包一般在tomcat安装目录\lib 文件夹下面有，
+           当你把web项目部署到tomcat，会自动加载这个jar包来识别Serlvet一些对象。
+      -->
+
+    </dependencies>
+
+  </dependencyManagement>
+
+  <build>
+    <finalName>${project.name}.${project.version}</finalName>
+     <!-- <resources>
+          <resource>
+              <directory>src/main/java</directory>
+             &lt;!&ndash; <includes>
+                  <include>**/*.xml</include>
+              </includes>
+              <filtering>false</filtering>&ndash;&gt;
+          </resource>
+          <resource>
+              <directory>src/main/resources</directory>
+          </resource>
+
+      </resources>-->
+    <!--<plugins>-->
+        <!--<plugin>-->
+            <!--<artifactId>maven-compiler-plugin</artifactId>-->
+            <!--<version>3.8.0</version>-->
+            <!--<configuration>-->
+                <!--&lt;!&ndash; 一般而言，target与source是保持一致的，但是，-->
+                <!--有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法)，-->
+                <!--会存在target不同于source的情况 &ndash;&gt;-->
+                <!--<encoding>utf-8</encoding>  &lt;!&ndash; 字符集编码 &ndash;&gt;-->
+                <!--<source>1.8</source>        &lt;!&ndash; 源代码使用的JDK版本 &ndash;&gt;-->
+                <!--<target>1.8</target>        &lt;!&ndash; 需要生成的目标class文件的编译版本 &ndash;&gt;-->
+
+                <!--<meminitial>128m</meminitial>&lt;!&ndash; 编译器使用的初始内存 &ndash;&gt;-->
+                <!--<maxmem>512m</maxmem>&lt;!&ndash; 编译器使用的最大内存 &ndash;&gt;-->
+            <!--</configuration>-->
+        <!--</plugin>-->
+
+    <!--</plugins>-->
+
+<!--    =================================================================  -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!--内置tomcat启动web项目-->
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>${tomcat7.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

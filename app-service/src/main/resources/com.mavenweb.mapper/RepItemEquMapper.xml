@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mavenweb.mapper.RepItemEquMapper" >
+
+    <resultMap id="RepItemEquMapper" type="com.mavenweb.domain.RepItemEqu">
+        <result property="repItemId" column="rep_Item_Id"/>
+        <result property="rpeName" column="rpe_Name"/>
+        <result property="repLineName" column="rep_Line_Name"/>
+        <result property="repItemName" column="rep_Item_Name"/>
+        <result property="repSname" column="rep_Sname"/>
+        <result property="repItemAddr" column="rep_Item_Addr"/>
+        <result property="repItemEquOrigin" column="rep_Item_Equ_Origin"/>
+        <result property="repItemEqu" column="rep_Item_Equ"/>
+        <result property="ext" column="ext"/>
+    </resultMap>
+
+    <select id="getRepItemEquItems" resultMap="RepItemEquMapper">
+            select * from rep_item_equ
+    </select>
+
+    <select id="getItemIdMap" resultType="java.util.Map">
+        <!-- 获取key =G0100-2018:E61  value= R00001 -->
+        select concat(rep_sname,":",rep_item_addr) as `key` ,rep_item_id as value from dq_report_item_all
+    </select>
+
+    <update id="updateRepItemEqu" parameterType="java.util.List">
+        <foreach collection="list" item="repItemEqu" index="index" open="" close=";" separator=";">
+            update rep_item_equ
+            set rep_item_id=#{repItemEqu.repItemId},rep_item_equ=#{repItemEqu.repItemEqu}
+            where rep_sname =#{repItemEqu.repSname} and rep_item_addr=#{repItemEqu.repItemAddr}
+        </foreach>
+    </update>
+
+    <update id="updateOneRepItemEqu" >
+      update rep_item_equ
+      set rep_item_id=#{repItemEqu.repItemId},rep_item_equ=#{repItemEqu.repItemEqu}
+      where rep_sname =#{repItemEqu.repSname} and rep_item_addr=#{repItemEqu.repItemAddr}
+    </update>
+
+
+</mapper>

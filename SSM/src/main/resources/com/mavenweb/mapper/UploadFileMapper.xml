@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mavenweb.mapper.UploadFileMapper">
+    <insert id="insertOneUploadedFile" parameterType="com.mavenweb.domain.UploadFile">
+        <!--file_id 是自增主键，不需要赋值-->
+        insert into upload_file (
+            file_id1, file_id2, file_origin_name, file_extend_name, file_stored_name,
+            file_stored_path, file_from_tab, create_time, creator, attribute1, attribute2,
+            attribute3)
+        values (
+            #{fileId1}, #{fileId2}, #{fileOriginName}, #{fileExtendName}, #{fileStoredName},
+            #{fileStoredPath}, #{fileFromTab}, #{createTime}, #{creator}, #{attribute1}, #{attribute2},
+            #{attribute3})
+    </insert>
+</mapper>
