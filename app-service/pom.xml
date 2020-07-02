@@ -16,6 +16,20 @@
     <url>http://www.example.com</url>
 
     <dependencies>
+        <!--spring 整合 Junit功能-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+        </dependency>
 <!--===========================web前端依赖 ====================================-->
         <!--导出Excel文件-->
         <dependency>
