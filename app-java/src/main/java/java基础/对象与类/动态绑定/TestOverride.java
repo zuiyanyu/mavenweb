@@ -1,8 +1,8 @@
-package java基础.动态绑定;
+package java基础.对象与类.动态绑定;
 
 public class TestOverride {
     public static void main(String[] args) {
-        // TODO 多态的动态绑定：
+        // TODO 多态的动态绑定： 利用的是虚方法表
         // TODO 动态绑定：调用对象的成员方法时，JVM会将对象的实际内存和当前的方法进行绑定。 即:
         // TODO 成员变量没有动态绑定操作，成员变量的调用是在哪里声明就在哪里使用。
 // TODO 1. 执行方法的时候，每次都要先从对象实际内存中查找，实际内存没有就向父级内存中查找；
