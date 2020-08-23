@@ -39,6 +39,7 @@ public class FileController {
      */
     @RequestMapping(value = "/downloadFile" ,method=RequestMethod.GET)
     public JsonResp downloadFile(String fileOriginName,String fileStoredName,String fileStoredPath,HttpServletResponse response){
+
         Map map = FileUtil.downloadFile(fileOriginName, fileStoredName, fileStoredPath, null, response);
         return JsonResp.sucess(map);
     }

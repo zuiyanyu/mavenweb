@@ -17,6 +17,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * //        System.out.println(OnlyTest.class.getResource(""));//获取class类所在的文件目录
+ * //        System.out.println(Float.class.getResource(""));
+ * //        System.out.println(OnlyTest.class.getResource("/"));
+ * //        System.out.println(OnlyTest.class.getResource("OnlyTest.class"));
+ * //        System.out.println(OnlyTest.class.getResource("/OnlyTest2.class"));
+ */
 @Component
 public class FileUtil {
     private static Logger LOGGER = LoggerFactory.getLogger(FileUtil.class);

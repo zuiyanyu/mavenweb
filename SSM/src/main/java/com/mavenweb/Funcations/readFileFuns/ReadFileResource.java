@@ -1,7 +1,5 @@
 package com.mavenweb.Funcations.readFileFuns;
 
-import sun.security.ec.CurveDB;
-
 import java.io.*;
 import java.net.URL;
 import java.security.CodeSource;
@@ -17,11 +15,22 @@ public class ReadFileResource {
 //
 //        getResourceFilePath(CurveDB.class, "/source_tips");
 ////
-        String classPath = getClassesPath(CurveDB.class);
-        System.out.println(classPath);
+//        String classPath = getClassesPath(CurveDB.class);
+//        System.out.println(classPath);
 //
 //        classPath = getResourceRootPath(Attribute.class);
 //        System.out.println(classPath);
+        getResource();
+    }
+
+    public static void getResource() throws IOException {
+        Class clazz = ReadFileResource.class ;
+        URL url = clazz.getResource("/asm-license.txt");
+        String filePath = url.getPath();
+        System.out.println("clazz.getResource资源文件所在的路径为："+filePath);
+//        StringBuffer stringBuffer = reeadResourceFile(ReadFileResource.class,"asm-license.txt");
+//          System.out.println(stringBuffer.toString());
+
     }
 
     /**
@@ -96,10 +105,10 @@ public class ReadFileResource {
      *         stringBuffer = reeadResourceFile(ReadFileResource.class,"/com/mavenweb/Funcations/readFileFuns/file1.txt");
      *         System.out.println(stringBuffer.toString());
      *
-     *         stringBuffer = reeadResourceFile(ReadFileResource.class,"file/file4.txt");
+     *         stringBuffer = reeadResourceFile(ReadFileResource.class,"/file/file4.txt");
      *         System.out.println(stringBuffer.toString());
      *
-     *         stringBuffer = reeadResourceFile(ReadFileResource.class,"asm-license.txt");
+     *         stringBuffer = reeadResourceFile(ReadFileResource.class,"/asm-license.txt");
      *         System.out.println(stringBuffer.toString());
      *
      * @param clazz      当前工程下的一个class类

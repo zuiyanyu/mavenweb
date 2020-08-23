@@ -51,6 +51,13 @@
 
   <!--子工程自动继承的依赖jar包-->
   <dependencies>
+      <!-- junit测试包-->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>${junit.version}</version>
+          <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
+      </dependency>
   </dependencies>
 
 
