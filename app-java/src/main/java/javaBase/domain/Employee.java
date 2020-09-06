@@ -1,6 +1,8 @@
 package javaBase.domain;
 
-public class Employee {
+import java.util.Objects;
+
+public class Employee implements Comparable {
     private String name ;
     private Integer age ;
     public  String school ;
@@ -74,5 +76,26 @@ public class Employee {
     }
     public static int staticMethod(Integer age){
         return  age;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name) &&
+                Objects.equals(age, employee.age) &&
+                Objects.equals(school, employee.school);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, age, school);
     }
 }

@@ -8,4 +8,10 @@ public class GenericReflect<R extends Comparable<? super R>&Serializable>
     public  <T extends Comparable<? super T>> T get(T t ){
         return  t ;
     }
+
+    public static void main(String[] args) {
+        GenericReflect<String> stringGenericReflect = new GenericReflect<>();
+        String hhh = stringGenericReflect.get("hhh");
+        System.out.println(hhh);
+    }
 }

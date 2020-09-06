@@ -1,8 +1,11 @@
 package javaBase.泛型;
 
 import javaBase.domain.GenericReflect;
+import javaBase.domain.Pair;
+import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
@@ -85,7 +88,7 @@ import java.lang.reflect.TypeVariable;
  * 为了表达泛型类型声明， 使用java.lang.reflect 包中提供的接口 Type。这个接口包含下列子类型：
  *      •Class 类，描述具体类型。
  *      •TypeVariable 接口，描述类型变量（如 T extends Comparable<? super T>)
- *      •WildcardType 接口， 描述通配符 （如？super T )。
+ *      •WildcardType 接口， 描述通配符 （如 ？super T )。
  *      •ParameterizedType 接口， 描述泛型类或接口类型（如 Comparable<? super T>)。
  *      •GenericArrayType 接口， 描述泛型数组（如 T[ ]。)
  * TODO Java.lang.Class<T>
@@ -212,6 +215,7 @@ public class 反射和泛型 {
         }
 
 
+
     }
     /* TODO java.Iang.reflect.WildcardType 5.0
     *  •WildcardType 接口， 描述通配符 （如？super T )。
@@ -233,8 +237,63 @@ public class 反射和泛型 {
     *      • Type getOwnerType( )
     *          如果是内部类型， 则返回其外部类型， 如果是一个顶级类型， 则返回 null。
     */
+    @Test
+    public   void ParameterizedTypeTest() {
+        class AA<R> extends Pair<R> {}
+        ParameterizedTypeTest(new AA<String>());
 
-    public static void ParameterizedTypeTest(){
+        System.out.println("===========================");
+
+        class BB extends Pair<String> {}
+        ParameterizedTypeTest(new BB());
+
+    }
+
+    /**运行结果
+     * genericSuperclass.getTypeName =javaBase.domain.Pair<R>
+     * genericSuperclass is ParameterizedType
+     * RtypeName = R
+     * ===========================
+     * genericSuperclass.getTypeName =javaBase.domain.Pair<java.lang.String>
+     * genericSuperclass is ParameterizedType
+     * RtypeName = java.lang.String
+     * ------rType is a Class type -----
+     * pairParamClass = java.lang.String
+     * @param pair
+     * @param <T>
+     */
+    public <T>  void ParameterizedTypeTest(Pair<T> pair){
+         // --------------------------
+        Class<? extends Pair> aClass = pair.getClass();
+
+        //获取父类
+        Type genericSuperclass = aClass.getGenericSuperclass();
+        System.out.println("genericSuperclass.getTypeName ="+genericSuperclass.getTypeName());// genericSuperclass.getTypeName =javaBase.domain.Pair<R>
+
+        //判断继承的父类是不是泛型类
+        if(genericSuperclass instanceof ParameterizedType){
+            System.out.println("genericSuperclass is ParameterizedType");
+            //向下转型
+            ParameterizedType parmType = (ParameterizedType)genericSuperclass ;
+
+            //获得这个参数化类型声明时所使用的类型参数。
+            Type[] actualTypeArguments = parmType.getActualTypeArguments();
+
+            //我们继承的 Pair<R> 只有一个泛型类型 R ，故
+            Type rType = actualTypeArguments[0];
+            String RtypeName = rType.getTypeName();
+            System.out.println("RtypeName = "+ RtypeName);// RtypeName = R
+
+            // 如果R给定的是某个具体的类，就可以进行获取这个具体类 对应的Class类
+            if(rType instanceof Class){
+                System.out.println("------rType is a Class type -----");
+                Class<T> pairParamClass =(Class<T>)rType ;
+                System.out.println("pairParamClass = "+pairParamClass.getName());
+            }
+
+
+//            System.out.println(pairParamClass.getName());
+        }
     }
     /* TODO java.Iang.reflect.GenericAnrayType 5.0
     * •GenericArrayType 接口， 描述泛型数组（如 T[ ]。)
