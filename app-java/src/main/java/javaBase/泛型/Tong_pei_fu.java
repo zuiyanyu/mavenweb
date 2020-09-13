@@ -195,7 +195,7 @@ public class Tong_pei_fu {
      * @param <T>
      */
     public  <T> void swapHelp(Pair<T> p){
-         T t = p.getFirst(); // Error
+         T t = p.getFirst();
          p .setFirst (p.getSecond()) ;
          p.setSecond(t) ;
 

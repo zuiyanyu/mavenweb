@@ -1,4 +1,4 @@
-package java基础;
+package javaBase;
 
 import org.apache.commons.lang.StringUtils;
 

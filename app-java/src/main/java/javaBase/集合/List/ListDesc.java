@@ -1,5 +1,7 @@
 package javaBase.集合.List;
 
+import java.util.*;
+
 /**
  *  链 表 与 泛 型 集 合 之 间 有 一 个 重 要 的 区 别。 链 表 是 一 个 有 序 集 合（ordered
  * collection), 每个对象的位置十分重要。LinkedList.add 方法将对象添加到链表的尾部。但是，
@@ -38,4 +40,36 @@ package javaBase.集合.List;
  *TODO      抛出一个 ConcurrentModificationException 异常
  */
 public class ListDesc {
+    public static void main(String[] args) {
+//        List<String> names = Arrays.asList("A«iy", "Bob", "Carl");
+//        names.add("李四");
+//        System.out.println(names);
+
+//        List<String> settings = Collections.nCopies(10, "DEFAULT") ;
+//        settings.set(1,"hello");
+//        System.out.println(settings);
+
+//        Set<Object> singleton = Collections.singleton("hell");
+
+        List list = new ArrayList() ;
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        List list1 = list.subList(1, 3);
+        System.out.println(list1.get(0));
+        System.out.println(list1);
+//        list.add("e");
+//        System.out.println(list1.get(1));
+
+        List list2 = list.subList(1, 4);
+
+        list1.clear();
+        System.out.println(list);
+
+        System.out.println(list2);
+
+
+
+    }
 }
