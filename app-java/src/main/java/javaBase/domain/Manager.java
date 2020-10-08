@@ -1,12 +1,29 @@
 package javaBase.domain;
 
-public class Manager extends Employee {
-    private int level ;
+import java.io.Serializable;
 
+public class Manager extends Employee implements  Serializable {
+    static final long serialVersionUID = 41L ;
+    private int level ;
+    private Employee secretary ;
     public Manager() {
     }
+    public Manager(String name) {
+        super(name);
+    }
+    public Manager(String name,int level) {
+        super(name);
+        this.level = level ;
+    }
+    public Employee getSecretary() {
+        return secretary;
+    }
 
-    public Manager( Integer level) {
+    public void setSecretary(Employee secretary) {
+        this.secretary = secretary;
+    }
+
+    public Manager(Integer level) {
         this.level = level ;
     }
 

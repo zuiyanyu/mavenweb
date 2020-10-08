@@ -1,8 +1,10 @@
 package javaBase.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Employee implements Comparable {
+public class Employee implements Comparable ,Serializable  {
+    static final long serialVersionUID = 42L ;
     private String name ;
     private Integer age ;
     public  String school ;
@@ -29,6 +31,10 @@ public class Employee implements Comparable {
         this(name);
         this.age = age ;
     }
+    public Employee(String name,Integer age,String school){
+        this(name,age);
+        this.school = school ;
+    }
 
     public static void printBuddies(Pair<? extends  Employee> p)
     {
@@ -45,12 +51,10 @@ public class Employee implements Comparable {
      }
 
     public Integer getAge() {
-        System.out.println("========Employee.getAge()");
         return age;
     }
 
     public void setAge(Integer age) {
-        System.out.println("========Employee.setAge()");
         this.age = age;
     }
 
@@ -63,7 +67,6 @@ public class Employee implements Comparable {
     }
 
     public String getName() {
-        System.out.println("========Employee.getName()");
         return name;
     }
 

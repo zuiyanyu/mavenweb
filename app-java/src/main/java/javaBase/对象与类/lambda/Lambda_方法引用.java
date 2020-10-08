@@ -6,13 +6,13 @@ package javaBase.对象与类.lambda;
  *  假设你想对字符串排序， 而不考虑字母的大小写。可以传递以下方法
  * 表达式：
  * Arrays.sort(strings，String::conpareToIgnoreCase)  等价于：Arrays.sort(strings，(String X,String Y)->X.conpareToIgnoreCase(Y))
- * TODO  要用：: 操作符分隔方法名与对象或类名。主要有 3 种情况：
+ * TODO  要用:: 操作符分隔方法名与对象或类名。主要有 3 种情况：
  * •object::instanceMethod
  * •Class::staticMethod
  * •Class::instanceMethod
  * 在前 2 种情况中， 方法引用等价于提供方法参数的 lambda 表达式。前面已经提到，
- * System.out::println 等价于 x -> System.out.println(x。) 类似地，Math::pow 等价于（x，y) ->
- * Math.pow(x, y。)
+ * System.out::println 等价于 x -> System.out.println(x) 类似地，Math::pow 等价于（x，y) ->
+ * Math.pow(x, y)
  * 对于第 3 种情况， 第 1 个参数会成为方法的目标。例如，String::compareToIgnoreCase 等
  * 同于 (x, y)-> x.compareToIgnoreCase(y) ;
  *
@@ -38,7 +38,7 @@ package javaBase.对象与类.lambda;
  *  {
  *       public void greet(){
  *           Timer t = new Timer(1000, super::greet) ;
- *           t.startO;
+ *           t.start();
  *       }
  * }
  * TimedGreeter.greet 方法开始执行时， 会构造一个 Timer, 它会在每次定时器滴答时执行
