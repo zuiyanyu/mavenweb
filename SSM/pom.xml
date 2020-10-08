@@ -16,13 +16,76 @@
     <properties>
         <tar.final.name>${project.artifactId}.${project.packaging}</tar.final.name>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
-        <org.springframework.version>4.3.19.RELEASE</org.springframework.version>
-        <commons-logging.version>1.2</commons-logging.version>
+        <!--<org.springframework.version>4.3.19.RELEASE</org.springframework.version>-->
         <junit.version>4.12</junit.version>
     </properties>
 
     <dependencies>
+        <!-- =================spring 框架 ===================== -->
+        <!-- Spring 四个核心 + 1个依赖  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <!--<version>${org.springframework.version}</version>-->
+        </dependency>
+        <!-- Spring beans包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <!--<version>${org.springframework.version}</version>-->
+        </dependency>
+        <!-- Spring 容器包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <!--<version>${org.springframework.version}</version>-->
+        </dependency>
+        <!-- spring 的表达式-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+        </dependency>
+        <!-- 一个spring的日志包依赖-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+
+         <!--AOP ：切面编程-->
+         <!--Spring aop依赖-->
+       <!-- aop联盟规范：  定义通知类型，具有特性接口，必须实现，从而确定方法名-->
+        <dependency>
+            <groupId>org.aopalliance</groupId>
+            <artifactId>com.springsource.org.aopalliance</artifactId>
+        </dependency>
+        <!--aop联盟规范的实现-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+
+        <!-- Spring aspects依赖 -->
+        <!--aspectj 提供切入点表达式功能  确定aop切面编程的切入点-->
+        <!--expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))"-->
+        <!--aspectj规范：定义通知类型，只定义类型名称，以及方法格式 ; 也是aop框架-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>com.springsource.org.aspectj.weaver</artifactId>
+        </dependency>
+        <!--aspectj规范实现-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
         <!--=========================================================================-->
+        <!--解析yaml文件-->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.17</version>
+        </dependency>
+
         <!-- =========log日志打印包 ========= -->
         <!--slf4j打印日志 (推荐使用) slf4j-api提供接口，slf4j-log4j提供具体的实现。-->
         <dependency>
@@ -74,15 +137,19 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--Spring webmvc依赖 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>4.3.17.RELEASE</version>
-            <!--<version>${org.springframework.version}</version>-->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-webmvc</artifactId>-->
+            <!--<version>4.3.17.RELEASE</version>-->
+        <!--</dependency>-->
         <!--============== spring与 junit，mybatis，springWeb进行整合 =========-->
         <!--spring 与 Junit的整合-->
         <dependency>
@@ -90,97 +157,43 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <!-- junit 单元测试依耐 -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>junit</groupId>-->
+            <!--<artifactId>junit</artifactId>-->
+            <!--<version>${junit.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
         <!-- spring 与mybatis的整合-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
         </dependency>
-        <!--springWeb与Spring的整合-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
         <!-- end-->
 
-        <!-- =================spring 框架 ===================== -->
-        <!-- Spring核心依赖 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- Spring beans包-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- Spring 容器包 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
+
         <!-- Spring容器依赖包,将第三方库整合进Spring应用上下文,提供支持 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework.version}</version>
+            <!--<version>${org.springframework.version}</version>-->
         </dependency>
-        <!-- Spring aop依赖 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- Spring aspects依赖 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- aspectj依赖 -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.9.4</version>
-        </dependency>
+
+
 
         <!-- Spring JDBC包和tx事务包：start -->
-        <!-- commons-logging依赖 -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
-        </dependency>
-
         <!-- Spring jdbc依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${org.springframework.version}</version>
+            <!--<version>${org.springframework.version}</version>-->
         </dependency>
         <!--Spring事物依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${org.springframework.version}</version>
+            <!--<version>${org.springframework.version}</version>-->
         </dependency>
-        <!-- spring的aop联盟-->
-        <dependency>
-            <groupId>org.aopalliance</groupId>
-            <artifactId>com.springsource.org.aopalliance</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.weaver</artifactId>
-        </dependency>
+
         <!-- 基于class类进行的动态代理  spring的aop要使用-->
         <dependency>
             <groupId>cglib</groupId>
@@ -215,11 +228,11 @@
 
         <!--=====================其他功能 jar包==============================-->
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.17</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.poi</groupId>-->
+            <!--<artifactId>poi</artifactId>-->
+            <!--<version>3.17</version>-->
+        <!--</dependency>-->
 
 
         <!--httpServlet 协议的依赖包-->
@@ -249,14 +262,10 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.11</version>
-            <!--<version>3.17</version>-->
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.11</version>
-            <!--<version>3.17</version>-->
         </dependency>
 
         <!--<dependency>-->
