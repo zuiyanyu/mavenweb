@@ -33,7 +33,7 @@ public class MyAspect {
 	
 	@Around(value = "myPointCut()")
 	public Object myAround(ProceedingJoinPoint joinPoint) throws Throwable{
-		System.out.println("前");
+		System.out.println("前"+joinPoint.getSignature().getName());
 		//手动执行目标方法
 		Object obj = joinPoint.proceed();
 		

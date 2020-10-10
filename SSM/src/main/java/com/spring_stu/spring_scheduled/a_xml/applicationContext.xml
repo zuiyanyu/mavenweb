@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+							   http://www.springframework.org/schema/tx
+							   http://www.springframework.org/schema/tx/spring-tx.xsd
+							   http://www.springframework.org/schema/task
+							   http://www.springframework.org/schema/task/spring-task.xsd">
+	<!--测试可用-->
+	<!--任务调度-->
+	<bean id="tasks" class="com.spring_stu.spring_scheduled.b_annotation.ScheduledTasks"/>
+
+	<!--默认使用的就是ThreadPoolTaskScheduler-->
+	<!--<task:scheduler id="scheduler" pool-size="10"/>-->
+	<bean id="scheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+		<property name="poolSize" value="10"/>
+	</bean>
+	<task:scheduled-tasks scheduler="scheduler">
+		<task:scheduled ref="tasks" method="fixedDelay" fixed-delay="2000"/>
+		<task:scheduled ref="tasks" method="fixedRate" fixed-rate="4000"/>
+		<task:scheduled ref="tasks" method="cron" cron="* * * * * *"/>
+	</task:scheduled-tasks>
+
+</beans>
