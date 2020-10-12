@@ -3,11 +3,15 @@
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:context= "http://www.springframework.org/schema/context"
        xmlns:mvc= "http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task.xsd">
 
 
     <!-- 加载db.properties 文件-->
@@ -66,4 +70,18 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller "/>
     </context:component-scan>
 
+
+    <bean id="tasks" class="com.spring_stu.spring_scheduled.b_annotation.ScheduledTasks"/>
+
+    <!--<bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+        <!--<property name="corePoolSize" value="5"/>-->
+        <!--<property name="maxPoolSize" value="10"/>-->
+        <!--<property name="queueCapacity" value="20"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="scheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">-->
+        <!--<property name="poolSize" value="10"/>-->
+    <!--</bean>-->
+
+    <!--<task:annotation-driven executor="executor" scheduler="scheduler" />-->
 </beans>
