@@ -16,10 +16,23 @@
 
 	<bean id="tasks" class="com.spring_stu.spring_scheduled.b_annotation.ScheduledTasks"/>
 
-	<task:scheduler id="scheduler" pool-size="10"/>
-	<task:executor id="executor" pool-size="10" keep-alive="20" queue-capacity="100"/>
+	<!--&lt;!&ndash;默认创建的是ThreadPoolTaskScheduled&ndash;&gt;-->
+	<!--<task:scheduler id="scheduler" pool-size="10"/>-->
+	<!--&lt;!&ndash;corePoolSize = 5 ,maxPoolSize = 10   默认创建的是ThreadPoolTaskExecutor&ndash;&gt;-->
+	<!--<task:executor id="executor"  pool-size="5-20" keep-alive="20" queue-capacity="20"/>-->
+	<!--<task:annotation-driven executor="executor" scheduler="scheduler" />-->
+
+
+	<!--或者使用 方式2 ：显示声明 executor和scheduler-->
+	<bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5"/>
+		<property name="maxPoolSize" value="10"/>
+		<property name="queueCapacity" value="20"/>
+	</bean>
+	<bean id="scheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+		<property name="poolSize" value="10"/>
+	</bean>
+
 	<task:annotation-driven executor="executor" scheduler="scheduler" />
-
-
 
 </beans>
