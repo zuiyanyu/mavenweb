@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis_stu.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.mybatis_stu.domain.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_age" jdbcType="INTEGER" property="userAge" />
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+    </resultMap>
+    <sql id="Base_Column_List">
+		user_id,user_name,user_age,birthday,address
+	</sql>
+
+    <!--开启二级缓存-->
+    <cache/>
+
+	<!-- 根据用户ID查询用户信息 -->
+    <!--flushCache 刷新缓存，在select 语句中，默认值为false ；在增删改语句中，默认值为true ;-->
+	<select id="findUserById" parameterType="int" resultType="User" flushCache="true" useCache="true">
+		SELECT* FROM USER WHERE user_id =#{userId}
+	</select>
+
+	<!-- 先添加用户 ,然后获取自动生成的主键 :方式1 -->
+	<insert id="getIdAfterInsert_type1" parameterType="com.mybatis_stu.domain.User">
+		<selectKey keyProperty="userId" resultType="int" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+
+		INSERT INTO user
+		(user_Name,address,birthday,user_age)
+		VALUES(#{userName},#{address},#{birthday},#{userAge})
+	</insert>
+	<!-- 先添加用户 ,然后获取自动生成的主键:方式2 -->
+	<insert id="getIdAfterInsert_type2" useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id" parameterType="User">
+		INSERT INTO user
+		(user_Name,address,birthday,user_age)
+		VALUES(#{userName},#{address},#{birthday},#{userAge})
+	</insert>
+
+
+	<!-- 先生成主键key, 然后添加用户(使用新生成的key作为主键)-->
+	<insert id="getIdBeforeInsert" parameterType="com.mybatis_stu.domain.User">
+		<selectKey keyProperty="userId" resultType="int" order="BEFORE">
+			SELECT ifnull(max(user_Id),0)+1  from user
+		</selectKey>
+
+		INSERT INTO user
+		(user_Id,user_Name,address,birthday,user_age)
+		VALUES(#{userId},#{userName},#{address},#{birthday},#{userAge})
+	</insert>
+
+
+	<!-- 定义sql片段 -->
+	<!-- sql片段内，可以定义sql语句中任何部分 -->
+	<!-- sql片段内，最好不用将where和select关键字声明在内 -->
+	<sql id="whereClause">
+		<!-- if标签：可以对输入的参数进行判断 -->
+		<!-- test:指定判断表达式 -->
+		<if test="user != null">
+			<if test="user.userName != null and user.userName != ''">
+				AND user_Name LIKE '%${user.userName}%'
+			</if>
+			<if test="user.address != null and user.address != ''">
+				AND address = #{user.address}
+			</if>
+		</if>
+
+		<if test="idList != null">
+			<!-- AND id IN (#{id},#{id},#{id}) -->
+
+			<!-- collection：表示pojo中集合属性的属性名称 -->
+			<!-- item:为遍历出的结果声明一个变量名称 -->
+			<!-- open：遍历开始时，需要拼接的字符串 -->
+			<!-- close:遍历结束时，需要拼接的字符串 -->
+			<!-- separator：遍历中间需要拼接的连接符 -->
+			AND user_id IN
+			<foreach collection="idList" item="id" open="(" close=")" separator=",">
+				#{id}
+			</foreach>
+		</if>
+	</sql>
+	<!-- 综合查询，查询用户列表 -->
+	<select id="findUserList" parameterType="com.mybatis_stu.domain.vo.UserQueryVO" resultType="user">
+		SELECT *  FROM user
+		<!-- where标签：默认去掉后面第一个AND，如果没有参数，则把自己干掉 -->
+		<where>
+			<!-- 引入sql片段 -->
+			<include refid="whereClause" />
+		</where>
+	</select>
+
+	<!-- resultMap入门 -->
+	<!-- id标签：专门为查询结果中唯一列映射 -->
+	<!-- result标签：映射查询结果中的普通列 -->
+	<resultMap type="user" id="UserRstMap">
+		<id column="id_" property="userId" />
+		<result column="userName_" property="userName" />
+		<result column="address_" property="address" />
+	</resultMap>
+
+	<select id="findUserRstMap" parameterType="int" resultMap="UserRstMap">
+		Select user_Id id_,user_Name userName_,address address_ from user where user_id = #{id}
+	</select>
+
+
+
+    <resultMap id="getUserWithOrdersMap" type="com.mybatis_stu.domain.vo.UserVO" extends="BaseResultMap">
+
+        <collection property="ordersList" ofType="com.mybatis_stu.domain.Orders">
+            <id property="orderId" column="order_id"></id>
+            <result property="numbers" column="numbers"></result>
+            <result property="createTime" column="create_time"></result>
+            <result property="userId" column="orders_userId"></result>
+        </collection>
+    </resultMap>
+    <!--查询用户，并查询用户的订单信息  一对多的关系：一个用户有多个订单-->
+    <select id="getUserWithOrders" resultMap="getUserWithOrdersMap">
+        select
+            user.user_id,
+            user.user_name,
+            user.user_age,
+            user.birthday,
+            user.address,
+            orders.user_id as orders_userId,
+            orders.order_id,
+            orders.numbers,
+            orders.create_time
+        from user
+        left join orders on orders.user_id = user.user_id
+    </select>
+
+    <!--=============================多对多测试 start===============================================-->
+    <resultMap id="pojoUserMap" type="com.mybatis_stu.pojo.User">
+
+    </resultMap>
+    <resultMap id="findUserWithItemsMap" type="com.mybatis_stu.pojo.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_age" jdbcType="INTEGER" property="userAge" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+
+        <!--订单信息 一对多 一个用户多个订单-->
+        <collection property="orders" ofType="com.mybatis_stu.pojo.Orders">
+            <id column="order_id" property="orderId"/>
+            <result column="orders_userId" property="userId"/>
+            <result column="numbers" property="numbers"/>
+
+            <!--订单详情信息 一对多 一个订单有多个订单详情-->
+            <collection property="detailList" ofType="com.mybatis_stu.pojo.Orderdetail">
+                <id column="orderdetail_id" property="orderdetailId"/>
+                <result column="detail_orderId" property="orderId"/>
+                <result column="detail_itemsId" property="itemsId"/>
+                <result column="detail_itemName" property="itemName"/>
+                <result column="detail_itemPrice" property="itemPrice"/>
+                <result column="order_action" property="orderAction"/>
+                <result column="order_status" property="orderStatus"/>
+
+                <!--商品信息 一对一 一个订单详情只能对应一个商品-->
+                <association property="items" javaType="com.mybatis_stu.pojo.Items">
+                    <id column="item_id" property="itemId"/>
+                    <result column="item_name" property="itemName"/>
+                    <result column="item_price" property="itemPrice"/>
+                </association>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="findUserWithItems" resultMap="findUserWithItemsMap">
+         SELECT
+             -- 主表
+            user.user_id,
+            user.user_name,
+            user.user_age,
+            user.address,
+            user.birthday,
+            -- 关联表：一对一
+            orders.order_id,
+            orders.user_id as orders_userId,
+            orders.numbers,
+            -- 关联表：一对多
+            detail.orderdetail_id,
+            detail.order_id as detail_orderId,
+            detail.items_id as detail_itemsId,
+            detail.item_name as detail_itemName,
+            detail.item_price as detail_itemPrice,
+            detail.order_action,
+            detail.order_status,
+            -- 关联表：多对多
+            items.item_id ,
+            items.item_name,
+            items.item_price
+        from  user
+        inner join orders -- 一对一的关系
+        on  orders.user_id = user.user_id
+        left join orderdetail detail  -- 一对多的关系
+        on orders.order_id = detail.order_id
+        left join items -- orderdetail:items= 1:1 ,items:orderdetail = 1:N  user:items = N:N
+        on detail.items_id = items.item_id
+    </select>
+    <!--=============================多对多测试 end===============================================-->
+
+</mapper>
+

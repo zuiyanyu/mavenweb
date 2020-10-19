@@ -1,6 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mavenweb.mapper.UploadFileMapper">
+  <resultMap id="BaseResultMap" type="com.mavenweb.domain.UploadFile">
+    <id column="file_id" jdbcType="INTEGER" property="fileId" />
+    <result column="file_id1" jdbcType="VARCHAR" property="fileId1" />
+    <result column="file_id2" jdbcType="VARCHAR" property="fileId2" />
+    <result column="file_origin_name" jdbcType="VARCHAR" property="fileOriginName" />
+    <result column="file_extend_name" jdbcType="VARCHAR" property="fileExtendName" />
+    <result column="file_stored_name" jdbcType="VARCHAR" property="fileStoredName" />
+    <result column="file_stored_path" jdbcType="VARCHAR" property="fileStoredPath" />
+    <result column="file_from_tab" jdbcType="VARCHAR" property="fileFromTab" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="attribute1" jdbcType="VARCHAR" property="attribute1" />
+    <result column="attribute2" jdbcType="VARCHAR" property="attribute2" />
+    <result column="attribute3" jdbcType="VARCHAR" property="attribute3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    file_id, file_id1, file_id2, file_origin_name, file_extend_name, file_stored_name, 
+    file_stored_path, file_from_tab, create_time, creator, attribute1, attribute2, attribute3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from upload_file
+    where file_id = #{fileId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from upload_file
+    where file_id = #{fileId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mavenweb.domain.UploadFile">
+    insert into upload_file (file_id, file_id1, file_id2, 
+      file_origin_name, file_extend_name, file_stored_name, 
+      file_stored_path, file_from_tab, create_time, 
+      creator, attribute1, attribute2, 
+      attribute3)
+    values (#{fileId,jdbcType=INTEGER}, #{fileId1,jdbcType=VARCHAR}, #{fileId2,jdbcType=VARCHAR}, 
+      #{fileOriginName,jdbcType=VARCHAR}, #{fileExtendName,jdbcType=VARCHAR}, #{fileStoredName,jdbcType=VARCHAR}, 
+      #{fileStoredPath,jdbcType=VARCHAR}, #{fileFromTab,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=VARCHAR}, #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, 
+      #{attribute3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mavenweb.domain.UploadFile">
+    insert into upload_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="fileId1 != null">
+        file_id1,
+      </if>
+      <if test="fileId2 != null">
+        file_id2,
+      </if>
+      <if test="fileOriginName != null">
+        file_origin_name,
+      </if>
+      <if test="fileExtendName != null">
+        file_extend_name,
+      </if>
+      <if test="fileStoredName != null">
+        file_stored_name,
+      </if>
+      <if test="fileStoredPath != null">
+        file_stored_path,
+      </if>
+      <if test="fileFromTab != null">
+        file_from_tab,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="attribute1 != null">
+        attribute1,
+      </if>
+      <if test="attribute2 != null">
+        attribute2,
+      </if>
+      <if test="attribute3 != null">
+        attribute3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId1 != null">
+        #{fileId1,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId2 != null">
+        #{fileId2,jdbcType=VARCHAR},
+      </if>
+      <if test="fileOriginName != null">
+        #{fileOriginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileExtendName != null">
+        #{fileExtendName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStoredName != null">
+        #{fileStoredName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStoredPath != null">
+        #{fileStoredPath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileFromTab != null">
+        #{fileFromTab,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute1 != null">
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null">
+        #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mavenweb.domain.UploadFile">
+    update upload_file
+    <set>
+      <if test="fileId1 != null">
+        file_id1 = #{fileId1,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId2 != null">
+        file_id2 = #{fileId2,jdbcType=VARCHAR},
+      </if>
+      <if test="fileOriginName != null">
+        file_origin_name = #{fileOriginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileExtendName != null">
+        file_extend_name = #{fileExtendName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStoredName != null">
+        file_stored_name = #{fileStoredName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStoredPath != null">
+        file_stored_path = #{fileStoredPath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileFromTab != null">
+        file_from_tab = #{fileFromTab,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute1 != null">
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null">
+        attribute3 = #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where file_id = #{fileId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mavenweb.domain.UploadFile">
+    update upload_file
+    set file_id1 = #{fileId1,jdbcType=VARCHAR},
+      file_id2 = #{fileId2,jdbcType=VARCHAR},
+      file_origin_name = #{fileOriginName,jdbcType=VARCHAR},
+      file_extend_name = #{fileExtendName,jdbcType=VARCHAR},
+      file_stored_name = #{fileStoredName,jdbcType=VARCHAR},
+      file_stored_path = #{fileStoredPath,jdbcType=VARCHAR},
+      file_from_tab = #{fileFromTab,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      attribute3 = #{attribute3,jdbcType=VARCHAR}
+    where file_id = #{fileId,jdbcType=INTEGER}
+  </update>
     <insert id="insertOneUploadedFile" parameterType="com.mavenweb.domain.UploadFile">
         <!--file_id 是自增主键，不需要赋值-->
         insert into upload_file (

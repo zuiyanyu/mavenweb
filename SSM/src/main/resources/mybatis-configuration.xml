@@ -12,7 +12,16 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
 
-   <!--
+    <typeAliases>
+        <!--类全限定名的别名映射 -->
+        <!--比如：
+            <select id="getUserByNo" resultType="com.mavenweb.domain.User" > 等价于
+            <select id="getUserByNo" resultType="user" >  user 不区分大小写
+        -->
+        <package name="com.mavenweb.domain"></package>
+    </typeAliases>
+
+    <!--
    configuration（配置）
 
         properties（属性）

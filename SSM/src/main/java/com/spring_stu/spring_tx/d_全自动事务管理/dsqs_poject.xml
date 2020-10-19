@@ -44,17 +44,31 @@
         -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
-			<tx:method name="transfer" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="remove*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="execute*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="insert*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="del*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="generate*" propagation="REQUIRES_NEW" isolation="DEFAULT"/>
+
 		</tx:attributes>
 	</tx:advice>
 
 	<!-- 4.3 AOP编程，目标类有ABCD（4个连接点），切入点表达式 确定增强的连接器，从而获得切入点：ABC -->
 	<aop:config>
-		<!--<aop:pointcut id="accountServicePoint" expression="execution(* com.spring_stu.service.serviceImpl.AccountServiceImpl.*(..))"/>-->
-		<!--<aop:advisor advice-ref="txAdvice" pointcut-ref="accountServicePoint"/>-->
-		<!--等价-->
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.spring_stu.service.serviceImpl.AccountServiceImpl.*(..))"/>
-	</aop:config>
+		<!--创建切入点-->
+		<aop:pointcut id="serviceImpl" expression="execution(* com.spring_stu.*.service.serviceImpl.*.*(..))"/>
+		<!--给service层添加事务管理-->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceImpl"/>
+
+		<!--对service层进行监听  环绕通知-->
+		<aop:aspect id="serviceMonitor" ref="monitorAdvice">
+			<aop:around method="intercept" pointcut-ref="serviceImpl"></aop:around>
+		</aop:aspect>
+  	</aop:config>
+	<bean id="monitorAdvice" class="com.spring_stu.spring_tx.PoolMonitorAdvice"></bean>
 
 
 </beans>

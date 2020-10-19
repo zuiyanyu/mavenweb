@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis_stu.mapper.OrdersMapper">
+
+      <resultMap id="BaseResultMap" type="com.mybatis_stu.domain.Orders">
+        <id column="order_id" jdbcType="INTEGER" property="orderId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="numbers" jdbcType="INTEGER" property="numbers" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      </resultMap>
+      <!--sql片段-->
+      <sql id="Base_Column_List">
+        order_id, user_id, numbers, create_time
+      </sql>
+      <!--简单的根据主键查询订单信息-->
+      <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+            select
+                <include refid="Base_Column_List" />
+            from orders
+            where order_id = #{orderId}
+      </select>
+
+    <!--一对一关系，懒加载-->
+    <resultMap id="getOrdersWithUserMap2" type="com.mybatis_stu.domain.vo.OrdersVO"
+               extends="BaseResultMap">
+        <!--向VO类中的属性 userName 注入值-->
+        <result property="userName" column="user_name"></result>
+
+        <!--用户信息(一对一)-->
+        <!--select : 指定关联查询的 查询statement(即查询用户的statement的id)，然后将查询结果，封装到property属性指定的变量中-->
+        <!--column:通过column指定的列所查询出的结果，作为select指定的statement的入参
+        注意：如果select指定的statement,入参需要多个值，需要再column中{col_1 = prop1,col_2 = prop2}   (将col_1的值赋值给prop1的值)，
+               prop1,prop2就是多个入参的名称。
+        -->
+        <association property="user"
+                     select="com.mybatis_stu.mapper.UserMapper.findUserById" column="user_id" />
+    </resultMap>
+    <!--查询定单以及用户 懒加载-->
+    <select id="getOrdersWithUser2"   resultMap="getOrdersWithUserMap2">
+        SELECT
+        orders.order_id,
+        orders.user_id,
+        orders.numbers,
+        orders.create_time
+        from orders
+        <where>
+            <if test="orderId !=null and orderId !='' "  >
+                order_id = #{orderId}
+            </if>
+        </where>
+    </select>
+
+    <!--综合查询：一对一的关系查询  -->
+    <!--下订单的用户  一个订单只属于一个用户，是一对一的关系(订单是主表，用户是从表)-->
+    <resultMap id="getOrdersWithUserMap" type="com.mybatis_stu.domain.vo.OrdersVO"
+               extends="BaseResultMap">
+        <!--向VO类中的属性 userName 注入值-->
+        <result property="userName" column="user_name"></result>
+
+        <association property="user" javaType="com.mybatis_stu.domain.User" >
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+            <result column="user_age" property="userAge"/>
+            <result column="address" property="address"/>
+            <result column="birthday" property="birthday"/>
+        </association>
+    </resultMap>
+    <!--查询定单以及订单详情-->
+    <select id="getOrdersWithDetailAndUser"   resultMap="getOrdersWithUserMap">
+           SELECT
+                orders.order_id,
+                orders.user_id,
+                orders.numbers,
+                orders.create_time,
+                user.user_name,
+                user.user_age,
+                user.address,
+                user.birthday
+            from orders
+            inner join user
+            on  orders.user_id = user.user_id
+            <where>
+                <if test="orderId !=null and orderId !='' "  >
+                    order_id = #{orderId}
+                </if>
+            </where>
+
+    </select>
+
+
+    <resultMap id="getOrdersWithUserAndDetailMap" type="com.mybatis_stu.domain.vo.OrdersVO" extends="getOrdersWithUserMap">
+        <collection property="orderdetailList" ofType="com.mybatis_stu.domain.Orderdetail">
+            <id property="orderdetailId" column="orderdetail_id"></id>
+            <result property="orderId" column="detail_orderId"></result>
+            <result property="itemsId" column="items_id"></result>
+            <result property="itemName" column="item_name"></result>
+            <result property="itemPrice" column="item_price"></result>
+            <result property="orderAction" column="order_action"></result>
+            <result property="orderStatus" column="order_status"></result>
+            <result property="createTime" column="detail_createTime"></result>
+        </collection>
+    </resultMap>
+    <!--查询定单以及订单详情和订单用户   订单表:用户表(一对一)  订单表:订单详情表(一对多)-->
+    <select id="getOrdersWithUserAndDetail"   resultMap="getOrdersWithUserAndDetailMap">
+       SELECT
+            orders.order_id,
+            orders.user_id,
+            orders.numbers,
+            orders.create_time,
+            user.user_name,
+            user.user_age,
+            user.address,
+            user.birthday,
+            detail.orderdetail_id,
+            detail.order_id as detail_orderId,
+            detail.items_id,
+            detail.item_name ,
+            detail.item_price,
+            detail.order_action,
+            detail.order_status,
+            detail.create_time as detail_createTime
+        from orders
+        inner join user -- 一对一的关系
+        on  orders.user_id = user.user_id
+        left join orderdetail detail  -- 一对多的关系
+        on orders.order_id = detail.order_id
+
+    </select>
+
+
+
+
+
+
+</mapper>
