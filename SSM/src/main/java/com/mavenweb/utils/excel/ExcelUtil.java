@@ -74,7 +74,7 @@ public class ExcelUtil {
             if(POIFSFileSystem.hasPOIFSHeader(inputStream)){
                 workbook = new HSSFWorkbook(inputStream) ; //2003
             }else if(POIXMLDocument.hasOOXMLHeader(inputStream)){
-                workbook = new XSSFWorkbook(inputStream);
+                workbook = new XSSFWorkbook(inputStream);//2007
             }
             if(workbook == null){
                 throw new RuntimeException("ExcelUtil.getWorkBook():failed to create workbook !") ;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!--singleton 是单例模式，prototype是多例模式-->
+	<bean id="userServiceId" class="com.spring_stu.service.serviceImpl.UserServiceImpl"
+		scope="prototype" ></bean>
+	
+</beans>

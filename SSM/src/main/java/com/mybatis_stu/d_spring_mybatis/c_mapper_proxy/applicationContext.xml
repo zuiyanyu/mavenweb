@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+
+    <!-- 加载db.properties 文件-->
+    <!--<bean id="config" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">-->
+        <!--<property name="locations" value="classpath:datasource.properties"/>-->
+    <!--</bean>-->
+    <context:property-placeholder location="classpath:datasource.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+    </bean>
+
+    <!-- 配置mybatis的需要的核心类 ：SqlSessionFactory
+         在SpringIOC容器中，创建MyBatis的核心类SqlSessionFactory
+     -->
+    <!-- 配置sqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--    mybatis 全局配置文件-->
+        <property name="configLocation" value="classpath:com/mybatis_stu/d_spring_mybatis/c_mapper_proxy/mybatis-config.xml"/>
+
+        <!--加载映射文件 可配置多个地方的映射文件 -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:com/mybatis_stu/mapper/*.xml</value>
+            </list>
+        </property>
+
+        <!-- 类全限定名的别名映射 -->
+        <property name="typeAliasesPackage" value="com.mybatis_stu.domain"/>
+    </bean>
+
+
+</beans>

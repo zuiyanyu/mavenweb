@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis_stu.mapper.OrderdetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.mybatis_stu.domain.Orderdetail">
+        <id column="orderdetail_id" jdbcType="INTEGER" property="orderdetailId" />
+        <result column="order_id" jdbcType="INTEGER" property="orderId" />
+        <result column="items_id" jdbcType="INTEGER" property="itemsId" />
+        <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+        <result column="order_action" jdbcType="VARCHAR" property="orderAction" />
+        <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+        <result column="item_price" jdbcType="DOUBLE" property="itemPrice" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+         orderdetail_id, order_id,items_id, order_status, order_action, item_name, item_price, create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from orderdetail
+        where orderdetail_id = #{orderdetailId}
+    </select>
+</mapper>

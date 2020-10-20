@@ -1,10 +1,17 @@
 package com.mavenweb.mapper;
 
 import com.mavenweb.domain.User;
-import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
-    String getUserNameByNo(@Param("userNo") String userNo);
-    User getUserByNo(@Param("userNo") String userNo);
-//    Integer addUser(User user);
+    int deleteByPrimaryKey(Integer userId);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer userId);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }
