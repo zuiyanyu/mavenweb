@@ -39,8 +39,8 @@ mappers（映射器）
         <setting name="mapUnderscoreToCamelCase" value="true" />
 
         <!--开启懒加载
-         延迟加载又叫懒加载，也叫按需加载。也就是说先加载主信息，在需要的时候，再去加载从信息。
-         在mybatis中，resultMap标签 的association标签和collection标签具有延迟加载的功能。-->
+        延迟加载又叫懒加载，也叫按需加载。也就是说先加载主信息，在需要的时候，再去加载从信息。
+        在mybatis中，resultMap标签 的association标签和collection标签具有延迟加载的功能。-->
         <!--开启延迟加载，默认值为true-->
         <setting name="lazyLoadingEnabled" value="true"/>
         <!--设置积极的懒加载，默认是true-->
@@ -62,15 +62,38 @@ mappers（映射器）
         
     </settings>
 
-    <typeAliases>
-        <!--类全限定名的别名映射 -->
-        <!--比如：
-            <select id="getUserByNo" resultType="com.mavenweb.domain.User" > 等价于
-            <select id="getUserByNo" resultType="user" >  user 不区分大小写
+    <!--<typeAliases>-->
+        <!--&lt;!&ndash;类全限定名的别名映射 &ndash;&gt;-->
+        <!--&lt;!&ndash;比如：-->
+            <!--<select id="getUserByNo" resultType="com.mavenweb.domain.User" > 等价于-->
+            <!--<select id="getUserByNo" resultType="user" >  user 不区分大小写-->
+        <!--&ndash;&gt;-->
+        <!--<package name="com.mybatis_stu.domain"></package>-->
+    <!--</typeAliases>-->
+    <plugins>
+        <!--配置mybatis的分页查询拦截器插件:
+        特别注意，新版拦截器是 com.github.pagehelper.PageInterceptor。
+        com.github.pagehelper.PageHelper 现在是一个特殊的 dialect 实现类，是分页插件的默认实现类，提供了和以前相同的用法
+        使用高版本5.x报错： java.lang.NoSuchMethodException: org.apache.ibatis.reflection.MetaObject.forObject
+        使用4.x版本：不能使用PageInterceptor拦截器，可以使用PageHelper拦截器
         -->
-        <package name="com.mybatis_stu.domain"></package>
-    </typeAliases>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
 
+        <!--<plugin interceptor="com.github.pagehelper.PageHelper">-->
+        <!--</plugin>-->
+        <!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+        <!--<property name="properties" value="-->
+        <!--helperDialect=mysql-->
+        <!--reasonable=true-->
+        <!--supportMethodsArguments=true-->
+        <!--params=count=countSql-->
+        <!--autoRuntimeDialect=true-->
+        <!--"></property>-->
+        <!--</plugin>-->
+    </plugins>
 
     <!--&lt;!&ndash; 配置mybatis的环境信息，与spring整合，该信息由spring来管理 &ndash;&gt;-->
     <!--<environments default="development">-->
@@ -88,12 +111,14 @@ mappers（映射器）
     <!--</environments>-->
 
     <!-- 加载映射文件 -->
-    <mappers>
-        <!--&lt;!&ndash;单个加载&ndash;&gt;-->
-        <mapper resource="com/mybatis_stu/mapper/UserMapperTest.xml" />
-        <!-- 批量加载映射文件 如果没有对应的java类，则xml加载不到-->
-        <package name="com.mybatis_stu.mapper"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--&lt;!&ndash;&lt;!&ndash;单个加载&ndash;&gt;&ndash;&gt;-->
+        <!--<mapper resource="com/mybatis_stu/mapper/UserMapperTest.xml" />-->
+        <!--&lt;!&ndash; 批量加载映射文件 如果没有对应的java类，则xml加载不到&ndash;&gt;-->
+        <!--<package name="com.mybatis_stu.mapper"/>-->
+    <!--</mappers>-->
+
+
 
 </configuration>
 

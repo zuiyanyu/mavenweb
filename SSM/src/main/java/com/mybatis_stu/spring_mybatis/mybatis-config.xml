@@ -37,12 +37,31 @@ mappers（映射器）
         <!--具体的参数名和参数值  <setting name="" value=""/>-->
         <!-- 开启自动驼峰命名规则（camel case）映射，即从数据库列名 A_COLUMN 到属性名 aColumn 的类似映射 -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
-        
+
         <!--开启懒加载
-        延迟加载又叫懒加载，也叫按需加载。也就是说先加载主信息，在需要的时候，再去加载从信息。
-        在mybatis中，resultMap标签 的association标签和collection标签具有延迟加载的功能。-->
-        <!--<setting name="l" value=""-->
-        
+         延迟加载又叫懒加载，也叫按需加载。也就是说先加载主信息，在需要的时候，再去加载从信息。
+         在mybatis中，resultMap标签 的association标签和collection标签具有延迟加载的功能。-->
+        <!--开启延迟加载，默认值为true-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--设置积极的懒加载，默认是true-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!--是否使用插入数据后自增主键的值，需要配合keyProperty使用-->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--返回map为null时候显示该字段-->
+        <setting name="callSettersOnNulls"  value="true"/>
+
+
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="defaultStatementTimeout"  value="25000"/>
+        <setting name="defaultExecutorType"  value="SIMPLE"/>
+        <!--使用字段别名进行bean属性的映射-->
+        <setting name="useColumnLabel" value="true"/>
+        <!--关闭二级缓存-->
+        <setting name="cacheEnabled" value="false"/>
+
+
+
     </settings>
 
     <typeAliases>

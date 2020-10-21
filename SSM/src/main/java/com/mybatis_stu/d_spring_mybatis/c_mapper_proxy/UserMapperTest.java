@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Map;
+
 public class UserMapperTest  {
     private ApplicationContext applicationContext;
     @Before
     public void setUp(){
-        String xlmPath ="com/mybatis_stu/d_spring_mybatis/b_mapper_proxy/applicationContext.xml" ;
+        String xlmPath ="com/mybatis_stu/d_spring_mybatis/c_mapper_proxy/applicationContext.xml" ;
         applicationContext = new ClassPathXmlApplicationContext(xlmPath);
     }
     @Test
@@ -20,6 +22,11 @@ public class UserMapperTest  {
         UserMapper userMapper = applicationContext.getBean("userMapper", UserMapper.class);
         User user = userMapper.findUserById(1);
         System.out.println(user);
+
+
+        Map userRstMap = userMapper.findUserByIdRetMap(1);
+        System.out.println(userRstMap);
+
 
     }
 

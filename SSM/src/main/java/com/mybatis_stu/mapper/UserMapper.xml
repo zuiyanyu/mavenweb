@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT* FROM USER WHERE user_id =#{userId}
 	</select>
 
+    <select id="findUserByIdRetMap" parameterType="int" resultType="map">
+		SELECT user_id as userId,user_name as userName,user_age as userAge,birthday,address FROM USER WHERE user_id =#{userId}
+	</select>
+
 	<!-- 先添加用户 ,然后获取自动生成的主键 :方式1 -->
 	<insert id="getIdAfterInsert_type1" parameterType="com.mybatis_stu.domain.User">
 		<selectKey keyProperty="userId" resultType="int" order="AFTER">

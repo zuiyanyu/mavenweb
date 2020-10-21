@@ -20,6 +20,12 @@
             where order_id = #{orderId}
       </select>
 
+    <select id="selectAllOrders"   resultType="orders">
+        select
+        <include refid="Base_Column_List" />
+        from orders
+    </select>
+
     <!--一对一关系，懒加载-->
     <resultMap id="getOrdersWithUserMap2" type="com.mybatis_stu.domain.vo.OrdersVO"
                extends="BaseResultMap">

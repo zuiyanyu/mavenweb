@@ -5,10 +5,12 @@ import com.mybatis_stu.domain.vo.UserQueryVO;
 import com.mybatis_stu.domain.vo.UserVO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
 	// 1、 根据用户ID查询用户信息
 	public User findUserById(int id) throws Exception;
+	public Map findUserByIdRetMap(int id) throws Exception;
 
 	// 2、 先添加用户，然后获取生成的主键
 	public void getIdAfterInsert_type1(User user) throws Exception;
