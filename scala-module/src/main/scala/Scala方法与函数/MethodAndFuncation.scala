@@ -36,11 +36,11 @@ object MethodAndFuncation {
 
        //方法的使用
        val method = obj.getUserInfo("李四",11)
-       println(method)
+       println(method) //name = 李四 ; age = 11
 
        //函数的使用
        val func = obj.user("张三",11)
-       println(func)
+       println(func) //  name = 张三 ; age = 11
 
 
        //函数的使用  返回类型也是函数
@@ -53,10 +53,7 @@ object MethodAndFuncation {
        println(info)   //<function2>
        println(info("李四2",11))
 
-
-
      }
-
 }
 
 class MethodAndFuncation{
@@ -66,8 +63,6 @@ class MethodAndFuncation{
   val  user = (name : String ,age : Integer )  => {
     " name = " + name + " ; age = " + age
   }
-
-
 }
 
 class User{

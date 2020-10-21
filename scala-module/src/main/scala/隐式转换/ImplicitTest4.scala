@@ -9,16 +9,17 @@ package 隐式转换
   */
 object ImplicitTest4 {
     def main(args: Array[String]): Unit = {
-        type1()  // comming into User1 ....
-        type2()  // comming into User2 ....
+        type1()  // comming into User2 ....
+        type2()  // comming into User1 ....
     }
     //TODO 隐士转换功能扩展情景1
-    def type2()={
+    def type1()={
         //要对父类进行功能扩展
         class Person{
         }
-        //TODO 方式2 通过 implicit def  对 person类进行功能扩展
+        //TODO 方式1 通过 implicit def  对 person类进行功能扩展
         //TODO 这种方式可以整合多个类的功能到一起
+        //TODO 表示无关两个类A,B 之间方法的调用关系
         class User2(){
             def logIn(): Unit ={
                 println("comming into User2 ....")
@@ -32,12 +33,13 @@ object ImplicitTest4 {
         person.logIn();  //
     }
     //TODO 隐士转换功能扩展情景2
-    def type1(): Unit ={
+    def type2(): Unit ={
         //要对父类进行功能扩展
         class Person{
         }
-        //TODO 方式1：使用隐士转换类(scala2.0后增加) implicit class 对 person类进行功能扩展
-        //TODO  这种方式可以特意为某个类进行功能扩展 (声明时候必须有一个参数的构造方法，把此参数隐士转换为当前类)
+        //TODO 方式2：使用隐士转换类(scala2.0后增加) implicit class 对 person类进行功能扩展
+        //TODO 这种方式可以特意为某个类进行功能扩展 (声明时候必须有一个参数的构造方法，把此参数隐士转换为当前类)
+        //TODO 代表父类可以使用子类的方法
         implicit class User1(p:Person){
             def logIn(): Unit ={
                 println("comming into User1 ....")

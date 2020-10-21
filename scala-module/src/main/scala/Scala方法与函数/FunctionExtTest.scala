@@ -43,7 +43,7 @@ object FunctionExtTest {
         var f1_4_1_0 = "zhangsan"
         var f1_4_1_1:String = "zhangsan"
 
-        //TODO 匿名函数  在不关系方法名的时候，可以使用lambda 表达式声明匿名函数
+        //TODO 匿名函数  在不关心方法名的时候，可以使用lambda 表达式声明匿名函数
         var i = ()->{ "zhangsan"}  //匿名类
         var k = (age:Int)=>{ "zhangsan"}  //匿名函数
         println("i= " + i)  // i= ((),zhangsan)

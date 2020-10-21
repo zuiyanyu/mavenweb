@@ -1,11 +1,14 @@
 package javaBase.多线程.执行器_07;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * TODO 1. 执 行 器
  * TODO *** 1.1 构建一个新的线程是有一定代价的， 因为涉及与操作系统的交互。
  * TODO 1.2 如果程序中创建了大量的生命期很短的线程，应该使用线程池（ thread pool )。
  * TODO 1.3 一个线程池中包含许多准备运行的空闲线程。
- * TODO 1.4 将 Runnable 对象交给线程池，就会有一个线程调用 run 方法。
+ * TODO 1.4 将 Runnable 对象交给线程池，就会有一个线程调用 run 方法（有一个执行器执行run方法）。
  * TODO 1.5 当 run 方法退出时， 线程不会死亡，而是在池中准备为下一个请求提供服务。
  *
  * TODO *** 1.6 另一个使用线程池的理由是减少并发线程的数目。
@@ -38,4 +41,7 @@ package javaBase.多线程.执行器_07;
  *
  */
 public class 执行器_01 {
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+    }
 }

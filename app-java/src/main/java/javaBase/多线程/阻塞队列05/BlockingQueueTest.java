@@ -44,7 +44,7 @@ public class BlockingQueueTest {
                     try{
                         boolean done = false ;
                         while(!done){
-                            File file = queue.take(); // 队列空，线程阻塞；对列再次有值，退出阻塞；
+                            File file = queue.take(); // 队列空，线程阻塞；队列再次有值，退出阻塞；
                             if(file == DUMMY){
                                 queue.put(DUMMY); // 防止其他阻塞的线程一直被阻塞着(queue.take()被阻塞的那些线程)；
                                 done = true ;

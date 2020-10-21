@@ -21,6 +21,11 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
         <!-- =================spring 框架 ===================== -->
 
         <!-- Spring 四个核心 + 1个依赖  -->

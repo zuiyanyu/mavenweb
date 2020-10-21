@@ -52,6 +52,7 @@
             <jackson.version>2.9.8</jackson.version>
             <dubbo.version>2.5.10</dubbo.version>
             <zookeeper.version>3.4.10</zookeeper.version>
+            <pagehelper.version>4.1.6</pagehelper.version>
 
             <!--<spring-test>4.3.25.RELEASE</spring-test>-->
 
@@ -72,6 +73,12 @@
   <!--子工程选择性继承的依赖jar包-->
   <dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <!--<version>5.1.5</version>-->
+            <version>${pagehelper.version}</version>
+        </dependency>
         <!-- =================spring 框架 ===================== -->
         <!--Spring 四个核心 + 1个依赖-->
         <dependency>

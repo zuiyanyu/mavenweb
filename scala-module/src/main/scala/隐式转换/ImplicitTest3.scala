@@ -12,6 +12,7 @@ object ImplicitTest3 {
         def test(implicit name :String="固定值" ): Unit ={
             println(s"入参为 $name")
         }
+        test
         test("李四")
 
         //可以是从库中查询出来的动态值
