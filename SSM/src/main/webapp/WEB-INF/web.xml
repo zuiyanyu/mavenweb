@@ -7,6 +7,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
+        <!--<param-value>classpath:com/spring_stu/spring_scheduled/a_xml/applicationContext.xml</param-value>-->
     </context-param>
 
     <listener>
