@@ -1,8 +1,8 @@
 package com.spring_stu.domain;
 
 public class Address {
-    private String addr ;
-    private String tel ;
+    private String addr ="地址" ;
+    private String tel ="1234567" ;
 
     public String getAddr() {
         return addr;

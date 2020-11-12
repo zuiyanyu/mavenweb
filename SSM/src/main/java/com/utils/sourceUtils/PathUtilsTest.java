@@ -1,5 +1,6 @@
 package com.utils.sourceUtils;
 
+import com.sun.javafx.scene.shape.PathUtils;
 import org.apache.ibatis.io.DefaultVFS;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-public class PathUtils {
+public class PathUtilsTest {
     private static final Log log = LogFactory.getLog(PathUtils.class);
     /**
      *  查找每个依赖jar包中 相同目录存在的资源文件路径

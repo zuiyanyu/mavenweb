@@ -45,7 +45,8 @@
 
             <junit.version>4.12</junit.version>
             <mybatis.version>3.2.6</mybatis.version>
-            <slf4j.version>1.7.7</slf4j.version>
+            <slf4j-api.version>1.7.7</slf4j-api.version>
+            <slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
             <log4j.version>1.2.17</log4j.version>
             <javax.servlet-api>3.1.0</javax.servlet-api>
             <mysql.version>5.1.47</mysql.version>
@@ -73,12 +74,47 @@
   <!--子工程选择性继承的依赖jar包-->
   <dependencyManagement>
     <dependencies>
+
+        <!-- =================log 日志框架 ===================== -->
+        <!-- 一个spring的日志包依赖-->
+        <!--一个spring的日志包-->
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <!--<version>5.1.5</version>-->
-            <version>${pagehelper.version}</version>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
         </dependency>
+
+        <!-- ============打印日志===================-->
+        <!-- log4j 来打印日志(不推荐使用) -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!--slf4j打印日志 (推荐使用) slf4j-api提供接口，slf4j-log4j提供具体的实现。-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
+        </dependency>
+
+        <!---->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-api</artifactId>-->
+            <!--<version>2.0-rc1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+            <!--<version>2.0-rc1</version>-->
+        <!--</dependency>-->
         <!-- =================spring 框架 ===================== -->
         <!--Spring 四个核心 + 1个依赖-->
         <dependency>
@@ -104,13 +140,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <!-- 一个spring的日志包依赖-->
-        <!--一个spring的日志包-->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
         </dependency>
 
 
@@ -240,26 +269,8 @@
             <artifactId>kafka-clients</artifactId>
             <version>0.11.0.2</version>
         </dependency>
-        <!-- ============打印日志===================-->
-        <!-- log4j 来打印日志(不推荐使用) -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
 
-        <!--slf4j打印日志 (推荐使用) slf4j-api提供接口，slf4j-log4j提供具体的实现。-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <!-- 很有用（推荐使用）
+        <!-- 很有用
                跟java.lang这个包的作用类似，Commons Lang这一组API也是提供一些基础的、通用的操作和处理，
               如自动生成toString()的结果、自动实现hashCode()和equals()方法、数组操作、枚举、日期和时间的处理等等。-->
         <dependency>
@@ -408,6 +419,13 @@
         <artifactId>mybatis-spring</artifactId>
         <version>1.2.2</version>
       </dependency>
+        <!--  mybatis的分页查询插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <!--<version>5.1.5</version>-->
+            <version>${pagehelper.version}</version>
+        </dependency>
       <!-- ==========springMVC的依赖============ -->
       <!-- spring 与spring-mvc的整合-->
       <dependency>

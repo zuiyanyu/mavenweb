@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--使用DTD对xml进行验证  font表示根元素；-->
+<!DOCTYPE font SYSTEM "../dtds/first.dtd">
+<font>
+    <name>hello</name>
+    <size>10</size>
+</font>

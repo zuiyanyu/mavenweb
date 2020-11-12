@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3schools.com"
+           xmlns="http://www.w3schools.com"
+           elementFormDefault="qualified">
+<xsd:simpleType name="StyleType">
+    <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="PLAIN"/>
+        <xsd:enumeration value="BOLD"/>
+        <xsd:enumeration value="ITALIC"/>
+        <xsd:enumeration value="BOLD_ITALIC"/>
+    </xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>
