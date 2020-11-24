@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="app-client" />
+        <module name="app-java" />
+        <module name="app-service" />
+        <module name="demo" />
+        <module name="hbase-plugin" />
+        <module name="mybatis-generator-maven-plugin" />
+        <module name="scala-module" />
+        <module name="springBoot" />
+        <module name="SSM" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+</project>

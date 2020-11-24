@@ -29,6 +29,7 @@
 	-->
 	<aop:config proxy-target-class="false">
 		<aop:pointcut expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))" id="myPointCut"/>
+		<!--将 advice-ref这一个通知，应用到 指定的一个或者多个切入点中，从而形成一个切面 advisor-->
 		<aop:advisor advice-ref="myAspectId" pointcut-ref="myPointCut"/>
 	</aop:config>
 </beans>

@@ -4,8 +4,8 @@ import com.mavenweb.utils.Constants;
 import com.mavenweb.utils.FileUtil;
 import com.mavenweb.utils.JsonResp;
 import com.mavenweb.utils.PubFunUtil;
-import com.mavenweb.utils.excel.ExcelUtil;
-import com.mavenweb.utils.excel.WorkBookInfo;
+import com.utils.excel.ExcelReadUtil;
+import com.utils.excel.domain.WorkBookMeta;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +47,7 @@ public class FileController {
     @RequestMapping(value = "/readExcel" ,method=RequestMethod.POST)
     public JsonResp readExcel(@RequestParam("file") MultipartFile multipartFile, HttpServletResponse response){
         try {
-            WorkBookInfo workBookInfo = ExcelUtil.readExcel(multipartFile, null, 1, 2, null);
+            WorkBookMeta workBookInfo = ExcelReadUtil.readExcel(multipartFile, null, 1, 2, null);
             return JsonResp.sucess(workBookInfo);
         } catch (Exception e) {
             e.printStackTrace();

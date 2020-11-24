@@ -19,7 +19,9 @@
 			id 名称，用于其它通知引用
 	-->
 	<aop:config>
+		<!--1.声明多个通知-->
 		<aop:aspect ref="myAspectId">
+			<!--2.声明多个切入点-->
 			<aop:pointcut expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))" id="myPointCut"/>
 			<!-- 3.3 环绕通知
 
@@ -32,6 +34,7 @@
 				执行目标方法：Object obj = joinPoint.proceed();
 				例如：
      	     -->
+			<!--3.从多个通知中取出来一个环绕通知，用到指定的一个或多个切入点上-->
 			<aop:around method="myAround" pointcut-ref="myPointCut"/>
 
 			<!-- 3.1 前置通知 

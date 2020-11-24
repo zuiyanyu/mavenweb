@@ -54,6 +54,7 @@
             <dubbo.version>2.5.10</dubbo.version>
             <zookeeper.version>3.4.10</zookeeper.version>
             <pagehelper.version>4.1.6</pagehelper.version>
+            <jcl-over-slf4j>1.7.5</jcl-over-slf4j>
 
             <!--<spring-test>4.3.25.RELEASE</spring-test>-->
 
@@ -84,26 +85,34 @@
             <version>${commons-logging.version}</version>
         </dependency>
 
-        <!-- ============打印日志===================-->
-        <!-- log4j 来打印日志(不推荐使用) -->
+        <!-- ============打印日志统一使用slf4j===================-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <!--slf4j 替换 log4j-->
+        <!--slf4j-log4j12是slf4j 替换 log4j 的桥接包 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
+        </dependency>
+        <!--log4j的具体实现包-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
 
-        <!--slf4j打印日志 (推荐使用) slf4j-api提供接口，slf4j-log4j提供具体的实现。-->
+        <!--slf4j 替换 commons-logging-->
+        <!--spring-mvc使用的日志是 jcl-log 即 commons-logging-->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${jcl-over-slf4j}</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j-log4j12.version}</version>
-        </dependency>
-
         <!---->
         <!--<dependency>-->
             <!--<groupId>org.apache.logging.log4j</groupId>-->
@@ -184,11 +193,16 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--数据库连接工具-->
+        <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
 
 
-
-
-        <!-- 操作Excel文件 的依赖包-->
+        <!-- =======操作Excel文件 的依赖包===========-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -201,7 +215,11 @@
             <version>3.11</version>
             <!--<version>3.17</version>-->
         </dependency>
-
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
 
         <!-- redis 核心包 -->
         <dependency>
@@ -318,7 +336,7 @@
 
 
 
-        <!-- 配置dubbo 组件的依赖-->
+        <!--====================== 配置dubbo 组件的依赖=======================-->
         <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
        					   http://www.springframework.org/schema/beans/spring-beans.xsd
        					   http://www.springframework.org/schema/aop 
@@ -50,12 +51,12 @@
 	<bean id="proxyAccountService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 			<property name="proxyInterfaces" value="com.spring_stu.service.AccountService"/>
 			<property name="target" ref="accountService"/>
-		<property name="transactionManager" ref="txManager"></property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="transfer">PROPAGATION_REQUIRED,ISOLATION_DEFAULT</prop>
-			</props>
-		</property>
+			<property name="transactionManager" ref="txManager"></property>
+			<property name="transactionAttributes">
+				<props>
+					<prop key="transfer">PROPAGATION_REQUIRED,ISOLATION_DEFAULT</prop>
+				</props>
+			</property>
 	</bean>
 
 
