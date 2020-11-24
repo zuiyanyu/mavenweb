@@ -6,25 +6,84 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-  <!--定义全局变量-->
+  <display-name>Archetype Created Web Application</display-name>
+
+    <!--统一解决访问路径中文乱码问题-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+  <!--（1）定义spring配置文件的加载路径 -->
   <context-param>
+      <!-- 加载SpringMVC 使用的全局变量： 从类路径下加载spring配置文件，classpath关键字特指类路径下加载-->
+       <!--多个配置文件可以使用 逗号或空格分隔-->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+  <!-- （2）. 负责启动spring容器。此监听器将引用 （1）处的上下文参数获得spring配置文件地址,并启动spring容器-->
+  <!--可以将 log4j.properties日志配置文件放置在类路径下，以便日志引擎自动生效-->
+  <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!--(3). 负责启动SpringMVC web容器-->
+  <servlet>
+      <servlet-name>dispatcherServlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+      <!--指定springMVC的配置文件位置-->
+      <init-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value>classpath:spring-mvc.xml</param-value>
+      </init-param>
+
+      <!--非懒加载模式-->
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+
+
+
+  <context-param>
+    <!--全局变量测试-->
     <param-name>userName</param-name>
     <param-value>glabol-param-matengfei</param-value>
   </context-param>
-  <!--servlet测试-->
-  <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-      <servlet-name>HttpServletTest</servlet-name>
-      <servlet-class>servlet.HttpServletTest</servlet-class>
-      <init-param>
-        <param-name>userName</param-name>
-        <param-value>matengfei</param-value>
-      </init-param>
-      <load-on-startup>1</load-on-startup>
-    </servlet>
-  <servlet-mapping>
+
+  <!--自定义httpServlet-->
+  <servlet>
     <servlet-name>HttpServletTest</servlet-name>
-    <url-pattern>/httpServlet/httpServletTest.do</url-pattern>
+    <servlet-class>servlet.HttpServletTest</servlet-class>
+
+    <!--定义某个servlet的局部变量-->
+    <init-param>
+      <param-name>userName</param-name>
+      <param-value>matengfei</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>HttpServletTest</servlet-name>
+      <url-pattern>/httpServlet/httpServletTest.do</url-pattern>
   </servlet-mapping>
 
 

@@ -34,16 +34,6 @@ private static final Logger LOGGER = LoggerFactory.getLogger(UserController.clas
         return sucess;
     }
 
-
-
-
-
-
-
-
-
-
-
     @RequestMapping(value="/getUserName5",method = RequestMethod.GET)
     @ResponseBody
     public JsonResp getUserName5(@RequestParam("userAge") String userAge){
