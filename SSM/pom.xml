@@ -27,52 +27,52 @@
             <artifactId>pagehelper</artifactId>
         </dependency>
         <!-- =================spring 框架 ===================== -->
-
+        <!--spring-webmvc 整合包会自动导入这些依赖 -->
         <!-- Spring 四个核心 + 1个依赖  -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <!--<version>${org.springframework.version}</version>-->
-        </dependency>
-        <!-- Spring beans包-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <!--<version>${org.springframework.version}</version>-->
-        </dependency>
-        <!-- Spring 容器包 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <!--<version>${org.springframework.version}</version>-->
-        </dependency>
-        <!-- spring 的表达式-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-core</artifactId>-->
+            <!--&lt;!&ndash;<version>${org.springframework.version}</version>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Spring beans包&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-beans</artifactId>-->
+            <!--&lt;!&ndash;<version>${org.springframework.version}</version>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Spring 容器包 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-context</artifactId>-->
+            <!--&lt;!&ndash;<version>${org.springframework.version}</version>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; spring 的表达式&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-expression</artifactId>-->
+        <!--</dependency>-->
 
-         <!--AOP ：切面编程-->
-         <!--Spring aop依赖-->
-       <!-- aop联盟规范：  定义通知类型，具有特性接口，必须实现，从而确定方法名-->
-        <dependency>
-            <groupId>org.aopalliance</groupId>
-            <artifactId>com.springsource.org.aopalliance</artifactId>
-        </dependency>
-        <!--aop联盟规范的实现-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>
+         <!--&lt;!&ndash;AOP ：切面编程&ndash;&gt;-->
+         <!--&lt;!&ndash;Spring aop依赖&ndash;&gt;-->
+       <!--&lt;!&ndash; aop联盟规范：  定义通知类型，具有特性接口，必须实现，从而确定方法名&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.aopalliance</groupId>-->
+            <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;aop联盟规范的实现&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-aop</artifactId>-->
+        <!--</dependency>-->
 
-        <!-- Spring aspects依赖 -->
-        <!--aspectj 提供切入点表达式功能  确定aop切面编程的切入点-->
-        <!--expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))"-->
-        <!--aspectj规范：定义通知类型，只定义类型名称，以及方法格式 ; 也是aop框架-->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.weaver</artifactId>
-        </dependency>
+        <!--&lt;!&ndash; Spring aspects依赖 &ndash;&gt;-->
+        <!--&lt;!&ndash;aspectj 提供切入点表达式功能  确定aop切面编程的切入点&ndash;&gt;-->
+        <!--&lt;!&ndash;expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))"&ndash;&gt;-->
+        <!--&lt;!&ndash;aspectj规范：定义通知类型，只定义类型名称，以及方法格式 ; 也是aop框架&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.aspectj</groupId>-->
+            <!--<artifactId>com.springsource.org.aspectj.weaver</artifactId>-->
+        <!--</dependency>-->
         <!--aspectj规范实现-->
         <dependency>
             <groupId>org.springframework</groupId>
