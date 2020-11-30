@@ -1,16 +1,51 @@
 package com.spring_stu.spring_bean_lifeCycle.beanLifeCycle;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-public class Person {
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+public class Person implements BeanNameAware,BeanFactoryAware,InitializingBean,DisposableBean {
     @Value("lisi")
     private String userName ="zhangsan" ;
     private Integer age = 20 ;
     private BeanObject beanObject ;
 
     public BeanObject getBeanObject() {
+        System.out.println("Person的构造器被调用了...");
+
         return beanObject;
+    }
+    //BeanNameAware
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("BeanNameAware.setBeanName()方法被调用了...name="+name);
+    }
+    //BeanFactoryAware
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        System.out.println("BeanFactoryAware.setBeanFactory()方法被调用了...");
+
+    }
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("InitializingBean.afterPropertiesSet()方法被调用了...");
+    }
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("DisposableBean.destroy()方法被调用了...");
+    }
+
+    @PostConstruct
+    public void init_method(){
+        System.out.println("@PostConstruct注解的Person.init_method()方法被调用了...");
+    }
+    @PreDestroy
+    public void destroy_method(){
+        System.out.println("@PreDestroy注解的Person.destroy_method()方法被调用了...");
     }
 
     //属性注入
@@ -45,5 +80,7 @@ public class Person {
                 ", beanObject=" + beanObject +
                 '}';
     }
+
+
 
 }
