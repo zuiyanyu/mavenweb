@@ -12,7 +12,7 @@ public class BeanObject  {
     }
     @Value("BeanObjectName")
     public void setBeanName(String beanName) {
-        System.out.println("属性注入：Person.BeanObject() 被调用了...");
+        System.out.println("属性注入：BeanObject.setBeanName() 被调用了...");
         this.beanName = beanName;
     }
     public String getBeanName() {
