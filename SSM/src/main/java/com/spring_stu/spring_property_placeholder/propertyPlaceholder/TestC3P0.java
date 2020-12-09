@@ -1,4 +1,4 @@
-package com.spring_stu.spring_property_placeholder;
+package com.spring_stu.spring_property_placeholder.propertyPlaceholder;
 
 import com.spring_stu.dao.UserDao;
 import com.spring_stu.domain.User;
@@ -13,7 +13,7 @@ public class TestC3P0 {
 	@Test
 	public void demo01(){
 		
-		String xmlPath = "com/spring_stu/spring_property_placeholder/beans.xml";
+		String xmlPath = "com/spring_stu/spring_property_placeholder/propertyPlaceholder/beans.xml";
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
 		
 		//获得目标类

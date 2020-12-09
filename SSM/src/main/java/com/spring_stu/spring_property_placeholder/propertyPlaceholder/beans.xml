@@ -10,7 +10,7 @@
        					   http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!--<context:property-placeholder location="classpath:jdbcInfo.properties"/>-->
-	<bean id="propertyConfigurer" class="com.spring_stu.spring_property_placeholder.MyPropertySourcesPlaceholderConfigurer">
+	<bean id="propertyConfigurer" class="com.spring_stu.spring_property_placeholder.propertyPlaceholder.MyPropertySourcesPlaceholderConfigurer">
 		<property name="fileEncoding" value="UTF-8"/>
 		<!--忽略未加载的配置项 ，默认为false-->
 		<property name="ignoreUnresolvablePlaceholders" value="true"/>

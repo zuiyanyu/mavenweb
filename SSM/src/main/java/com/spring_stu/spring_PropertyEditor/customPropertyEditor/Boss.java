@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Boss {
+    @Value("${c3p0.user}")
     private String name ;
     @Value("红旗,200,20003.0")
     private Car car;

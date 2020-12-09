@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
        					   http://www.springframework.org/schema/beans/spring-beans.xsd
        					   http://www.springframework.org/schema/aop 
-       					   http://www.springframework.org/schema/aop/spring-aop.xsd">
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 1 创建目标类 -->
 	<bean id="userServiceId" class="com.spring_stu.service.serviceImpl.UserServiceImpl"></bean>
+
+  	<!-- 加载单个外部属性配置文件-->
+	<context:property-placeholder location="datasource.properties" file-encoding="utf-8"/>
+	<!--<bean id="a" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" >-->
+		<!--&lt;!&ndash;配置locations属性， 加载多个外部属性配置文件&ndash;&gt;-->
+		<!--<property name="locations" value="datasource.properties,jdbcInfo.properties,log4j.properties"/>-->
+		<!--&lt;!&ndash;配置location属性， 加载单个外部属性配置文件&ndash;&gt;-->
+		<!--<property name="location" value="classpath:datasource.properties"/>-->
+		<!--<property name="fileEncoding" value="UTF-8"/>-->
+	<!--</bean>-->
 	<!-- 2 创建切面类（通知） -->
 	<bean id="myAspectId" class="com.spring_stu.spring_aop.d_aspect.a_xml.MyAspect"></bean>
 	<!-- 3 aop编程

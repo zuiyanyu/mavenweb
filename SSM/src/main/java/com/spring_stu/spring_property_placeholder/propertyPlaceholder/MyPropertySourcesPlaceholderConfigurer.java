@@ -1,4 +1,4 @@
-package com.spring_stu.spring_property_placeholder;
+package com.spring_stu.spring_property_placeholder.propertyPlaceholder;
 
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
