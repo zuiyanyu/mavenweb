@@ -11,19 +11,32 @@ public class ResouceBoundleTest {
         String resourcePath = "com/spring_stu/guo_ji_hua/i18n/fmg_resource";
         Object[] parms = {"张三",new Date()};
         //中文国际化本地化
-        ResourceBundle zhBundle = ResourceBundle.getBundle(resourcePath, Locale.CHINA);
-        String CN_greeting_common = zhBundle.getString("greeting.common");
-        MessageFormat CN_messageFormat = new MessageFormat(CN_greeting_common, Locale.CHINA);
-        String CN_greeting_common_format = CN_messageFormat.format(parms);
-        System.out.println(CN_greeting_common_format);
+//        getFmgResourceMessage("greeting.common",parms,Locale.CHINA);
+        getFmgResourceMessage("greeting.morning",parms,Locale.CHINA);
+//        getFmgResourceMessage("greeting.affternoon",parms,Locale.CHINA);
 
         //英文国际化本地化
-        ResourceBundle enBundle = ResourceBundle.getBundle(resourcePath, Locale.US);
-        String US_greeting_common = enBundle.getString("greeting.common");
-        MessageFormat US_messageFormat = new MessageFormat(US_greeting_common, Locale.US);
-        String US_greeting_common_format =US_messageFormat.format(parms);
-        System.out.println(US_greeting_common_format);
+//        getFmgResourceMessage("greeting.common",parms,Locale.US);
+//        getFmgResourceMessage("greeting.morning",parms,Locale.US);
+//        getFmgResourceMessage("greeting.affternoon",parms,Locale.US);
+
     }
+    private static String getFmgResourceMessage(String code,Object[] parms , Locale locale){
+        //资源路径/资源名
+        String resourcePath = "com/spring_stu/guo_ji_hua/i18n/fmg_resource";
+
+        //获取属性值对应的内容
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(resourcePath, locale);
+        String msg = resourceBundle.getString(code);
+
+        //对获取到的属性值进行本地化格式化
+        MessageFormat messageFormat = new MessageFormat(msg, locale);
+        String formatedMessage = messageFormat.format(parms);
+        System.out.println(locale.getDisplayName()+"=>"+formatedMessage);
+        return formatedMessage;
+     }
+
+
     public static void main1(String[] args) {
         //资源路径/资源名
         String resourcePath = "com/spring_stu/guo_ji_hua/i18n/resource";

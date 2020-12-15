@@ -35,8 +35,8 @@
             <app.run.path>/</app.run.path>
             <tomcat7.version>2.2</tomcat7.version>
 
-            <!--<spring.version>4.3.17.RELEASE</spring.version>-->
-              <spring.version>4.3.19.RELEASE</spring.version>
+            <!--<spring.version>4.3.19.RELEASE</spring.version>-->
+              <spring.version>5.3.1</spring.version>
               <commons-logging.version>1.2</commons-logging.version>
               <org.apache.poi>3.17</org.apache.poi>
               <cglib.version>2.1_3</cglib.version>

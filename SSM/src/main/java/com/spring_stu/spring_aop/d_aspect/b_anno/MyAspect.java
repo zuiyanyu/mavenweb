@@ -9,6 +9,17 @@ import org.springframework.stereotype.Component;
 
 /**
  * 使用注解实现 aop
+ * @Aspect 声明切面，修饰切面类，从而获得 通知。
+ *
+ * 通知
+ * 	@Before 前置
+ * 	@AfterReturning 后置
+ * 	@Around 环绕
+ * 	@AfterThrowing 抛出异常
+ * 	@After 最终
+ *
+ * 切入点
+ * 	@PointCut ，修饰方法 private void xxx(){}  之后通过“方法名”获得切入点引用
  */
 @Component
 @Aspect

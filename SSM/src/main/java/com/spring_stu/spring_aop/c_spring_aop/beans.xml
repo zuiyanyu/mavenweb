@@ -10,7 +10,7 @@
 	<bean id="userServiceId" class="com.spring_stu.service.serviceImpl.UserServiceImpl"></bean>
 	<!-- 2 创建切面类（通知） -->
 	<bean id="myAspectId" class="com.spring_stu.spring_aop.c_spring_aop.MyAspect"></bean>
-	<!--  方式3： 全自动   使用spring AOP的切面编程功能实现
+	<!--  方式3： 全自动   使用spring AOP的切面编程功能实现  通过接口来确定通知类型
 		  但是只能声明一种类型的通知类型。 另一种方式(aspectj)可以声明多个切入点，且可使用注解实现aop功能
 
 	     从Spring容器中获取目标类，如果配置aop，spring将自动生成代理。

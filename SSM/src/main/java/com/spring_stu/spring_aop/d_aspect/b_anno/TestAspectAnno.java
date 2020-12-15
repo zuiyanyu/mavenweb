@@ -3,10 +3,24 @@ package com.spring_stu.spring_aop.d_aspect.b_anno;
 import com.spring_stu.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestAspectAnno {
-	
+
+	//纯注解开发
+	@Test
+	public void demo02(){
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ConfigClass.class);
+
+		//获得目标类
+		UserService userService = (UserService) applicationContext.getBean("userServiceId");
+		userService.addUser();
+		userService.updateUser();
+		userService.deleteUser();
+	}
+
+	//注解 + 配置文件 开发
 	@Test
 	public void demo01(){
 		String xmlPath = "com/spring_stu/spring_aop/d_aspect/b_anno/beans.xml";

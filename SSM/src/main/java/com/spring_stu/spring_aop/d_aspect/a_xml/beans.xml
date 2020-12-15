@@ -30,7 +30,7 @@
 			id 名称，用于其它通知引用
 	-->
 	<aop:config>
-		<!--1.声明多个通知-->
+		<!--1.声明多个通知 通过xml标签来确定通知类型-->
 		<aop:aspect ref="myAspectId">
 			<!--2.声明多个切入点-->
 			<aop:pointcut expression="execution(* com.spring_stu.service.serviceImpl.UserServiceImpl.*(..))" id="myPointCut"/>
