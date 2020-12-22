@@ -33,6 +33,7 @@
 	<!-- 4 事务管理 -->
 	<!--4.1 配置事务管理器 :管理器需要事务，事务从Connection获得，连接从连接池DataSource获得 -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!--为事务管理器设置一个数据源-->
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 

@@ -40,6 +40,8 @@
 		* transaction-manager 配置事务管理器
 		* proxy-target-class
 			true ： 底层强制使用cglib 代理
+
+		<tx:annotation-driven /> 默认使用的事务管理器id为 transactionManager
 	-->
 	<tx:annotation-driven transaction-manager="txManager"/>
 

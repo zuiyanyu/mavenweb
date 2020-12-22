@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+								http://www.springframework.org/schema/jee
+								http://www.springframework.org/schema/spring-jee-3.0.xsd">
+	<!--
+		JTA数据源的配置
+		如果希望在JavaEE容器里使用JTA，我们将通过JNDI和Spring的JtaTransactionManager获取一个容器管理器的DataSource。
+		JtaTransactionManager不需要知道DataSource和其他特定的资源，因为它引用容器提供的全局事务管理。
+	   1 通过jee命名空间获取JavaEE应用服务器中的数据源
+	-->
+	<!--参数说明：
+	jndiName：第一步中所配置单独JNDI名称。
+	resourceRef：可以让我们指定jndiName时，省略前缀“java:comp/env/”。
+	-->
+	<bean id="dataSource2" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/demoDB2"/>
+		<property name="resourceRef" value="true"/>
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/demoDB</value>
+		</property>
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<!-- 这里是自定义的数据库基础操作类 -->
+	<bean id="sqlBaseDAO" class="com.spring_stu.dao.daoImpl.JNDIBaseDAOImpl">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+</beans>

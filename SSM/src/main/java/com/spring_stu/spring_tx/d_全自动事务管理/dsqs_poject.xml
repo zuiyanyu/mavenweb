@@ -56,6 +56,14 @@
 		</tx:attributes>
 	</tx:advice>
 
+	<!-- 3 aop编程
+	    aspectj规范：通知类型只定义类型名称，以及方法格式 ;
+		<aop:aspect> 将切面类 声明“切面”，从而获得通知（方法）
+			ref 切面类引用
+		<aop:pointcut> 声明一个切入点，所有的通知都可以使用。
+			expression 切入点表达式
+			id 名称，用于其它通知引用
+	-->
 	<!-- 4.3 AOP编程，目标类有ABCD（4个连接点），切入点表达式 确定增强的连接器，从而获得切入点：ABC -->
 	<aop:config>
 		<!--创建切入点-->
@@ -63,8 +71,19 @@
 		<!--给service层添加事务管理-->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceImpl"/>
 
-		<!--对service层进行监听  环绕通知-->
+		<!--对service层进行监听  环绕通知  ref="monitorAdvice" 指定aspect切面类-->
 		<aop:aspect id="serviceMonitor" ref="monitorAdvice">
+			<!-- 3.3 环绕通知
+
+            <aop:around method="" pointcut-ref=""/>
+				通知方法格式：public Object myAround(ProceedingJoinPoint joinPoint) throws Throwable{
+				返回值类型：Object
+				方法名：任意
+				参数：org.aspectj.lang.ProceedingJoinPoint
+				抛出异常
+				执行目标方法：Object obj = joinPoint.proceed();
+				例如：
+     	     -->
 			<aop:around method="intercept" pointcut-ref="serviceImpl"></aop:around>
 		</aop:aspect>
   	</aop:config>

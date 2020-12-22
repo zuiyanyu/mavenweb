@@ -8,12 +8,15 @@ public class User {
 	
 	public User(Integer uid, String username) {
 		super();
+		System.out.println("构造器：User(Integer uid, String username)");
 		this.uid = uid;
 		this.username = username;
 	}
 	
 	public User(String username, Integer age) {
 		super();
+		System.out.println("构造器： User(String username, Integer age)");
+
 		this.username = username;
 		this.age = age;
 	}

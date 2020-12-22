@@ -372,8 +372,8 @@
                     <!--<overwrite>false</overwrite>-->
                     <overwrite>false</overwrite>
                     <configurationFile>src/main/resources/mybatis-generatorConfig.xml</configurationFile>
-
                 </configuration>
+
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>

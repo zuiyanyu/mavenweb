@@ -12,7 +12,7 @@
 
 	<context:property-placeholder location="classpath:jdbcInfo.properties"/>
 	<!-- 创建数据源 c3p0-->
-	<bean id="dataSourceId" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSourceId" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClass}"></property>
 		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 		<property name="user" value="${jdbc.user}"></property>

@@ -12,8 +12,8 @@ public class TestDBCP {
 	public void demo01(){
 		User user = new User();
 		user.setId(1);
-		user.setUsername("接客");
-		user.setPassword("999");
+		user.setUsername("ceshi");
+		user.setPassword("112234");
 		
 		String xmlPath = "com/spring_stu/spring_JdbcTemplate/b_dbcp/beans.xml";
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);

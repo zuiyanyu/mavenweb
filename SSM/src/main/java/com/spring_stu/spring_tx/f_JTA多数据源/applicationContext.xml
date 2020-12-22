@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+								http://www.springframework.org/schema/jee
+								http://www.springframework.org/schema/spring-jee-3.0.xsd">
+	<!--
+		JTA数据源的配置
+		如果希望在JavaEE容器里使用JTA，我们将通过JNDI和Spring的JtaTransactionManager获取一个容器管理器的DataSource。
+		JtaTransactionManager不需要知道DataSource和其他特定的资源，因为它引用容器提供的全局事务管理。
+	-->
+	<!--1 通过jee命名空间获取JavaEE应用服务器中的数据源-->
+    <jee:jndi-lookup id="accountDataSource" jndi-name="java:comp/env/jdbc/accountDataSource"/>
+	<jee:jndi-lookup id="orderDataSource" jndi-name="java:com/env/jdbc/order"/>
+
+	<!--
+	<jee:jndi-lookup id="accountDataSource" jndi-name="java:comp/env/jdbc/accountDataSource"/>
+	的配置等价于
+	<bean id="accountDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/accountDataSource"/>
+	</bean>
+	显然使用jee命名空间的配置更加简洁。
+	jee命名空间还可以获取 EJB本地或远程的无状态SessionBean。
+	-->
+
+
+
+
+	<!-- 2 指定JTA事务管理器 -->
+	<!--JtaTransactionManager不需要知道DataSource和其他特定的资源，因为它引用容器提供的全局事务管理。-->
+	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+
+
+	<!-- 2 dao  -->
+	<bean id="accountDao" class="com.spring_stu.dao.daoImpl.AccountDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 3 service -->
+	<bean id="accountService" class="com.spring_stu.spring_tx.b_手动事务管理.AccountServiceImpl">
+		<property name="accountDao" ref="accountDao"></property>
+		<property name="transactionTemplate" ref="transactionTemplate"></property>
+	</bean>
+
+	<!-- 4 创建模板 -->
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="txManager"></property>
+	</bean>
+	
+
+
+	<!--&lt;!&ndash;-->
+	<!--spring底层使用 TransactionTemplate 事务模板进行操作。-->
+	<!--操作-->
+	<!--1.service 需要获得 TransactionTemplate-->
+	<!--2.spring 配置模板，并注入给service-->
+	<!--3.模板需要注入事务管理器-->
+	<!--4.配置事务管理器：DataSourceTransactionManager ，需要注入DataSource-->
+	<!--&ndash;&gt;-->
+	<context:property-placeholder location="classpath:jdbcInfo.properties" />
+	<!-- 创建数据源 c3p0-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<property name="driverClass" value="${jdbc.driverClass}"></property>
+	<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+	<property name="user" value="${jdbc.user}"></property>
+	<property name="password"  value="${jdbc.password}"></property>
+	</bean>
+
+
+</beans>

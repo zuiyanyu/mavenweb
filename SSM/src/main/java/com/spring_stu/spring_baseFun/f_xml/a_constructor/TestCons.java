@@ -9,7 +9,7 @@ public class TestCons {
 	@Test
 	public void demo02() throws Exception{
 		//spring 工厂
-		String xmlPath = "com/itheima/f_xml/a_constructor/beans.xml";
+		String xmlPath = "com/spring_stu/spring_baseFun/f_xml/a_constructor/beans.xml";
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
 		User user = (User) applicationContext.getBean("userId");
 		System.out.println(user);
