@@ -6,6 +6,8 @@ import com.mavenweb.utils.JsonResp;
 import com.mavenweb.utils.PubFunUtil;
 import com.utils.excel.ExcelReadUtil;
 import com.utils.excel.domain.WorkBookMeta;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/fileController")
 public class FileController {
+private static Logger LOGGER = LoggerFactory.getLogger(FileController.class);
 
     @RequestMapping(value = "/uploadFile" ,method=RequestMethod.POST)
     public JsonResp uploadFileTmp(@RequestParam("file") MultipartFile multipartFile, HttpServletResponse response){
@@ -54,4 +57,6 @@ public class FileController {
             return JsonResp.failure("excel解析失败，失败原因为："+e.getMessage()) ;
         }
     }
+
+
 }
