@@ -34,7 +34,7 @@ public class MybatisNameSpaceMapper {
 		// UserMapper.xml中的namespace 要修改为接口的全限定名：com.mybatis_stu.mapper.UserMapper , id 为借口的方法名
 		// 等价于  sqlSession.selectOne("com.mybatis_stu.mapper.UserMapper"+"."+"findUserById", 1);
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-		User user = userMapper.findUserById(1);
+ 		User user = userMapper.findUserById(1);
 		System.out.println(user);
 		
 		//关闭资源

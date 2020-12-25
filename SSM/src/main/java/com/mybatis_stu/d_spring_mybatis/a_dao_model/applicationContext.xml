@@ -36,7 +36,7 @@
     <!-- 配置sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--    mybatis 全局配置文件-->
+        <!--    mybatis 全局配置文件  通过spring的配置文件来加载mybatis的配置文件-->
         <property name="configLocation" value="classpath:com/mybatis_stu/d_spring_mybatis/mybatis-config.xml"/>
     </bean>
 

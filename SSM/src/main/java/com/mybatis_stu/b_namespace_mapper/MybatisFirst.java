@@ -10,8 +10,6 @@ import org.junit.Test;
 import java.io.InputStream;
 
 public class MybatisFirst {
-
-
 	@Test
 	public void findUserByIdTest() throws Exception{
 		//读取配置文件

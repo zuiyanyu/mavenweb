@@ -72,10 +72,16 @@
   </dependencies>
 
 
-  <!--子工程选择性继承的依赖jar包-->
+  <!--子工程选择性继承的依赖jar包 -->
+    <!-- maven依赖查询网址：https://mvnrepository.com/   -->
   <dependencyManagement>
     <dependencies>
-
+        <!-- quartz 任务调度 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
         <!-- =================log 日志框架 ===================== -->
         <!-- 一个spring的日志包依赖-->
         <!--一个spring的日志包-->
@@ -558,6 +564,7 @@
 
   <build>
     <finalName>${project.name}.${project.version}</finalName>
+      <!--配置打包静态资源：maven打包的时候将静态资源也进行打包-->
      <!-- <resources>
           <resource>
               <directory>src/main/java</directory>

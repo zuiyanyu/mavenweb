@@ -18,11 +18,9 @@ public class UserMapperTest  {
     }
     @Test
     public void findUserByIdTest() throws Exception{
-       //   单个mapper代理类配置
         UserMapper userMapper = applicationContext.getBean("userMapper", UserMapper.class);
         User user = userMapper.findUserById(1);
         System.out.println(user);
-
 
         Map userRstMap = userMapper.findUserByIdRetMap(1);
         System.out.println(userRstMap);

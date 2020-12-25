@@ -21,6 +21,16 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.maven.mavenweb</groupId>
+            <artifactId>app-java</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- quartz 任务调度 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -342,6 +352,8 @@
                 <directory>src/main/java/</directory>
                 <includes>
                     <include>com/mavenweb/Funcations/**/**</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
                 </includes>
                 <excludes>
                     <exclude>**/*.java</exclude>

@@ -115,7 +115,7 @@ public class PathUtilsTest {
      */
     @Test
     public void readFileNameFromJar() throws IOException {
-        String filePath = "org.apache.ibatis.builder.xml".replace(".","/")  ;
+        String filePath = "org.apache.ibatis.builder.xml".replaceAll("\\.","/")  ;
         filePath = "/"+filePath ;
         String jarPath = "file:/D:/software/maven/RepMaven/org/mybatis/mybatis/3.2.6/mybatis-3.2.6.jar" ;
 
