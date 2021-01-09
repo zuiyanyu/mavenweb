@@ -11,7 +11,7 @@ package javaBase.多线程.同步04;
  *TODO 3. 特殊的锁
  * 有时会发现“ 特殊的” 锁，例如：
  *       public class Bank{
- *           private doublet] accounts;
+ *           private double[] accounts;
  *           private Object lock = new Object();
  *           ...
  *           public void transfer(int from, int to, int amount){
@@ -23,7 +23,7 @@ package javaBase.多线程.同步04;
  *               System.out.print1n(...)；
  *           }
  *       }
- *在此，lock 对象被创建仅仅是用来使用每个 Java 对象持有的锁。
+ *在此，lock 对象被创建仅仅是用来使用每个 Java 对象持有锁。
  *
  *
  *TODO 4. 有时程序员使用一个对象的锁来实现额外的原子操作， 实际上称为客户端锁定（clientside locking) ;
@@ -37,7 +37,7 @@ package javaBase.多线程.同步04;
  *           System.out.println(. . .);
  *       }
  *  TODO Vector 类的 get 和 set 方法是同步的， 但是，这对于我们并没有什么帮助。
- *  TODO 在第一次对get 的调用已经完成之后，一个线程完全可能在 transfer 方法中被剥夺运行权。于是，另一个线程可能在相同的存储位置存人不同的值。
+ *  TODO 在第一次对get 的调用已经完成之后，一个线程完全可能在 transfer 方法中被剥夺运行权。于是，另一个线程可能在相同的存储位置存入不同的值。
  *  但是，我们可以截获这个锁：
  *   public void transfer(Vector<Double> accounts, int from, int to, int amount)
  *  {

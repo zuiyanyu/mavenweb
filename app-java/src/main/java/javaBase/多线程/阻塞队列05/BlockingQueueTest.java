@@ -44,6 +44,7 @@ public class BlockingQueueTest {
                     try{
                         boolean done = false ;
                         while(!done){
+                            //每个线程从对列中取出一个文件进行处理  queue是线程安全的
                             File file = queue.take(); // 队列空，线程阻塞；队列再次有值，退出阻塞；
                             if(file == DUMMY){
                                 queue.put(DUMMY); // 防止其他阻塞的线程一直被阻塞着(queue.take()被阻塞的那些线程)；

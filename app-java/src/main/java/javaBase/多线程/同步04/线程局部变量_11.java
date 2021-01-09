@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *在一个给定线程中首次调用 get 时， 会调用 initialValue 方法。在此之后， get 方法会返回属于当前线程的那个实例。
  *
  *TODO 3.一个应用场景
- * 在多个线程中生成随机数也存在类似的问题。java..util.Rand0m 类是线程安全的。但是如
+ * 在多个线程中生成随机数也存在类似的问题。java..util.Random 类是线程安全的。但是如
  * 果多个线程需要等待一个共享的随机数生成器， 这会很低效。可以使用 ThreadLocal 辅助类为各个线程提供一个单独的生成器，
  *
  * TODO 不过 Java SE 7 还另外提供了一个便利类。只需要做以下调用：
@@ -38,7 +38,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *      为这个线程设置一个新值。
  * • void remove( )
  *      删除对应这个线程的值。
- * •static <S> ThreadLocal <S> withlnitial ( Suppl ier < ? extends S> supplier) 8
+ * •static <S> ThreadLocal <S> withlnitial ( Supplier < ? extends S> supplier) 8
  *      创建一个线程局部变量， 其初始值通过调用给定的 supplier 生成。
  *
  *TODO java.util.concurrent.ThreadLocalRandom  7

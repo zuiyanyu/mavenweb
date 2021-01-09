@@ -20,17 +20,17 @@ import java.util.concurrent.atomic.AtomicLong;
  *      例如， 假设希望跟踪不同线程观察的最大值。下面的代码是不可行的：
  *          public static AtonicLong largest = new AtomicLongO；
  *          // In some thread...
- *          largest.set(Math ,max(largest,get(), observed)); // Error race condition!
+ *          largest.set(Math.max(largest.get(), observed)); // Error race condition!
  *      这个更新不是原子的。实际上，应当在一个循环中计算新值和使用 compareAndSet:
  *           do {
  *                oldValue = largest.get();
  *                newValue = Math.max (oldValue , observed) ;
- *            } while (largest.compareAndSet(oldValue, newValue)) ;
+ *            } while (!largest.compareAndSet(oldValue, newValue)) ;
  *      如果另一个线程也在更新 largest，就可能阻止这个线程更新。这样一来， compareAndSet
- *      会返回 false, 而不会设置新值。在这种情况下，循环会更次尝试.
+ *      会返回 false, 而不会设置新值。在这种情况下，循环会再次尝试.
  * TODO compareAndSet 方法会映射到一个处理器操作， 比使用锁速度更快。
  *
- * TODO 在 Java SE 8 中，不再需要编写这样的循环样板代码。实际上， 可以提供一个 lambda 表达式更新变量，它会为你完成更新。
+ * TODO 在 Java SE8 中，不再需要编写这样的循环样板代码。实际上， 可以提供一个 lambda 表达式更新变量，它会为你完成更新。
  * 对于这个例子，我们可以调用：
  * largest.updateAndGet(x -> Math.max(x, observed)) ;
  * 或

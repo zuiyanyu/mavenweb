@@ -24,8 +24,8 @@ package javaBase.多线程.同步04;
  * 如果注意到这个方面，一个线程可以为这一变量使用独立的 Lock。但是，这也会带来许多麻烦。
  * TODO 在这种情况下，将域声明为 volatile 是合理的：
  *      private volatile boolean done;
- *      public boolean isDoneO { return done; }
- *      public void setDoneO { done = true; }
+ *      public boolean isDone() { return done; }
+ *      public void setDone(){ done = true; }
  *
  * TODO 4. Volatile 变量不能提供原子性。例如， 方法
  *        public void flipDoneO { done = !done; } // not atomic

@@ -90,11 +90,11 @@ public class ThreadMethod {
      *       解除该条件的等待集中的所有线程的阻塞状态。
      * • void signal ( )
      *      从该条件的等待集中随机地选择一个线程， 解除其阻塞状态。
-     *• boolean await( 1 ong time , TimeUnit unit )
-     *      进人该条件的等待集， 直到线程从等待集中移出或等待了指定的时间之后才解除阻塞
+     *• boolean await( 1ong time , TimeUnit unit )
+     *      进入该条件的等待集， 直到线程从等待集中移出或等待了指定的时间之后才解除阻塞
      *      如果因为等待时间到了而返回就返回 false, 否 则 返 回 true。
      * • void awaitUninterruptibly( )
-     *      进人该条件的等待集， 直到线程从等待集移出才解除阻塞。 如果线程被中断， 该方法
+     *      进入该条件的等待集， 直到线程从等待集移出才解除阻塞。 如果线程被中断， 该方法
      *      不会抛出 InterruptedException 异常。
      *
      * TODO  java.lang.Object 1.0
