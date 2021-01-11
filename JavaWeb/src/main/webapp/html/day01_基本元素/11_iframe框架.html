@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe内联框架</title>
+</head>
+<body>
+<!--
+    iframe内联框架
+    1.格式:<iframe>…</iframe>
+    2.功能: 它是个内联框架，是在页面里生成个内部框架，即是 在body体内生成的。
+
+    3. 属性名称			属性值			说明
+       src				URL			    链接的页面
+       height			像素/%			绝对/相对  高度
+       width			像素/%			绝对/相对  宽度
+       scrolling		yes				不管网页内容的大小，都出现滚动条
+                       no				不管网页内容的大小，都不现滚动条
+                       auto				浏览器自动判断，是否需要滚动条
+       frameborder		0\1				不出现框体边/出现窗体边线
+-->
+<table width="100%" height="700" border="1">
+    <tr height="15%">
+        <td colspan="2">标题</td>
+    </tr>
+    <tr height="70%">
+        <td width="20%" valign="top">
+            <a href="http://www.baidu.com" target="right">百度</a><br>
+            <a href="http://www.qq.com" target="right">腾讯</a><br>
+            <a href="http://www.163.com" target="right">网易</a><br>
+            <a href="http://www.sohu.com" target="right">搜狐</a><br>
+        </td>
+        <td width="80%">
+            <iframe width="100%" height="100%" src="../rel/fremset/content.html" name="right">
+
+            </iframe>
+        </td>
+    </tr>
+    <tr height="15%" ><td colspan="2">尾部</td></tr>
+</table>
+</body>
+</html>

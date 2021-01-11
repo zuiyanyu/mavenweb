@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接的应用</title>
+
+    <style>
+        .hetao_image{
+            width: 160px;
+            height:160px;
+            border:2px ;
+        }
+    </style>
+</head>
+<!-- 链接颜色的设置
+<body link=”超链接尚被选中的文字颜色” alink=”超链接点选,但未被放开的颜色”  vlink=”超链接已被点选过的颜色”>
+-->
+<body  vlink="blue" alink="red" link="yellow" >
+<!--
+页面内的链接（书签的链接）
+属性名称			属性值			说明
+name				字符串			设置超链接的标记
+
+锚点：<a name=”music”>…</a>
+<p id=”music”>段落一</p>
+链接点<a href=”#music”>跳转到id为music的那个点，如果没有，就跳转到name为music的锚点处。</a>
+-->
+<a name="p2"></a>
+<a name="p3"></a>
+<a href="#p2">跳转到"核桃图片处"</a>
+
+<pre  style="font-size:20px">
+    超链接也叫URL,中文翻译为资源定址器.这个定址器的功能主要告诉浏览器根据URL的地址找到所需的资源。
+    基本格式： &lt;a href="path" target="目标窗口位置">链接文本或图像 &lt;/a>
+
+    属性介绍：
+     属性            属性值           说明
+     href           相对路径        page/index.htm
+                    绝对路径        http://www.163.com/images/logo.htm
+     target          _blank           新窗口打开(blank 空白，空白窗口即新窗口)
+                     _self            当前窗口打开
+                     _top             清除所有被包含的框架并将文档载入整个浏览器窗口
+                     _parent          在父窗口打开
+</pre>
+<h2 id="p2">超链接的相对路径</h2>
+<!-- 1.超链接到另一个html页面 :使用文字进行触发超连接-->
+<a href="../rel/hetao_图片引用.html" target="_blank" >无漂白薄皮核桃</a><br>
+
+<!-- 2.超链接到另一个html页面:使用图片进行触发超连接-->
+<a href="../rel/hetao_图片引用.html" target="_blank" >
+    <img src="../../image/hetao.jpg" alt="无漂白薄皮核桃" title="无漂白薄皮核桃"/>
+</a>
+
+
+<h2>超链接的绝对路径</h2>
+<!--设置制表符次序  tabindex="n" n为数字-->
+<a href="http://baidu.com/">百度首页</a>
+<!--<a href="file:///D:/index01.html" tabindex="1">无漂白薄皮核桃</a>-->
+<a href="../rel/hetao_图片引用.html">无漂白薄皮核桃2</a>
+
+<br><br><br>
+<h2>页面内的链接</h2>
+<p><a href="#p1" target="_self">糖醋排骨</a><p>
+<p id="p1">
+    <img src="../../image/m_tangcupaigu.gif"  border="1" align="center"><br/>
+    <span class="STYLE1">
+            菜名：<strong>糖醋排骨</strong><br/>
+            市场价格：26<br/>
+            会员价格：<strong class="STYLE2">24</strong><br/>
+            配料：排骨、糖、醋<br/>
+            菜品类型：炒菜<br/>
+            做法：<br/>
+            1. 晾干水份备用；<br/>
+            2. 锅内倒少量油，烧热之后，爆香姜片；<br/>
+            3. 放入排骨，一直煸炒到排骨变色后，表面金黄微焦；<br/>
+            4. 此时就可以放入黄金比例中的调料了，顺序是：先放一汤勺料酒，接着两汤勺酱油，三汤勺米醋最后四汤勺白糖，炒匀；<br/>
+            5. 再倒入能没过排骨的开水，调中小火焖20分钟；<br/>
+            6. 20分钟后调入盐，开大火收汁，收到汁浓色亮时，撒入芝麻点缀即可出锅（锅里剩下的姜片丢掉不用，最后大火收汁时注意多翻动锅内的排骨，避免烧焦哟！）。
+    </span>
+</p>
+<a href="#p3">回到顶部</a>
+
+</body>
+</html>

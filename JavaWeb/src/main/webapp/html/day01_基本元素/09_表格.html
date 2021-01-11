@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<body>
+<pre>
+    表格的基本格式
+<!--格式:
+		<table>
+			<tr>…
+				<th>… </th>
+				<th>… </th>
+				<th>… </th>
+           </tr>
+			<tr>
+				<td>… </td>
+				<td>… </td>
+				<td>… </td>
+			</tr>
+		</table>
+
+    功能:   <table>…</table>用来声明表格开始与结束.
+            <tr>…</tr>用来设置表格的行.
+            <th>…</th>用来设置表头栏.
+            <td>…</td>用来设置数据栏.-->
+    &lt;table>标签下的属性
+            属性名称            属性值      说明
+            border              像素        设置表格的边框
+            cellspacing         像素        绝对值，单元格之间的距离
+                                百分比      相对值，单元格之间的距离
+            cellpadding         像素        绝对值，单元格内容与边框之间的距离
+                                百分比      相对值, 单元格内容与边框之间的距离
+            width               像素        绝对值,像素表示表格宽度
+                                百分比      相对值,百分比表表格宽度
+            height              像素        绝对值,像素表示表格高度
+                                百分比      相对值,百分比表示表格高度
+            align               left        表格居左(默认)
+                                center      表格居中
+                                right       表格居右
+            bgcolor             英文/十六   表格的背景颜色
+            background          URL         表格的背景图片
+            bordercolor         英文/十六   边框的颜色
+            bordercolorlight    同上        边框的亮色（IE支持）
+            bordercolordark     同上        边框的暗色
+
+    &lt;tr>&lt;th>&lt;td>标签下的常用属性
+            属性名称            属性值         说明
+            width               像素           绝对设置,以像素值设置宽
+                                百分比         相对设置,以百分比设置宽
+            height              像素           绝对设置,以像素值设置高
+                                百分比         相对设置,以百分比设置宽
+            bgcolor             英文/十六      数据栏的颜色设置
+            align(水平方向)     left           数据靠左
+                                center         数据靠中
+                                right          数据靠右
+            valign(垂直方向)    top            数据靠上
+                                middle         数据靠中
+                                bottom         数据靠下
+            nowrap              无             在单元格中换行
+</pre>
+================1=========================================================================================
+<table border="1"  width="500">
+    <caption>用户注册信息1</caption>
+    <tr>
+        <th>类别</th>
+        <th>内容</th>
+    </tr>
+    <tr>
+        <td>用 户 名：</td>
+        <td>Lee</td>
+    </tr>
+    <tr>
+        <td>真实姓名：</td>
+        <td>李明</td>
+    </tr>
+    <tr>
+        <td>性&nbsp; &nbsp;别：</td>
+        <td >男</td>
+    </tr>
+</table>
+
+<br>
+==============2======================================================================
+<br>
+
+<table border="1"  width="500">
+    <caption>用户注册信息2</caption>
+    <thead  bgcolor="#FF0000">
+        <tr >
+            <th>类别</th>
+            <th>内容</th>
+        </tr>
+    </thead>
+    <tbody bgcolor="#CCFF00" valign="top">
+        <tr>
+            <td>用 户 名：</td>
+            <td>Lee</td>
+        </tr>
+        <tr>
+            <td>真实姓名：</td>
+            <td>李明</td>
+        </tr>
+        <tr>
+            <td>性&nbsp; &nbsp;别：</td>
+            <td >男</td>
+        </tr>
+    </tbody>
+    <tfoot bgcolor="#00CCFF">
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="确认" /></td>
+        </tr>
+    </tfoot>
+</table>
+<br>
+=============3============================================================================================
+<br>
+
+<table border="6"  width="600"    cellspacing="10"  cellpadding="30" >
+    <caption>用户注册信息3</caption>
+    <tr>
+        <td>用 户 名：</td>
+        <td>Lee</td>
+    </tr>
+    <tr>
+        <td>真实姓名：</td>
+        <td>李明</td>
+    </tr>
+</table>
+<br>
+===========4================隐藏外边框==============================================================================
+<br>
+<table border="6"  frame="hsides"  width="500"  height="200">
+    <caption>用户注册信息5</caption>
+    <tr>
+        <td>用 户 名：</td>
+        <td>Lee</td>
+    </tr>
+    <tr>
+        <td>真实姓名：</td>
+        <td>李明</td>
+    </tr>
+</table>
+<br>
+===========5==============================================================================================
+<br>
+<table width="200" border="1" cellspacing="0" cellpadding="0" align="center">
+    <tr align="center">
+        <td colspan="3">学生成绩</td>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>
+            <table border="1" cellspacing="0" width="100%" height="100%" cellpadding="0" frame="void">
+                <tr><td>语文</td><td>98</td></tr>
+                <tr><td>数学</td><td>95</td></tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2">李四</td>
+        <td>
+            <table border="1" cellspacing="0" width="100%" height="100%" cellpadding="0" frame="void">
+                <tr><td>语文</td><td>88</td></tr>
+                <tr><td>数学</td><td>91</td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

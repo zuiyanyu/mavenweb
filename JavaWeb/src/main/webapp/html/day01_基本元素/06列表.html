@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+</head>
+<body>
+<hr/>
+<h2>无需列表</h2>
+<!--
+属性名称	type
+
+属性值		说明
+disc        实心圆(默认值)
+circle		空心圆
+square      实心方块-->
+<ul type="square">
+    <li type="circle">苹果</li>
+    <li type="disc">栗子</li>
+    <li>桃子</li>
+    <li>杏子</li>
+    <li>葡萄</li>
+</ul>
+
+
+
+<br/><hr/>
+<h2>有需列表</h2>
+<!--
+属性名称 type
+属性值		说明
+1             表示以1,2,3,4来表示
+a             表示以a,b,c,d来表示
+A             表示以A,B,C,D来表示
+i		      表示以i,ii ,iii来表示
+I             表示以 I,II,III来表示
+
+属性名称 start
+属性值		 说明
+数字         设置列表起始数值-->
+<ol type="1">
+    <li>苹果</li>
+    <li>栗子</li>
+    <li>桃子</li>
+    <li >杏子</li>
+    <li>葡萄</li>
+</ol>
+<ol start="6">
+    <li>苹果</li>
+    <li>栗子</li>
+    <li>桃子</li>
+    <li>杏子</li>
+    <li>葡萄</li>
+</ol>
+
+<br/><hr/>
+<h2>自定义列表</h2>
+<!--格式：
+<dl>
+		<dt>…</dt>
+			<dd>…</dd>
+			<dd>…</dd>
+		<dt>…</dt>
+			<dd>…</dd>
+			<dd>…</dd>
+</dl>
+===================
+<dt>定义项
+<dd>定义描述
+-->
+<dl>
+    <dt>《千与千寻》</dt>
+    <dd>剧情说的是10岁的少女千寻与父母一起从都市搬家到了乡下。
+        没想到在搬家的途中，一家人发生了意外。他们进入了汤屋老板魔女控制
+        的奇特世界——在那里不劳动的人将会被变成动物。
+    </dd>
+    <dt>《龙猫》</dt>
+    <dd>和爸爸一起搬到乡下的两姐妹，在家旁的一棵大树下发现了只有好孩子才
+        能看见的TOTORO。其间发生了很多不可思议而有趣的故事。
+    </dd>
+</dl>
+
+
+<br/><hr/>
+<h2>嵌套列表：无序列表中嵌套有序列表</h2>
+<ul>
+    <li>水果
+        <ol type="1">
+            <li>苹果</li>
+            <li>草莓</li>
+            <li>西瓜</li>
+        </ol>
+    </li>
+    <li>运动
+        <ol type="a">
+            <li>篮球</li>
+            <li>足球</li>
+            <li>排球</li>
+        </ol>
+    </li>
+</ul>
+
+</body>
+</html>

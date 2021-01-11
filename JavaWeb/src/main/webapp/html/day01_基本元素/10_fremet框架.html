@@ -1,0 +1,77 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>frameset框架</title>
+</head>
+<!--
+通过使用框架，你可以在同一个浏览器窗口中显示不止一个页面。每份HTML文档称为一个框架，并且每个框架都独立于其他的框架
+框架的基本结构
+
+1.格式：
+    <frameset>
+            <frame>
+            <frame>
+            <frame>
+    </frameset>
+    1.1 功能说明:<frameset>用来设置多窗框结构的声明
+
+ 2.<frameset>下的属性：
+        属性名称			属性值			说明
+        cols				像素			设置直排的多窗框环境
+        百分比			同上
+        rows				像素			设置横排的多窗框环境
+        百分比			同上
+
+    2.1 属性格式：
+            <frameset  cols=”120,80,120”>
+            <frameset  cols=”20%,40%,20%”>
+            <frameset  cols=”40%,*,*”>
+            <frameset  rows=”120,80,120”>
+            <frameset  rows=”20%,40%,20%”>
+            <frameset  rows=”20%,*,*”>
+
+     2.2<frame>下的属性：
+            属性名称		    属性值			说明
+            src				    URL			    链接的页面
+            name			    自定义			框架名称
+            noresize			 true		 	允许浏览器自行改变框架大小
+                                false		 	不允许
+            scrolling			 yes		 	不管网页内容的大小，都出现滚动条
+                                no	    	    不管网页内容的大小，都不现滚动条
+                                auto    		浏览器自动判断，是否需要滚动
+            marginheight	      像素			设置垂直方向，窗体内容与边界的距离
+            marginwidth		      像素			设置水平方向，窗体内容与边界的距离
+            frameborder			   0\1			不出现框体边/出现窗体边线
+       2.3属性格式：
+            <frame  src=”URL”>
+            <frame  noresize>
+
+ 3.框架的嵌套
+        格式：
+             先上下分成 20,80两份
+            <frameset  rows="20%,80%">
+                <frame  src="URL">
+                再左右分成 20,80两份
+                <frameset  cols="20%,80%">
+                    <frame  src="URL">
+                    <frame  src="URL">
+                </frameset>
+            </frameset>
+  -->
+<!--frameset 不在body中-->
+<!--先分配 上中下 三块-->
+<frameset rows="15%,70%,*">
+    <!--上部-->
+    <frame  src="../rel/fremset/title.html"/>
+
+    <!--中部再分配 左右两块 ：导航栏 和 内容栏-->
+    <frameset cols="15%,85%">
+        <frame src="../rel/fremset/nav.html" frameborder="0"/>
+        <frame src="../rel/fremset/content.html" name="center"/>
+    </frameset>
+
+    <!--下部-->
+    <frame src="../rel/fremset/foot.html"/>
+</frameset >
+</html>

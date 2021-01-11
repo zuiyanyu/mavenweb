@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接的应用</title>
+
+</head>
+<body>
+<pre>
+    常见的图像格式
+    PNG   便携式网络图形，是最新图像文件格式。文件小。
+    GIF    动态图片，文件小。
+    JPEG  文件后辍名为".jpg"或".jpeg"，是最常用的图像文件格式。文件尺寸较小，下载速度快。
+    BMP   是一种与硬件设备无关的图像文件格式，不采用任何压缩技术图像质量高，BMP文件所占用的空间很大。
+
+    图像标记的基本格式
+    格式: &lt;img src="URL" alt=” ” width=” ” height=” ”&gt;
+
+    功能:将图片插入到网页中去,单一标签
+    img的属性
+            属性名称	 属性值        说明
+             src         URL           图片的路径（绝对路径和相对路径）
+             alt        字符串         给图片做注解(鼠标停留在图片上的时候会弹出注解)
+            width       像素           绝对设置,宽
+                        百分比         相对设置,宽
+            height      像素           绝对设置,高
+                        百分比         相对设置,高
+            border      数字           图象边框
+            align       left           图象靠左,文字靠右
+                        right          图片靠右,文字靠左
+                        top            文字往上靠
+                        middle         文字靠中
+                        bottom         文字靠下
+            vspace      像素           垂直上下两端与物件的距离
+            hspace      像素           水平左右两段与物件的距离
+</pre>
+<img src="../../image/hetao.jpg" alt="无漂白薄皮核桃" title="无漂白薄皮核桃" border="2" hspace="50" vspace="10"/>
+
+<hr>
+<pre>
+    用图像作为超链接
+     &lt;a href="URL">
+            <img src="URL">
+     &lt;/a>
+</pre>
+
+<hr>
+<pre>
+    地图索引
+    基本格式:
+         &lt;map name="图象名称" id="图象名称">
+                 &lt;area shape="选取区块的形状" coords="坐标" href="图片URL" alt="文字说明">
+         &lt;/map>
+         &lt;img src="URL" USEMAP="#图象名称">
+     解释说明：
+         &lt;map> 声明整张图使用地图链接方式进行连接. name,id指此图的名称.
+         &lt;area> 表示我们所要链接其中一点的区快，shape 表示我们所选择的形状,如:rect矩形 circle圆 poly多边形，coords 表示地图的坐标位置!!
+
+    sharp属性值      含义       coords属性值         含义
+    circle          圆形        x,y,r                x,y  代表圆心坐标，r代表半径
+    poly            多变形      x1,y1,x2,y2...       x1,y1,x2,y2... 代表多边形的区域的每一个顶点
+    rect             矩形       x1,y1,x2,y2          x1,y1代表左上角顶点，x2,y2 代表右下角顶点
+</pre>
+
+<hr>
+<h2>点击圆形，跳转到 rel/hetao_图片引用.html 页面</h2>
+<!--定义地图：要跳转的地方  点击圆形，跳转到 rel/hetao_图片引用.html 页面-->
+<map name="sleep" id="sleep">
+    <area href="../rel/hetao_图片引用.html" shape="circle" coords="100,100,50"  target="_blank"  alt="文字说明"/>
+</map>
+<!--定义图片超链接，点击指定图片的区域，会跳转到地图定义的href链接处-->
+<img src="../../image/sleeping.jpg" usemap="#sleep" width="300" height="150" alt="睡觉"/>
+
+
+</body>
+
+</html>
