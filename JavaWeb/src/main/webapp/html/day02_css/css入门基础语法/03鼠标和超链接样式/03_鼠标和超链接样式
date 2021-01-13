@@ -1,0 +1,73 @@
+1. css设置鼠标形状
+
+    属性名：cursor
+    属性值          说明
+    default         默认光标
+    pointer         超链接的指针
+    wait            指示程序正在忙
+    help            指示可用的帮助
+    text            指示文本
+
+实例：
+span {
+    cursor : pointer
+}
+
+2. CSS(Pseudo-classes)伪类
+2.1 使用伪类的原因
+    CSS中样式和HTML文档中元素的连接通常基于元素在文档中的位置，这种方式满足于大部分需求。
+    不过由于HTML文档结构的限制，一些效果无法实现，例如，某些用户行为引发的事件，
+2.2 下面是一些示例：
+     当用户鼠标移动到某个HTML元素上
+     离开HTML元素
+     点击HTML元素
+2.3 伪类的作用
+    伪类可以用于文档状态的改变、动态的事件、向某些选择器添加特殊的效果等，
+    例如：用户的鼠标点击某个元素、未被访问的链接。
+2.4 伪类的语法：
+    selector : pseudo-class {property: value}
+    selector 是选择器
+
+    超链接状态设置示例：
+    在支持 CSS 的浏览器中，链接的不同状态都可以不同的方式显示，
+    这些状态包括：活动状态，已被访问状态，未被访问状态，和鼠标悬停状态。
+        a:link {color: #FF0000}		/* 未被访问的链接状态 */
+        a:visited {color: #00FF00}	/* 已访问的链接状态*/
+        a:hover {color: #FF00FF}	/* 鼠标悬停在链接上的状态 */
+        a:active {color: #0000FF}	/* 选定但是还未跳转访问时候的链接状态 活动状态 右击但是还未松开的时候 */
+
+2.5 伪类的使用实例
+     <head>
+        <style type="text/css">
+            a{
+                font-size:16px;
+                color:red;
+            }
+            a:link{
+                font-size:17px;
+                color:blue;
+            }
+            a:visited{
+                font-size:18px;
+                 color:yellow;
+            }
+            a:hover{
+                font-size:19px;
+                color:green;
+            }
+            a:active{
+                font-size:20px;
+                color:black;
+            }
+        </style>
+    </head>
+
+    <body>
+          <h1>北京欢迎你</h1>
+          <div>
+              <p>北京欢迎你，有梦想谁都了不起！</p>
+              <p>有勇气就会有奇迹。</p>
+              <p> <a href="http://lvyou.baidu.com/beijing/?from=zhixin">北京 </a>欢迎你，为你开天辟地</p>
+              <p>流动中的魅力充满朝气。</p>
+          </div>
+    </body>

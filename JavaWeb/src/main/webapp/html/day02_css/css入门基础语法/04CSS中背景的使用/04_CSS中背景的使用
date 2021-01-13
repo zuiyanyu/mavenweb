@@ -1,0 +1,69 @@
+CSS背景与列表(重点)
+知识点：
+     CSS中背景的使用
+     CSS中列表的使用
+
+1. CSS中背景的使用
+    属性名称					              说明
+    background-color		            	  背景颜色
+    background-image		            	  背景图片
+    background-repeat		            	  背景图片的重复
+    background-position		            	  背景图片的位置
+    background-attachment(了解)   scroll	  设置背景图像会随视窗滚动条的移动而移动。
+                                   fixed	  设置背景图像不会随视窗滚动条的移动而移动。
+
+
+2. 背景相关属性说明
+    属性名称				    属性值			说明
+
+    背景颜色
+    background-color		   十六进制		    #ff0000;
+                               英文名称		red;
+                               三原色	        rgb(255,0,0)
+
+    背景图片
+    background-image		    url("bg.jpg")  背景图片
+    							none           不设置背景图片
+    							实例：
+    							body{
+                                    //铺满整个屏幕
+                                    background-image: url("img/2.jpg");
+                                }
+    背景图片的重复
+    background-repeat		    repeat		    将背景图案填满整个背景。
+    							repeat-x	    将背景图案在水平方向添满。
+    							repeat-y	    将背景图案在垂直方向添满。
+    							no-repeat	    图案只出现一次。
+
+    背景图片的位置
+     属性说明：该属性的取值为两个，前一个为水平方向的位置，后一个为垂直方向的位置。
+      位置的取值有长度值、百分比值、top、center、bottom、left和right七种。
+    background-position	        left top		设置背景左上方
+    					        center top		设置背景上方中间
+    					        right top	    设置背景右上方
+    					        center left		设置背景中间左方
+    					        center center	设置背景中间
+    					        right center	设置背景中间右方
+    					        left bottom		设置背景左下方
+    					        center bottom	设置背景正下方
+    					        right  bottom	设置背景右下方
+    背景图案简化方案：
+    格式:
+    		background:    颜色->背景图片->repeat ->position
+            background: steelblue url("img/2.jpg") no-repeat 30% 40%;
+
+    background-position	实例：
+    body{
+                width: 100%;
+                height: 800px;
+                background-color: darkseagreen;
+                background-image: url("img/2.jpg");
+                background-repeat: no-repeat;
+                background-position: top;
+                /* background-position: center center; */
+                /* background-position: right center; */
+                /*也可以用百分数，第一个代表左右，第二个代表上下*/
+                /* background-position: 30% 40%; */
+             }
+
+

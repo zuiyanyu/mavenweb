@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频播放</title>
+</head>
+<body>
+
+<p> video视频播放 <br/>
+    <!--
+     src:视频播放源
+     poster:刚进入，视频还未加载进来的时候，展示的图片
+     controls：视频控件  视频播放的进度，快进，暂停，静音等,没有控件，只能让视频一直播放
+     muted ：无言的，即视频播放的时候静音，如果没有此属性，视频播放的时候有声音
+     autoplay="autoplay"  : 视频加载后自动播放
+     -->
+    <video src="../../video/HTML5.mp4" poster="../../image/logo.png" autoplay="autoplay" controls muted >
+        Your browser does not support the <code>video</code> element.
+    </video>
+<p>
+
+
+  <!--
+   使用Web如此流行的原因之一是可以再网页上加入图像、声音、动画和电影文件。虽然过去对这些文件大小的限制局限了它们的作用，但是新技术（比如流技术及宽带）已经使多媒体网页成为了可能。
+
+    1 <embed>标记
+    定义嵌入的内容，embed可以用来插入各种多媒体，格式可以是 Midi、Wav、AIFF、AU、MP3、SWF、MP4等等， Netscape及新版的IE 都支持。
+    2 <embed>基本格式
+    <embed src=”URL”  width=”宽度” height=”高度” />
+    属性		    值				说明
+    src				url				文件路径（相对路径或绝对路径）
+    autostart		true/false			是否在载入完成后自动播放
+    loop			正整数/true/false	是否循环及循环的次数
+    hidden			true/no(默认)		控制面板是否显示
+    volume			0-100之间的整数	音量大小
+    width			像素/百分比		控制面板的宽度
+    height			像素/百分比		控制面板的高度
+    title			文本			文字说明
+    -->
+  embed视频播放 <br/>
+    swf<br/>
+    <embed src="../../video/index.swf" width="712px" height="429px"/><br/><br/>
+
+    mp3<br/>
+    <embed src="../../video/tashuo.mp3" /><br/><br/>
+
+    mp4<br/>
+    <embed src="../../video/HTML5.mp4" autostart="false" width="400" height="400"/><br/><br/>
+
+
+</body>
+</html>

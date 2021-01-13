@@ -1,0 +1,12 @@
+@charset "gb2312";
+/* CSS Document */
+body {
+	font-size:12px;
+	line-height:22px;
+}
+#content {
+	width:200px;
+	height:150px;
+	border:1px #000 solid;
+	overflow:auto;
+}

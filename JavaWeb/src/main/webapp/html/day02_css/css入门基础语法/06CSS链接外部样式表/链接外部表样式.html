@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>链接外部样式表</title>
+
+  <!--
+  ?外部样式:
+      1)在<head>…</head>之间使用<link>引入到页面中；
+         格式：	<link rel=”stylesheet” type=”text/css” href=URL />
+      2)在<head>…</head>之间使用import导入；
+          格式：  <style type="text/css"> @import "style.css" </style>
+  ?链接式与导入式的区别（一般都采用link）
+      （1）<link/>元素属于HTML，@import是属于CSS2.1
+      （2）@import是属于CSS2.1特有的，对于不兼容CSS2.1的浏览器来说就是无效的。
+
+      （3）? 加载方式不同：link边加载HTML,边加载css； @import先加载html页面，再加载css样式
+  -->
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <h1>北京欢迎你</h1>
+
+    <p id="first">北京欢迎你，有梦想谁都了不起！</p>
+    <p id="second">有勇气就会有奇迹。</p>
+    <p>北京欢迎你，为你开天辟地</p>
+    <p>流动中的魅力充满朝气。</p>
+</body>
+</html>

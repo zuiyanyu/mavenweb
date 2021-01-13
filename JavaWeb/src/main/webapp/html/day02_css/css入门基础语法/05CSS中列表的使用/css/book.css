@@ -1,0 +1,42 @@
+@charset "gb2312";
+/* CSS Document */
+
+.book {                       /*将class为book的名字设置样式*/
+	width:250px;                /*设置宽度为250px，背景颜色为#f3f4df*/
+	background-color:#f3f4df;
+}
+.title {                 /*将class为title的名字设置样式*/
+	font-size:16px;			/*字体大小为16px*/
+	color:#FFF;             /*字体颜色为#FFF*/
+	line-height:30px;		/*行高30px*/
+	text-indent:1em;       /*将段落的第一行缩进 1em*/
+	background:#518700 url(../../../../../image/bang.gif) 100px 2px no-repeat;
+}
+ul li {    /*对ul中包含li的元素进行样式设置*/
+	list-style-type:none;
+	line-height:28px;
+	font-size:12px;    /*行高28px，字体大小12px*/
+	text-indent:2em;   /*将段落的第一行缩进2em*/
+}
+
+/*
+background:    颜色->背景图片->repeat ->position
+background: steelblue url("img/2.jpg") no-repeat 30% 40%;
+*/
+ul .num01{background:url(../../../../../image/book_no01.gif) 0px 4px no-repeat;}
+ul .num02{background:url(../../../../../image/book_no02.gif) 0px 4px no-repeat;}
+ul .num03{background:url(../../../../../image/book_no03.gif) 0px 4px no-repeat;}
+ul .num04{background:url(../../../../../image/book_no04.gif) 4px 8px no-repeat;}
+ul .num05{background:url(../../../../../image/book_no05.gif) 4px 8px no-repeat;}
+ul .num06{background:url(../../../../../image/book_no06.gif) 4px 8px no-repeat;}
+ul .num07{background:url(../../../../../image/book_no07.gif) 4px 8px no-repeat;}
+ul .num08{background:url(../../../../../image/book_no08.gif) 4px 8px no-repeat;}
+ul .num09{background:url(../../../../../image/book_no09.gif) 4px 8px no-repeat;}
+ul .num10{background:url(../../../../../image/book_no10.gif) 4px 8px no-repeat;}
+ul li a {
+	color:#1a66b3;
+	text-decoration:none;
+}
+ul li a:hover {
+	text-decoration:underline;
+}

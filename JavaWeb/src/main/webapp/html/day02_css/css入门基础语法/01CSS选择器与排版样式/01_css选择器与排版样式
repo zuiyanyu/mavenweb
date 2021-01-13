@@ -1,0 +1,82 @@
+1. 认识CSS
+    CSS的英文全名是Cascading Style Sheets,中文可翻译为串接式排版样式,并且CSS2规范也于1998年02月通过W3C的审核与推荐,所以CSS并不是专为XHTML所设计的,CSS还可以被其他标记语言拿来制作排版样本,如HTML,XML文件都可以应用CSS,来美化网页的设计,大家如果学会CSS,在HTML,XHTML,XML文件中都可以使用.
+    传统HTML设计网页版面的缺点
+    使用传统HTML控制标记来设计网页,在先天上就无法与排版样本来做比较,因为HTML并非完全着眼在网页排版的功能上,而这对XHTML而言更是如此,因为XHTML有意将原先HTML中有关网页版面的标记或属性遗弃不用,如<font>,<center>,color,background等,所以对XHTML文件而言,其排版与显示的功能比HTML文件更弱,所以使用XHTML来设计网页更需要搭配CSS排版样本.
+2.CSS的特点
+    HTML排版时的缺点：设置麻烦,修改麻烦,功能严重不足。
+    CSS样式排版的优点：属性功能完整,排版文件可以独立存在,可以共用排版文件。
+3.CSS的基本语法
+    选择符{样式描述1；样式描述2；
+                …
+             样式描述n;
+            }
+    eg:
+        h1 {
+            font-size:12px;
+            color:#F00;
+        }
+4. CSS的排版样式
+4.1 CSS样式排版的分类：内联样式,内部样式,外部样式；
+    内联样式: 定义的样式在本HTML，且在元素属性内
+            格式:  <标记名称style="属性1:属性值1;属性2:属性值2">…</标记名称>
+            例:  <p style="font-size:20pt;color:red;text-align:center">行内样式</p>
+
+    内部样式:    定义的样式在本HTML内
+        所有的样式定义都必须在<style>..</style>之间,而<style>..</style>又必须在<head>..</head>之间.
+
+     外部样式 :  定义的样式在本HTML外
+        1)在<head>…</head>之间使用<link>引入到页面中；
+             格式：	<link rel="stylesheet" type="text/css" href=URL />
+        2)在<head>…</head>之间使用import导入；
+             格式：  <style type="text/css">  @import "style.css"  </style>
+
+    链接式与导入式的区别（一般都采用link）
+        （1）<link/>元素属于HTML，@import是属于CSS2.1
+        （2）@import是属于CSS2.1特有的，对于不兼容CSS2.1的浏览器来说就是无效的。
+        （3）加载方式不同：link边加载HTML,边加载css；@import先加载html页面，再加载css样式
+
+5.选择器(核心之一)
+    CSS选择器：标记选择器、class选择器、id选择器、包含选择器、选择器组、通配选择器。
+    1)标记选择器:
+        <head>
+            <style type="text/css">
+                h1 { 属性1:属性值1;  属性2:属性值2; }
+                div{ 属性1:属性值2;  属性2:属性值2; }
+            </style>
+        </head>
+        <body>
+            <h1>…</h1>
+            <div>…</div>
+        </body>
+
+    2)class选择器:
+        <head>
+            <style type="text/css">
+                .aaa {属性1:属性值1;属性2:属性值2;}
+                .aaa, .bbb {属性1:属性值1;属性2:属性值2;}
+            </style>
+        </head>
+        <body>
+            <标记名称 class="aaa">…</标记名称>
+            <标记名称 class="bbb">…</标记名称>
+        </body>
+
+    3)id选择器:
+        <head>
+            <style>
+                #aaa {属性1:属性值1;属性2:属性值2;}
+                #aaa, #bbb {属性1:属性值1;属性2:属性值2;}
+            </style>
+        </head>
+        <body>
+            <标记名称 id="aaa">…</标记名称>
+            <标记名称 id="bbb">…</标记名称>
+        </body>
+
+
+6. CSS规定,范围越小,优先级越高;
+     行内样式 > 内部样式表 > 外部样式表
+     ID选择符 > 类Class选择符 > 类型选择符 > 通配符
+     子元素可以继承父元素的样式风格
+     子元素可以覆盖父元素的样式风格
+     子元素的样式不会影响父元素的样式风格

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS中定位的使用</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-size: 50px;
+            font-family: 黑体;
+        }
+
+        #p1{
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            color: red;
+
+            z-index: 1;
+        }
+        #p2{
+            position: absolute;
+            top: 53px;
+            left: 103px;
+            color: green;
+
+            z-index: 5;
+        }
+        #p3{
+            position: absolute;
+            top: 56px;
+            left: 106px;
+            color: blue;
+
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1">CSS中定位的使用</p>
+    <p id="p2">CSS中定位的使用</p>
+    <p id="p3">CSS中定位的使用</p>
+</body>
+</html>

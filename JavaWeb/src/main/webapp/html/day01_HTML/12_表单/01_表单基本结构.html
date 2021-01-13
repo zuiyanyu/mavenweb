@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+
+    <style>
+        body {
+            background-color:#fff;
+            color:#000;
+            font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            margin-left:20px;
+        }
+        h1 {
+            color:#111;
+        }
+        form {
+            margin-left:40px;
+        }
+        label {
+            font-weight:bold;
+        }
+        label {
+            display:inline-block;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单主要是采集用户信息，通过用户在网页上输入、勾选和选取数据，以便提交给服务器。
+        1.表单的功能结构
+        2.文本栏、密码栏、隐藏栏
+        3.复选栏、单选栏
+        4.窗体栏位、区块栏位ew s dzxn
+        5.按钮、图像按钮
+        6.允许上传文件
+        7.表单的外框和标题
+        8.元件的次序和快捷键
+    -->
+    <!--表单form的属性：
+    name			字符串		    			        给这个表单起个名字
+    method		    get/post		    				表单的传输方式
+    action		    url								    传输目标
+    target 		    _blank/_self	   					页面打开方式
+                    _top/_parent
+    enctype		    application/x-www-form-urlencoded	默认的编码形式
+                    multipart/form-data				MINI编码
+                    text/plain							纯文本编码格式
+
+     html5中新增加了一些表单元素，下面列出这些元素及其作用
+        email 类型用于验证email的格式，当提交表单时会自动验证email域的值
+        url 类型用于验证 URL 地址的格式，当提交表单时会自动验证url域的值
+        number 类型会根据你的设置提供选择数字的功能，min属性设置最小值、max属性设置最大值，value属性设置当前值，step属性设定每次增长的值，某些浏览器还不支持
+        range 类型用于应该包含一定范围内数字值的输入域，其会以一个滑块的形式展现，min属性设置最小值、max属性设置最大值，value属性设置当前值，如果没有设置，则其默认值的范围是1-100
+        日期和时间类型：HTML5 拥有多个可供选取日期和时间的新输入类型： 
+            date - 选取日、月、年
+            month - 选取月、年
+            week - 选取周和年
+            time - 选取时间（小时和分钟）
+            datetime - 选取时间、日、月、年（UTC 时间）
+            datetime-local - 选取时间、日、月、年（本地时间）
+        search 类型用于搜索域，比如站点搜索或 Google 搜索，为其加上results="s"属性，则会在搜索框前面加上一个搜索图标
+        tel类型用于验证输入的是否是电话格式的内容，此元素现在还没有浏览器支持
+        color类型会提供一个颜色拾取器，供用户选择颜色，并将用户选择的颜色填充到此元素中
+    -->
+    <FORM name="myform" action="result.html" method="post"  onSubmit="return check()">
+        <!--1. 输入框   placeholder：提示信息  -->
+        <!--曾经输入的值，再次聚焦框中会再提示出来-->
+        <P>名字：
+            <INPUT type="text"  name="name" placeholder="姓名" class="input" id="userName">
+        </P>
+
+
+
+        <!--2.密码框 password-->
+        <P>密码：
+            <INPUT type="password" name="pass"  class="input" id="passWord">
+        </P>
+
+        <!--3.单选按钮 radio： value值是提交给后台的， checked:表示默认选择的项-->
+        <p>性别：
+            <input type="radio" name="gen" class="input" value="男" checked="checked">男&nbsp;
+            <input type="radio" name="gen" value="女" class="input">女
+        </p>
+
+        <!--4. 复选框 checkbox -->
+        <p> 爱好：
+            <input type="checkbox" name="interest" value="sports" checked="checked">运动&nbsp;&nbsp;
+            <input type="checkbox" name="interest" value="talk"> 聊天&nbsp;&nbsp;
+            <input type="checkbox" name="interest" value="play"> 玩游戏
+        </p>
+
+        <!--5. 下拉框  -->
+        <p>出生日期:
+            <select name="year" size="1" id="year">
+                <!--optgroup: 给选项分组展示：-->
+                <optgroup label="90-92">
+                    <option value="1990" selected="selected">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                </optgroup>
+                <optgroup label="00">
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                </optgroup>
+            </select>年
+            <select name="month" >
+                <!-- 不给选项分组展示-->
+                <!--disabled 不允许选择这个选项-->
+                <option value="" disabled>[选择月份]</OPTION>
+                <option value="1">一月</option>
+                <option value="2" selected="selected">二月</option>
+                <option value="3">三月</option>
+                <option value="4">四月</option>
+            </select> 月&nbsp;
+            <input name="day" value="13" size="2" maxlength="2" > 日
+        </p>
+
+        <!--6. 文本域 -->
+        <P>填写个人评价：<br>
+            <textarea   name="textarea"  cols="40"  rows="6" >
+             自信、活泼、善于思考...
+            </textarea>
+        </P>
+
+        <!--7. 文件域-->
+        <p>请选择上传的文件：
+            <input type="file" name="files"/>
+        </p>
+
+        <!--8. 隐藏域-->
+        <p><input type="hidden" value="隐藏值" name="userid"></p>
+
+        <!--9. 只读  readonly="readonly"-->
+        <P>只读值：
+            <input name="name" type="text" value="一个只读值" readonly="readonly">
+        </P>
+
+        <!--10. 禁用  disabled="disabled" -->
+        <P>禁用：
+            <input type="submit" value="修改按钮" disabled="disabled">
+        </P>
+
+        <!--11.搜索框 曾经输入的值，再次聚焦框中不会再提示出来-->
+        <p>Search搜索框:
+            <input type="search"  name="search" id="search"  placeholder="www" results="sss">
+        </p>
+
+        <!--12 动态列表选择-->
+        <p>
+            <label for="website">Website:</label>
+            <input type="url" name="website" id="website" list="data_list">
+            <datalist id="data_list">
+                <option label="W3Schools" value="http://www.w3school.com.cn" />
+                <option label="Google" value="http://www.google.com" />
+                <option label="Microsoft" value="http://www.microsoft.com" />
+            </datalist>
+        </p>
+        <!--13 动态列表选择-->
+        <p> 视频播放<br>
+            <!--src:视频播放源
+                 poster:刚进入，视频还未加载进来的时候，展示的图片
+                 controls：控件  视频播放的进度，快进，暂停，静音等，没有控件，只能让视频一直播放
+                 muted ：无言的，即视频播放的时候静音，如果没有此属性，视频播放的时候有声音
+                 autoplay="autoplay"  : 视频加载后自动播放
+            -->
+            <video src="../../../video/HTML5.mp4" poster="../../../image/logo.png"  controls muted >
+                Your browser does not support the <code>video</code> element.
+            </video>
+        <p>
+
+        <!--14. 按钮-->
+        <P>
+            <input  type="reset" name="butReset" value="reset重填按钮">
+            <input  type="submit" name="butSubmit" value="submit提交按钮">
+            <input  type="button" name="butButton" value="button事件按钮" onclick="alert(this.value)">
+        </P>
+        <!--15. 按钮图像:即按钮是一个图片  其实就是按钮的提示字体用图片代替了 ，形式上是图片覆盖了按钮，但是没覆盖完全。 -->
+        <P>按钮图像:<br/>
+            <button name="按钮图像" type="button" value="按钮图像"  onclick="alert(this.value)">
+                <!--<img src="../../../image/pic1.jpg">-->  按钮提示信息
+            </button>
+            <br/>
+            <button name="按钮图像" type="button" value="按钮图像"  onclick="alert(this.value)">
+                <img src="../../../image/pic1.jpg">
+            </button>
+        </P>
+        <!--16. 图像按钮： 就是将图片当成了按钮  展示的是一个图片，其实是一个按钮 ，形式上是一个图片正好覆盖了按钮-->
+        <P>图像按钮:<br/>
+            <input name="图像按钮" type="image" src="../../../image/pic1.jpg" alt="文本">
+        </P>
+
+
+    </FORM>
+</body>
+</html>

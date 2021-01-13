@@ -15,6 +15,7 @@
               <module>SSM</module>
               <module>mybatis-generator-maven-plugin</module>
               <module>scala-module</module>
+            <module>JavaWeb</module>
         </modules>
         <packaging>pom</packaging>
         <name>mavenweb</name>

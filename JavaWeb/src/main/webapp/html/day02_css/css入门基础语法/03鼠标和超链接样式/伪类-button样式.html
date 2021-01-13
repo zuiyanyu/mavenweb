@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>选择符分组的应用</title>
+  <style type="text/css">
+    input{
+        font-size:30px;
+      }
+    /* 未被访问的状态 无效*/
+      #button1:link{
+           font-size:100px;
+           color:red;
+      }
+
+    /* 已访问的状态 无效*/
+      #button1:visited{
+         font-size:100px;
+         color:blue;
+      }
+
+    /* 鼠标悬停在上的状态 有效 */
+      #button1:hover{
+         font-size:19px;
+         color:green;
+      }
+
+    /* 活动状态 右击但是还未松开的时候 有效 */
+    #button1:active{
+        font-size:60px;
+         color:yellow;
+    }
+  </style>
+</head>
+
+<body>
+<form action="#">
+
+  <input type="submit" name="button1" id="button1" value="提交" />
+  &nbsp;&nbsp;
+  <input type="reset" name="button2" id="button2" value="重置" />
+</form>
+
+</body>
+</html>

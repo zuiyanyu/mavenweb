@@ -1,0 +1,202 @@
+一、CSS边框与边距
+==================================================
+1. 边框
+1)元素的边框 (border) 是围绕元素内容和内边距的一条或多条线。
+2)CSS border 属性允许你规定元素边框的样式、宽度和颜色。
+3)常见的边框属性及说明
+    属性名称		   属性值			说明
+	border-color	   十六进制		    可依次设置上右下左边框颜色
+					   英文名称	        border-color:red(四边均为红色)
+					   三原色		    border-color:red green(上下为红色，左右为绿色)
+									    border-color:red green blue(上为红色、左右为绿色、下为蓝色)(顺时针)
+									    border-color:red green blue yellow(上右下左分别为红绿蓝黄) (顺时针)
+
+	border-style	    none		    不显示边线
+						dotted			点线
+						dashed			虚线
+						solid			实线
+						double			双线
+
+	border-width	    边框宽度        border-width:0.2cm 0.3cm 0.4cm 0.5cm;
+								        border-width:1 2 3 4;（上右下左）
+	边框的简化设置
+    格式:
+    				 边框宽度 -> 边框样式 -> 边框颜色
+    		border:     5px       solid   	   red
+
+    实例：
+    css代码：
+            div {
+                  width: 100px;
+                  height: 100px;
+                  background: darksalmon;
+                  border-color: red yellow blue black;（上右下左）
+                  border-style: solid;
+                  border-width: 1px 3px 5px 10px; （上右下左）
+              }
+    html代码：
+            <div></div>
+============================================
+2.CSS外边距
+1） 外边距margin属性
+	属性名称			属性值			     说明
+	margin-bottom		auto				自动调整边距
+						长度/百分比			设置下边距
+	margin-left			auto				自动调整边距
+						长度/百分比			设置左边距
+	margin-right		auto			    自动调整边距
+						长度/百分比			设置右边距
+	margin-top			auto				自动调整边距
+						长度/百分比			设置上端边距
+	margin属性简写方案
+    格式:
+        margin: 20px 40px （上下，左右 ）
+        margin: 20px 60px 100px（上，左右，下）
+        margin: 10px 20px 30px 40px（上，右，下，左）
+
+	实例：
+	css代码：
+    		div {
+                width: 100px;
+                height: 100px;
+                background: darksalmon;
+                border: 5px solid red;
+                margin-top: 50px;
+                margin-left: 20px;
+    		}
+    html代码：
+    		<div></div>
+============================================
+3.CSS内边距
+  内边距padding属性（内填充）
+    属性名称			    属性值			说明
+    padding-bottom		    长度/百分比		元素下端内边距
+    padding-left		    长度/百分比		元素左端内边距
+    padding-right		    长度/百分比		元素右端内边距
+    padding-top			    长度/百分比		元素上端内边距
+
+
+=====================
+4. CSS区块、浮动
+4.1 HTML元素的布局
+    *<div>元素
+        用途：网页布局；排版网页内容。
+        用法：<div>网页的内容</div>
+    *<span>元素
+        用途：组合文档中的行内元素
+        用法：<span>网页内容</span>
+4.2 CSS区块
+    区块元素常见的属性
+    属性名称			属性值			      说明
+	width				像素/百分比			区块的宽度
+	height				像素/百分比			区块的高度
+	min-height          像素/百分比		    区块最小高度
+	max-height			像素/百分比		    区块最大高度
+	min-width			像素/百分比		    区块最小宽度
+	max-width			像素/百分比		    区块最大宽度
+
+实例：
+    eg：
+    css代码：
+            .div1 {
+                width: 100px;
+                height: 100px;
+                background: blue;
+            }
+            .div2 {
+                width: 50px;
+                height: 50px;
+                background: darksalmon;
+            }
+    html代码：
+            <div class="div1"></div>
+            <div class="div2"></div>
+
+ 4.3 display属性
+ 可以通过设置display属性的值来改变元素的布局级别。display的值有三个：block，inline和inline-block，none。
+ display:block
+     block元素的默认值，会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。
+     block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。
+     block元素可以设置margin和padding属性。
+ display:inline
+     inline元素的默认值，不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。
+     inline元素设置width,height属性无效。
+     inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。
+ display:inline-block
+    简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。
+=====================
+6.  CSS中浮动的使用
+    float属性的值和说明
+        a. CSS 中 float（浮动）属性，会使元素向左或向右移动，其周围的元素也会重新排列。
+        b. float（浮动），往往是用于图像，但它在布局时一样非常有用。
+        c. 浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+        d. 由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
+
+    属性名称			属性值			     说明
+    float				 none				正常显示
+                        left				左浮动
+                        right				右浮动
+
+    clear				 none		        允许两边浮动
+                        left				清除左边浮动
+                        right				清除右边浮动
+                        both				清除两边浮动
+========================================
+7.溢出overflow属性
+ 属性值                         说明
+ visible                   默认值。内容不会被修剪，会呈现在盒子之外。
+ hidden                    内容会被修剪，并且其余内容是不可见的。
+ scroll                    内容会被修剪，但是浏览器会显示滚动条以便查看其余内容。
+ auto                      如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+
+============================
+8.CSS中定位的使用
+CSS定位属性允许你为一个元素定位。它也可以将一个元素放在另一个元素后面。
+元素可以使用的顶部，底部，左侧和右侧属性定位。
+
+    属性名称			属性值			    说明
+	position			relative	        设置区块基准点为左上角
+						absolute	        设置网页的左上角为基准点
+						static			    无设置（默认）
+                       fixed               固定定位
+
+	left			    auto				以基准点定位在左边
+						像素/百分比		    定位在左边
+
+	top				    auto				以基准点定位在上边
+			            像素/百分比		    定位在上边
+
+	right		        auto				以基准点定位在右边
+			            像素/百分比		    定位在右边
+
+    bottom				auto				以基准点定位在下边
+						像素/百分比		    定位在下边
+
+	z-index				auto				自动调整高度
+						数字		        数字越大越往上层
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

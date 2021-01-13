@@ -21,9 +21,11 @@
 
 	<!--默认使用的就是ThreadPoolTaskScheduler-->
 	<!--<task:scheduler id="scheduler" pool-size="10"/>-->
+	<!--ThreadPoolTaskScheduler 其实就相当于java.util.current.Executor，一个任务执行器，只是多了任务调度的功能-->
 	<bean id="scheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
 		<property name="poolSize" value="10"/>
 	</bean>
+	<!--需要向Executor中添加任务, 任务会在 execute(Runnable task) 方法中执行  -->
 	<task:scheduled-tasks scheduler="scheduler">
 		<task:scheduled ref="tasks" method="fixedDelay" fixed-delay="2000"/>
 		<task:scheduled ref="tasks" method="fixedRate" fixed-rate="4000"/>

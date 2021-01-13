@@ -24,11 +24,13 @@
 
 
 	<!--或者使用 方式2 ：显示声明 executor和scheduler-->
+	<!--任务执行器-->
 	<bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="5"/>
 		<property name="maxPoolSize" value="10"/>
 		<property name="queueCapacity" value="20"/>
 	</bean>
+	<!--任务调度器-->
 	<bean id="scheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
 		<property name="poolSize" value="10"/>
 	</bean>

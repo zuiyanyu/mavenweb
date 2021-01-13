@@ -1,13 +1,12 @@
 package com.LoadResource;
 
+//import jdbc.CachedRowSetTest;
 import org.junit.Test;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Enumeration;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * 我们需要读取各种文件，各个目录下的文件
@@ -18,13 +17,26 @@ public class LoaderResource {
      * TODO Thread.currentThread().getContextClassLoader().getResourceAsStream()
      * TODO 即 ClassLoader类的 getResourceAsStream(String name)
      * 1.可以加载相对于当前项目classpath目录下的文件 比如：SSM/target/classes/file1.txt
-     *
+     * 2.可以从依赖的其他模块下的classpath目录下加载文件。比如：app-java/target/classes/alice.txt
      */
     @Test
     public void type01(){
         //1.使用相对于当前项目的classpath的相对路径来查找资源。
-        String filePath ="file1.txt";
+        String filePath ="mchange-config-resource-paths.txt";
+
+        //TODO 这种方式获取的是系统上下文件的ClassLoader对象，还可以加载依赖的其他模块或者jar包中的一个资源
+        //资源加载顺序：
+        // 1. 先从本项目中加载资源
+        // 2. 本项目中加载不到，就从其他的依赖包中加载资源。
+        // 3.(搜索顺序是根据依赖的顺序从上到下依次搜索，一旦加载到，后面的依赖就不再进行搜索和加载)
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+
+        //TODO 这种方式得到的ClassLoader对象，只能加载本项的classpath目录下的资源。
+        contextClassLoader= this.getClass().getClassLoader();
+
+        //使用app-java项目中的类获取到的ClassLoader仍然没有加载本项目中的 "mchange-config-resource-paths.txt";文件。
+//        contextClassLoader = CachedRowSetTest.class.getClassLoader();
+
         System.out.println(contextClassLoader);// sun.misc.Launcher$AppClassLoader@18b4aac2
 
         InputStream resourceAsStream = contextClassLoader.getResourceAsStream(filePath);
@@ -123,6 +135,7 @@ public class LoaderResource {
         }
     }
 
+
     /**
      * TODO 使用URLClassLoader的findResource(name)进行资源查询.
      *       从classpath根目录下进行资源的查询，以URL的形式返回。
@@ -142,6 +155,26 @@ public class LoaderResource {
 
     }
 
+    /**
+     * 使用new File加载资源文件
+     * 只能加载绝对路径下的资源文件。比如加载项目工作空间下的配置文件。
+     */
+    @Test
+    public void type07() throws FileNotFoundException {
+        String filePath = "/file1.txt";
+        File file = new File(filePath);
+        System.out.println(file.getAbsolutePath());
+        InputStream inputStream = new FileInputStream(file);
+        printFile(inputStream);
+    }
+    @Test
+    public void test2(){
+     Properties sysProps = System.getProperties();
+
+        for (Object object : sysProps.keySet()) {
+            System.out.println(object+ " --> "+sysProps.get(object));
+        }
+    }
 
     @Test
     public void test(){

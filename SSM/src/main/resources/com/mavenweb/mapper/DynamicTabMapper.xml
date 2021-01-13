@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mavenweb.mapper.DynamicTabMapper">
+
+  <insert id="dymicAddData">
+      insert into ${dynamicTab.tabName}
+          <foreach collection="dynamicTab.fields" item="fieldName" open="(" separator="," close=")">
+                 ${fieldName}
+          </foreach>
+      values
+          <foreach collection="dynamicTab.datasList" item="fieldValueList" open="(" separator="),(" close=")">
+              <foreach collection="fieldValueList" item="fieldValue" open="" separator="," close="">
+                  '${fieldValue}'  /*值全部以字符串的形式插入*/
+              </foreach>
+          </foreach>
+  </insert>
+  <delete id="deleteAllTabData">
+        delete from ${tabName} where 1=1
+   </delete>
+
+
+
+</mapper>

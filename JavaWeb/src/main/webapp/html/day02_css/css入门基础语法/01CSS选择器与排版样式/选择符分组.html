@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>选择符分组的应用</title>
+<style type="text/css">
+  /*以逗号隔离开，表示两个分组：即两个标记选择符*/
+
+  /*父元素*/
+  h1,p{
+    font-size:16px;
+    color:red;
+  }
+
+  /* 子元素，优先级高于父元素*/
+  .class01,#id1,span{
+    color:blue;
+  }
+
+</style>
+</head>
+
+<body>
+  <h1>北京欢迎你</h1>
+  <div>
+      <p>北京欢迎你，有梦想谁都了不起！</p>
+      <p>有勇气就会有奇迹。</p>
+      <p class="class01">北京欢迎你，为你开天辟地</p>
+      <p><span id="id1">流动中的魅力充满朝气。</span></p>
+      <p><span>流动中的魅力充满朝气。</span></p>
+  </div>
+</body>
+</html>

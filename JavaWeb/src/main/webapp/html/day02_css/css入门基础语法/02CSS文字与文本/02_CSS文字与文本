@@ -1,0 +1,100 @@
+CSS文字与文本
+1.CSS中长度单位与颜色单位
+
+    长度单位		说明
+    in				英寸
+    cm				厘米
+    mm				毫米
+    em				以目前字体高度为单位
+    ex				以小写字母高度为单位（大部分不支持）
+    pt				1pt/72英寸
+    pc				1pc/12pt
+    px				像素（主要使用）
+
+    颜色单位：		说明
+    十六进制		如：color:#ff0000
+    颜色名称		如：color:red
+    三原色单位		如：rgb(255,0,0)
+    单位换算：      1in = 2.54cm = 25.4 mm = 72pt = 6pc
+
+2.CSS中的文字属性
+    属性名称		属性值			说明
+    font-style		normal			正常显示
+                    italic			斜体
+                    oblique        倾斜体样式
+    font-weight		normal			正常显示
+                    bold			粗体
+                    lighter         更细的字体
+                    bolder          更粗的字体
+                    100~900
+    font-size		像素			字体大小
+                    百分比			字体大小
+    font-family		字体名称		设置字体名称
+
+    font-size、font-family属性：
+    eg：
+        css代码：
+            body{
+                font-family: Times,"Times New Roman", "楷体";
+            }
+            #p1{ font-size: 25px; }
+            #p2{ font-size: 30px; font-family: 黑体;}
+        html代码：
+            <p id="p1">测试</p>
+            <p id="p2">测试</p>
+
+  2.1 font属性简化的写法：
+    格式：
+        font: 字体风格font-style	  →  字体粗细font-weight  →  字体大小font-size → 字体类型 font-family
+        font:  是否斜体      是否粗体         大小     字体名称
+
+        eg:
+        css代码：
+            #p1 { font-size: 25px; }
+            #p2 { font: italic  bold  30px 黑体;}
+        html代码：
+             <p id="p1">软件人才产业基地</p>
+             <p id="p2">软件人才产业基地</p>
+
+3.CSS中的文本属性
+    color、text-align、text-decoration、text-indent、line-height 属性必须掌握
+    属性名称			属性值			说明
+ 	color				十六进制		颜色
+ 						英文名称		颜色
+ 						三原色单位		颜色
+ 	text-align			left			文字靠左
+ 						right			文字靠右
+ 						center			文字靠中
+
+ 	text-decoration		none			正常显示
+ 						underline		加上下划线
+ 						overline		加顶线
+ 						line-through	加删除线
+
+ 	text-indent			长度			首行缩进
+ 						百分比			同上
+
+    line-height		    像素			行高
+                        数字/百分比		行高
+
+    letter-spacing		 normal		   正常显示
+    					 长度		   文本间隔
+
+    word-spacing	     normal		   正常显示
+    （仅对英文单词有效） 数字		   单词间距
+
+    white-space			  normal	   文本自动处理换行
+                         pre		   换行和空白受保护 <pre>标签同样的效果（代码中怎么显示页面中就怎么显示）
+                         nowrap		   强制在同一行显示（所有内容显示在一行，除非遇到<br>）
+
+    text-transform		 none			正常显示可以包含大，小字符
+                        capitalize		字符串第一个字符大写
+                        uppercase		设置大写字符
+                        lowercase		设置小写字符
+
+    vertical-align 		sub				设置文字为下标。
+                       super			设置文字为上标。
+                       top				文字往上端靠齐。
+                       middle			设置文字是在中线位置。
+    				    bottom			文字往下端靠齐
+

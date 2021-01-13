@@ -1,0 +1,7 @@
+@charset "gb2312";
+/* CSS Document
+ 字体风格font-style	  →  字体粗细font-weight  →  字体大小font-size → 字体类型 font-family
+ */
+body{
+    font-family: Times,"Times New Roman", "楷体";
+}
