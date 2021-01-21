@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象</title>
+    <script>
+        var a = {x:1}
+        var ownPropertyDescriptor = Object.getOwnPropertyDescriptor(a,'x');
+        /** 默认值：
+             configurable: true
+             enumerable: true
+             value: 1
+             writable: true
+         */
+        console.log(ownPropertyDescriptor)
+
+        Object.defineProperty(a,'y',{value:2,writable:false,enumerable:false,configurable:true});
+        a.y=3;
+        console.log(a.y);             //输出2
+
+        Object.defineProperty(a,'y',{value:3,writable:false });
+        console.log(a.y);             //输出3
+
+       /* var obj = {x:1};
+        alert(obj.y);//undefined
+        obj.y.z =2; //Uncaught TypeError: Cannot set property 'z' of undefined
+
+*/
+        var a = {age: 1}; // a ---> Object.prototype ---> null
+        var b = Object.create(a);// b ---> a ---> Object.prototype ---> null
+        /**
+         * {}体的结构如下：
+         * {//b对象体
+         *   __proto__:{ //b函数的原型：a
+         *                  age: 1
+         *                  __proto__: Object //a函数的原型Object，里面有 toString，valueOf等属性可被继承类使用
+         *                          {
+         *                              toString: ƒ toString(),
+         *                              valueOf: ƒ valueOf()
+         *                          }
+         *               }
+         * }
+         *
+         *
+         */
+        console.log(b); // 1 (继承而来)
+        console.log(b.age); // 1 (继承而来)
+        var c = Object.create(b);
+        // c ---> b ---> a ---> Object.prototype ---> null
+
+       /* var myFunction = function () {}
+        myFunction.prototype = {
+            cons:myFunction,name:"战三"}
+
+        var myFunction1 =new myFunction() ;
+        myFunction1.age =22
+        console.log(myFunction);//输出myFunction
+        console.log(myFunction1);//输出myFunction*/
+
+       /* var user = new Object();
+        user.name = "a";
+        user["age"] = 21;
+        user.say=function(){
+            alert("haha!");
+        }
+        console.log(user);//输出Object {name: "a", age: 21,say: ƒ}}
+*/
+
+       /* var s = {
+            "":88, "p":99
+        };
+        alert(s[""]);
+
+        var book = {
+            "a":"a",
+            author:{firstname:"F",secondname:"S"} //怎么访问book中author的firstname属性的第一个属性？
+        }
+        alert(book.author.firstname);
+        alert(book["author"]["firstname"]);*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

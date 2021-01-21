@@ -1,0 +1,271 @@
+1.什么是对象
+    JavaScript对象就是带有属性和方法的特殊数据类型。对一系列属性和方法的封装。
+    JS支持对象：内置对象，用户自定义对象，浏览器对象（BOM），文档对象（DOM）
+    JS对象特点：封装、继承。
+
+2. 创建对象
+2.1 JavaScript创建对象的方式有三种：字面量方式、new运算符、Object.create()。
+
+2.2 字面量(JSON)的方式创建对象
+    对象字面量提供了一种非常方便创建对象的方法。一个对象字面量就是一个花括号括起来的一系列键值对。键值对由属性名和属性值构成。
+    属性名：可以是JavaScript标识符也可以是字符串直接量(包括空字符串)。
+    属性的值：可以是任意类型的JavaScript表达式，表达式的值(可以是原始值也可以是对象值)，就是这个属性的值。
+
+    var e = {}
+    var point = {x:0,y:0}
+    var point2 = {x:point.x,y:point.y+1}
+    var obj = {a:27, "b":99};
+    var s = {"":88, "p":99}; // 怎么访问s的第一个属性？  alert(s[""]);
+    var book = {
+        "a":"a",
+        //怎么访问book中author的firstname属性的第一个属性？  alert(book.author.firstname); alert(book["author"]["firstname"]);
+        author:{firstname:"F",secondname:"S"}
+    }
+
+2.3 new运算符创建对象
+    2.3.1  通过new Object()创建对象
+           方法：new运算符后面跟随一个对象类型的标识符（构造函数）。
+            function Object(){} //对象其实就是一个函数，只是首字母大写来让其看起来更像是对象
+
+            var user = new Object();
+            //既可以通过 ".属性名" 的形式，也可以通过 ["属性名"]的形式，来访问或设置属性值。
+            user.name = "a";
+            user["age"] = 21;
+            user.say=function(){
+                alert(“haha!”);
+            }
+            console.log(user); //输出Object {name: "a", age: 21,say: ƒ}}
+
+            var myString = new String('abc');
+            console.log(myString); //输出 String {0: "a", 1: "b", 2: "c", length: 3}
+
+2.4 通过自定义构造函数
+     //自定义了Person()构造函数
+     var Person = function(name, age,) {
+        this.name = name;
+        this.age = age;
+        this.say = function(){
+            alert(“haha!”);
+     };
+     //使用自定义构造函数，创建了一个person对象；
+    var myPerson = new Person(“yangmengmeng”, 21);
+    console.log(myPerson);
+
+3. 通过Object.create()创建对象（对象的继承）
+   3.1 原型的概念
+          * 每一个JavaScript对象都有一个prototype属性，会和另一个对象相关联，被关联的对象就是原型对象。
+          * 原型的意思就是每一个对象都从原型继承属性和方法。(先从本对象中查找，找不到的时候从原型对象中查找)。
+          * 原型链：
+              每个对象都有一个内部属性prototype，我们通常称之为原型。原型的值可以是一个对象，也可以是null。
+              (其实：在函数中体现为prototype属性，而在new出来的对象中则体现为 __proto__ 属性)
+              如果原型的值是一个对象，则这个对象也一定有自己的原型，这样就形成了一条线性的链，我们称之为原型链。
+          * 由于prototype属性是一个对象，因此原型链查找到最后是Object.prototype。
+          * 默认的prototype 属性是Object()对象。通过new  String()创建的对象的原型就是String.prototype
+          * 当访问一个对象的某一属性，如果这个属性在此对象中不存在，就在它的prototype属性所指的原型对象的属性中寻找，
+           如果找到则返回，否则继续沿着prototype链一直找下去，直到prototype为null的时候停止。
+
+   3.2 Object.create
+        可以调用这个方法来创建一个新对象。
+      * 新对象的原型就是调用create方法时传入的第一个参数
+      * 如果想创建一个没有原型的新对象，可以传入参数null，新创建的对象不会继承任何东西，甚至不包括基础方法，比如toString()
+        var d = Object.create(null); // d ---> null
+      * 如果想创建一个普通的空对象(比如通过{}或new  Object()创建的对象)，需要传入  Object.prototype
+        var obj = Object.create(Object.prototype)
+      * 实例：
+           var a = {age: 1}; // a ---> Object.prototype ---> null
+           var b = Object.create(a);// b ---> a ---> Object.prototype ---> null
+           /**
+            * {}体的结构如下：
+            * {//b对象体
+            *   __proto__:{ //b函数的原型：a
+            *                  age: 1
+            *                  __proto__: Object //a函数的原型Object，里面有 toString，valueOf等属性可被继承类使用
+            *                          {
+            *                              toString: ƒ toString(),
+            *                              valueOf: ƒ valueOf()
+            *                          }
+            *               }
+            * }
+            *
+            *
+            */
+           console.log(b); // 1 (继承而来)
+           console.log(b.age); // 1 (继承而来)
+           var c = Object.create(b);
+           // c ---> b ---> a ---> Object.prototype ---> null
+
+4. 各种创建对象的方式优劣比较
+（1） 工厂方式
+      每创建一个对象，对象的方法是新对象，浪费资源
+        function createObject(name){
+       var p = new Object();
+       
+              p.name=name;
+       p.say = function(){
+                 alert(p.name+'ff');
+              }
+       return p;
+        }
+        var p1 = createObject("p1");
+        var p2 = createObject("p2");
+        alert(p1.name+" "+p2.name);
+        p1.say(); p2.say();
+        alert(p1.say==p2.say); //false
+（2）构造函数方式
+     创建对象时比工厂方法更易于理解。和工厂方法一样，每个对象都有自己的方法，浪费资源。
+        function Person(name){
+            this.name = name;
+            this.say = function(){
+                 alert("I am "+this.name);
+            }
+        }
+        var p1 = new Person("wang");
+        var p2 = new Person("li");
+        p1.say(); p2.say();
+        alert(p1.say==p2.say); //false
+
+ （3）原型方式
+       缺点：无法在构造方法中传递参数，所有对象共享属性。优点：对象共方法，节约资源。
+
+        function Person(){}
+
+        Person.prototype.name = "";
+        Person.prototype.say = function(){
+            alert("I am "+this.name);
+        }
+        var p1 = new Person();
+        var p2 = new Person();
+        alert(p1.say == p2.say);//true
+
+ （4）构造方法+原型方式 (也比较常用)
+       优点：解决了前面提到的问题。缺点：封装不够完美。
+        function Person(name){
+          this.name = name;
+        }
+        Person.prototype.say = function(){
+            alert("I am "+this.name);
+        }
+        var p1 = new Person("wang");
+        var p2 = new Person("li");
+        p1.say();
+        p2.say();
+        alert(p1.say==p2.say); //true
+ 
+ （5）动态原形方式(完美方案)
+        function Person(name){
+            this.name = name;
+            if(Person.prototype.say == undefined){
+           Person.prototype.say = function(){
+                        alert("I am "+this.name);
+           }
+        }
+        }
+        var p1 = new Person("wang");
+        var p2 = new Person("li");
+        p1.say();
+        p2.say();
+        alert(p1.say==p2.say); //true
+
+5. 对象的属性访问
+    5.1 访问对象的属性和设置对象的属性可以使用"点运算符" 或 "方括号运算符" ，比如：
+        var obj = {x:2,y:3};
+        //访问
+        obj.x;
+        obj["y"];
+        //赋值
+        obj["x"] = 4;
+        obj.y = 5;
+
+    5.2 这两种方式的不同之处是方括号内还可以是一个计算结果为字符串的表达式
+        var obj = {y1:1,y2:2};
+        var i = 1, n = 2;
+        for(;i<n;i++){
+          console.log(obj['y’+i]);
+        }
+
+    5.3 如果读取undefined上的属性，则会出现属性读写异常。
+       var obj = {x:1};
+       alert(obj.y);//undefined
+       obj.y.z =2; //Uncaught TypeError: Cannot set property 'z' of undefined
+    5.4 可以先对对象进行判断，再访问其属性，
+        例如：
+        if(obj.y) {
+          var yz = obj.y.z;
+        }
+
+6. 删除属性
+   6.1 delete运算符用来删除一个属性的定义，delete的返回值不是表示删除成功了，而是表示没有这个属性了。
+       var obj = new Object();
+       obj.name='zs';
+
+       delete obj.name;// 输出true   表示没有这个属性了
+       obj.name;       // 输出undefined
+       delete obj.name//输出true;    表示没有这个属性了
+
+   6.2 delete只是断开属性和宿主对象的联系，而不会在内存中删除该属性。
+       var a = {};
+       a.b = {x:1,y:2};
+
+       var c = a.b;
+       delete a.b;
+       console.log(c.x);//输出1
+
+7. 检测属性
+   7.1 有时我们需要对属性做一些检测：
+       * 对象是否拥有某个属性
+       * 这个属性是对象自己的还是原型对象的
+       * 这个属性是否可以枚举等。
+   7.2 属性不仅包含标识它们可枚举的特性，还包括它们是否可写、可配置的特性。
+       可枚举特性:控制着当使用for/in遍历对象的属性时是否可以遍历该属性，
+       可配置性:控制着其他特性（包括属性是否可以删除）的修改。
+
+       示例：
+           var cat = new Object();
+           cat.legs = 4;
+           cat.name = "tom";
+
+           // in检查原型链中是否包含此属性
+           //是否包含属性
+           'legs' in cat;//true
+           'abc' in cat;//false
+           //在cat对象的 父对象Object中存在
+           "toString" in cat;//true
+
+           // hasOwnProperty检查当前对象是否包含此属性
+           cat.hasOwnProperty('legs');//true
+           cat.hasOwnProperty('toString');//false
+
+           //propertyIsEnumerable 判断某属性是否可被枚举，其实判断本对象是否包含此属性
+           cat.propertyIsEnumerable('legs');//true
+           cat.propertyIsEnumerable('toString');//false
+
+   7.3 语法： Object. getOwnPropertyDescriptor()
+       如果想查看属性是否可枚举、可写、可配置，可以使用Object. getOwnPropertyDescriptor()方法得到对属性的描述信息。
+       默认情况下，属性的可枚举、可写、可配置都是false。
+
+   7.4 语法：Object.getOwnPropertyDescriptor(obj,prop)
+            如果想设置属性是否可枚举、可写、可配置，可以使用Object.defineProperty ()方法.
+
+   7.5 语法：
+        Object.defineProperty(obj,prop,descriptor)
+            obj——对象
+            prop——需要定义或修改的属性名
+            descriptor——是一个对象，描述需要被定义或修改的属性。
+
+        示例：
+            var a = {x:1}
+            var ownPropertyDescriptor = Object.getOwnPropertyDescriptor(a,'x');
+            /** 默认值：
+                 configurable: true
+                 enumerable: true
+                 value: 1
+                 writable: true
+            */
+            console.log(ownPropertyDescriptor)
+
+            Object.defineProperty(a,'y',{value:2,writable:false,enumerable:false,configurable:true});
+            a.y=3;
+            console.log(a.y);             //输出2
+
+            Object.defineProperty(a,'y',{value:3,writable:false });
+            console.log(a.y);             //输出3

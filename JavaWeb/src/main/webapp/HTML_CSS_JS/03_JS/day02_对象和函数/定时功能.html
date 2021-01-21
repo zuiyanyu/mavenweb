@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时</title>
+    <script>
+        var num = 0;								//设置起始秒
+        var max = 5;								//设置最终秒
+        var tmp ;
+        var interval = setInterval(function () {					//间歇调用
+            num++;								    //递增num
+            if (num == max) {						//如果得到5秒
+                console.log("this = "+this) //this = [object Window]
+
+                clearInterval(this);				//取消间歇调用，this表示setInterval方法本身
+                alert('5秒后弹窗！');
+            }
+        }, 1000);									//1秒
+
+        console.log("interval = "+interval) //interval = 1
+    </script>
+</head>
+<body>
+
+</body>
+</html>

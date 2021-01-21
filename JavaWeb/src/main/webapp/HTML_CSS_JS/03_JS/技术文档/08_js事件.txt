@@ -1,0 +1,235 @@
+JavaScript事件
+JavaScript事件是由访问Web页面的用户引起的一系列操作，例如：用户点击。当用户执行某些操作的时候，再去执行一系列代码。
+
+1. 事件介绍
+    1.1 事件一般是用于浏览器和用户操作进行交互。
+    1.2 JavaScript有三种事件模型（绑定方式）：
+        内联模型（标签行内添加事件）、脚本模型（在JavaScript代码内动态添加）、DOM2模型（ 添加事件监听：addEventListenner() ）。
+
+2. 内联模型（标签行内绑定事件）
+   这种模型是最传统简单的一种处理事件的方法。
+   在内联模型中，事件处理函数是HTML标签的一个属性，用于处理指定事件。虽然内联在早期使用较多，但它是和HTML混写的，并没有与HTML分离。
+
+   实例：
+       //在HTML中把事件处理函数作为属性，执行JS代码
+       <input type="button" value="按钮" onclick="alert('Haha!');"  />		//注意单双引号
+
+       //在HTML中把事件处理函数作为属性，执行JS函数
+       <input type="button" value="按钮" onclick="show();"/>			//执行JS的函数
+
+3. 脚本模型（JavaScript代码内绑定事件，也是用的最多的）
+   由于内联模型违反了HTML与JavaScript代码层次分离的原则。为了解决这个问题，我们可以在JavaScript中处理事件。这种处理方式就是脚本模型。
+
+   实例：
+        var input = document.getElementsByTagName('input')[0];		//得到input对象
+        input.onclick = function () {								//匿名函数执行
+            alert('Haha!');
+        };
+       PS：通过匿名函数，可以直接触发对应的代码。也可以通过指定的函数名赋值的方式来执行函数(赋值的函数名不要跟着括号)。
+        function show(){
+                alert('Haha!');
+        }
+       input.onclick = show;	//把函数引用赋值给事件处理函数
+
+4.第三种绑定方式
+  通过添加事件监听的方式：非IE用addEventListenner(),  IE用attachEvent()
+  4.1 事件流
+        1）事件流是描述从页面接受事件的顺序：
+                当几个都具有事件的元素层叠在一起的时候，那么你点击其中一个元素，并不是只有当前被点击的元素会触发事件，
+                而层叠在你点击范围的所有元素都会触发事件。
+        2）事件流包括两种模式：冒泡和捕获
+            那么现在的浏览器默认情况下都是冒泡模型，而捕获模式则是早期的Netscape默认情况。
+            而现在的浏览器要使用DOM2级模型的事件绑定机制才能手动定义事件流模式。
+        3）事件捕获，是从外往里逐个触发。
+        4）事件冒泡：是从里往外逐个触发
+  4.2 冒泡事件的两种绑定方式
+    4.2.1  传统方式绑定事件：脚本模型
+        window.onload=function (ev) {
+            /*1. 冒泡事件：从里到外触发事件
+              2. 这是传统方式绑定事件:在一个元素上直接绑定方法.
+              3. 这种传统方式在一个元素一次只能绑定一个事件函数
+            * */
+            document.onclick = function () {
+                alert('6.我是document');
+            };
+            document.documentElement.onclick = function () {
+                alert('5.我是html');
+            };
+            document.body.onclick = function () {
+                alert('4.我是body');
+            };
+            document.getElementById('div1').onclick = function () {
+                alert('3.我是div');
+            };
+            document.getElementsByTagName('input')[0].onclick = function () {
+                alert('2.我是input');
+            };
+
+            //这样的绑定只会在事件冒泡中运行，事件捕获中不行。一个元素一次只能绑定一个事件函数.
+            //这是传统的事件绑定， 它非常简单而且稳定，适应不同浏览器。
+            document.getElementById("bt").onclick = function(e){  //参数e可以不写，e 表示事件
+                alert("1. haha!");
+                alert(this.id)  //this 指向当前元素
+                alert(e.currentTarget.name);
+            }
+        }
+
+        <div id="div1">
+            <input type="button" id="bt" name="bt button" value="this is a button">
+        </div>
+    4.2.2 addEventListener()函数 方式绑定冒泡事件
+        见下方 4.3 addEventListener()函数
+  4.3 addEventListener()函数 方式绑定冒泡事件
+        1) W3C 中推荐使用的事件绑定是用 addEventListener()函数。
+           IE浏览器不支持 addEventListener()函数，只在 IE9以上(包括 IE9)可以使用。
+           IE 浏览器相应的要使用 attachEvent()函数代替，支持全系列的 IE，非IE不支持attachEvent()函数
+
+        2) 这种方式可以在一个元素上绑定多个相同事件。
+           对同一元素的同一个类型事件做绑定不会覆盖， 会全部生效
+           执行顺序是：按照代码书写顺序
+
+        3）种绑定同时支持捕获和冒泡
+        4）语法结构：addEventListener(eventName,eventFunction,useCapture)
+           参数说明：
+                该方法接受三个参数：事件名称，事件处理函数，处理机制（是冒泡还是捕捉）。
+                第三个参 数是useCapture, 一个bool类型。当为false时为冒泡获取(由里向外)，true为capture捕获方式(由外向里)。
+        5) 实例
+        window.onload=function (ev) {
+            var bt = document.getElementById("bt");
+
+            bt.addEventListener('click',function(e){
+                alert("click once");
+                alert(e.currentTarget.name);
+            },false);
+            //这种方式可以将一个事件触发多次
+            bt.addEventListener('click',function(e){
+                alert("click twince");
+                alert(e.currentTarget.name);
+            },false);
+        }
+        <input type="button" id="bt" name="bt button" value="this is a button">
+  4.4 事件处理三部分组成
+        4.4.1 事件对象，他们可以帮你处理鼠标事件和键盘敲击方面的情况
+        4.4.2 事件处理的三部分组成：
+              事件处理三部分组成：对象.事件处理函数=函数。例如：单击文档任意处。
+                    document.onclick = function () {
+                        alert('Lee');
+                    };
+                    除了用匿名函数的方法作为被执行的函数，也可以设置成独立的函数。
+                    	document.onclick = box;	 //直接赋值函数名即可，无须括号
+                    	function box() {
+                    		alert('Lee');
+                    	}
+              以上程序中：
+                   click表示一个事件类型，单击。
+                   onclick表示一个事件处理函数或绑定对象的属性(或者叫事件监听器、侦听器)。
+                   document表示一个绑定的对象，用于触发某个元素区域。
+                   function()匿名函数是被执行的函数，用于触发后执行。
+  4.5 this关键字和上下文
+        1）this是Javascript语言的一个关键字。它代表函数运行时，自动绑定的一个内部对象，只能在函数内部使用。
+        2）随着函数使用场合的不同，this的值会发生变化。
+        3）但是有一个总的原则，那就是this指的是，调用函数的那个对象。（绝对的）
+           在一个对象里，由于作用域的关系，this一般代表着离它最近对象。(但是也不是任何时候都绝对的指向最近对象(见04_js函数部分))。
+            var input = document.getElementsByTagName('input')[0];
+            input.onclick = function () {
+                alert(this.value);					//HTMLInputElement，this表示input对象
+            };
+  4.6 事件对象的获取
+      那么事件对象是什么？它在哪里呢？
+      1）事件对象是什么：
+          当触发某个事件时，会产生一个事件对象，这个对象包含着所有与事件有关的信息。
+          包括导致事件的元素、事件的类型、以及其它与特定事件相关的信息。
+
+      2）事件对象在哪里：
+         a. 事件对象，我们一般称作为event对象，这个对象是浏览器通过函数把这个对象作为参数传递过来的。
+         b. 我们就验证一下，在执行函数中没有传递参数，是否可以得到隐藏的参数:
+             function box() {							//普通空参函数
+                    alert(arguments.length);					//0，没有得到任何传递的参数
+                }
+
+             input.onclick = function () {					//事件绑定的执行函数
+                    alert(arguments.length);					//1，得到一个隐藏参数
+         	  };
+         c. 事件对象的获取方式：
+            通过上面两组函数中，我们发现，通过事件绑定的执行函数是可以得到一个隐藏参数的。
+         	说明，浏览器会自动分配一个参数，这个参数其实就是event对象。
+                input.onclick = function () {
+                    alert(arguments[0]); //MouseEvent，鼠标事件对象
+                };
+
+            上面这种做法比较累，那么比较简单的做法是，直接通过接收参数来得到即可。
+                input.onclick = function (evt) {	 //接受event对象，名称不一定非要evt
+            		alert(evt);					 //MouseEvent，鼠标事件对象
+            	};
+            -----------------------------------------------------
+            IE的兼容问题：
+            直接接收event对象，是W3C的做法，IE不支持，IE自己定义了一个event对象，直接在window.event获取即可。
+                input.onclick = function (evt) {
+                    var e = evt || window.event; //实现跨浏览器兼容获取event对象
+                    alert(e);
+                };
+
+            W3C中的target和IE中的srcElement，都表示事件的目标。
+            function getTarget(evt) {
+            	var e = evt || window.event;
+            	return e.target || e.srcElement;	//兼容得到事件目标DOM对象
+            }
+
+            document.onclick = function (evt) {
+                var target = getTarget(evt);
+                alert(target);
+            };
+  4.7 事件event对象的属性和方法
+         在标准的DOM事件中，event对象包含与创建它的特定事件有关的属性和方法。
+         触发的事件类型不一样，可用的属性和方法也不一样。
+
+                           W3C中event对象的属性和方法
+         属性/方法	            类型	     读/写	    说明
+         bubbles	            Boolean     只读	    表明事件是否冒泡
+         cancelable	            Boolean	     只读	    表明是否可以取消事件的默认行为
+         currentTarget	        Element	     只读	    其事件处理程序当前正在处理事件的那个元素,等价this
+         detail	                Integer	     只读	    与事件相关的细节信息
+         eventPhase         	Integer	     只读	    调用事件处理程序的阶段：1表示捕获阶段，2表示“处理目标”，3表示冒泡阶段
+         preventDefault()	    Function	 只读 	    取消事件的默认行为。如果cancelabel是true，则可以使用这个方法
+         stopPropagation()	    Function	 只读	    取消事件的进一步捕获或冒泡。如果bubbles为true，则可以使用这个方法
+         target             	Element	     只读	    事件的目标
+         type	                String	     只读	    被触发的事件的类型
+         view	               AbstractView	 只读	    与事件关联的抽象视图。等同于发生事件的window对象
+        ----------------------------------------------------------------------------
+         IE中event对象的属性
+         属性	            类型	    读/写	说明
+         cancelBubble	    Boolean	    读/写	默认值为false，但将其设置为true就可以取消事件冒泡
+         returnValue	    Boolean	    读/写	默认值为true， 但将其设置为false就可以取消事件的默认行为
+         srcElement     	Element	    只读	事件的目标
+         type	            String	    只读	被触发的事件类型
+         target         	Element	    	    返回触发此事件的元素（事件的目标节点）
+         currentTarget	    Element	    	    返回其事件监听器触发该事件的元素。
+         eventPhase			                    返回事件传播的当前阶段。
+
+
+5. 事件处理函数
+    5.1 JavaScript事件处理函数及其使用列表
+        PS：所有的事件处理函数都会都有两个部分组成，on + 事件名称，例如click事件的事件处理函数就是：onclick。
+            对于每一个事件，它都有自己的触发范围和方式，如果超出了触发范围和方式，事件处理将失效。
+
+        事件处理函数	             影响的元素	                         何时发生
+        onabort                 	 图像	                             当图像加载被中断时
+        onblur	                    窗口、框架、所有表单对象	          当焦点从对象上移开时
+        onchange	                输入框，选择框和文本区域	          当改变一个元素的值且失去焦点时
+        onclick	                    链接、按钮、表单对象、图像映射区域	  当用户单击对象时
+        ondblclick	                链接、按钮、表单对象	              当用户双击对象时
+        ondragdrop              	窗口	                              当用户将一个对象拖放到浏览器窗口时
+        onError	                    脚本	                              当脚本中发生语法错误时
+        onfocus	                    窗口、框架、所有表单对象	           当单击鼠标或者将鼠标移动聚焦到窗口或框架时
+        onkeydown	                文档、图像、链接、表单	               当按键被按下时          当用户按下键盘上任意键触发，如果按住不放，会重复触发。
+        onkeypress	                文档、图像、链接、表单	               当按键被按下然后松开时  当用户按下键盘上的字符键触发，如果按住不放，会重复触发。
+        onkeyup	                    文档、图像、链接、表单	               当按键被松开时          当用户释放键盘上的键触发。
+        onload	                    主题、框架集、图像	                   文档或图像加载后
+        onunload	                主体、框架集	                       文档或框架集卸载后
+        onmouseout	                链接	                               当图标移除链接时
+        onmouseover	                链接	                               当鼠标移到链接时
+        onmove	                    窗口	                               当浏览器窗口移动时
+        onreset                 	表单复位按钮	                       单击表单的reset按钮
+        onresize	                窗口	                               当选择一个表单对象时
+        onselect	                表单元素	                           当选择一个表单对象时
+        onsubmit	                表单	                               当发送表单到服务器时

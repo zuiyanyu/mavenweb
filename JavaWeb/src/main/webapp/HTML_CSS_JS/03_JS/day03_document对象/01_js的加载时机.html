@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的加载时机</title>
+    <script>
+       /*
+            运行结果分析：运行页面执行顺序为：
+                 1. null
+                 2. [object HTMLDivElement]
+                 3. [object HTMLDivElement]
+             说明js的执行顺序是从上到下依次加载执行的，而window.onload()是在html加载完毕后再执行的
+        */
+        var elementById = document.getElementById("box");
+        console.log("1. " + elementById)
+
+        window.onload=function() {
+            var elementById3 = document.getElementById("box");
+            console.log("3. " + elementById3)
+
+            // var elementsByTagName = document.getElementsByTagName('div');
+            // console.log("4. " + elementsByTagName)
+            // console.log("5. " + elementsByTagName[0])
+            //
+            // //根据name属性获取
+            // var elementsByName = document.getElementsByName('box');
+            // console.log("6. " + elementsByName)
+            // console.log("7. " + elementsByName[0])
+        }
+    </script>
+</head>
+<body>
+    <div id="box" class="box" name="box"></div>
+</body>
+</html>
+<script>
+    var elementById2 = document.getElementById("box");
+    console.log("2. " + elementById2)
+</script>

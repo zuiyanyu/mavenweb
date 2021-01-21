@@ -1,0 +1,54 @@
+1. JavaScript组成
+    虽然JavaScript和ECMAScript通常被人们用来表达相同的含义，但JavaScript的含义却比ECMA-262中规定的要多得多。
+
+    一个完整的JavaScript应该由三个不同的部分组成:  ECMAScript  +  DOM模型 +  BOM模型
+
+
+2. ECMAScript
+   ECMAScript定义的只是 JS的语法基础：语法、类型、语句、关键字、保留字、操作符、对象等。
+
+3. DOM模型：文档对象模型
+   3.1 文档对象模型(DOM，Document Object Model)是针对XML，但经过扩展用于HTML的应用程序编程接口(API，Application Programming Interface)。
+   3.2 描述了处理网页内容的方法和接口 ；
+   3.3 DOM 将把整个页面规划成由节点层级构成的文档： 定义了HTML标签的层级结构  <html>   <body> <h>  <meta> 等
+
+4.BOM模型 ：浏览器对象模型
+  4.1 访问和操作浏览器窗口的浏览器对象模型(BOM，Browser Object Model)
+  4.2 开发人员使用BOM可以控制浏览器显示页面以外的部分。
+      描述了与浏览器进行交互的方法和接口，主要处理浏览器窗口和框架.
+  4.3 不过通常浏览器特定的 JavaScript 扩展都被看做 BOM 的一部分。
+      这些扩展包括：弹出新的浏览器窗口、移动、关闭浏览器窗口以及调整窗口大小、
+      提供 Web 浏览器详细信息的定位对象 、提供用户屏幕分辨率详细信息的屏幕对象 、对 cookie 的支持等
+
+==================
+5. JavaScript在网页中的插入方法
+ 5.1、<script>标记: <script>xxx</script>标签，是用于在html页面中插入js的主要方法。
+ 它主要有以下几个属性：
+ 属性名        	属性值	                         说明
+ type	        type="text/javascript"	        必需。表示代码使用的脚本语言的内容类型。
+ src		    可选。                         表示包含要执行代码的外部文件。
+ charset		可选。                         表示通过src属性指定的字符集。由于大多数浏览器忽略它，所以很少有人用它。
+
+5.2 JavaScript在网页中的插入方法有两种：1、在网页上直接插入JS代码2、引入JS外部文件。
+5.3 引入JS外部文件 ：
+    <script type="text/javascript" src="demo1.js"> </script>
+    注意：a. 不能用单标签<script/>  b. 不能在里面添加任何代码
+
+6. <script>标签的位置
+   6.1 按照常规，我们会把<script>标签存放到<head>...</head>之间。但有时也会放在body之间。
+
+   6.2 如果把所有JS文件放在<head>元素中，意味着必须等到全部JS代码都被下载、解析、执行完成后，才开始呈现页面内容.
+       浏览器在遇到<body>标签时才开始呈现内容；
+       对于那些需要很多JS代码的页面，会导致延迟且等待期间浏览器一片空白。
+
+   6.3 但又不能将所有的script放在body之后:
+       因为有一些页面的效果的实现，是需要预先动态的加载一些js脚本。所以这些脚本应该放在<body>之前。
+
+   6.4 所以应该遵循：
+      需要调用时才执行的js脚本放在<body>后，当页面被加载时需立即执行来完成页面效果的js代码应放在<head>中。
+
+==============================
+7、如何调试JavaScript代码
+（1）主流浏览器现在都带有一个运行JavaScript的控制台（IE、Chrome、Firefox），在控制台中输出日志console.log ——在控制台显示
+（2）alert——弹出对话框
+（3）document.write——在浏览器页面内显示

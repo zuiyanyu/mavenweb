@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addEventListener()函数</title>
+    <script>
+ /*       语法结构：addEventListener(eventName,eventFunction,useCapture)
+        参数说明：addEventListener方法。该方法接受三个参数：事件名称，事件处理函数，处理机制（是冒泡还是捕捉）。
+        第三个参 数是useCapture, 一个bool类型。当为false时为冒泡获取(由里向外)，true为capture方式(由外向里)。*/
+
+        window.onload=function (ev) {
+            var bt = document.getElementById("bt");
+
+            bt.addEventListener('click',function(e){
+                alert("click once");
+                alert(e.currentTarget.name);
+            },false);
+            //这种方式可以将一个事件触发多次
+            bt.addEventListener('click',function(e){
+                alert("click twince");
+                alert(e.currentTarget.name);
+            },false);
+        }
+    </script>
+</head>
+<body>
+<input type="button" id="bt" name="bt button" value="this is a button">
+
+</body>
+</html>

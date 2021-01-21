@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var b = 30 ;
+        alert(b);
+
+        var myfunc = function(a){
+            console.log("this1 = " + this) ;// this1 = [object Object]
+            this.b = a;
+        };
+        myfunc(20)
+        alert(b);
+
+        //重写构造器函数
+        myfunc.prototype = {
+            constructor :myfunc,
+            //定义每个函数实例共享的数据
+            b:8888,
+            c:333,
+            show:function(){
+                console.log("this2 = " + this) ; //this2 = [object Object]
+
+                console.log("this2.a = " + this.a);// this2.a = undefined
+                //先从this实例中查找 b属性:10000，如果没有再从当前对象中查找b属性值：8888
+                console.log("this2.b = " + this.b);// this2.b = 10000
+                console.log("this2.c = " + this.c);// this2.c = 333
+
+            }
+        }
+        var newfunc = new myfunc("10000");
+        newfunc.show();
+        console.log("newfunc.c = "+newfunc.c); //newfunc.c = 333
+
+        alert(b);
+     </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>下拉菜单</title>
+		<style type="text/css">
+
+			.dropdown , .dropbtn , .dropdown-content
+			{
+				width:95px;
+			}
+			.dropdown , .dropbtn{
+				background-color:#4CAF50;
+				color:white;
+				font-size:16px;
+				border:none;
+				cursor:pointer;
+			}
+			.dropbtn{
+				padding:10px;
+			}
+			.dropdown-content{
+				display:none;
+				background-color:#f9f9f9;
+			}
+			.dropdown-content a{
+				color:black;
+				padding:12px 16px;
+				/*!*none*!*/
+				text-decoration:underline;
+				display:block;
+			}
+
+			/*鼠标悬浮dropdown上面的时候，dropdown-content变为块元素*/
+			.dropdown:hover .dropdown-content{
+				display:block;
+			}
+
+			/*鼠标悬浮dropdown上面的时候，dropbtn变为红色*/
+			.dropdown:hover .dropbtn{
+				background-color:red;
+			}
+
+			a:hover{
+				background-color:#f1f1f1;
+			}
+			/*.dropdown:hover .dropdown-content a{*/
+				/*display: inline;*/
+			/*}*/
+
+		</style>
+	</head>
+	<body>
+		<div class="dropdown">
+			<!--<span>Mouse over me</span>
+			<div class="dropdown-content">
+				<p>Hello World!</p>
+			</div>-->
+			<button class="dropbtn">下拉菜单</button>
+			<div class="dropdown-content">
+				<a href="#">教程1</a>
+				<a href="#">教程2</a>
+				<a href="#">教程3</a>
+			</div>
+		</div>
+
+	</body>
+</html>

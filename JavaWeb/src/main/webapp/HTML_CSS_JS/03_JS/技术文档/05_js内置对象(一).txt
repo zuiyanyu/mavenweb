@@ -1,0 +1,301 @@
+1. 数组
+    1.1 ECMAScript中的数组每个元素可以保存任何类型（基本类型、对象类型）。
+    1.2 ECMAScript中数组的大小也是可以调整的。
+        数组最多可包含4294967295个元素，超出即会发生异常。
+    1.3 创建数组
+        创建Array类型有两种方式：第一种是new运算符，第二种是字面量。
+        1.3.1 方式1：使用new关键字创建数组
+            var arr = new Array();					        //创建了一个数组
+            var arr = new Array(10);					    //创建一个包含10个元素的数组
+            var arr = new Array('Lee',21,'洛阳','体育');	//创建一个数组并分配好了元素
+
+        1.3.2 方式2：使用字面量方式创建数组
+              var arr = [];								//创建一个空的数组
+              var arr = [' Lee ',21,'洛阳','体育'];   //创建包含元素的数组
+
+        1.3.3 创建对象数组
+                var arr = [
+                                    {						//第一个元素是一个对象
+                                        name : ' Lee ',
+                                        age : 21,
+                                        run : function () {
+                                            return 'run了';
+                                        }
+                                    },
+
+                                    ['马云','李彦宏',new Object()],//第二个元素是数组
+                                    '江苏',					 //第三个元素是字符串
+                                    25+25,					 //第四个元素是数值
+                                    new Array(1,2,3)			 //第五个元素是数组
+                            ];
+                    alert(arr);
+
+    1.4 获取数组元素
+        使用索引下标来读取或设置数组的值
+            alert(arr[2]);								//获取第三个元素
+            arr[2] = '学生';							//修改第三个元素
+            arr[4] = '计算机编程';						//增加第五个元素
+    1.5 数组中常用的属性和方法
+        length属性：用来获取数组长度
+            var arr = ['Lee',21,'计算机编程'];			//字面量数组
+            alert(arr.length);
+    1.6  数组的方法
+        1.6.1 toString()方法
+                将数组转换成字符串
+                    var arr = ['Lee',21,'计算机编程'];			//字面量数组
+                    alert(arr.toString());
+
+        1.6.2 join()方法
+                把数组中所有元素放入一个字符串，通过指定的分隔符进行分隔。
+                    var arr = [''Lee'', 21, '计算机编程'];
+                    alert(arr.join('|'));							//'Lee'|21|计算机编程
+        1.6.3 push()方法 和 pop()方法
+              push()方法：在数组的末尾添加元素，并返回修改后数组的长度。
+              pop() 方法：则从数组末尾移除最后一个元素，减少数组的length值，然后返回移除的元素。
+
+                  var arr = [''Lee'', 21, '计算机编程'];		//字面量声明
+                  alert(arr.push('洛阳'));					//数组末尾添加一个元素，并且返回长度
+                  alert(arr);								//查看数组
+                  arr.pop();								//移除数组末尾元素，并返回移除的元素
+                  alert(arr);								//查看元素
+        1.6.4 shift()方法 和 unshift()方法
+               shift()方法：移除数组开头元素，并返回移除的元素
+               unshift()方法：为数组的前端添加一个元素。
+
+               PS：IE浏览器对unshift()方法总是返回undefined而不是数组的新长度。
+        1.6.5 重排序方法
+              数组中已经存在两个可以直接用来排序的方法：reverse()和sort()。
+
+              1) reverse() 逆向排序(注意把原数组也改变了)
+                  var arr = [1,2,3,4,5];					//数组
+                  alert(arr.reverse());					//逆向排序方法，返回排序后的数组
+                  alert(arr);								//源数组也被逆向排序了，说明是引用
+
+              2) sort() 从小到大排序（返回新数组，原数组不变）
+                  var arr = [4,1,7,3,9,2];						//数组
+                  alert(arr.sort());							//从小到大排序，返回排序后的数组
+                  alert(arr);									//源数组也被从小到大排序了
+
+              3) 比较器
+               * 如果调用sort()方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。
+                             (要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。)
+               * 如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。
+                 比较函数应该具有两个参数 a 和 b，如果是升序排序，其返回值如下：
+                   （1）若 a 小于 b，排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+                   （2）若 a 等于 b，则返回 0。
+                   （3）若 a 大于 b，则返回一个大于 0 的值。
+               实例：
+                   function sortNumber(a,b){
+                    return a - b
+                   }
+                   var arr = new Array(6)
+                       arr[0] = "10"
+                       arr[1] = "5"
+                       arr[2] = "40"
+                       arr[3] = "25"
+                       arr[4] = "1000"
+                       arr[5] = "1"
+                   document.write(arr + "<br />")
+                   document.write(arr.sort(sortNumber))
+
+        1.6.6 concat()方法
+               基于当前数组创建一个新数组。
+               var arr = ['Lee', 21, '洛阳'];			//当前数组
+               var arr2 = arr.concat('计算机编程');	//创建新数组，并添加新元素
+               alert(arr2);								//输出新数组
+               alert(arr);								//当前数组没有任何变化
+
+        1.6.7 slice()  切片
+                基于当前数组获取指定区域[index1, index2)元素并创建一个新数组。
+                var arr = ['Lee', 21, '洛阳'];				//当前数组
+                var arr2 = arr.slice(1,3);					//arr.slice(1,3)
+                alert(arr2);								//21，洛阳
+                alert(arr);									//当前数组
+        1.6.8 splice() 拼接
+                用途：
+                        方法主要用途是向数组的中部插入元素。
+                语法结构:
+                        arrayObject.splice(index,howmany,item1,.....,itemX)
+                参数描述:
+                        index	必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+                        howmany	必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+                        item1, ..., itemX	可选。向数组添加的新项目。
+                返回值类型描述:
+                        Array	包含被删除项目的新数组，如果有的话。
+
+                使用实例：
+                   1） splice中的删除功能：
+                        var arr = [''Lee'', 21, '洛阳'];				//当前数组
+                        var arr2 = arr.splice(0,2);//splice(0,2)从第0个元素开始，往后数两个元素（Lee，21）
+                        alert(arr2);							//返回截取的元素
+                        alert(arr);								//当前数组被截取的元素被删除
+                   2）splice中的插入功能：
+                        var arr = [''Lee'', 21, '洛阳'];				//当前数组
+                        var arr2 = arr.splice(1,0,'计算机编程','江苏');	//没有截取，但插入了两条
+                   3）splice中的替换功能：
+                        var arr = ['''Lee''', 21, '洛阳'];				//当前数组
+                        var arr2 = arr.splice(1,1,100);					//截取了第2条，替换成100
+2. String对象
+    2.1 字符串对象用于处理已有的字符块。字符串也有length属性。
+    2.2 字符串中常用的方法
+    2.2.1 concat()方法
+        将两个或多个字符的文本组合起来，返回一个新的字符串。
+            var a = "hello";
+            var b = ",world";
+            var c = a.concat(b);
+            alert(c);							//c = "hello,world"
+
+    2.2.2 indexOf()方法
+        返回字符串中一个子串第一处出现的索引（从左到右搜索）。如果没有匹配项，返回-1。
+        var a = "hello";
+        var index1 = a.indexOf("l");			//index1 = 2
+        var index2 = a.indexOf("l",3);		//index2 = 3
+
+    2.2.3 charAt()方法
+        返回指定位置的字符。
+        var a = "hello";
+        var get_char = a.charAt(0);			//get_char = "h"
+
+    2.2.4 lastIndexOf方法
+        返回字符串中一个子串最后一处出现的索引（从右到左搜索），如果没有匹配项，返回 -1 。
+        var a = "hello";
+        var index1 = lastIndexOf('l');			//index1 = 3
+        var index2 = lastIndexOf('l',2)		//index2 = 2
+
+        PS：stringObject.lastIndexOf(searchvalue,fromindex) fromindex可选的整数参数。规定在字符串中开始检索的位置
+
+    2.2.5 substring()方法
+        返回字符串的一个子串，传入参数是起始位置和结束位置。（不包括结束位置）
+        var a = "hello";
+        var sub_string1 = a.substring(1);		//sub_string1 = "ello"
+        var sub_string2 = a.substring(1,4);	//sub_string2 = "ell"
+
+    2.2.6 substr()方法
+        返回字符串的一个子串，传入参数是起始位置和长度
+        var a = "hello";
+        var sub_string1 = a.substr(1);			//sub_string1 = "ello"
+        var sub_string2 = a.substr(1,4);		//sub_string2 = "ello"
+    2.2.7 slice()方法
+        提取字符串的一部分，并返回一个新字符串（与 substring 相同）。
+        var a = "hello";
+        var sub_string1 = a.slice(1);			//sub_string1 = "ello"
+        var sub_string2 = a.slice(1,4);			//sub_string2 = "ell"
+    2.2.8 split()方法
+        通过将字符串划分成子串，将一个字符串做成一个字符串数组。
+        var a = "hello";
+        var arr1 = a.split("");				//arr1 = [h,e,l,l,o]
+
+    2.2.9  length()方法
+        返回字符串的长度，所谓字符串的长度是指其包含的字符的个数。
+        var len = a.length();
+        var a = "hello";					//len = 5
+    2.2.10 toLowerCase()方法
+        将整个字符串转成小写字母。
+        var a = "hello";
+        var lower_string = a.toLowerCase();	//lower_string = "hello"
+    2.2.11 toUpperCase方法
+        将整个字符串转成大写字母。
+        var a = "hello";
+        var upper_string = a.toUpperCase();	//upper_string = "HELLO"
+    2.2.12 trim()方法
+        去除字符串两端的空格
+        var a = "  hello  ";
+        var b = a.trim();	//a = "hello"
+    2.2.13 replace()方法
+        替换匹配的字符串
+        var a = "hello  ";
+        var b = a.replace(“l”,”d”);	//a = "heddo"
+3. Math对象
+    3.1 为保存数学公式和信息提供了一个对象，即Math对象。与我们在JavaScript直接编写计算功能相比，Math对象提供的计算功能执行起来要快得多。
+    3.2 Math对象的属性:  Math对象包含的属性大都是数学计算中可能会用到的一些特殊值。
+        属  性	        说  明
+        Math.E	        自然对数的底数，即常量e的值
+        Math.LN10   	10的自然对数
+        Math.LN2	    2的自然对数
+        Math.LOG2E  	以2为底e的对数
+        Math.LOG10E 	以10为底e的对数
+        Math.PI	        π的值
+        Math.SQRT1_2	1/2的平方根
+        Math.SQRT2	    2的平方根
+
+    3.3 Math对象的方法
+        3.3.1  min()和max()方法
+             Math.min()用于确定一组数值中的最小值。Math.max()用于确定一组数值中的最大值。
+             alert(Math.min(2,4,3,6,3,8,0,1,3));				//最小值
+             alert(Math.max(4,7,8,3,1,9,6,0,3,2));			//最大值
+        3.3.2 舍入方法
+             Math.ceil()执行向上舍入，即它总是将数值向上舍入为最接近的整数；
+             Math.floor()执行向下舍入，即它总是将数值向下舍入为最接近的整数；
+             Math.round()执行标准舍入，即它总是将数值四舍五入为最接近的整数；
+             举例：
+                 alert(Math.ceil(25.1));						//26
+
+                 alert(Math.floor(25.9));						//25
+
+                 alert(Math.round(25.5));						//26
+                 alert(Math.round(25.1));						//25
+        3.3.3 random()方法
+             Math.random()方法返回介于0到1之间一个随机数，不包括0和1。
+             如果想大于这个范围的话，可以套用一下公式： 值 = Math.floor(Math.random() * 总数 + 第一个值)
+             示例：
+                     alert(Math.floor(Math.random() * 10 + 1));		//随机产生1-10之间的任意数
+                     for (var i = 0; i<10;i ++) {
+                        document.write(Math.floor(Math.random() * 10 + 5));		//5-10之间的任意数
+                        document.write('<br />');
+                     }
+                为了更加方便的传递想要范围，可以写成函数：
+                     function selectFrom(from, to) {
+                        var sum = to - from + 1;							//总数-第一个数+1
+                        return Math.floor(Math.random() * sum + from);
+                     }
+                     for (var i=0 ;i<10;i++) {
+                        document.write(selectFrom(5,10));					//直接传递范围即可
+                        document.write('<br />');
+                     }
+        3.3.4 其他方法
+             方  法	说  明
+             Math.abs(num)	        返回num的绝对值
+             Math.exp(num)	        返回Math.E的num次幂
+             Math.log(num)	        返回num的自然对数
+             Math.pow(num,power)	返回num的power次幂
+             Math.sqrt(num)	        返回num的平方根
+             Math.acos(x)	        返回x的反余弦值
+             Math.asin(x)	        返回x的反正弦值
+             Math.atan(x)	        返回x的反正切值
+             Math.atan2(y,x)	    返回y/x的反正切值
+             Math.cos(x)	        返回x的余弦值
+             Math.sin(x)	        返回x的正弦值
+             Math.tan(x)	        返回x的正切值
+
+4. Date类型
+   4.1 JavaScript中的Date类型是在Java中java.util.Date类基础上构建的，Date类型使用UTC 1970年1月1日午夜(零时)开始经过的毫秒来保存日期。
+
+   4.2 创建一个日期对象，使用new运算符和Date构造方法(构造函数)即可。
+       var date = new Date();					//创建一个日期对象
+       alert(date);
+   4.3 常用的方法
+       方法	说明
+       getDate()	    返回 Date 对象的一个月中的每一天，其值介于1～31之间
+       getDay()	        返回 Date 对象的星期中的每一天，其值介于0～6之间
+       getHours()	    返回 Date 对象的小时数，其值介于0～23之间
+       getMinutes()	    返回 Date 对象的分钟数，其值介于0～59之间
+       getSeconds()	    返回 Date 对象的秒数，其值介于0～59之间
+       getMonth()	    返回 Date 对象的月份，其值介于0～11之间
+       getFullYear()	返回 Date 对象的年份，其值为4位数
+       getTime()	    返回自某一时刻（1970年1月1日）以来的毫秒数
+
+   4.4 例子：
+       var box = new Date();
+       alert(box.getTime());					//获取日期的毫秒数
+       alert(box.getFullYear());			    //获取四位年份
+       alert(box.getMonth());					//获取月份，没指定月份，从0开始算起
+       alert(box.getDate());					//获取日期
+       alert(box.getDay());					    //返回星期几，0表示星期日，6表示星期六
+       alert(box.getHours());					//返回时
+       alert(box.getMinutes());					//返回分钟
+       alert(box.getSeconds());					//返回秒数
+
+       alert(box.setSeconds(44));				//设置秒数
+       alert(box.getMilliseconds());		    //返回毫秒数
+       alert(box.setMilliseconds());		    //设置毫秒数
+       alert(box.getTimezoneOffset());			//返回本地时间和UTC时间相差的分钟数

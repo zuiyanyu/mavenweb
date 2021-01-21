@@ -1,0 +1,467 @@
+1. BOM对象
+    1.1  BOM (Browser Object Model)也叫浏览器对象模型，它提供了很多对象，用于访问浏览器的功能。
+    1.2  BOM的核心对象是window，它表示浏览器的一个实例
+2. window对象 ：
+    2.1 BOM的核心对象是window，它表示浏览器的一个实例
+    2.2 window对象处于JavaScript结构的最顶层，对于每个打开的窗口，系统都会自动为其定义 window 对象。
+    2.3 从window.document已然可以看出，DOM的最根本的对象是BOM的window对象的子对象。
+
+    2.4 window对象的结构层次图
+    window对象下的对象： document、frames、hhistory、location、navigator、screen
+    document对象下的对象：anchors、forms、images、links、location
+
+    2.5 window对象的属性
+        window对象有一系列的属性，这些属性有些本身也是对象。
+        window对象的属性
+            属性 	            含义
+            closed	            当窗口关闭时为真
+            defaultStatus	    窗口底部状态栏显示的默认状态消息
+            document	        窗口中当前显示的文档对象
+            frames	            窗口中的框架对象数组
+            history	            保存有窗口最近加载的URL
+            length	            窗口中的框架数
+            location	        当前窗口的URL
+            name	            窗口名
+            offscreenBuffering	用于绘制新窗口内容并在完成后复制已存在的内容，控制屏幕更新
+            opener	            打开当前窗口的窗口
+            parent	            指向包含另一个窗口的窗口（由框架使用）
+            screen	            显示屏幕相关信息，如高度、宽度（以像素为单位）
+            self	            指示当前窗口。
+            status	            描述由用户交互导致的状态栏的临时消息
+            top	                包含特定窗口的最顶层窗口（由框架使用）
+            window	            指示当前窗口，与self等效
+
+
+    2.6 window对象的方法
+        window下的属性和方法，可以使用window.属性、window.方法()或者直接属性、方法()的方式调用。例如：window.alert()和alert()是一个意思。
+
+        方法	                    功能
+        alert(text)	                创建一个警告对话框，显示一条信息
+        focus()             	    将焦点移至窗口
+        blur()              	    将焦点从窗口移除
+        scroll(x,y)	                在窗口中滚动到一个像素点的位置
+        print()	                    调出打印对话框
+        find()	                    调出查找对话框
+
+        close()	                    关闭窗口
+        open(url,name,[options])	打开一个新窗口并返回新window对象
+        confirm()	                创建一个需要用户确认的对话框；点击确定，返回true ;点击取消返回false
+                                    var b = window.confirm();
+                                    console.log("confirm=" + b );
+
+        prompt(text,defaultInput)	创建一个对话框要求用户输入信息  prompt : 提示
+                                    用户输入的信息会当做返回值返回。
+                                    var prompt = window.prompt("请输入信息：", "hellow");
+                                    console.log(prompt);
+
+        setInterval(expression,milliseconds)	            经过指定时间间隔计算一个表达式
+        setInterval(function,millisenconds,[arguments])	经过指定时间间隔后调用一个函数（回调函数）
+        setTimeout(expression,milliseconds)	            在定时器超过后计算一个表达式
+        setTimeout(function,milliseconds,[arguments])	    在定时器超过时后计算一个函数（回调函数）
+        clearInterval(interval)	    清除之前设置的定时器间隔
+        clearTimeOut(timer)	        清除之前设置的超时
+
+    2.7 系统对话框
+        浏览器通过alert()、confirm()和prompt()方法可以调用系统对话框向用户显示信息。
+        1） 直接弹出警告
+            alert('Lee');
+
+        2） 确定和取消
+            var a=confirm('请确定或者取消');			//这里按哪个都无效
+            if (a) {
+                alert('您按了确定！');					//按确定返回true
+            } else {
+                alert('您按了取消！');					//按取消返回false
+            }
+
+        3） 输入提示框
+            var num = prompt('请输入一个数字', 0);		//两个参数，一个提示，一个默认值
+            alert(num);								    //返回值可以得到
+
+        4） 调出打印及查找对话框
+            print();									//打印
+
+
+    2.8 window.open()
+        导航/打开窗口，window.open()方法既可导航到特定URL，也可打开一个新的浏览器窗口。
+        示例：
+            window.open（“http://www.baidu.com”,”_parent”) ;
+            window.open（“http://www.baidu.com”,”_blank”) ;
+
+    2.9 超时调用(setTimeout)和间歇调用(setInterval)
+        JavaScript是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。
+        前者在指定的时间过后执行代码，而后者则是每隔指定的时间就执行一次代码。
+
+        1) setTimeout()方法：超时调用需要使用window对象的setTimeout()方法，它接受两个参数：要执行的代码和毫秒数的超时时间。
+            setTimeout("alert('Lee')", 1000);			//不建议直接使用字符串
+            function box() {
+            	alert('Lee');
+            }
+            setTimeout(box, 1000);						//直接传入函数名即可
+
+            setTimeout(function () {					//匿名函数，推荐做法
+            	alert('Lee');
+            }, 1000);
+
+        2) clearTimeout()方法：取消 setTimeout()的设置
+           调用setTimeout()之后，该方法会返回一个数值ID，表示超时调用。
+           这个超时调用的ID是计划执行代码的唯一标识符，可以通过它来取消超时调用。
+
+           要取消尚未执行的超时调用计划，可以调用clearTimeout()方法并将相应的超时调用ID作为参数传递给它。
+               var box = setTimeout(function () {			//把超时调用的ID复制给box
+                alert('Lee');
+               }, 1000);
+               clearTimeout(box);							//把ID传入，取消超时调用
+
+        3). setInterval()方法：
+           * 间歇调用与超时调用类似，只不过它会按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。
+           * 设置间歇调用的方法是setInterval()，它接受的参数与setTimeout()相同：要执行的代码和每次执行之前需要等待的毫秒数。
+               setInterval(function () {						//重复不停执行
+                alert('Lee');
+               }, 1000);
+        4). clearInterval()方法:  取消间歇调用
+            取消间歇调用的重要性要远远高于取消超时调用，因为在不加干涉的情况下，间歇调用将会一直执行到页面关闭。
+                var box = setInterval(function () {				//获取间歇调用的ID
+                    alert('Lee');
+                }, 1000);
+                clearInterval(box);							//取消间歇调用
+
+        5） 但上面的代码是没有意义的，我们需要一个能设置5秒的定时器，需要如下代码：
+               var num = 0;								//设置起始秒
+               var max = 5;								//设置最终秒
+               var tmp ;
+               var interval = setInterval(function () {					//间歇调用
+                   num++;								    //递增num
+                   if (num == max) {						//如果得到5秒
+                       console.log("this = "+this) //this = [object Window]
+
+                       clearInterval(this);				//取消间歇调用，this表示setInterval方法本身
+                       alert('5秒后弹窗！');
+                   }
+               }, 1000);									//1秒
+
+               console.log("interval = "+interval) //interval = 1
+
+        6） 使用超时调用来模拟间歇调用
+            我们建议不使用间歇调用，而去使用超时调用
+            一般认为，使用超时调用来模拟间歇调用是一种最佳模式。
+            在开发环境下，很少使用真正的间歇调用，因为需要根据情况来取消ID，并且可能造成同步的一些问题。
+
+                var num = 0;
+                var max = 5;
+                function box() {
+                    num++;
+                    if (num == max) {
+                        alert('5秒后结束！');
+                    } else {
+                        //没到定时的5s时间,重新进行超时设置
+                        setTimeout(box, 1000);
+                    }
+                }
+                setTimeout(box, 1000);						//执行定时器
+
+            在使用超时调用时，没必要跟踪超时调用ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。
+
+    2.10 History对象
+        history对象：提供用户最近浏览过的URL列表。
+
+        名称	        描述
+        length	        (属性)history对象中的记录数;
+        back()	        加载history对象列表中的前一个URL
+        forward()	    加载history对象列表中的后一个URL
+        go()	        加载history对象列表中的某个具体页面(num)
+        示例：
+            history.back();
+            history.forword();
+            history.go(-1);
+    2.11 Location对象
+        location对象：提供当前页面的URL信息，并且可以重新装载当前页面或装入新页面。
+
+        location对象的属性
+            名称	    描述
+            host	    设置或返回主机名和当前URL的端口号
+            hostname	设置或返回当前URL的主机名
+            href	    设置或返回完整的URL
+
+        location对象的方法
+            名称      	描述
+            reload()	重新加载当前文档
+            replace()	用新的文档替换当前文档
+            assign() 	跳转到指定页面,与href等效;
+        示例：
+            location.assign('http://www.baidu.com');  // 跳转到指定的URL;2
+            location.reload();                        // 最有效的重新加载,有可能从缓存加载;
+            location.reload(true);                    // 强制加载,从服务器源头重新加载;
+            location.replace('http://www.baidu.com'); // 在本页跳转到百度页面,并且可以避免产生跳转的历史记录;
+
+3. DOM对象
+    DOM（Document Object Model）即文档对象模型，针对HTML和XML文档的API（应用程序接口）。
+    DOM描绘了一个层次化的节点树，运行开发人员添加、移除和修改页面的某一部分。
+    3.1 window对象的结构层次图
+        window对象下的对象： document、frames、hhistory、location、navigator、screen
+        document对象下的对象：anchors、forms、images、links、location
+
+   3.2  DOM中的三个字母：
+            D（文档）可以理解为整个Web加载的网页文档；
+            O（对象）可以理解为类似window对象之类的东西，可以调用属性和方法，这里我们说的是document对象；
+            M（模型）可以理解为网页文档的树型结构。DOM最根本对象是document（实际上是window.document）。
+   3.3 节点 和 节点树
+       1)节点：加载HTML页面时，Web浏览器生成一个树型结构，用来表示页面内部结构。DOM将这种树型结构理解为由节点组成。
+       2)节点树：
+            html ：head ,body
+                head: meata, title
+                body:h1,p , ul
+       3)树型结构概念理解:
+            html标签没有父辈，没有兄弟，所以html标签为根标签。
+            head标签是html子标签，meta和title标签之间是兄弟关系。
+            如果把每个标签当作一个节点的话，那么这些节点组合成了一棵节点树.
+            ps: 我们经常把标签称作为元素
+   3.4 节点种类： 元素节点、文本节点、属性节点。
+        例如：
+        div:元素节点
+        <div title="属性节点">文本节点</div>
+
+4. Document对象的常用方法
+    * js的执行顺序是从上到下依次加载执行的，而window.onload()是在html加载完毕后再执行的
+
+    4..1 获取元素节点方法
+          W3C提供了比较方便简单的定位节点的方法和属性，以便我们快速的对节点进行操作。
+          方法	                    说明
+          getElementById()	        获取特定ID元素的节点
+          getElementsByTagName()	获取相同元素的节点列表
+          getElementsByName()	    获取相同名称的节点列表
+
+
+      4.1.1  getElementById()方法
+         1)getElementById()方法，接受一个参数：获取元素的ID。
+           id表示一个元素节点的唯一性，不能同时给两个或以上的元素节点创建同一个命名的id
+           如果找到相应的元素则返回该元素的节点对象HTMLElement对象，如果不存在，则返回null。
+           window.onload = function () {				//预加载html后执行
+           	    document.getElementById('box');        //获取id为box的元素节点
+           };
+
+      4.1.2 getElementsByTagName()方法
+            方法将返回一个对象数组HTMLCollection(NodeList)，这个数组保存着所有相同元素名的节点列表。
+
+            document.getElementsByTagName('*');			//获取所有元素
+            PS：IE浏览器在使用通配符的时候，会把文档最开始的html的规范声明当作第一个元素节点。
+
+            document.getElementsByTagName('li');		    //获取所有li元素，返回数组
+            document.getElementsByTagName('li')[0];		//获取第一个li元素，HTMLLIElement
+            document.getElementsByTagName('li').item(0)	//获取第一个li元素，HTMLLIElement
+            document.getElementsByTagName('li').length;	//获取所有li元素的数目
+            PS：不管是getElementById还是getElementsByTagName，在传递参数的时候，并不是所有浏览器都必须区分大小写，
+                为了防止不必要的错误和麻烦，我们必须坚持养成区分大小写的习惯。
+
+      4.1.3 getElementsByName()方法
+            方法可以获取相同名称(name)的元素，返回一个对象数组HTMLCollection(NodeList)。
+
+            document.getElementsByName('add')				//获取input元素
+            document.getElementsByName('add')[0].value		//获取input元素的value值
+            document.getElementsByName('add')[0].checked  //获取input元素的checked值
+
+    4.2 元素节点属性
+        属性	    说明
+        tagName	    获取元素节点的标签名
+        innerHTML	获取元素节点里的内容
+
+        实例：
+            document.getElementById('box').tagName;		//DIV
+            document.getElementById('box').innerHTML;	    //测试Div
+
+            <div title="属性节点">测试Div</div>
+
+    4.3 HTML标记的属性
+        属性	    说明
+        id	        元素节点的id名称
+        title	    元素节点的title属性值
+        style	    CSS内联样式属性值
+        className	类名（CSS元素的类）
+
+        实例：
+            document.getElementById('box').id;			    //获取id
+            document.getElementById('box').id = 'person';	//设置id
+
+            document.getElementById('box').title;			//获取title
+            document.getElementById('box').title = '标题'	//设置title
+
+            document.getElementById('box').style;			        //获取CSSStyleDeclaration对象
+            document.getElementById('box').style.color;		    //获取style对象中color的值
+            document.getElementById('box').style.color = 'red';	//设置style对象中color的值
+
+            document.getElementById('box').className;	        //获取class
+            document.getElementById('box').className = 'box';	//设置class
+
+            <div title="属性节点">测试Div</div>
+
+    4.4 节点的操作
+        创建元素节点	 		createElement(“HTML标签”)
+        创建文本节点 	 		createTextNode("文本内容");
+        添加子节点		 		appendChild(newElement);
+        插入节点	      		insertBefore(newElement,son）
+        替换子节点	 			replaceChild(newElement,son)
+        复制节点		 		cloneNode(false)
+        删除子节点	 			removeChild(grandchild)
+
+        4.4.1 createElement()方法
+                是Dom中的一个重要方法，用来在文档页面内创建一个新的元素，如果你想动态为页面添加一个div、table或表单按扭等元素，就可以使用createElement，
+                该方法有一个参数，参数等于你需要创建的元素标签名。
+                格式：
+                    document.createElemet(“标记名”);
+                示例：
+                    var mySpan = document.createElement("span");
+                    createTextNode()方法
+        4.4.2 createTextNode()方法
+                可以创建一段文本内容，就是网页中想要显示的文字。即创建一个文本节点。
+                格式：
+                     document.createTextNode();
+                示例：
+                    var str = document.createTextNode("Hello");
+        4.4.3 appendChild ()方法
+                  appendChild()方法可以向html网页中添加一个标签(元素)，也可以向已存在的标签内添加一个子元素。
+                格式：
+                    parentElement.appendChild(newElement);
+                例如：
+                    mySpan.appendChild(str);
+                    document.getElementsByTagName("div")[0].appendChild(mySpan);
+        4.4.4 removeChild ()方法
+                方法可以在网页内删除一个已存在的元素。
+                格式：
+                     parentElement.removeChild(element);
+                示例：
+                     mySpan.removeChild(str);
+
+    4.5 节点属性操作（Element对象的方法）
+        getAttribute()	     获取特定元素节点属性的值
+        setAttribute()	     设置特定元素节点属性的值
+        removeAttribute()	 移除特定元素节点属性
+
+        4.5.1 getAttribute()方法(Element对象的方法)
+              将获取元素中某个属性的值。它和直接使用.属性获取属性值的方法有一定区别。
+
+              document.getElementById('box').getAttribute('id');   //获取元素的id值
+              document.getElementById('box').id;			         //获取元素的id值
+
+              document.getElementById('box').getAttribute('mydiv');   //获取元素的自定义属性值
+              document.getElementById('box').mydiv		               //获取元素的自定义属性值，非IE不支持
+
+              document.getElementById('box').getAttribute('class');       //获取元素的class值，IE不支持
+              document.getElementById('box').getAttribute('className');   //非IE不支持
+              PS：HTML通用属性style和onclick，IE7更低的版本style返回一个对象，onclick返回一个函数式。
+
+        4.5.2 setAttribute()方法（Element的方法）
+              将设置元素中某个属性和值。它需要接受两个参数：属性名和值。如果属性本身已存在，那么就会被覆盖。
+
+              document.getElementById('box').setAttribute('align','center');//设置属性和值
+              document.getElementById('box').setAttribute('bbb','ccc');//设置自定义的属性和值
+
+        4.5.3 removeAttribute()方法
+              removeAttribute() 可以移除HTML属性。
+
+              document.getElementById('box').removeAttribute('style');//移除属性
+              PS：IE6及更低版本不支持removeAttribute()方法
+
+5. JS的Document属性和方法
+   5.1 常见的属性
+       document.title   //设置文档标题等价于HTML的title标签
+       document.bgColor //设置页面背景色
+       document.fgColor //设置前景色(文本颜色)
+       document.linkColor //未点击过的链接颜色
+       document.alinkColor //激活链接(焦点在此链接上)的颜色
+       document.vlinkColor //已点击过的链接颜色
+       document.URL //设置URL属性从而在同一窗口打开另一网页
+       document.fileCreatedDate //文件建立日期，只读属性
+       document.fileModifiedDate //文件修改日期，只读属性
+       document.charset //设置字符集 简体中文:gb2312
+       document.fileSize //文件大小，只读属性
+       document.cookie //设置和读出cookie
+
+   5.2 常用的方法
+       document.write() //动态向页面写入内容
+       document.createElement(Tag) //创建一个html标签对象
+       document.getElementById(ID) //获得指定ID值的对象
+       document.getElementsByName(Name) //获得指定Name值的对象
+       document.body.appendChild(oTag)
+
+  5.3  body-主体子对象
+
+       document.body //指定文档主体的开始和结束等价于<body></body>
+       document.body.bgColor //设置或获取对象后面的背景颜色
+       document.body.link //未点击过的链接颜色
+       document.body.alink //激活链接(焦点在此链接上)的颜色
+       document.body.vlink //已点击过的链接颜色
+       document.body.text //文本色
+       document.body.innerText //设置<body>…</body>之间的文本
+       document.body.innerHTML //设置<body>…</body>之间的HTML代码
+       document.body.topMargin //页面上边距
+       document.body.leftMargin //页面左边距
+       document.body.rightMargin //页面右边距
+       document.body.bottomMargin //页面下边距
+       document.body.background //背景图片
+       document.body.appendChild(oTag) //动态生成一个HTML对象
+
+6. Element对象常见的属性和方法（自己看，用到查）
+   属性 / 方法	描述
+   element.accessKey	设置或返回元素的快捷键。
+   element.appendChild()	向元素添加新的子节点，作为最后一个子节点。
+   element.attributes	返回元素属性的 NamedNodeMap。
+   element.childNodes	返回元素子节点的 NodeList。
+   element.className	设置或返回元素的 class 属性。
+   element.clientHeight	返回元素的可见高度。
+   element.clientWidth	返回元素的可见宽度。
+   element.cloneNode()	克隆元素。
+   element.compareDocumentPosition()	比较两个元素的文档位置。
+   element.contentEditable	设置或返回元素的文本方向。
+   element.dir	设置或返回元素的文本方向。
+   element.firstChild	返回元素的首个子。
+   element.getAttribute()	返回元素节点的指定属性值。
+   element.getAttributeNode()	返回指定的属性节点。
+   element.getElementsByTagName()	返回拥有指定标签名的所有子元素的集合。
+   element.getFeature()	返回实现了指定特性的 API 的某个对象。
+   element.getUserData()	返回关联元素上键的对象。
+   element.hasAttribute()	如果元素拥有指定属性，则返回true，否则返回 false。
+   element.hasAttributes()	如果元素拥有属性，则返回 true，否则返回 false。
+   element.hasChildNodes()	如果元素拥有子节点，则返回 true，否则 false。
+   element.id	设置或返回元素的 id。
+   element.innerHTML	设置或返回元素的内容。
+   element.insertBefore()	在指定的已有的子节点之前插入新节点。
+   element.isContentEditable	设置或返回元素的内容。
+   element.isDefaultNamespace()	如果指定的 namespaceURI 是默认的，则返回 true，否则返回 false。
+   element.isEqualNode()	检查两个元素是否相等。
+   element.isSameNode()	检查两个元素是否是相同的节点。
+   element.isSupported()	如果元素支持指定特性，则返回 true。
+   element.lang	设置或返回元素的语言代码。
+   element.lastChild	返回元素的最后一个子元素。
+   element.namespaceURI	返回元素的 namespace URI。
+   element.nextSibling	返回位于相同节点树层级的下一个节点。
+   element.nodeName	返回元素的名称。
+   element.nodeType	返回元素的节点类型。
+   element.nodeValue	设置或返回元素值。
+   element.normalize()	合并元素中相邻的文本节点，并移除空的文本节点。
+   element.offsetHeight	返回元素的高度。
+   element.offsetWidth	返回元素的宽度。
+   element.offsetLeft	返回元素的水平偏移位置。
+   element.offsetParent	返回元素的偏移容器。
+   element.offsetTop	返回元素的垂直偏移位置。
+   element.ownerDocument	返回元素的根元素（文档对象）。
+   element.parentNode	返回元素的父节点。
+   element.previousSibling	返回位于相同节点树层级的前一个元素。
+   element.removeAttribute()	从元素中移除指定属性。
+   element.removeAttributeNode()	移除指定的属性节点，并返回被移除的节点。
+   element.removeChild()	从元素中移除子节点。
+   element.replaceChild()	替换元素中的子节点。
+   element.scrollHeight	返回元素的整体高度。
+   element.scrollLeft	返回元素左边缘与视图之间的距离。
+   element.scrollTop	返回元素上边缘与视图之间的距离。
+   element.scrollWidth	返回元素的整体宽度。
+   element.setAttribute()	把指定属性设置或更改为指定值。
+   element.setAttributeNode()	设置或更改指定属性节点。
+   element.setUserData()	把对象关联到元素上的键。
+   element.style	设置或返回元素的 style 属性。
+   element.tabIndex	设置或返回元素的 tab 键控制次序。
+   element.tagName	返回元素的标签名。
+   element.textContent	设置或返回节点及其后代的文本内容。
+   element.title	设置或返回元素的 title 属性。
+   element.toString()	把元素转换为字符串。
+   nodelist.item()	返回 NodeList 中位于指定下标的节点。
+   nodelist.length	返回 NodeList 中的节点数。

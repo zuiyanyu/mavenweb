@@ -1,0 +1,324 @@
+JS函数
+
+1. 函数的声明
+   1.1 ECMAScript中的函数使用function关键字来声明，后跟一组参数以及函数体
+   1.2 函数的构成：
+       1.使用function声明（必须）
+       2.函数名
+       3.参数列表
+       4.函数体（必须）
+       5.返回值
+   1.3 声明方法：
+       1)、函数声明：
+
+           function name(arg1, arg2, ... argN) {
+              statements
+           }
+
+
+           var name = function (arg1, arg2, ... argN) {
+                         statements
+                      }
+       2)、函数表达式
+           var  func = function [name]( arg1, arg2, ... argN ) {
+              statements
+           }
+           即： 以下两种声明方式都可以
+                a. 显示声明函数  ,然后将显示函数的句柄给变量 func
+                var  func = function test ( arg1, arg2, ... argN ) {
+                                        statements
+                                     }
+                b. 匿名声明函数  ,然后将显示函数的句柄给变量 func
+                var  func = function ( arg1, arg2, ... argN ) {
+                             statements
+                          }
+       3)、通过Function对象的构造函数声明
+           [new] Function (arg1, arg2, ... argN, functionBody)
+
+   1.4 一个简单实例：
+       function myFunction() {	 }						//没有参数的函数
+       myFunction();									//直接调用函数
+
+       function myFunction(name, age) { }				//带参数的函数
+       myFunction('张三',50);							//调用函数，并传参
+
+   1.5 arguments对象
+       接收入参的，实质上是一个可变数组
+           function myFunction() {
+            return arguments[0]+' | '+ arguments.length ;		//得到每次参数的值
+           }
+           alert(myFunction(1,2,3,4,5,6));						//传递参数
+   1.6 Javascript中的函数，没有函数重载功能
+          function myFunction(num,num2) {
+              return num2 + 100;
+          }
+          function myFunction (num) {					//会执行这个函数,执行最后一个；
+              return num + 200;
+          }
+          alert(myFunction(50,10));					//返回结果  250
+          alert(myFunction(50));					//返回结果  250
+
+   1.7 函数return返回值
+       任何函数都可以通过return语句跟后面的要返回的值来实现返回值
+   1.8 函数的调用方式
+       a. 函数定义后并不会自动执行，函数需要被显示调用才可以执行；
+       b. 函数调用的方法：函数调用模式，方法调用模式，构造器调用模式，apply/call调用模式。
+
+       1).函数调用模式
+          定义一个函数，设置一个变量名保存函数.
+          这时this指向到window对象:因为此时function的句柄给了变量myfunc,而myfunc是window的体中。
+              方式1：显示声明函数，然后调用
+               var age = 10 ;
+               function myfunc(a,b){
+                          //this指向到window对象 ，所以可以使用this访问window体中的变量
+                          console.log("myfunc.this = "+ this); //myfunc.this = [object Window]
+                          console.log(this.age);   // 10
+                          return a+b;
+               }
+               console.log(myfunc(3,4));  // 7
+
+              方式2：函数表达式的方式 - 匿名声明函数，然后调用
+              var age = 10 ;
+              var myfunc = function(a,b){
+                  //this指向到window对象 ，所以可以使用this访问window体中的变量
+                  console.log("myfunc.this = "+ this); //myfunc.this = [object Window]
+                  console.log(this.age);   // 10
+                  return a+b;
+              }
+              console.log(myfunc(3,4));  // 7
+
+              方式3：函数表达式的方式 - 显示声明函数，然后调用
+                            var age = 10 ;
+                            var myfunc = function myfunc(a,b){
+                                //this指向到window对象 ，所以可以使用this访问window体中的变量
+                                console.log("myfunc.this = "+ this); //myfunc.this = [object Window]
+                                console.log(this.age);   // 10
+                                return a+b;
+                            }
+                            console.log(myfunc(3,4));  // 7
+
+       2).方法调用模式：
+          先定义一个对象，然后在对象的属性中定义方法，通过myobject.property来执行方法.
+          this即指当前的myobject对象: 因为function的句柄给了showBlog，而showBlog是属于匿名Object对象的。
+             var blogId = 200 ; // 属于 window对象的变量
+             var blogInfo={
+                 blogId:100,   //属于匿名对象Object对象的变量
+                 blogName:"werwr",
+                 showBlog:function(){ //函数表达式的方式 - 匿名声明函数
+                     console.log("this = "+this); //this = [object Object]
+                     console.log(this.blogId);
+                 }
+             };
+             blogInfo.showBlog();
+       3.构造器调用模式
+       定义一个函数对象，在对象中定义属性，在其原型对象中定义方法。在使用prototype的方法时，必须实例化该对象才能调用其方法。
+            =================使用普通函数调用=================
+            var myfunc = function(a){
+                console.log("this1 = " + this) ;// this1 = [object Window]
+                this.b = a;  //如果 this是 Window，this.b 就是属于 window的全局变量了
+            };
+            myfunc(200)  //这里是 window调用 myfunc函数的，所以this代表Window
+            console.log("this=" + this) //this = [object Window]
+            =================使用构造函数调用=================
+            var myfunc = function(a){
+                console.log("this1 = " + this) ;// this1 = [object Object]
+                this.b = a;
+            };
+
+            //方式1：重写构造器函数
+            // myfunc.prototype是一个对象，相当于 myfunc函数的父类。 一切属性都能被子类myfunc进行重写。
+            myfunc.prototype = {
+                constructor :myfunc,
+                //定义每个函数实例共享的数据
+                b:8888,
+                c:333,
+                show:function(){
+                    console.log("this2 = " + this) ; //this2 = [object Object]
+
+                    console.log("this2.a = " + this.a);// this2.a = undefined
+                    //先从this实例中查找 b属性:10000，如果没有再从当前对象中查找b属性值：8888
+                    console.log("this2.b = " + this.b);// this2.b = 10000
+                    console.log("this2.c = " + this.c);// this2.c = 333
+
+                }
+            }
+            //方式2： 给函数原型添加属性
+             myfunc.prototype.show = function(){
+                 console.log("this2 = " + this) ; //this2 = [object Object]
+
+                 console.log("this2.a = " + this.a);// this2.a = undefined
+                 //先从this实例中查找 b属性:10000，如果没有再从当前对象中查找b属性值：8888
+                 console.log("this2.b = " + this.b);// this2.b = 10000
+                 console.log("this2.c = " + this.c);// this2.c = 333
+
+             }
+            var newfunc = new myfunc("10000");
+            //先再myfun函数中查询，如果找不到就到myfun函数关联的原型函数中查找show()函数。
+            newfunc.show();
+            console.log("newfunc.c = "+newfunc.c); //newfunc.c = 333
+
+2. 匿名函数
+ 2.1 匿名函数：故名思议就是没有名字的函数；可以有效的保证在页面上写入Javascript，而不会造成全局变量的污染。
+ 2.2 示例：
+     //普通函数
+     function myFunction() {							//函数名是myFunction
+        return 'Hello world！';
+     }
+
+     //匿名函数
+     function () {									//匿名函数，会报错
+        return 'Hello world !';
+     }
+
+ 2.3 匿名函数的执行
+     1).通过表达式自我执行
+        (function (a,b) {							//封装成表达式
+            alert('Hello world !');
+        })(10,20);									//()表示执行函数，并且传参
+     2).把匿名函数赋值给变量
+        var myFunction = function () {				//将匿名函数赋给变量
+            return 'Hello world !';
+        };
+        alert(myFunction());						//调用方式和函数调用相似
+     3).函数里的匿名函数，产生闭包
+         function myFunction () {
+                return function () {				//函数里的匿名函数，产生闭包
+                    return 'Hello world!';
+                }
+            }
+ 	     alert(myFunction()());
+
+3. 作用域和闭包
+   3.1 闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。
+
+4. 变量的作用域
+     4.1 变量的作用域无非就是两种：全局变量和局部变量。
+         全局变量：声明在函数之外的变量，或者不使用var声明的变量。
+         局部变量：声明在函数体中的var变量，并且只能在当前函数体内访问。
+         (函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！)
+     4.2 Javascript语言的特殊之处，就在于函数内部可以直接读取全局变量。
+            var n=999;
+            　　function f1(){
+            　　　　alert(n);
+            　　}
+            f1();
+     4.3  如何从外部读取局部变量
+         正常情况下, 在函数外部自然无法读取函数内的局部变量,出于种种原因，我们有时候需要得到函数内的局部变量
+         通过变通方法才能实现(即闭包)。那就是在函数的内部，再定义一个函数:
+             function f1(){
+             　　　　var n=999;
+             　　　　function f2(){
+             　　　　　　alert(n); // 999
+             　　　　}
+             }
+         1)函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。
+         2)但是反过来就不行，f2内部的局部变量，对f1就是不可见的。
+         3)这就是Javascript语言特有的"链式作用域"结构（chain scope）:
+            子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。
+
+         4) 既然f2可以读取f1中的局部变量，那么只要把f2作为返回值，我们不就可以在f1外部读取它的内部变量了吗！
+             function f1(){
+             　　　　var n=999;
+             　　　　function f2(){
+             　　　　　　alert(n);
+             　　　　}
+             　　　　return f2;
+         　　}
+         　　var result=f1();
+         　　result(); // 999
+5. 闭包
+    5.1 闭包的概念
+        4.3代码中的f2函数，就是闭包。
+        简单理解：闭包就是定义在一个函数内部的函数。在Javascript语言中，只有函数内部的子函数才能读取局部变量。
+        所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
+
+    5.2 闭包的用途
+        闭包可以用在许多地方。它的最大用处有两个：
+            a. 一个是前面提到的可以读取函数内部的变量，
+            b. 另一个就是让这些变量的值始终保持在内存中。
+
+            c. 示例：
+            在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。
+            这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。
+               function f1(){
+                   var n=999;
+                   //闭包1：全局
+                   nAdd=function(){
+                       n+=1
+                   }
+                   //闭包2：局部
+                    function f2(){
+                       alert(n);
+                   }
+                   return f2;
+               }
+               //获取闭包2:用于访问局部变量
+               var result=f1();
+
+               //闭包2:访问局部变量
+               result(); // 999
+
+               //使用闭包1进行局部变量的增加
+               nAdd();
+
+               //闭包2:访问局部变量
+               result(); // 1000
+
+    5.3 使用闭包的注意点
+        1、由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。
+           解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+        2、闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method）
+          ，把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。
+    5.4 闭包的深入理解：
+        如果你能理解下面两段代码的运行结果，应该就算理解闭包的运行机制了
+        5.4.1 代码片段1：
+            var name = "The Window";
+            var object = {
+                        name : "My Object",
+                        getNameFunc : function(){//object.getNameFunc() 是 object 对象运行的getNameFunc函数
+                            alert(this.name) // "My Object"
+                            return function(){
+                                alert(this.name)  // "The Window"
+                            };
+                        }
+            };
+            // object.getNameFunc() ,是 对象 ：object 运行 getNameFunc()函数的，所以getNameFunc()的this 指向 object对象
+
+            var nameFunc = object.getNameFunc();
+            //object.getNameFunc()返回的是一个闭包函数，但是它是被window对象调用的，所以 nameFunc()的this指向 window对象
+            nameFunc()
+
+        5.4.2 代码片段2：
+            var name = "The Window";
+            var object = {
+                name : "My Object",
+                getNameFunc : function(){
+                    //这里this指可能是bject对象，也可能是window对象，就看此函数体的运行方式了，见下方
+                    var that = this;
+                    alert(that.name)//
+
+                    return function(){
+                        // 此函数体内，虽然this指向是变化的，但是that变量是不会改变的
+                        alert(that.name) ;
+                    };
+                }
+            };
+           //TODO 函数体的运行方式1：
+            // 这里是将object.getNameFunc存储的函数引用给了window中的变量nameFunc，此时nameFunc就是getNameFunc指向的函数体
+            // 而这里nameFunc() 就代表是window在运行 函数体，所以函数体中的this代表window对象
+            var nameFunc = object.getNameFunc;
+            nameFunc() // 会弹出 "The Window"
+
+            //TODO 函数体的运行方式2：
+            // object.getNameFunc() ,是对象 ：object 直接运行 getNameFunc指向的函数体，所以函数体中的this 指向 object对象
+            object.getNameFunc() //会弹出 "My Object"
+
+            // 运行结果和和getNameFunc指向的函数体的的运行方式有关，会和函数体运行的弹出结果保持一致
+            // 这里getNameFunc函数体是运行方式2，所以函数体的this是Object对象，会两次弹出 "My Object"
+             var nameFunc2 = object.getNameFunc();
+             nameFunc2()
+
+            // 这里getNameFunc函数体是运行方式1，所以函数体的this是window对象，会两次弹出 "The Window"
+            var nameFunc = object.getNameFunc;
+            nameFunc()()
+

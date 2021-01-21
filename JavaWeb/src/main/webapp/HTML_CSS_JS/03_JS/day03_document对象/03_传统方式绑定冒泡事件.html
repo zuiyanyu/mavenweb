@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script>
+        window.onload=function (ev) {
+            /*1. 冒泡事件：从里到外触发事件
+              2. 这是传统方式绑定事件.
+            * */
+            document.onclick = function () {
+                alert('6.我是document');
+            };
+            document.documentElement.onclick = function () {
+                alert('5.我是html');
+            };
+            document.body.onclick = function () {
+                alert('4.我是body');
+            };
+            document.getElementById('div1').onclick = function () {
+                alert('3.我是div');
+            };
+            document.getElementsByTagName('input')[0].onclick = function () {
+                alert('2.我是input');
+            };
+            document.getElementById("bt").onclick = function(e){      //参数e可以不写，后面介绍e
+                alert("1. haha!");
+                alert(this.id)
+                alert(e.currentTarget.name);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input type="button" id="bt" name="bt button" value="this is a button">
+    </div>
+</body>
+</html>

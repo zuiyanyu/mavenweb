@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS示例1</title>
+
+  <!--
+     7、如何调试JavaScript代码
+    （1）主流浏览器现在都带有一个运行JavaScript的控制台（IE、Chrome、Firefox），在控制台中输出日志console.log ——在控制台显示
+    （2）alert——弹出对话框
+    （3）document.write——在浏览器页面内显示
+    -->
+    <script type="text/javascript">
+        //Java Script 由三部分组成： ECMAScript  +  DOM模型 +  BOM模型
+        // ECMAScript:JS语法变量
+        var a=5;
+        var b=3;
+        var c;
+        c=a+b;
+        //BOM模型：弹出一个提示
+        alert('alert  c = '+c);
+
+        //DOM模型：向文档模型中加入一个文本
+        document.write('Hello World');
+        document.write('<h1>Hello World </h1>');
+
+        //调试的时候，向控制台打印一句话
+        console.log('Hello World222');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

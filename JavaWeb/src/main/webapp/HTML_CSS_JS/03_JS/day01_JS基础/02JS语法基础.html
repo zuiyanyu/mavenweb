@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js语法基础</title>
+    <script type="text/javascript">
+        //定义一个函数
+        function doSth() {
+            a = "AAA";
+        }
+        //定义一个匿名函数，并将函数句柄赋值给tmp变量  tmp的类型是funcation
+       var tmp = function() {
+            a = "AAA";
+        }
+
+        var box = {
+             age : 3 ,
+            //此方法被注释掉后 alert("isNaN:"+isNaN(box));	返回 ture
+            //定义一个方法 。 定义一个对象的属性变量，属性值为一个函数
+            valueOf: function (){
+                return "1";
+            },
+
+            toString : function () {
+                return '123';			//可以改成return 'Lee'查看效果
+            }
+        };
+
+        var b = new Object();
+        b.age = 2 ;
+        b.valueOf2 = function (){
+            return "1";
+        };
+        b.valueOf2()
+
+
+
+
+        try{
+
+        }catch (e) {
+            
+        }
+        var box =  0;
+        if (box < 50) {
+            alert('box大于50');
+            alert('不管怎样，我都能被执行到！');//用复合语句包含，判断后执行一条复合语句
+        }
+
+
+        //  var box = 100;
+        // // var age = ++box;					//age值为101
+        // var height = box++;					//height值为101
+        //
+        //  // alert(age);
+        //  alert(height);
+        // var box = {};
+        // if (box != null) {
+        //     alert('box对象已存在！');
+        // }
+        // var box = null ;        //未初始化的对象
+        // alert(typeof box);
+        //
+        // var box = {};    //空对象
+        // alert(typeof box);
+        // alert(box);
+        //
+        // alert(typeof box1);
+
+
+        //
+        // var hello = 'Hello World!';
+        // if (hello) {
+        //     alert('如果条件为true，就执行我这条！');
+        // } else {
+        //     alert('如果条件为false，就执行我这条！');
+        // }
+
+        /* isNaN()函数也适用于对象。
+               在调用isNaN()函数过程中，首先会调用valueOf()方法，然后确定返回值是否能够转换成数值。
+               如果不能，则基于这个返回值再调用toString()方法，再测试返回值。*/
+        /*var box = {
+            //此方法被注释掉后 alert("isNaN:"+isNaN(box));	返回 ture
+            valueOf : function (){
+                return "1";
+            },
+
+            toString : function () {
+                return '123';			//可以改成return 'Lee'查看效果
+            }
+        };
+        alert("isNaN:"+isNaN(box));				//false*/
+        // undefined（表示未定义）
+        /*var  age ;
+        alert(age);
+
+        age =12
+        alert(typeof age);
+        alert(typeof(age));
+*/
+
+
+    </script>
+</head>
+<body>
+    <h1>hellow </h1>
+</body>
+
+</html>

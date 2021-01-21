@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js正则</title>
+<script>
+    var str = "ThIS isn't me";
+    var reg = /is/ig;
+    var ret = str.match(reg);
+    alert(ret); //IS, is
+    alert(typeof  ret); //IS, is
+   console.log(ret[0])
+
+    console.log(ret); //["IS", "is"]
+</script>
+</head>
+<body>
+
+</body>
+</html>

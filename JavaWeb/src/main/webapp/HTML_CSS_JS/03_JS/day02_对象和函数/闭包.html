@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script>
+        var name = "The Window";
+        var object = {
+            name : "My Object",
+            getNameFunc : function(){
+                //这里this指可能是bject对象，也可能是window对象，就看此函数体的运行方式了，见下方
+                var that = this;
+                alert(that.name)//
+
+                return function(){
+                    // 此函数体内，虽然this指向是变化的，但是that变量是不会改变的
+                    alert(that.name) ;
+                };
+            }
+        };
+       //TODO 函数体的运行方式1：
+        // 这里是将object.getNameFunc存储的函数引用给了window中的变量nameFunc，此时nameFunc就是getNameFunc指向的函数体
+        // 而这里nameFunc() 就代表是window在运行 函数体，所以函数体中的this代表window对象
+        var nameFunc = object.getNameFunc;
+        nameFunc() // 会弹出 "The Window"
+
+        //TODO 函数体的运行方式2：
+        // object.getNameFunc() ,是对象 ：object 直接运行 getNameFunc指向的函数体，所以函数体中的this 指向 object对象
+        object.getNameFunc() //会弹出 "My Object"
+
+        // 运行结果和和getNameFunc指向的函数体的的运行方式有关，会和函数体运行的弹出结果保持一致
+        // 这里getNameFunc函数体是运行方式2，所以函数体的this是Object对象，会两次弹出 "My Object"
+         var nameFunc2 = object.getNameFunc();
+         nameFunc2()
+
+        // 这里getNameFunc函数体是运行方式1，所以函数体的this是window对象，会两次弹出 "The Window"
+        var nameFunc = object.getNameFunc;
+        nameFunc()()
+
+        /*
+        var name = "The Window";
+        var object = {
+            name : "My Object",
+            getNameFunc : function(){//object.getNameFunc() 是 object 对象运行的getNameFunc函数
+                alert(this.name) // "My Object"
+                return function(){
+                    alert(this.name)  // "The Window"
+                };
+            }
+        };
+        // object.getNameFunc() ,是 对象 ：object 运行 getNameFunc()函数的，所以getNameFunc()的this 指向 object对象
+
+        var nameFunc = object.getNameFunc();
+        //object.getNameFunc()返回的是一个闭包函数，但是它是被window对象调用的，所以 nameFunc()的this指向 window对象
+        nameFunc()*/
+
+/*
+        function f1(){
+            var n=999;
+            //闭包1：全局
+            nAdd=function(){
+                n+=1
+            }
+            //闭包2：局部
+             function f2(){
+                alert(n);
+            }
+            return f2;
+        }
+        //获取闭包2:用于访问局部变量
+        var result=f1();
+
+        //闭包2:访问局部变量
+        result(); // 999
+
+        //使用闭包1进行局部变量的增加
+        nAdd();
+
+        //闭包2:访问局部变量
+        result(); // 1000*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>
