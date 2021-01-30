@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js控制添加、删除节点</title>
+    <style>
+        body {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: aliceblue;
+            /*padding-left: 50px;*/
+        }
+        p {
+            background-color:palegreen;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    var all;
+    function addParagraph() {
+//        all = document.getElementById("paragraphs").childNodes;
+        all = document.getElementsByTagName("p");
+        var newElement = document.createElement("p");
+        var seq = all.length + 1;
+
+        //创建新属性
+//        var newAttr = document.createAttribute("id");
+        var newAttr = "p" + seq;
+        newElement.setAttribute("id", newAttr);
+
+        //创建文本内容
+        var txtNode = document.createTextNode("段落" + seq);
+
+        //添加节点
+        newElement.appendChild(txtNode);
+        document.getElementById("paragraphs").appendChild(newElement);
+    }
+    function delParagraph() {
+        all = document.getElementById("paragraphs").childNodes;
+        document.getElementById("paragraphs").removeChild(all[all.length - 1]);
+    }
+    function change1(){
+        document.getElementById("ip1").style.backgroundColor="pink";
+    }
+    function change2(){
+        document.getElementById("ip1").style.backgroundColor="white";
+    }
+</script>
+
+<body>
+<br>
+<br>
+<input id="ip1" type="button" value="添加段落" onmousemove="change1()" onmouseout="change2()" onclick="addParagraph();"/>
+<input id="ip2" type="button" value="删除段落" onmousemove="change2()" style="background-color: peru" onclick="delParagraph();"/>
+
+<div id="paragraphs">
+    <p id="p1">段落1</p>
+    <p id="p2">段落2</p>
+</div>
+</body>
+</html>

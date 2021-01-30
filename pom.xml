@@ -16,6 +16,9 @@
               <module>mybatis-generator-maven-plugin</module>
               <module>scala-module</module>
             <module>JavaWeb</module>
+            <module>HadoopClient</module>
+            <module>SparkClient</module>
+            <module>HbaseClient</module>
         </modules>
         <packaging>pom</packaging>
         <name>mavenweb</name>
@@ -24,38 +27,45 @@
         <url>http://www.example.com</url>
 
       <properties>
-            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <maven.compiler.source>1.8</maven.compiler.source>
-            <maven.compiler.target>1.8</maven.compiler.target>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+          <maven.compiler.source>1.8</maven.compiler.source>
+          <maven.compiler.target>1.8</maven.compiler.target>
 
-            <app.name>ssm项目练习</app.name>
-            <app.version>${project.version}</app.version>
+          <app.name>ssm项目练习</app.name>
+          <app.version>${project.version}</app.version>
 
-            <app.client.run.port>8080</app.client.run.port>
-            <app.service.run.port>8081</app.service.run.port>
-            <app.run.path>/</app.run.path>
-            <tomcat7.version>2.2</tomcat7.version>
+          <app.client.run.port>8080</app.client.run.port>
+          <app.service.run.port>8081</app.service.run.port>
+          <app.run.path>/</app.run.path>
+          <tomcat7.version>2.2</tomcat7.version>
 
-            <!--<spring.version>4.3.19.RELEASE</spring.version>-->
-              <spring.version>5.3.1</spring.version>
-              <commons-logging.version>1.2</commons-logging.version>
-              <org.apache.poi>3.17</org.apache.poi>
-              <cglib.version>2.1_3</cglib.version>
-              <org.aopalliance>1.0.0</org.aopalliance>
+          <!--<spring.version>4.3.19.RELEASE</spring.version>-->
+          <spring.version>5.3.1</spring.version>
+          <commons-logging.version>1.2</commons-logging.version>
+          <org.apache.poi>3.17</org.apache.poi>
+          <cglib.version>2.1_3</cglib.version>
+          <org.aopalliance>1.0.0</org.aopalliance>
 
 
-            <junit.version>4.12</junit.version>
-            <mybatis.version>3.2.6</mybatis.version>
-            <slf4j-api.version>1.7.7</slf4j-api.version>
-            <slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
-            <log4j.version>1.2.17</log4j.version>
-            <javax.servlet-api>3.1.0</javax.servlet-api>
-            <mysql.version>5.1.47</mysql.version>
-            <jackson.version>2.9.8</jackson.version>
-            <dubbo.version>2.5.10</dubbo.version>
-            <zookeeper.version>3.4.10</zookeeper.version>
-            <pagehelper.version>4.1.6</pagehelper.version>
-            <jcl-over-slf4j>1.7.5</jcl-over-slf4j>
+          <junit.version>4.12</junit.version>
+          <mybatis.version>3.2.6</mybatis.version>
+          <slf4j-api.version>1.7.7</slf4j-api.version>
+          <slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
+          <log4j.version>1.2.17</log4j.version>
+          <javax.servlet-api>3.1.0</javax.servlet-api>
+          <mysql.version>5.1.47</mysql.version>
+          <jackson.version>2.9.8</jackson.version>
+          <dubbo.version>2.5.10</dubbo.version>
+          <zookeeper.version>3.4.10</zookeeper.version>
+          <pagehelper.version>4.1.6</pagehelper.version>
+          <jcl-over-slf4j>1.7.5</jcl-over-slf4j>
+
+            <!--<spark.version>2.4.0</spark.version>-->
+          <spark.version>2.2.0</spark.version>
+          <hadoop.version>2.7.3</hadoop.version>
+          <hbase.version>1.3.1</hbase.version>
+          <scala.library>2.11.0</scala.library>
+          <scala.version>2.11</scala.version>
 
             <!--<spring-test>4.3.25.RELEASE</spring-test>-->
 
@@ -76,7 +86,125 @@
   <!--子工程选择性继承的依赖jar包 -->
     <!-- maven依赖查询网址：https://mvnrepository.com/   -->
   <dependencyManagement>
+
     <dependencies>
+        <!-- redis 核心包 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!-- ==============spark的依赖包 ============= -->
+        <!-- scala 的工具包-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.library}</version>
+        </dependency>
+
+        <!-- spark 核心包 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <!-- sparkSQL 核心包 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>${spark.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.parquet</groupId>
+                    <artifactId>parquet-hadoop</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- sparkStreaming 核心包 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+
+        <!-- sprark 与 mysql 整合-->
+        <!--<dependency>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<version>5.1.27</version>-->
+        <!--</dependency>-->
+
+
+        <!-- ========= hive 的依赖包 ===========-->
+        <!--spark 与 Hive整合 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.11</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-exec</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <!-- ===== kafa 的依赖包====== -->
+        <!--spark 与 Kafka整合 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.11.0.2</version>
+        </dependency>
+
+        <!--  =======hbase的依赖包 =======-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-common</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-server</artifactId>
+        <version>${hbase.version}</version>
+    </dependency>
+        <!--spark 与 Hbase整合 -->
+
+        <!-- =========hadoop的依赖包============= -->
+        <!--hadoop-->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
         <!-- quartz 任务调度 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -228,72 +356,6 @@
             <version>2.4</version>
         </dependency>
 
-        <!-- redis 核心包 -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-        <!-- spark 核心包 -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.11</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <!-- sparkSQL 核心包 -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <!-- sparkStreaming 核心包 -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_2.11</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-
-        <!-- sprark 与 mysql 整合-->
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>5.1.27</version>-->
-        <!--</dependency>-->
-        <!--spark 与 Hbase整合 -->
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-server</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <!--spark 与 Hive整合 -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-hive_2.11</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-exec</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        <!--spark 与 Kafka整合 -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.11.0.2</version>
-        </dependency>
 
         <!-- 很有用
                跟java.lang这个包的作用类似，Commons Lang这一组API也是提供一些基础的、通用的操作和处理，

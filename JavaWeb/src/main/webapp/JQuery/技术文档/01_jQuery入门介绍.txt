@@ -1,0 +1,191 @@
+1. 什么是jQuery
+   主旨：以更少的代码、实现更多的功能 （write less ,do more!）
+   官网：http://jquery.com/
+   1.1 jQuery是一个JavaScript库，它是轻量级的js库，通过封装原生的JavaScript函数得到一整套定义好的方法。
+   1.2 jQuery已经集JavaScript、CSS、DOM和Ajax于一体的强大功能。以最少的代码，完成更多复杂而困难的功能。
+   1.3 jQuery使用户能更方便的处理HTML documents、events、实现动画效果，并且方便地为网站提供AJAX交互。
+
+2. jQuery的功能和优势
+    jQuery作为JavaScript封装的库，它的目的就是为了简化开发者使用JavaScript。主要功能有以下几点：
+    像CSS那样访问和操作DOM；
+    修改CSS控制页面外观；
+    简化JavaScript代码操作；
+    事件处理更加容易；
+    各种动画效果使用方便；
+    让Ajax技术更加完美；
+    基于jQuery大量插件；
+    自行扩展功能插件。
+    jQuery最大的优势，就是特别的方便。比如模仿CSS获取DOM，比原生的JavaScript要方便太多。并且在多个CSS设置上的集中处理非常舒服，而最常用的CSS功能又封装到单独的方法。
+    最重要的是jQuery的代码兼容性非常好，你不需要总是头疼着考虑不同浏览器的兼容问题。
+
+3. 其他JavaScript库
+    YUI，是雅虎公司开发的一套完备的、扩展性良好的富交互网页工具集。
+    Prototype，是最早成型的JavaScript库之一，对JavaScript内置对象做了大量的扩展。
+    Dojo，Dojo强大之处在于提供了其他库没有的功能。离线存储、图标组件等等。
+    Mootools，轻量、简洁、模块化和面向对象的JavaScript框架。
+    ExtJS，简称Ext，原本是对YUI的一个扩展，主要创建前端用户界面。(付费的)
+
+4. 配置jQuery环境
+    4.1、获取jQuery最新版本
+        从官网下载：http://jquery.com/
+
+    4.2、jQuery库的类型说明
+        名称	        大小	    说明
+        jQuery.js	    约229K   	完整无压缩版本，主要用于测试、学习和开发
+        jQuery.min.js	约31K	    经过工具压缩或经过服务器的开启Gzipyasuo ，主要用于产品和项目
+    4.3、jQuery环境配置
+        jQuery不需要安装，把下载的jQuery.js放到网站上的一个公共位置，
+        想要在某个页面上使用jQuery时，只需在该HTML文档中引入该库文件即可。
+
+    4.4、在页面中引入jQuery
+    	由于jQuery是JavaScript的一个库文件，也就是说jQuery本质是一个.js文件，
+    	所以使用<script type="text/javascript" src="jQuery存放的路径"></script>引入。
+    4.5 简单的jQuery示例
+            <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
+            <script type="text/javascript">
+                //单击按钮弹窗
+                $(document).ready(function(){
+                    $('input').click(function(){
+                        alert('第一个JQuery程序');
+                    });
+                });
+            </script>
+            ------------
+            <input type="button" id="btn" name="btn" value="点击我">
+
+5. window.onload和$(document).ready区别
+
+    5.1 在jQuery代码中一直在使用$(document).ready(function(){});这段代码进行首尾包裹，那么为什么必须要包裹这段代码呢？
+        原因是我们jQuery库文件是在body元素之前加载的，我们必须等待所有的DOM元素加载后，延迟支持DOM操作，
+        否则jQuery选择器就无法获取到相应的节点元素。而 JavaScript提供了一个事件为load，来进行延迟等待加载，方法如下：
+	5.2  DOM元素延迟等待加载
+        事件或方法						       说明
+        window.onload=function(){ };		   //JavaScript等待加载
+        $(document).ready(function(){ });	   //jQuery等待加载
+    5.3 load和ready区别如下所示：
+         1)执行时机：
+        	Window.onload：必须等待网页全部加载完毕(包括图片等)，然后再执行包裹代码
+        	$(document).ready()：只需要等待网页中的DOM结构加载完毕，就能执行包裹的代码。
+        2)执行次数：
+            Window.onload：只能执行一次，如果第二次，那么第一次的执行会被覆盖
+        	$(document).ready()：可以执行多次，第N此都不会被上一次覆盖。
+        3)简写方案	：
+            Window.onload： 无
+            $(document).ready()：$(function(){})
+    5.4 注意：
+        在实际应用中，很少直接去使用window.onload，因为需要等待图片之类的大型元素加载完毕后才能执行js代码.
+        所以，在网速较慢的情况下，页面已经全面展开，图片还在缓慢加载，这时页面上任何的js交互功能全部处在假死状态。
+6. jQuery基础
+6.1 jQuery语法
+    6.1.1 通过jQuery，你可以选取HTML元素，并对它们执行“操作”（action）。
+    6.1.2 语法格式：
+            $(selector).action()
+        解释：
+          1、$是jQuery的缩写
+          2、选择符（selector）用来查询和查找HTML元素
+          3、jQuery的action()执行对元素的操作
+6.2. jQuery对象
+    6.2.1 jQuery对象就是通过jQuery包装的DOM对象后产生的对象。
+    6.2.2 jQuery对象是jQuery独有的。如果一个对象是jQuery对象，那么就可以使用jQuery里的方法。
+    6.2.3 jQuery对象缩写“$”，在jQuery程序中，不管是页面元素的选择、内置的功能函数，都是美元符号“$”来起始的。
+          而“$”就是jQuery当中最重要且独有的对象：jQuery对象
+
+    6.2.4 示例： 在页面元素选择或执行一个方法
+            代码						            说明
+            $(document).ready(function (){});	    //执行一个匿名函数
+            $(‘#div1');					        //选择id为div1标签元素
+            $(‘#div1').css(‘color','red');	//改变id为div1标签元素文本内容为红色
+
+        由于$就是jQuery对象的缩写形式，上面的代码也可以写成如下形式：
+        	代码						                    说明
+        	jQuery (document).ready(function(){});         //执行一个匿名函数
+        	jQuery (‘#div1');					            //选择id为div1标签元素
+        	jQuery (‘#div1').css(‘color','red');	    //改变id为div1标签元素文本内容为红色
+
+
+6.3 jQuery的链式调用
+    6.3.1 示例 ：单击按钮弹窗
+         $(document).ready(function(){
+                $('input').click(function(){
+                    $('#div1').css("color","red");
+                })
+            });
+    6.3.2 jQuery的链式调用分析
+          由上面的例子可以看出:
+          1) 在执行方法的时候，并不是直接被“$”或jQuery对象调用执行，
+             而是先获取节点标签元素返回某个标签元素对象后再调用.css()方法。方法执行的返回仍然是jQuery对象。
+          2) 执行$().css(‘color','red'); 最终返回的还是jQuery对象，jQuery的代码可以采用链式操作，不停的连续调用方法。
+             例如: $('#div1').css('color','red').css('font-size', '50px');    //链式操作
+          
+6.4 js对象和jQuery对象之间互转
+    6.4.1 jQuery对象虽然是jQuery库独有的对象，但也是通过JavaScript进行封装而来的。我们可以直接输出来得到它的信息。
+        代码				    说明
+    	alert($);				//jQuery对象方法的内容
+    	alert($());				//jQuery对象方法返回的对象，还是jQuery对象
+    	alert($('#div1'));     //返回ID为div1的标签元素的jQuery对象
+
+    	从上面三组代码我们发现：只要使用了$()后，最终返回的都是jQuery对象。这样的好处显而易见，就是可以采用链式操作.
+    	但是有时，我们也需要返回原生的DOM对象
+    6.4.2 jQuery对象转换成DOM对象
+        eg:
+            代码										    说明
+            alert(document.getElementById('div1'));      //返回值[object HTMLDivElement] ,是一个DIV的原生对象
+
+        jQuery获取原生的DOM对象：通过jQuery本身提供，通过.get(index)方法，得到相应的DOM对象
+        eg:
+            代码										说明
+            alert($('#div1').get(0));  				//ID元素的第一个原生DOM  //返回值[object HTMLDivElement]
+
+        从上面get(0)，这里的索引看出，jQuery是可以进行批量处理DOM的，这样可以在很多需要循环遍历的处理上更加得心应手。
+
+    6.4.3 DOM对象转成jQuery对象
+          对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。转换后，就可以任意使用jQuery的方法了。
+        eg:
+            代码										说明
+            var d=document.getElementById("div1");		//DOM对象
+            var div=$(d);								//返回jQuery对象
+        注意：和之前的js进行区别，jQuery对象只能使用jQuery对象的方法；
+
+7. JQuery选择器
+7.1 jQuery最核心的组成部分就是：jQuery选择器。它继承了CSS的语法，可以对DOM元素的标签名、属性名、状态等进行快速准确的选择，
+    并且不必担心浏览器的兼容性。jQuery选择器实现了CSS1~CSS3的大部分规则之外，还实现了一些自定义的选择器，用于各种特殊状态的选择。
+
+7.2 JQuery选择器种类：
+    基本选择器、复合选择器、层次选择器、过滤选择器、表单选择器
+
+7.3 基本选择器
+    7.3.1 在使用jQuery选择器时，我们首先必须使用“$()”函数来包装我们的CSS选择器。
+    7.3.2 而CSS选择器作为参数传递到jQuery对象内部后，再返回包含页面中对应元素的jQuery对象。
+          随后，我们就可以对这个获取到的DOM节点进行行为操作了。
+
+    7.3.3 CSS选择器
+          CSS代码：
+                #div { 							//使用ID选择器选择标签元素
+                    color:red; 					//将ID为div的元素字体颜色变红
+                }
+    7.3.4 jQuery选择器:
+           在jQuery选择器里，使用如下的方式获取同样的结果：
+           $('#div1').css('color','red');				//获取DOM节点对象，并添加行为
+    7.3.5 基本选择器
+            选择器		    jQuery选择器		说明
+            元素名			$(‘div’)		    获取所有div元素的jQuery对象
+            ID				$(‘#box’) 	    获取ID为box元素的jQuery对象
+            类(class) .		$(‘.div1’)		获取所有class为div1的jQuery对象
+
+        注意：除了ID选择器其他都返回的是多个元素
+              为了证明ID返回的是单个元素，而元素标签名和类(class)返回的是多个，
+              我们可以采用jQuery核心自带的一个属性length或size()方法来查看返回的元素个数。
+              alert($('div').size());				//18个
+
+        CSS找到元素后添加的是单一的样式，而jQuery则添加的是动作行为。
+
+7.4 复合选择器
+
+
+7.5 层次选择器
+
+
+7.6 过滤选择器
+
+
+7.7 表单选择器
