@@ -1,12 +1,12 @@
-package Scala方法与函数
+package Scala方法与函数03
 
 /**
   * 函数编程 - 高级   可变参数与调用； 参数设置默认值
   */
-object FunctionHightTest {
+object FunctionHightTest_03 {
     def main(args: Array[String]): Unit = {
 
-        //一个 参数
+        //TODO 一个 参数
         def f1(name :String )={
             println(s"f1 : name = $name");
         }
@@ -23,6 +23,7 @@ object FunctionHightTest {
             println(s"f3 : names = $names , age = $age ");
         }
         f3(20,"战三","李四"); //f2 : names =WrappedArray(战三, 李四)
+
        // TODO 参数设置默认值
         def f4( age :Int = 20,name :String ="战三" )={
             println(s"f4 : names = $name , age = $age ");

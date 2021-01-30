@@ -1,9 +1,11 @@
-package Scala方法与函数
+package Scala方法与函数03
 
-object FunctionSupperTest {
+object FunctionSupperTest_04 {
     def main(args: Array[String]): Unit = {
         //TODO scala是完全面向函数的语言，scala中的类也是一个函数
        // TODO 所以函数可以当成参数，当成类，当成返回值类型 等等
+
+        println("==================1======================")
 
         def f0(age : Int ):Int = {
             println(s"comming into f0: age = $age");
@@ -21,7 +23,7 @@ object FunctionSupperTest {
         f1(f0);  // f0: age = 20
         //TODO 匿名函数
         f1( (age:Int ) =>{  println(s"f0: age = $age"); age ;});
-        println("========================================")
+        println("==================2======================")
 
         //TODO 方法作为返回值 返回
         def f2()={
@@ -40,30 +42,36 @@ object FunctionSupperTest {
         fun3() ;  // comming into f0_1
         //上面两步等价于
         f3()() ;  //comming into f0_1
-        println("========================================")
+        println("===================3=====================")
 
+        //TODO 如果不使用  f0 _， 也想返回函数引用，那么就声明函数返回值为 fo形式的函数。
         def f4():Int=>Int ={
             f0
         }
+        def f4_1():Int=>Int ={
+            //如果指定了返回类型为函数，那么 _ 可省可不省略(建议别省略)
+            f0 _
+        }
+        //等价于 下面的效果
         //简写为
         def f5() ={
             f0 _
         }
 //        def f6() ={
-//            f0  //方法调用，少参数报错
+//            f0  //方法调用，少参数报错  类型推断不知道要返回的是函数本省，还是函数运行的结果。 因为 调用时候：f0()可简写为 f0
 //        }
         f4()(20) ;  //comming into f0: age = 20
         f5()(30) ;  //comming into f0: age = 30
-        println("========================================")
+        println("=================4=======================")
 
-        //TODO 函数柯里化 （本质是闭包实现的）  把一个完整的逻辑便成一段一段的
+        //TODO 函数柯里化 （本质是闭包实现的）  把一个完整的逻辑拆成一段一段的
         //   好处在隐士转换中体现   类型的隐士转换
-        def f6()(age : Int): Unit ={
-            println(s" comming into f6: age = $age")
+        def f6(name:String )(age : Int =20): Unit ={
+            println(s" comming into f6: name=$name , age = $age")
         }
-        f6()(10);  //  comming into f6: age = 10
-
-        println("========================================")
+        f6("李四")(10);  //  comming into f6: age = 10
+        f6("李四")()
+        println("=================5=======================")
         //TODO 闭包   改变了局部变量的声明周期，将变量包含到当前函数的内部，形成一个闭包的效果。
         def f7(name:String ) ={
             // 先定义后返回
@@ -95,7 +103,7 @@ object FunctionSupperTest {
 
 
         println("============================================")
-        println("============================================")
+        println("================6============================")
         //匿名函数详解
         def f10(f:(String)=>Unit)={
             f("abcd");

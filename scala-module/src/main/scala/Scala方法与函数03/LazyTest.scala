@@ -1,4 +1,4 @@
-package Scala方法与函数
+package Scala方法与函数03
 
 object LazyTest {
     def main(args: Array[String]): Unit = {

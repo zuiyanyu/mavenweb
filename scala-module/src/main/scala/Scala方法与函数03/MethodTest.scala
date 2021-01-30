@@ -1,4 +1,4 @@
-package Scala方法与函数
+package Scala方法与函数03
 
 object MethodTest {
   def main(args: Array[String]): Unit = {

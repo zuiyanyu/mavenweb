@@ -1,4 +1,4 @@
-package scala流程控制.scala_if
+package scala流程控制02.scala_if
 
 object Scala_if {
     def main(args: Array[String]): Unit = {
