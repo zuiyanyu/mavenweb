@@ -10,12 +10,12 @@ object d模式匹配_所有类型匹配 {
     //TODO case语句的中置(缀)表达式
     /**
       * 什么是中置表达式？1 + 2，这就是一个中置表达式。\
-      * 如果unapply方法产出一个元组，你可以在case语句中使用中置表示法。比如可以匹配一个List序列
+      * 如果unapply方法返回一个元组，你可以在case语句中使用中置表示法。比如可以匹配一个List序列
       */
     def exam10(): Unit ={
         var list = List(1, 3, 5, 9,10,11)
         val result=list match {
-            case first :: second :: three::rest =>first + "**" + second + "**" + three+"**"+rest
+            case first :: second :: three::retained =>first + "**" + second + "**" + three+"**"+retained
             case _ => "匹配不到..."
         }
         println(result)// 1**3**5**List(9, 10, 11)
@@ -35,14 +35,17 @@ object d模式匹配_所有类型匹配 {
         abstract class Amount
         case class Dollar(value: Double) extends Amount
         case class Currency(value: Double, unit: String) extends Amount
+        case class Currency2(value: Double, unit: String) extends Amount
         case object NoAmount extends Amount
 
         val array: Array[Amount] = Array(
             Dollar(1000.0),  // Dollar(1000.0): Dollar(v) => v = 1000.0
             Currency(1000.0, "RMB"),  // Currency(1000.0,RMB): Currency(v, u) => v=1000.0,u=RMB
+            Currency2(1000.0, "RMB"),  // Currency(1000.0,RMB): Currency(v, u) => v=1000.0,u=RMB
             NoAmount // NoAmount: NoAmount => 无参样例类
         )
 
+        //TODO 1.会先进行类型匹配判断 2. 然后再进行返回值的判断  同时成立，才算匹配上了。
         for (amt <- array) {
             val result = amt match {
                 case Dollar(v) => s"Dollar(v) => v = $v"
@@ -135,12 +138,15 @@ object d模式匹配_所有类型匹配 {
     def exam05(): Unit ={
         object IntToString {
             //将int类型 转为String
-            def apply (i: Int): String = i.toString
+            //TODO 构建对象时apply会被调用
+            //def apply (i: Int): String = i.toString
 
             //apply的反向操作：将String转为Int
+            // TODO 当将 Square(n) 写在 case 后时[case Square(n) => xxx]，会默认调用unapply 方法(对象提取器)
+            // TODO 指定匹配成功或者失败的规则
             def unapply(s: String): Option[Int] = {
                 try{
-                    Some(s.toInt+1)  //如果能转成功 返回 Some
+                    Some(s.toInt + 1)  //如果能转成功 返回 Some
                 } catch {
                     case e:Exception =>None   //失败则返回 None
                 }
@@ -150,15 +156,10 @@ object d模式匹配_所有类型匹配 {
         // 模式匹配使用：
         /**
           * 1. 构建对象时apply会被调用 ，比如 val n1 = Square(5)
-          *
           * 2. 当将 Square(n) 写在 case 后时[case Square(n) => xxx]，会默认调用unapply 方法(对象提取器)
-          *
           * 3. number 会被 传递给def unapply(z: Double) 的 z 形参
-          *
           * 4. 如果返回的是Some集合，则unapply提取器返回的结果会返回给n这个形参
-          *
           * 5. case中对象的unapply方法(提取器)返回some集合则为匹配成功
-          *
           * 6. 返回none集合则为匹配失败
           */
         val number: String = "12"  // IntToString(n) =>number= 12 : n= 13

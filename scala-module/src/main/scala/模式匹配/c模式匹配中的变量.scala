@@ -7,7 +7,8 @@ object c模式匹配中的变量 {
         val ch = 'V'
         ch match {
             case '+' => println("+")
-            case chtmp => println(s"chtmap = $chtmp")
+            case chtmp:Char => println(s"chtmap = $chtmp")
+            case chtmp  => println(s"chtmap = $chtmp")
             case _ => println("无匹配")
         }
     }
