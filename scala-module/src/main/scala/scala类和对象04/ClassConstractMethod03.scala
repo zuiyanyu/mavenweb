@@ -1,11 +1,5 @@
 package scala类和对象04
-package dafdsf{
-
-    /**
-      * 构造方法
-      * scala构造方法比较特殊，和java的很不同
-      * scala中的类也是函数，所以类名称后可以加(作为参数列表，表示构造方法，
-      */
+package 类的构造函数{
     object ClassConstractMethod {
         def main(args: Array[String]): Unit = {
 
@@ -20,10 +14,14 @@ package dafdsf{
         }
     }
 
-    //scala中的类也是函数 ,所以类名称后可以加(作为参数列表，表示构造方法
+    /**
+      * 构造方法
+      * scala构造方法比较特殊，和java的很不同
+      * scala中的类也是函数，所以类名称后可以加()作为参数列表，表示构造方法，
+      */
    //主构造方法
     class Student(){
-        //类体 或者 构造方法体
+        //类体 或者 主构造方法体
         println("无参数 构造方法体.... " )
 
         //scala中构造方法可以声明在其他的位置，但是必须调用主构造方法体。比如这里

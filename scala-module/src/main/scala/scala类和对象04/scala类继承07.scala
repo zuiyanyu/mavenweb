@@ -2,34 +2,34 @@ package scala类和对象04
 
 object scala类继承 {
   def main(args: Array[String]): Unit = {
-    //    Apple("苹果","郑州");
-    val fruit = new Fruit("水果")
-    val str = fruit.getUserInfo("？")
-    println(str);
 
     val apple = new Apple("苹果","郑州")
     val s = apple.getUserInfo("红色")
-    println(s);
-
+    println(s); //Apple 苹果 的颜色是  红色  产地为 郑州 + name = pre_苹果
   }
 }
 
 // name 默认是 val 变量  可以改成变量
-//class Fruit(  name : String ){
-class Fruit(  name : String ){
-  val _name = name ;
+//class Fruit( var name : String ){
+class Fruit( name : String ){
+  val _name = name  ;
+  println("name=" + name )  //name=苹果
 
   def getUserInfo(color : String ): String ={
       "Fruit " + _name + " 的颜色 是 " + color
   }
 }
 //报错 1. 不能重写var 变量  2. 构造方法中，重写的变量前不能加 override
-class Apple(val name:String ,fromAddress : String ) extends Fruit(name : String){
+class Apple(var name:String ,fromAddress : String ) extends Fruit(name : String){
   override val _name = name  ;
   val _fromAddress = fromAddress ;
 
+  //TODO 操作的是本类Apple构造器中的name变量
+  name = "pre_"+ name ;
+  println("preName = "+name) //preName = pre_苹果
+
   override def getUserInfo(color : String ): String ={
-    "Apple " + _name + " 的颜色是 " + color +" 产地为 " + _fromAddress
+    s"Apple ${_name} 的颜色是  $color  产地为 ${_fromAddress} + name = $name "
   }
 
 }

@@ -1,25 +1,28 @@
 package scala类和对象04
 
-package jdjsjdfjsd{
+package 类的继承 {
+
     object ClassExtend {
         def main(args: Array[String]): Unit = {
             val person = new Student1();
+
             //TODO 父类属性初始化的时候用到子类属性，那么就出出问题：子类属性还没初始化，父类就使用，必出问题。
-            println(person.name)  //null张三
-
-
+            println(person.name) //null张三
             val person2 = new Student2();
-            println(person2.name)  //student1_张三
-
-
+            println(person2.name) //student1_张三
         }
     }
-    class Person(){
+
+    class Person() {
+        /**
+          * Person初始化的时候
+          */
         val prefix = "person_"
         val name = prefix + "张三"
     }
+
     //
-    class Student1() extends  Person {
+    class Student1() extends Person {
         override val prefix = "student1_"
     }
 
