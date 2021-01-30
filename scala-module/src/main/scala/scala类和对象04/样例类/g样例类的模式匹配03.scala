@@ -1,6 +1,6 @@
 package scala类和对象04.样例类
 
-object g样例类的模式匹配 {
+object g样例类的模式匹配03 {
     def main(args: Array[String]): Unit = {
         exam09
     }

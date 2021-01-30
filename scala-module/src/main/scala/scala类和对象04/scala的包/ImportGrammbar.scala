@@ -2,17 +2,17 @@ package scala类和对象04.scala的包
 
 //0.  默认情况下，Scala 总会引入 java.lang._ 、 scala._ 和 Predef._，这里也能解释，为什么以scala开头的包，在使用时都是省去scala.的。
 
-//1. 方式1  // 引入Color
+//1. 方式1   直接引入某个类
+import scala.collection.mutable.Map
 
-//方式2
-import java.awt._  // 引入包内所有成员
+//方式2  引入包内所有成员
+import java.awt._
 
-//方式3   //有选择的引入多个成员
-
-// 方式4
+//方式3   有选择的引入多个成员
 import java.util.{HashMap => JavaHashMap}
 
-import scala.collection.mutable.Map
+// 方式4  包的重命名
+import scala.collection.mutable.ArrayBuffer
 
 // 方式5：  scala可以将不想使用的类给隐藏掉
 //import java.util.{HashMap => _,_}  //隐藏成员，即排除成员: 引入了util包的所有成员，但是HashMap被隐藏了
