@@ -18,8 +18,11 @@ package scala类和对象04.scala的包
   *  TODO 7. import 导包可以在任意位置（在需要时候引入包，缩小import包的作用范围，提高效率）
   *  TODO 8. Scala中采用下划线 "_" 来导入包中所有的类(Java中如果想要导入包中所有的类，可以通过通配符*)
   *  TODO 9. 类 选取器 {} :如果不想要某个包中全部的类，而是其中的几个类，可以采用选取器(大括号)
+  *           import java.util.{ArrayList,Set}
   *  TODO 10.类 重命名 : 如果引入的多个包中含有相同的类，那么可以将类进行重命名进行区分，这个就是重命名
+  *           import java.util.{HashMap => JavaHashMap}
   *  TODO 11.类 隐藏:  如果某个冲突的类根本就不会用到，那么这个类可以直接隐藏掉。
+  *            import java.util.{HashMap => _}
   */
 
 class PackageGrammar {

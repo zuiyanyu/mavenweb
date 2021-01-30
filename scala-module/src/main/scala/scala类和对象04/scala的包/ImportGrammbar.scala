@@ -9,10 +9,11 @@ import scala.collection.mutable.Map
 import java.awt._
 
 //方式3   有选择的引入多个成员
-import java.util.{HashMap => JavaHashMap}
+import java.util.{ArrayList,Set}
 
 // 方式4  包的重命名
-import scala.collection.mutable.ArrayBuffer
+import java.util.{HashMap => JavaHashMap}
+
 
 // 方式5：  scala可以将不想使用的类给隐藏掉
 //import java.util.{HashMap => _,_}  //隐藏成员，即排除成员: 引入了util包的所有成员，但是HashMap被隐藏了
