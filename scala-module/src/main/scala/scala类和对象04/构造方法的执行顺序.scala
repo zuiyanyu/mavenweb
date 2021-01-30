@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 package djsjfosdjf{
     object 构造方法的执行顺序 {
         def main(args: Array[String]): Unit = {

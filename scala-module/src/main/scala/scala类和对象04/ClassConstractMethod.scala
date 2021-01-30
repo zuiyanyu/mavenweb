@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 package dafdsf{
 
     /**

@@ -1,4 +1,4 @@
-package scala类和对象.scala的包
+package scala类和对象04.scala的包
 
 //0.  默认情况下，Scala 总会引入 java.lang._ 、 scala._ 和 Predef._，这里也能解释，为什么以scala开头的包，在使用时都是省去scala.的。
 

@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 
 object 枚举类 {
     def main(args: Array[String]): Unit = {

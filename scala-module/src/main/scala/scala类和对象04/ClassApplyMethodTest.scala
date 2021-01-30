@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 package jdajfdkj{
     object ClassApplyMethodTest {
         def main(args: Array[String]): Unit = {

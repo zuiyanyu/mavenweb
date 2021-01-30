@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 package dsdfsddf{
     object AbstractClass {
         def main(args: Array[String]): Unit = {

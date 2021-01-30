@@ -1,4 +1,4 @@
-package scala类和对象.偏函数
+package scala类和对象04.偏函数
 
 /**
   * 偏函数

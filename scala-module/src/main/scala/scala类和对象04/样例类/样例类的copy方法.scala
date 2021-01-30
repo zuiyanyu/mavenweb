@@ -1,4 +1,4 @@
-package scala类和对象.样例类
+package scala类和对象04.样例类
 
 object 样例类的copy方法 {
     def main(args: Array[String]): Unit = {

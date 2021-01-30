@@ -1,4 +1,4 @@
-package scala类和对象.密封类
+package scala类和对象04.密封类
 
 object TmpClass {
 

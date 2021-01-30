@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 
 import scala.beans.BeanProperty
 
@@ -50,7 +50,7 @@ class Emp{
     private var age3:Int =_ ;
 
     //同包的可以访问
-    private[scala类和对象] var age4:Int =_ ;
+    private[scala类和对象04] var age4:Int =_ ;
 
     //只有本类和子类可以访问
     protected var age5 :Int = _ ;

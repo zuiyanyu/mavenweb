@@ -1,4 +1,4 @@
-package scala类和对象.scala的包
+package scala类和对象04.scala的包
 
 //TODO scala可以将package 当成关键字用，但是包中可以放类和接口，因为受到了JVM限制
 //TODO scala为了让开发方便，使用了包对象的概念。其中可以声明属性和方法，类似于伴生对象
@@ -19,7 +19,7 @@ package a{
         }
     }
     //TODO 父包使用子包中的类需要进行导包，反之不用。
-    import scala类和对象.scala的包.a.b.User
+    import scala类和对象04.scala的包.a.b.User
     class Users{
         val user = new User();
         def getUserName(name :String ): Unit ={
@@ -28,7 +28,7 @@ package a{
     }
 }
 
-import scala类和对象.scala的包.a.Users
+import scala类和对象04.scala的包.a.Users
 object PackageTest {
     def main(args: Array[String]): Unit = {
         val users = new Users();

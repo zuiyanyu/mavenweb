@@ -1,4 +1,4 @@
-package scala类和对象
+package scala类和对象04
 
 object scala类继承 {
   def main(args: Array[String]): Unit = {
