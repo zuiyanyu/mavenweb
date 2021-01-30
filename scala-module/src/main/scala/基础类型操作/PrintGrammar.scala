@@ -1,4 +1,4 @@
-package a基础语法
+package 基础类型操作
 
 object PrintGrammar {
     private val age = 29 ;

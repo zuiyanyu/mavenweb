@@ -3,10 +3,11 @@ package 泛型
 import 泛型.a泛型上下界.BBBB
 
 /**
+  * TODO 泛型的协变逆变 解决的是数组的类型 父类和子类问题。
   * 1.在这里引入关于这个符号的说明，在声明Scala的泛型类型时，“+”表示协变，而“-”表示逆变 
-  *   C[+T]：如果A是B的子类，那么C[A]是C[B]的子类，称为协变 
-  *   C[-T]：如果A是B的子类，那么C[B]是C[A]的子类，称为逆变 
-  *   C[T]：无论A和B是什么关系，C[A]和C[B]没有从属关系。称为不变.
+  *   C[+B]：如果A是B的子类，那么C[A]是C[B]的子类，称为协变 
+  *   C[-B]：如果A是B的子类，那么C[B]是C[A]的子类，称为逆变 
+  *   C[B]：无论A和B是什么关系，C[A]和C[B]没有从属关系。称为不变.
   *
   *2. 上下界是针对入参类型的限定：上界 :<  是 协变 (找子类型)；  下界 >: 是逆变 (找父类型)
   *
@@ -36,12 +37,15 @@ object b泛型的协变逆变 {
         val f     = new FFFF[CCCC]  //但是这样却可以，会忽略泛型
         f.printInfo()  //FFFF
      }
-    //TODO 协变
+    //TODO 协变  如果BBBB是CCCC的父类, 那么数组 DDDD[BBBB] 是  DDDD[CCCC] 的父类。
+    //  TODO DDDD[+BBBB]数组中的元素只能是BBBB的子类。
+    //  +BBBB 类比  泛型？ supper BBBB  ，
     class DDDD[+BBBB]{
     }
 
     //TODO 上下界 和 协逆变 的区别。
     //TODO 逆变 ：接受父类型。 这里的父子类型是针对 EEEE[BBBB父类型] 的。
+    // DDDD[+BBBB] 是 DDDD[BBBB] 、DDDD[BBBB的子类] 的父类
     class EEEE[-BBBB]{
     }
     //TODO 下界：接受BBBB的父类型。这里的父子类型是针对 BBBB而言 。

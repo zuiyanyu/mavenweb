@@ -1,11 +1,12 @@
 package javaBase;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class test {
-
+public final static String a = "a";
+    public test(){
+        System.out.println("初始化test");
+    }
     public static void main(String[] args) {
+        System.out.println(Test3.a == test.a);
 
 //        String str = "REP0001  + 001  + REP0002 + RULE0003";    //一句标准字幕，带时间轴、带参数、带中英双语
 ////        String pattern = "[^a-zA-Z]";    //本案例使用的正则表达式
@@ -31,18 +32,18 @@ public class test {
 //            System.out.println(ma.group(0));
 //        }
 
-        System.out.println("=================");
-        String st = "K00<a" ;
-        Pattern compile = Pattern.compile("[a-zA-Z]+\\d+|(<=\\d)[a-zA-Z]+"); // ([a-zA-Z]+\d+)|((<=\d)[a-zA-Z]+)
-        Matcher matcher = compile.matcher(st);
-//               boolean b = matcher.find();
-//        System.out.println(b);
-
-        while (matcher.find()) {
-            System.out.println(matcher.group(0));
-        }
-
-        System.out.println(st.matches("[a-zA-Z]+\\d+|(?<=\\d)[a-zA-Z]+"));
+//        System.out.println("=================");
+//        String st = "K00<a" ;
+//        Pattern compile = Pattern.compile("[a-zA-Z]+\\d+|(<=\\d)[a-zA-Z]+"); // ([a-zA-Z]+\d+)|((<=\d)[a-zA-Z]+)
+//        Matcher matcher = compile.matcher(st);
+////               boolean b = matcher.find();
+////        System.out.println(b);
+//
+//        while (matcher.find()) {
+//            System.out.println(matcher.group(0));
+//        }
+//
+//        System.out.println(st.matches("[a-zA-Z]+\\d+|(?<=\\d)[a-zA-Z]+"));
 
     }
 }

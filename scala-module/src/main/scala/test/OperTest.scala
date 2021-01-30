@@ -1,4 +1,4 @@
-package a基础语法
+package test
 
 import scala.io.StdIn
 

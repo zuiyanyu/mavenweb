@@ -6,7 +6,7 @@ import javaBase.domain.Pair;
 import org.junit.Test;
 
 /**
- * TODO 直观地讲，带有超类型限定的通配符可以向泛型对象写人，带有子类型限定的通配符可以从泛型对象读取。
+ * TODO 直观地讲，带有超类型限定的通配符可以向泛型对象写入，带有子类型限定的通配符可以从泛型对象读取。
  */
 public class Tong_pei_fu {
 
@@ -29,7 +29,35 @@ public class Tong_pei_fu {
      * TODO 解决的方法很简单：使用通配符类型： public static void printBuddies(Pair<? extends Eiployee> p)
      *      类型 Pair<Manager> 是 Pair<? extends Employee> 的子类型
      *      类型Pair<Employee> 也是 Pair<? extends Employee> 的子类型
-     *      类型Pair<? extends Employee> 是 Pair的子类型
+     *      类型Pair<? extends Employee> 是 Pair的子类型 即 Pair<? extends Employee> 是Pair<Object>的子类
+     *
+     *      如果A是B的父类：
+     *          对于C[? extend A]类型：
+     *          1. C[? extend A] 是 C[B]的父类 ；
+     *          2. 特殊的： C是 C[? extend A] 的父类，C也是C[B]的父类
+     *
+     *          对于C[? extend A]中的元素类型：
+     *          3.  C[? extend A]  只能接收A类型的子类，但是代表子类型的？具体类型又无法具体确定下来。
+     *                             只能确定这个类型的一个范围:无穷小，到A类型。
+     *          4.  C[? extend A]  不能接收元素，或者只能接收null类型
+     *          5.  C[? extend A]  中的元素只能被A类型接收，或是A父类接收。
+     *
+     *      //TODO Son extends Person
+     *         List<? extends Son> list5 = new ArrayList<>();
+     *         List<? super Son> list6 = new ArrayList<>();
+     *         List<? super Person> list7 = new ArrayList<>();
+     *         List<Person> list8 = new ArrayList<>();
+     *         List<Object> list9 = new ArrayList<>() ;
+     *         List list10 = new ArrayList() ;
+     *
+     *         list6 = list5 ; // 异常
+     *         list7 = list5; // 异常
+     *         list8 = list5; // 异常
+     *         list9 = list5; // 异常
+     *         list10 = list5 ; // ok
+     *
+     *
+     *
      */
     @Test
     public void extendTest(){

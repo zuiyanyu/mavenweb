@@ -32,16 +32,21 @@ object scala数组转java的list {
   def javaArrToScalaList(): Unit ={
 
     //java.util.List ==> scala.Buffer
-    val javaList: util.List[String] = new util.ArrayList[String]()
+    var javaList: util.List[String] = new util.ArrayList[String]()
     javaList.add("1")
     javaList.add("2")
     javaList.add("3")
 
-    val javaList2: util.List[Int] = new util.ArrayList[Int]()
+    var javaList2: util.List[Int] = new util.ArrayList[Int]()
     javaList2.add(1)
 
+
     //java 的list转Scala数组 mutable.Buffer
-    import scala.collection.JavaConversions.asScalaBuffer
+    //import scala.collection.JavaConversions.asScalaBuffer
+    import scala.collection.JavaConversions._
+
+    val strings: util.ArrayList[String] = javaList.asInstanceOf[util.ArrayList[String]]
+
     val scalaArr:mutable.Buffer[String] = javaList
     val scalaArr2:mutable.Buffer[Int] = javaList2
 

@@ -8,12 +8,12 @@ public class 泛型上界下界 {
     }
 
 
-    //TODO 泛型的下界  只能传递 Son类或其 父类
+    //TODO 泛型的下界  只能传递 Son类或其 子类
     public static   void getSon(Class<? super Son> parent ){
 
     }
 
-    //TODO 泛型的上界  只能传递 Parent类或其 子类
+    //TODO 泛型的上界  只能传递 Parent类或其父类类
     public static   void getParent(Class<? extends Parent> parent ){
 
     }
