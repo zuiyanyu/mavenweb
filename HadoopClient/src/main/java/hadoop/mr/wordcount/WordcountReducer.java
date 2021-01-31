@@ -5,6 +5,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * Reducer阶段
@@ -54,9 +55,22 @@ public class WordcountReducer extends Reducer<Text, IntWritable, Text, IntWritab
      * @throws IOException
      * @throws InterruptedException
      */
+    private IntWritable sumText = new IntWritable();
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+        //1. 获取key对应的多个value
+        Iterator<IntWritable> iterator = values.iterator();
 
+        //2. 求和
+        int sum = 0 ;
+        while(iterator.hasNext()){
+            IntWritable wordCount = iterator.next();
+            //对单词相同的数量进行累加
+           sum +=  wordCount.get();
+        }
+        sumText.set(sum);
+        //3. 向hdfs落地数据 (具体实现文件落地的是OutputFormat对象)
+        context.write(key,sumText);
     }
 }
 
