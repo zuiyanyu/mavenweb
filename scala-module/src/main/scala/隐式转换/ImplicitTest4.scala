@@ -17,14 +17,15 @@ object ImplicitTest4 {
         //要对父类进行功能扩展
         class Person{
         }
-        //TODO 方式1 通过 implicit def  对 person类进行功能扩展
-        //TODO 这种方式可以整合多个类的功能到一起
-        //TODO 表示无关两个类A,B 之间方法的调用关系
         class User2(){
             def logIn(): Unit ={
                 println("comming into User2 ....")
             }
         }
+
+        //TODO 方式1 通过 implicit def  对 person类进行功能扩展
+        //TODO 这种方式可以整合多个类的功能到一起
+        //TODO 表示无关两个类A,B 之间方法的调用关系
         implicit def userToPerson(person:Person):User2 ={
             new User2()   ;
         }
@@ -37,6 +38,7 @@ object ImplicitTest4 {
         //要对父类进行功能扩展
         class Person{
         }
+        //TODO 3.class类隐士转换   将构造入参的类转换为当前类，可以进行功能扩展
         //TODO 方式2：使用隐士转换类(scala2.0后增加) implicit class 对 person类进行功能扩展
         //TODO 这种方式可以特意为某个类进行功能扩展 (声明时候必须有一个参数的构造方法，把此参数隐士转换为当前类)
         //TODO 代表父类可以使用子类的方法

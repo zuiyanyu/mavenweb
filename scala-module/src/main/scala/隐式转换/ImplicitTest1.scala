@@ -2,6 +2,7 @@ package 隐式转换
 package dsgdg{
 
     /**
+      * TODO 隐士转换有三种：1. 类型隐士转换 2.方法参数隐士转换  3.class类隐士转换
       * scala 允许开发者自定义类型转换规则
       * 当sala编译器在编译时候发现类型错误，会尝试从开发者的位置查找转换规则进行二次编译
       *
@@ -9,6 +10,8 @@ package dsgdg{
       */
     object ImplicitTest1 {
         def main(args: Array[String]): Unit = {
+
+            //TODO 1.类型隐士转换
             //进行隐士转换，将Short类型隐士转换为Byte类型
             implicit def shortToByte(int:Short):Byte ={
                 int.toByte
