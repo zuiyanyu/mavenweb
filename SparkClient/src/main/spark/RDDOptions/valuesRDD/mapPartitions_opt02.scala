@@ -9,9 +9,11 @@ import org.apache.spark.rdd.RDD
 object mapPartitions_opt02 extends SC{
     //TODO 需求：创建一个RDD，使每个元素*2组成新的RDD
     def main(args: Array[String]): Unit = {
-        val rdd = sc.parallelize(Array(1,2,3,4))
+        val rdd = sc.parallelize(Array(1,2,6,9,3,4))
          rdd.mapPartitions(iter=>iter.map(_*2))
                 .collect()
                 .foreach(println)
+
+
     }
 }

@@ -54,6 +54,11 @@
             <!--<groupId>org.apache.hive</groupId>-->
             <!--<artifactId>hive-exec</artifactId>-->
         <!--</dependency>-->
+         <!-- spark 操作mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>sparkClient-test</finalName>
