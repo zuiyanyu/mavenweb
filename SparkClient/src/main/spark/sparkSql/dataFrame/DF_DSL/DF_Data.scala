@@ -24,4 +24,15 @@ class DF_Data {
       * |zhangsan2| 21|
       */
 
+    def getDF: DataFrame = {
+        val df: DataFrame = sc.makeRDD(
+            ("1", "zhangsan", "20") ::
+                    ("2", "zhangsan2", "22") ::
+                    ("3", "wangwu", "23") ::
+                    ("4", "wangwu2", "24") ::
+                    Nil
+        ).toDF("id", "name", "age")
+        df
+    }
+
 }
