@@ -22,6 +22,7 @@ object df_write_txt extends DF_Data {
 
     import spark.implicits._
 
+    //TODO 自定义txt的输出文件名
     def main(args: Array[String]): Unit = {
 
         //        val conf = new SparkConf().setAppName(this.getClass.getName).setMaster("local[2]")

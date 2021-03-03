@@ -98,6 +98,7 @@ object DF_UDAF {
                 .agg(
                     functions.max("salary") as ("max"),
                     functions.avg("salary") as ("avg"),
+                    //TODO 使用自定义聚合函数
                     functions.expr("myAverage(salary)") as ("myAverage")
                 )
         resDF2.show()
