@@ -19,6 +19,7 @@
             <module>HadoopClient</module>
             <module>SparkClient</module>
             <module>HbaseClient</module>
+            <module>HiveClient</module>
         </modules>
         <packaging>pom</packaging>
         <name>mavenweb</name>

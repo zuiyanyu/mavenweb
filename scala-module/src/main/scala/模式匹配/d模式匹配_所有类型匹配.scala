@@ -126,6 +126,14 @@ object d模式匹配_所有类型匹配 {
         }
         println(result)
 
+        val ss = Some("")
+
+
+        //测试
+        ss match {
+            case Some(s) => print(s)
+            case _ => 2
+        }
 
     }
     //TODO 5. 对象匹配_1

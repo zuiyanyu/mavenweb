@@ -8,10 +8,10 @@ object scanLeft扫描 {
     val range:List[Int] =List(1,2,3,4,5)
 
 //    val ints: List[Int] = range.scan(0)(_+_)
-    val scanRest: immutable.List[Int] = range.scan(0)(_+_)  //运算顺序；((((0+1+2)+3)+4)+5)
+    val scanRest: immutable.List[Int] = range.scan(0)(_+_)  //运算顺序；((((0+1)+2)+3)+4)+5)
     println(scanRest) //List(0, 1, 3, 6, 10, 15)
 
-    val scanLeftRest: immutable.List[Int] = range.scanLeft(0)((init,elem)=>{init+elem}) //运算顺序；((((0+1+2)+3)+4)+5)
+    val scanLeftRest: immutable.List[Int] = range.scanLeft(0)((init,elem)=>{init+elem}) //运算顺序；((((0+1)+2)+3)+4)+5)
     println(scanLeftRest) // List(0, 1, 3, 6, 10, 15)
 
     //运算从左向右两两运算的，中间结果也是从左往右存的。

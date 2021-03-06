@@ -33,8 +33,8 @@ object FoldLeft实例 {
     //开始进行单词统计
     val map = mutable.Map[Char, Int]()
     sentence.foldLeft(map)((resMap, char) => {
-      map(char) = map.getOrElse(char, 0) + 1
-      map
+      resMap(char) = resMap.getOrElse(char, 0) + 1
+      resMap
     })
 
     //根据单词数量进行降序排序
