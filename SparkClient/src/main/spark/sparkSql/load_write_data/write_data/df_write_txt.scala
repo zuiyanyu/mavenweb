@@ -22,9 +22,14 @@ object df_write_txt extends DF_Data {
 
     import spark.implicits._
 
-    //TODO 自定义txt的输出文件名
-    def main(args: Array[String]): Unit = {
 
+    def main(args: Array[String]): Unit = {
+        val df: DataFrame = getDF
+
+
+    }
+    //TODO 自定义txt的输出文件名
+    def saveAsHadoopFile: Unit ={
         //        val conf = new SparkConf().setAppName(this.getClass.getName).setMaster("local[2]")
         //        val sc = new SparkContext(conf)
         //        val sqlContext = new SQLContext(sc)

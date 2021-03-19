@@ -4,13 +4,32 @@ import scala.collection.mutable
 
 object Set可变 {
   def main(args: Array[String]): Unit = {
-    function
-    add
-    query
-    define
+//    function
+//    add
+//    query
+//    define
+    val upperBound = 10 ;
+    val lowerBound = 5 ;
+    val numPartitions = 3
+    val a = upperBound / numPartitions - lowerBound / numPartitions
+    println(a)
+
+    println((upperBound  - lowerBound) / numPartitions)
+    //getElement
 
   }
-  //TODO 4.  功能介绍
+  //TODO 5. 判断元素是否存在
+  def isexist(): Unit ={
+    println("==========TODO 1.  声明方式==============")
+    //方式1
+    val set: mutable.Set[Int] = mutable.Set(1,2,3,3)
+    println(set(1))
+    println(set(12))
+
+
+
+  }
+  //TODO 4. 功能介绍
   def function(): Unit ={
     println("=========TODO 4.  功能介绍===============")
     val set: mutable.Set[Int] = mutable.Set(1,2,3,3)
@@ -82,6 +101,7 @@ object Set可变 {
       print(elem +"\t")
     };println;
   }
+
   //TODO 1.  声明方式
   def define(): Unit ={
     println("==========TODO 1.  声明方式==============")

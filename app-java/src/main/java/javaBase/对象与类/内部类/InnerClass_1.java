@@ -27,7 +27,7 @@ class TalkingClock {
     private boolean beep ;//是否打开铃声提醒
 
     /**
-     * TODO 内部类使用了 beep  . if(beep) ,编译后的看到的结果是： if (TalkingClock.access$000(this.this$0))
+     * TODO 内部类使用了 beep.if(beep) ,编译后的看到的结果是： if (TalkingClock.access$000(this.this$0))
      * TODO 编译器自动为 外部类提供了一个静态方法：
      * static boolean access$000(TalkingClock this$0){
      *     return this$0.beep ;
@@ -70,7 +70,7 @@ class TalkingClock {
 
         // TODO 内部类中的机制：第2步：接收外部类引用
         /* TODO 1.外围类的引用在构造器中设置。编译器修改了所有的内部类的构造器， 添加一个外围类引用的参数。
-         *  TODO 2.因为 TimePrinter 类没有定义构造器，所以编译器为这个类生成了一个默认的构造器，其代码如下所示
+         * TODO 2.因为 TimePrinter 类没有定义构造器，所以编译器为这个类生成了一个默认的构造器，其代码如下所示
          * */
         TalkingClock outer ;
 
@@ -83,7 +83,7 @@ class TalkingClock {
         /**
          * TODO 编译后的结果如下： (this$0 便是 编译器修改了所有的内部类的构造器，添加一个外围类引用的参数)
          *  TalkingClock outer;
-         *  final TalkingClock this$0;  //TODO 这格式编译器自动生成的 域
+         *  final TalkingClock this$0;  //TODO 这就是编译器自动生成的域
          *   public TalkingClock$TimePrinter(TalkingClock this$0, TalkingClock clock)
          *   {
          *      outer = clock;

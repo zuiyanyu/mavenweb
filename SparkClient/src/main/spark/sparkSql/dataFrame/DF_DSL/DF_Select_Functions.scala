@@ -15,11 +15,35 @@ object DF_Select_Functions extends DF_Data {
     import spark.implicits._
 
     def main(args: Array[String]): Unit = {
-        functions_groupBy
+        function_regexp_replace
         //functions_expr
     }
 
+    //TODO concat 拼接字符串，并且使用正则表达式替换某个值中的特殊字符
+    def function_regexp_replace(): Unit = {
+        /**
+          * +---------+---+
+          * |     name|age|
+          * +---------+---+
+          * | zhangsan| 20|
+          * |zhangsan2| 22|
+          * +---------+---+
+          */
+        df.show()
+        val df2: DataFrame = df.withColumn("name2",  functions.expr("concat('+',name,'.')") )
+        val newDF: DataFrame = df2.withColumn(
+            "newName",
+            functions.regexp_replace(functions.trim($"name2"),"(^\\+)|(\\.$)","")
+        )
+        newDF.show();
+        //df.select(functions.monotonically_increasing_id(), $"age").show(2)
+    }
 
+    def function_trim(): Unit = {
+        val newDF: DataFrame = df.withColumn("newName",functions.trim($"name"))
+        newDF.show();
+        //df.select(functions.monotonically_increasing_id(), $"age").show(2)
+    }
 
     //1. 生成递增序列号
     def monotonically_increasing_id(): Unit = {

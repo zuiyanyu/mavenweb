@@ -4,11 +4,20 @@ import scala.collection.immutable
 
 object Map_不可变 {
   def main(args: Array[String]): Unit = {
-    function
-    add
-    query
-    define
+//    function
+//    add
+//    query
+//    define
+    filter
 
+  }
+  //TODO 4.  功能介绍
+  def filter(): Unit = {
+    println("=========TODO 5.  过滤key ===============")
+    val map = Map("a" -> 1, "b" -> 2)
+    // false 就不保留，true就进行保留
+    val newMap: Map[String, Int] = map.filterKeys(_ => false)
+    println(newMap)
   }
   //TODO 4.  功能介绍
   def function(): Unit ={

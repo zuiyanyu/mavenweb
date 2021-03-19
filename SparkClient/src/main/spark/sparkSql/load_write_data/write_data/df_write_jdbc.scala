@@ -3,7 +3,7 @@ package sparkSql.load_write_data.write_data
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
-import sparkSql.load_write_data.load_data.SparkRead_jdbc._
+import sparkSql.load_write_data.load_data.SparkRead_jdbc.{mysql_table, password, spark, url, user, _}
 
 object df_write_jdbc {
     private val spark = SparkSession.builder()
@@ -49,6 +49,41 @@ object df_write_jdbc {
                 .option("password",password)
                 .option("dbtable",mysql_table)
                 .save()
+    }
+    //TODO 2.Spark SQL-使用SQL语句而不是表名使用JDBC加载数据-方式2
+    def sparkRead_format_option_sql_type2_insert_update: Unit = {
+        /**
+          * option("dbtable",sql) 的入参应该为一个表名 ，
+          * 但是可以您应该传递一个有效的子查询作为dbtable参数，让然有效
+          */
+        val insertSql = "insert into  mavenweb.t_user(user_id,user_name) values" +
+                "(2133,'insertSql'),(21333,'insertSql2')  "
+        //val updateSql = "select user_id,user_name from mavenweb.t_user   "
+
+        val insertJdbcDF = spark.read
+                .format("jdbc")
+                .option("url", url)
+                .option("user", user)
+                .option("password", password)
+                .option("dbtable", mysql_table)
+
+                .option("sql", insertSql)
+                .load()
+        insertJdbcDF.show();
+        val insertCount: Long = insertJdbcDF.count()
+        println(s"insertCount = $insertCount")
+
+        println("=================================")
+        //        val jdbcDF2 = spark.read
+        //                .format("jdbc")
+        //                .option("url", url)
+        //                .option("user", user)
+        //                .option("password", password)
+        //                .option("dbtable", mysql_table)
+        //                .option("sql", insertSql)
+        //                .load()
+
+
     }
     def main(args: Array[String]): Unit = {
         df_write_format

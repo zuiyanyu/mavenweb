@@ -13,6 +13,7 @@ object MakeRDD {
         sparkConf.setMaster("local[2]");
         //2.获取spark的上下文环境  spark-core的核心入口
         val sc = new SparkContext(sparkConf)
+        val value: RDD[String] = sc.textFile("")
 
         //5.关闭连接
         sc.stop()

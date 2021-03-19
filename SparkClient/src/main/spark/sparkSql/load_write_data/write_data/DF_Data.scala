@@ -8,13 +8,14 @@ class DF_Data {
             .appName("SparkRead")
             .master("local[2]")
             .getOrCreate()
+
     private val sc: SparkContext = spark.sparkContext
 
     import spark.implicits._
 
     def getDF: DataFrame = {
         val df: DataFrame = sc.makeRDD(
-                    ("1", "zhangsan", "20") ::
+                    ("1", "zhangsan", "0020 ") ::
                     ("2", "zhangsan2", "22") ::
                     ("3", "wangwu", "23") ::
                     ("4", "wangwu2", "24") ::

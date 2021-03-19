@@ -2,6 +2,15 @@ package com.mavenweb;
 
 public class Test {
     public static void main(String[] args) {
+        String s = "${eds.jdbc.user}" ;
+        String prifix = "[${]" ;
+        String sufix = "[}]" ;
+        System.out.println(prifix);
+        System.out.println(sufix);
+        String s1 = s.replaceAll(prifix, "").replaceAll(sufix,"");
+        System.out.println(s1);
+    }
+    public static void main2(String[] args) {
         int num =9928 ;
         String s = switchColIndexToName(num);
         System.out.println(s);

@@ -39,6 +39,7 @@ public class HDFSClient {
         // 2 获取文件详情  就是 ls 命令， 会列出所有的文件夹目录和文件目录 ，并且可以设置为递归罗列目录
         RemoteIterator<LocatedFileStatus> listFiles = fs.listFiles(new Path("/"), true);
 
+
         while(listFiles.hasNext()){
             LocatedFileStatus status = listFiles.next();
 

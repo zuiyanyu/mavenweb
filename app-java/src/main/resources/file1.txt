@@ -1,0 +1,1 @@
+file1.txt:app-java模块中，classpath根目录下的文件

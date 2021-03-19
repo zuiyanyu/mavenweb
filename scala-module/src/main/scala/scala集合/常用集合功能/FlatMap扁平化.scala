@@ -10,4 +10,10 @@ object FlatMap扁平化 {
     //TODO  输入 in： List   ， 输出 out：Iterator  不管你输入的是什么，但是输出的必须是可迭代的类型即可。
     println(list5.flatMap( x => x))  //List(1, 2, 3, 4, 5, 6, 7, 8)
   }
+  def option(): Unit ={
+    val array = Array(1,3)
+    //TODO array 的 flatMap可以应用到Option上
+    val flat: Array[String] = array.flatMap(_=>Option("1"))
+    val str: String = flat.mkString(",")
+  }
 }

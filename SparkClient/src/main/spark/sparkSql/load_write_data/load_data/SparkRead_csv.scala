@@ -35,6 +35,7 @@ object SparkRead_csv {
     def sparkRead_csv_a_01: Unit = {
         val df: DataFrame = spark.read.format("csv")
                 .option("delimiter", ",")        // 分隔符，默认为逗号,
+                .option("encoding", "UTF-8")     // 使用UTF-8进行数据读取
                 .option("header", "true")        // true:首行作为标题  false:首行作为数据内容(默认为false)
                 .option("quote", "'")            //引号字符，默认为双引号"
                 .option("nullValue", "\\N")     //指定一个字符串代表 null 值
@@ -146,6 +147,6 @@ object SparkRead_csv {
     }
 
     def main(args: Array[String]): Unit = {
-        sparkRead_csv_b_01
+        sparkRead_csv_a_01
     }
 }

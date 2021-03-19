@@ -1,12 +1,34 @@
 package sparkSql.load_write_data.write_data
 
 import org.apache.spark.SparkContext
-import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
+import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession,functions}
 import sparkSql.load_write_data.load_data.SparkRead_csv.{person_with_header, spark}
 
+/**
+  *
+  * TODO  csv 文件中，如果字符串是 00011 或者 3.100，0.00 的形式，用Excel打开的时候，会丢失前后的0(以整数或者浮点数形式了)，
+  * 解决方法是：
+  * 1. 在写出csv数据的时候，将00011形式的数值的前面或者后面加上一个\t。
+  *    (这样就会以文本的形式被excel打开，就不会丢失0了)
+  * 2. 设置option的配置：防止csv保存的时候去除保存值的前后空白符。 在 Spark 2.2.0 之后才生效：
+  * df.write.format("csv")
+  * .option("ignoreLeadingWhiteSpace","false")
+  * .option("ignoreTrailingWhiteSpace","false")
+  *
+  *
+  *
+  *
+  *TODO 关闭 _SUCCESS 和 ._SUCCESS.crc 文件的输出
+  *  df.write.format("csv").option("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false")
+  *
+  *TODO 自定义输出文件名
+  * spark = SparkSession.builder().config("spark.sql.sources.commitProtocolClass","sparkSql.load_write_data.write_data.commit.CustomSQLHadoopMapReduceCommitProtocol")
+  * df.write.format("csv").option("fileName", "customFileName") // 自定义文件名
+  */
 object df_write_csv {
     private val spark = SparkSession.builder()
             .appName("SparkRead")
+            .config("spark.sql.sources.commitProtocolClass","sparkSql.load_write_data.write_data.commit.CustomSQLHadoopMapReduceCommitProtocol")
             .master("local[2]")
             .getOrCreate()
     private val sc: SparkContext = spark.sparkContext
@@ -34,8 +56,8 @@ object df_write_csv {
                 .option("nullValue", "\\N")     //指定一个字符串代表 null 值
                 .option("inferSchema", "true")  // true:自动推测字段类型 ,false:使用String类型  默认为false
                 .load(person_with_header)
-        df.show()
-        df.printSchema()
+//        df.show()
+//        df.printSchema()
         /*  可以看到 test2 不再带有 单引号了  .option("quote", "'") 起的作用
             +---+--------+---+
             | id|    name|age|
@@ -82,9 +104,31 @@ object df_write_csv {
           * .option("nullValue", null) ////写出的时候，将null值写成空""  2|\N|18 变成了 2||18
           */
     }
+    def custom_csv_name: Unit ={
+        val read_csv: DataFrame = sparkRead_csv
+        read_csv.show();
+
+        //给age列拼接 "\t"
+        val newDF: DataFrame = read_csv.withColumn("age",
+            functions.concat(functions.lit("00"),functions.trim($"age"),functions.lit("\t")))
+        newDF.show()
+
+
+        newDF.write.format("csv")
+                .option("header", "true")//保存文件的时候，保存头信息  false:不保存头信息
+                .option("delimiter", ",")//指定分隔符
+                //.option("quote", "")  //指定要被转义的字符。默认是转义双引号：比如 "test"会输出为:"\"test\"" (双引号被转义了)
+                .option("nullValue","\\N") //写出的时候，将null值写成 \\N
+                .option("ignoreLeadingWhiteSpace","false")
+                .option("ignoreTrailingWhiteSpace","false")
+                .option("fileName", "customFileName") // 自定义文件名
+                .option("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false") //关闭 _SUCCESS 和 ._SUCCESS.crc 文件的输出
+                .mode(SaveMode.Overwrite) //覆盖原始数据
+                .save(csvSavePath)
+    }
 
     def main(args: Array[String]): Unit = {
-        save_csv()
+        custom_csv_name
         println("ok")
     }
 

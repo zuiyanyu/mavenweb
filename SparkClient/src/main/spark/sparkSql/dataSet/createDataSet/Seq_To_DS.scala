@@ -1,6 +1,6 @@
 package sparkSql.dataSet.createDataSet
 
-import org.apache.spark.sql.{Dataset, SparkSession}
+import org.apache.spark.sql.{Dataset, Encoder, SparkSession}
 
 object Seq_To_DS {
     val spark:SparkSession = SparkSession.builder().appName("column").master("local[2]").getOrCreate()
@@ -16,9 +16,10 @@ object Seq_To_DS {
       * }
       * 继续跟踪，实质使用的是：
       *     sparkSession.createDataset(data)
-      * 这种方式创建的DS.
+      * 这种方式创建的DS.   data: Seq[T]
       */
     def seq_to_DS: Unit ={
+
         //TODO 方式1：使用隐士转换
         val persons = Seq(Person("zhangsan", 32),Person("lisi", 34))
         // 必须先导入隐士转换，进行功能扩展：import spark.implicits._

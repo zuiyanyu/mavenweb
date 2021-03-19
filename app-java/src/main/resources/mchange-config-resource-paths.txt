@@ -1,0 +1,3 @@
+app-java模块中的mchange-config-resource-paths.txt
+
+

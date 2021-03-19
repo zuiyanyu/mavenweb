@@ -1,6 +1,6 @@
 package sparkSql.dataFrame.DF_DSL
 
-import org.apache.spark.sql.{SaveMode, functions}
+import org.apache.spark.sql.{Dataset, Row, SaveMode, functions}
 object DF_Select extends DF_Data{
     import spark.implicits._
     // 1.只查看”name”列数据  三种方式
@@ -19,8 +19,15 @@ object DF_Select extends DF_Data{
     }
     //给列取别名
     def df_select_03: Unit ={
+//        val value: Dataset[Row] = df.distinct()
+//        val df2: Dataset[Row] = df2.repartition(1, $"name")
+//        df2.persist()
+//        df2.cache()
+        //方式1
         df.select(functions.expr("name as newName")).show()
-        val append: SaveMode = SaveMode.Append
+
+        //方式2
+        df.select("name as newName2").show()
 
     }
 

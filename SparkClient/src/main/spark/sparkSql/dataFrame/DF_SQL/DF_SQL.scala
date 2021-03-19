@@ -5,7 +5,24 @@ import org.apache.spark.sql.SparkSession
 object DF_SQL extends DF_Data {
     def main(args: Array[String]): Unit = {
         //DF_createOrReplaceTempView
-        createGlobalTempView
+        tmp
+    } //TODO 1. 对DataFrame创建一个临时表  普通临时表是Session范围内的
+    def tmp: Unit = {
+        df.createOrReplaceTempView("tmp_people")
+        println("======可以使用 * 查询所有信息======")
+        val sqlDF = spark.sql("SELECT name as `张三 哈哈哈` FROM tmp_people")
+        sqlDF.show()
+    }
+    def DF_select_first: Unit ={
+        df.createOrReplaceTempView("tmp_people")
+        val sqlDF = spark.sql("SELECT first(0) FROM tmp_people where 1=0")
+        sqlDF.show() //first(0, false)   null
+
+        val sqlDF2 = spark.sql("SELECT first(1) FROM tmp_people  ")
+        sqlDF2.show() //first(0, false)   0
+
+        val sqlDF3 = spark.sql("SELECT first(1) FROM tmp_people  ")
+        sqlDF3.show() //first(1, false)   1
     }
     //TODO 1. 对DataFrame创建一个临时表  普通临时表是Session范围内的
     def DF_createOrReplaceTempView: Unit ={

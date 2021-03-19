@@ -14,6 +14,7 @@ object RddToDF {
     private val conf = new SparkConf().setAppName("").setMaster("local[2]")
     private val spark:SparkSession = SparkSession.builder().config(conf).getOrCreate()
     private val sc =spark.sparkContext
+    import spark.implicits._
 
     //TODO 1. 通过编程的方式 将rdd转换为DataFrame (好处就是可以指定每一列的数据类型)
     def rdd_To_DF_01: Unit ={
@@ -26,8 +27,9 @@ object RddToDF {
         //val structType =  StructType(Array(StructField("name",StringType,false),StructField("age",IntegerType,false)))
         val structType =  StructType( StructField("name",StringType,false)::StructField("age",IntegerType,false)::Nil)
 
-        //3. 将DF的rdd数据 和 schema结合起来，形成一个完整DF
+        //TODO 3. 将DF的rdd数据 和 schema结合起来，形成一个完整DF
         val df: DataFrame = spark.createDataFrame(rowRDD,structType)
+
 
         //4. 打印df的数据，进行验证
         df.show()
@@ -50,7 +52,7 @@ object RddToDF {
         val peopleRDD: RDD[People] = rdd.map{case (name,age)=>People(name,age)}
         peopleRDD.collect().foreach(println(_))
 
-       //4. 将DF的rdd数据 和 schema结合起来，形成一个完整DF
+       //TODO 4. 将DF的rdd数据 和 schema结合起来，形成一个完整DF
         import spark.implicits._
         val df: DataFrame = peopleRDD.toDF
         df.schema.foreach(println)
@@ -64,7 +66,7 @@ object RddToDF {
         //1. 创建DF中的数据 （rdd的形式）
         val rdd: RDD[(String, Int)] = sc.parallelize(Array(("zhangsan",20),("zhangsan2",21),("zhangsan3",22),("zhangsan4",23)))
 
-        //2. rdd直接进行转换成DF
+        //TODO 2. rdd直接进行转换成DF
         import spark.implicits._
         val df: DataFrame = rdd.toDF("name","age")
 
