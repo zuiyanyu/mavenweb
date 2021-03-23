@@ -262,12 +262,16 @@ public class ExcelReadUtil extends AbstractExcelCommon {
 
         return CellMeta ;
     }
+
     /**
      * 读取cell的值
      * @param cell
      * @return
      */
     public static String getCellValue(Cell cell){
+        //以文本的形式读取Cell中的内容。 防止 整数 20210102 被读取成 20210102.0的形式
+        cell.setCellType( Cell.CELL_TYPE_STRING);
+
         int cellType = cell.getCellType();
         String cellValue = null ;
         switch (cellType){
