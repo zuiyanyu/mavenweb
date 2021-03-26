@@ -20,7 +20,8 @@ import sparkSql.load_write_data.load_data.SparkRead_csv.{person_with_header, spa
   *
   *TODO 关闭 _SUCCESS 和 ._SUCCESS.crc 文件的输出
   *  df.write.format("csv").option("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false")
-  *
+  *  或者
+  *  spark = SparkSession.builder().config("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false")
   *TODO 自定义输出文件名
   * spark = SparkSession.builder().config("spark.sql.sources.commitProtocolClass","sparkSql.load_write_data.write_data.commit.CustomSQLHadoopMapReduceCommitProtocol")
   * df.write.format("csv").option("fileName", "customFileName") // 自定义文件名
@@ -28,6 +29,7 @@ import sparkSql.load_write_data.load_data.SparkRead_csv.{person_with_header, spa
 object df_write_csv {
     private val spark = SparkSession.builder()
             .appName("SparkRead")
+            //.config("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false")
             .config("spark.sql.sources.commitProtocolClass","sparkSql.load_write_data.write_data.commit.CustomSQLHadoopMapReduceCommitProtocol")
             .master("local[2]")
             .getOrCreate()
@@ -122,7 +124,7 @@ object df_write_csv {
                 .option("ignoreLeadingWhiteSpace","false")
                 .option("ignoreTrailingWhiteSpace","false")
                 .option("fileName", "customFileName") // 自定义文件名
-                .option("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false") //关闭 _SUCCESS 和 ._SUCCESS.crc 文件的输出
+                //.option("mapreduce.fileoutputcommitter.marksuccessfuljobs", "false") //关闭 _SUCCESS 和 ._SUCCESS.crc 文件的输出
                 .mode(SaveMode.Overwrite) //覆盖原始数据
                 .save(csvSavePath)
     }

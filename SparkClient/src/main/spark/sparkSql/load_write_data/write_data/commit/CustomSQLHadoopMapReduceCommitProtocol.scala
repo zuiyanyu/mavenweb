@@ -47,6 +47,9 @@ class CustomSQLHadoopMapReduceCommitProtocol(jobId: String, path: String, isAppe
         return outPathWithFileName
     }
 
+    import java.io.IOException
+
+
   
 }
 
