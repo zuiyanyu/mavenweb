@@ -24,8 +24,7 @@ public class Demo01   {
                 //TODO 建立的直接缓冲区也有可读、可写的模式
                 //获取通道
                 //只读通道
-                FileChannel inputChannel = FileChannel.open(Paths.get("channel.txt"),
-                        StandardOpenOption.READ);
+                FileChannel inputChannel = FileChannel.open(Paths.get("channel.txt"), StandardOpenOption.READ);
                 //可取可写通道
                 FileChannel outputChannel = FileChannel.open(Paths.get("channe6.txt"),
                         StandardOpenOption.READ, StandardOpenOption.WRITE,StandardOpenOption.CREATE );
@@ -34,7 +33,7 @@ public class Demo01   {
             //创建 直接缓冲区 ：磁盘映射   这种方式获取直接缓冲区的时候，通道必须是可读的。
             MappedByteBuffer inputDirectBuffer = inputChannel.map(FileChannel.MapMode.READ_ONLY, 0, inputChannel.size());
             MappedByteBuffer outputDirectBuffer = outputChannel.map(FileChannel.MapMode.READ_WRITE, 0, inputChannel.size());
-
+            inputDirectBuffer.limit(2);
 
             // 分配指定大小的缓冲区
             byte[] bytes = new byte[inputDirectBuffer.limit()];

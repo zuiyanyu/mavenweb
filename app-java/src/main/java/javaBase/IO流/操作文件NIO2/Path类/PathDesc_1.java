@@ -1,4 +1,4 @@
-package javaBase.IO流.操作文件.Path类;
+package javaBase.IO流.操作文件NIO2.Path类;
 
 import java.io.IOException;
 import java.nio.file.Path;

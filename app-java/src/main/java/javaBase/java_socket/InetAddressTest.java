@@ -1,4 +1,4 @@
-package javaBase.java_socket.TCP_IP;
+package javaBase.java_socket;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
