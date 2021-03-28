@@ -20,6 +20,7 @@
             <module>SparkClient</module>
             <module>HbaseClient</module>
             <module>HiveClient</module>
+            <module>ZKClient</module>
         </modules>
         <packaging>pom</packaging>
         <name>mavenweb</name>
@@ -241,6 +242,7 @@
         </dependency>
 
         <!-- ============打印日志统一使用slf4j===================-->
+        <!--slf4j-log4j12 中有依赖，不用再导入-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
