@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>shopping</artifactId>
+        <groupId>com.shopping.nacos</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <!--项目的唯一ID，就是刚才创建时候的名字-->
+    <artifactId>shopping-common</artifactId>
+    <!--因为这里下面还有子模块，这里的打包方式也要用pom-->
+    <packaging>pom</packaging>
+    <description>公用模块</description>
+    <!--下面的子模块-->
+    <modules>
+
+        <module>shopping-commong-mybatis</module>
+        <module>shopping-common-pojo</module>
+    </modules>
+</project>
