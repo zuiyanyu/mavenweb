@@ -1,0 +1,15 @@
+spring:
+  application:
+     name: nacos-provider-movie  # 注册中心对应的当前模块名称
+  cloud:
+    nacos:
+       #注册中心
+       discovery:
+           #注册中心地址，多个的时候，以逗号隔开  # 配置当前服务到注册中心的地址
+           server-addr: 192.168.2.102:8848
+           # 允许自动注册服务到注册中心
+           enabled: true
+       config:
+         server-addr: 192.168.2.104:8848
+         group: DEFAULT_GROUP
+         file-extension: properties
