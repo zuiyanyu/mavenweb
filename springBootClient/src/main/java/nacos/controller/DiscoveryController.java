@@ -6,10 +6,10 @@ import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
 import java.util.List;
@@ -25,6 +25,24 @@ public class DiscoveryController {
     private NamingService namingService;
 
 
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public DiscoveryController(RestTemplate restTemplate) {
+        System.out.println("init restTemplate =" +restTemplate);
+        this.restTemplate = restTemplate;
+    }
+
+    @RequestMapping(value = "/consumer_echo/{str}", method = RequestMethod.GET)
+    public String  consumer_echo(@PathVariable String str) {
+        System.out.println("restTemplate =" +restTemplate);
+        return restTemplate.getForObject("http://service-provider/provider_echo/" + str, String.class);
+    }
+
+    @RequestMapping(value = "/provider_echo/{string}", method = RequestMethod.GET)
+    public String provider_echo(@PathVariable String string) {
+        return "Hello Nacos Discovery " + string;
+    }
 
     @NacosValue(value = "${useLocalCache:false}", autoRefreshed = true)
     private boolean useLocalCache;
@@ -34,10 +52,25 @@ public class DiscoveryController {
         return new Date() + "Hello Nacos " + str;
     }
 
-    @RequestMapping("/instance")
+    @RequestMapping(value = "/setService", method = GET)
     @ResponseBody
-    public List<Instance> getInstance(@PathVariable  String serviceName) throws NacosException {
-        return namingService.getAllInstances(serviceName);
+    public String set(@RequestParam String serviceName) {
+        try {
+            System.out.println("namingService = "+namingService);
+            System.out.println("开始注册服务:"+serviceName);
+            namingService.registerInstance(serviceName, "192.168.2.102", 8848); // 注册中心的地址
+            return "OK";
+        } catch (NacosException e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+    }
+    @RequestMapping(value="/instance",method = GET)
+    @ResponseBody  // @PathVariable
+    public List<Instance> getInstance(@RequestParam("name") String serviceName ) throws NacosException {
+        System.out.println("namingService = " +namingService);
+        System.out.println("获取服务！"+ serviceName);
+        return namingService.getAllInstances("nacos-provider-movie");
     }
 //
     @RequestMapping(value = "/get", method = GET)
