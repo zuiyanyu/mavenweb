@@ -2,7 +2,7 @@ package com.spring_stu.springAnnotations.annotation_import.classArray;
 
 
 import com.spring_stu.domain.Address;
-import com.spring_stu.springAnnotations.Bean01;
+import com.spring_stu.springAnnotations.组件注册.ImportSelector_05.Bean01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 /**

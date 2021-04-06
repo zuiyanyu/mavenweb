@@ -1,6 +1,6 @@
 package com.spring_stu.springAnnotations.annotation_import.ImportBeanDefinitionRegistrar;
 
-import com.spring_stu.springAnnotations.Bean01;
+import com.spring_stu.springAnnotations.组件注册.ImportSelector_05.Bean01;
 import org.springframework.stereotype.Component;
 
 /**

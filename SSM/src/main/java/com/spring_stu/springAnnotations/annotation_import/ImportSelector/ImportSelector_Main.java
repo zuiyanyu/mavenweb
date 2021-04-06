@@ -2,7 +2,7 @@ package com.spring_stu.springAnnotations.annotation_import.ImportSelector;
 
 import com.spring_stu.dao.BookDao;
 import com.spring_stu.dao.daoImpl.BookDaoImpl;
-import com.spring_stu.springAnnotations.Bean02;
+import com.spring_stu.springAnnotations.组件注册.ImportSelector_05.Bean02;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

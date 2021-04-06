@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="662a6e92-2c14-452d-a359-4103c648b572" name="Default Changelist" comment="" />
+    <list default="true" id="662a6e92-2c14-452d-a359-4103c648b572" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/scala_compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/Python导包/Student.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/Python导包/import_package.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/类对象/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Dict_Demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/List_Demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Set_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Tuple_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/iter_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/namedtuple_Demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/生成器.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/print_opts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_compile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_findall.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_finditer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_match函数.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_split.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_sub.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SparkClient/servicers/org.apache.spark.sql.sources.DataSourceRegister" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alice.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app-client/logs/ssm.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app-service/logs/ssm.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mavenweb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/app_client_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/app_client_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python基础/Python导包/__name__.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/Python导包/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python基础/Python导包/__name__Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python基础/python语法篇/input_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/input_01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/SSM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/SSM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/commit/CustomSQLHadoopMapReduceCommitProtocol.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/commit/CustomSQLHadoopMapReduceCommitProtocol.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/df_write_csv.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/df_write_csv.scala" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,30 +52,93 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python基础/python类型/String_opts.py">
+        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/print_opts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="10" />
+            <state relative-caret-position="88">
+              <caret line="4" selection-start-line="4" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/input_01.py">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_match函数.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
+            <state relative-caret-position="792">
+              <caret line="36" column="17" selection-end-line="45" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_sub.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1122">
+              <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_compile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="14" lean-forward="true" selection-end-line="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/input_01.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_findall.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="440">
+              <caret line="20" column="26" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/python类型/类对象/Student.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_finditer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="26" column="31" selection-start-line="22" selection-end-line="30" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_split.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="9" lean-forward="true" selection-end-line="30" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -46,6 +152,15 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dict</find>
+      <find>list</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>_list</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -53,15 +168,45 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/python基础/python类型/String_opts.py" />
         <option value="$PROJECT_DIR$/python基础/python语法篇/input_01.py" />
         <option value="$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/String_opts.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/python类型转换.py" />
+        <option value="$PROJECT_DIR$/python基础/python内置函数/Python内置函数2.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/Number_opts.py" />
+        <option value="$PROJECT_DIR$/python基础/python函数/函数语法/a_函数的参数类型.py" />
+        <option value="$PROJECT_DIR$/python基础/python函数/函数语法/b_匿名函数.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/__init__.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/aaa.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/Test.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/__name__.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/__name__Test.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/User.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/Student.py" />
+        <option value="$PROJECT_DIR$/python基础/Python导包/import_package.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/namedtupleDemo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/Dict_Demo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/List_Demo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/Set_demo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/Tuple_demo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/iter_demo.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/集合/生成器.py" />
+        <option value="$PROJECT_DIR$/python基础/python语法篇/print_opts.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_match函数.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_search.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_sub.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_compile.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_findall.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_split.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/类对象/MyClass.py" />
+        <option value="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_finditer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="280" />
-    <option name="y" value="65" />
+    <option name="x" value="195" />
+    <option name="y" value="340" />
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
@@ -71,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -87,22 +233,46 @@
               <item name="PthonClient" type="b2602c69:ProjectViewProjectNode" />
               <item name="PthonClient" type="462c0819:PsiDirectoryNode" />
               <item name="python基础" type="462c0819:PsiDirectoryNode" />
-              <item name="python语法篇" type="462c0819:PsiDirectoryNode" />
+              <item name="python类型" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PthonClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PthonClient" type="462c0819:PsiDirectoryNode" />
+              <item name="python基础" type="462c0819:PsiDirectoryNode" />
+              <item name="python类型" type="462c0819:PsiDirectoryNode" />
+              <item name="类对象" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PthonClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PthonClient" type="462c0819:PsiDirectoryNode" />
+              <item name="python基础" type="462c0819:PsiDirectoryNode" />
+              <item name="re_module" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Git/Git/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/python基础/Python导包" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础\python语法篇\输入和输出\输入" />
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础\python语法篇\输入和输出\输出" />
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础" />
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础\python函数\Python导包" />
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础\python函数\python内置函数" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\software\java\ideaU\workspace\mavenweb\PthonClient\python基础\Python导包" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -116,8 +286,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.stdout_opt">
-    <configuration name="String_opts" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.re_finditer">
+    <configuration name="Student" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PthonClient" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,12 +295,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/python类型" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/python类型/类对象" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/python类型/String_opts.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,7 +309,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="input_01" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="re_compile" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PthonClient" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,12 +317,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/python语法篇" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/python语法篇/input_01.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_compile.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -161,7 +331,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="stdout_opt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="re_findall" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PthonClient" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -169,12 +339,56 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/python语法篇" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_findall.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="re_finditer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PthonClient" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_finditer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="re_split" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PthonClient" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_split.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -185,9 +399,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.stdout_opt" />
-        <item itemvalue="Python.input_01" />
-        <item itemvalue="Python.String_opts" />
+        <item itemvalue="Python.re_finditer" />
+        <item itemvalue="Python.Student" />
+        <item itemvalue="Python.re_split" />
+        <item itemvalue="Python.re_findall" />
+        <item itemvalue="Python.re_compile" />
       </list>
     </recent_temporary>
   </component>
@@ -202,66 +418,261 @@
       <option name="presentableId" value="Default" />
       <updated>1612414147189</updated>
       <workItem from="1612414148379" duration="2312000" />
+      <workItem from="1615167632477" duration="597000" />
+      <workItem from="1615947633369" duration="13339000" />
+      <workItem from="1616379431818" duration="23784000" />
+      <workItem from="1616739553721" duration="2411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2312000" />
+    <option name="totallyTimeSpent" value="42443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2386059" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28186968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PthonClient$stdout_opt.coverage" NAME="stdout_opt Coverage Results" MODIFIED="1612415860717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python语法篇" />
-    <SUITE FILE_PATH="coverage/PthonClient$String_opts.coverage" NAME="String_opts Coverage Results" MODIFIED="1612414720022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型" />
+    <SUITE FILE_PATH="coverage/PthonClient$Test.coverage" NAME="Test Coverage Results" MODIFIED="1615972711071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
+    <SUITE FILE_PATH="coverage/PthonClient$Set_demo.coverage" NAME="Set_demo Coverage Results" MODIFIED="1616396269914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$b_.coverage" NAME="b_匿名函数 Coverage Results" MODIFIED="1615963303130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python函数/函数语法" />
+    <SUITE FILE_PATH="coverage/PthonClient$__name____1_.coverage" NAME="__name__ (1) Coverage Results" MODIFIED="1615972938754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
+    <SUITE FILE_PATH="coverage/PthonClient$String_opts.coverage" NAME="String_opts Coverage Results" MODIFIED="1615950589235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型" />
+    <SUITE FILE_PATH="coverage/PthonClient$python.coverage" NAME="python类型转换 Coverage Results" MODIFIED="1615957551473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_split.coverage" NAME="re_split Coverage Results" MODIFIED="1616406898763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_findall.coverage" NAME="re_findall Coverage Results" MODIFIED="1616405776092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_search.coverage" NAME="re_search Coverage Results" MODIFIED="1616402273457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$import_package.coverage" NAME="import_package Coverage Results" MODIFIED="1616382822044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
+    <SUITE FILE_PATH="coverage/PthonClient$__name__.coverage" NAME="__name__ Coverage Results" MODIFIED="1615965183923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
+    <SUITE FILE_PATH="coverage/PthonClient$iter_demo.coverage" NAME="iter_demo Coverage Results" MODIFIED="1616397805330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_match.coverage" NAME="re_match函数 Coverage Results" MODIFIED="1616401837799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_compile.coverage" NAME="re_compile Coverage Results" MODIFIED="1616405010444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
     <SUITE FILE_PATH="coverage/PthonClient$input_01.coverage" NAME="input_01 Coverage Results" MODIFIED="1612415161090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python语法篇" />
+    <SUITE FILE_PATH="coverage/PthonClient$namedtupleDemo.coverage" NAME="namedtupleDemo Coverage Results" MODIFIED="1616387595891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$print_opts.coverage" NAME="print_opts Coverage Results" MODIFIED="1616399504071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python语法篇" />
+    <SUITE FILE_PATH="coverage/PthonClient$Dict_Demo.coverage" NAME="Dict_Demo Coverage Results" MODIFIED="1616392679146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$a_.coverage" NAME="a_函数的参数类型 Coverage Results" MODIFIED="1615962592614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python函数/函数语法" />
+    <SUITE FILE_PATH="coverage/PthonClient$Number_opts.coverage" NAME="Number_opts Coverage Results" MODIFIED="1615960549328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型" />
+    <SUITE FILE_PATH="coverage/PthonClient$Tuple_demo.coverage" NAME="Tuple_demo Coverage Results" MODIFIED="1616397262718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$stdout_opt.coverage" NAME="stdout_opt Coverage Results" MODIFIED="1612415860717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python语法篇" />
+    <SUITE FILE_PATH="coverage/PthonClient$List_Demo.coverage" NAME="List_Demo Coverage Results" MODIFIED="1616395284235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_finditer.coverage" NAME="re_finditer Coverage Results" MODIFIED="1616740753484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$Python2.coverage" NAME="Python内置函数2 Coverage Results" MODIFIED="1615959903489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python内置函数" />
+    <SUITE FILE_PATH="coverage/PthonClient$__name__Test.coverage" NAME="__name__Test Coverage Results" MODIFIED="1616381293121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_sub.coverage" NAME="re_sub Coverage Results" MODIFIED="1616403493357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$Student.coverage" NAME="Student Coverage Results" MODIFIED="1616411583391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/类对象" />
+    <SUITE FILE_PATH="coverage/PthonClient$.coverage" NAME="生成器 Coverage Results" MODIFIED="1616398321058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/python基础/python函数2/函数语法/a_函数的参数类型.py" />
+    <entry file="file://$PROJECT_DIR$/python基础/python函数2/函数语法/b_匿名函数.py" />
+    <entry file="file://$PROJECT_DIR$/python基础/Python导包/aaa.py" />
     <entry file="file://$PROJECT_DIR$/python基础/python类型/String_opts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="10" />
+        <state>
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/python语法篇/input_01.py">
+    <entry file="file://$PROJECT_DIR$/python基础/python函数/python内置函数/python内置函数1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
+        <state>
+          <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python函数/python内置函数/Python内置函数2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/Number_opts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/Python导包/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/Python导包/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/Python导包/Student.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/Python导包/import_package.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#481#550#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/namedtuple_Demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="46" column="14" selection-end-line="46" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/List_Demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="89" selection-start-line="89" selection-end-line="93" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/Dict_Demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1311">
+          <caret line="57" column="20" lean-forward="true" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/Set_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/Tuple_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/iter_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/集合/生成器.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python语法篇/print_opts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_match函数.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="36" column="17" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_sub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_compile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="14" lean-forward="true" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/input_01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py">
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_findall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="440">
+          <caret line="20" column="26" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="9" lean-forward="true" selection-end-line="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/类对象/Student.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_finditer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="26" column="31" selection-start-line="22" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>

@@ -21,6 +21,7 @@
                 <module>HbaseClient</module>
                 <module>HiveClient</module>
                 <module>ZKClient</module>
+            <module>springCloudClient</module>
         </modules>
         <packaging>pom</packaging>
         <name>mavenweb</name>
