@@ -1,6 +1,6 @@
 package com.spring_stu.spring_utils;
 
-import com.sun.deploy.util.StringUtils;
+//import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -91,7 +91,7 @@ public class MetadataReaderFactoryTest {
         System.out.println("可加载的资源路径为："+packageSet);
 
         //com.spring_stu.dao;com.spring_stu.dao.daoImpl
-        String join = StringUtils.join(packageSet, ";");
-        System.out.println(join);
+//        String join = StringUtils.join(packageSet, ";");
+//        System.out.println(join);
     }
 }
