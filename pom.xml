@@ -56,7 +56,7 @@
           <slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
           <log4j.version>1.2.17</log4j.version>
           <javax.servlet-api>3.1.0</javax.servlet-api>
-          <mysql.version>5.1.47</mysql.version>
+          <mysql.version>8.0.16</mysql.version>
           <jackson.version>2.9.8</jackson.version>
           <dubbo.version>2.5.10</dubbo.version>
           <zookeeper.version>3.4.10</zookeeper.version>
