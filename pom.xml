@@ -50,7 +50,7 @@
           <org.aopalliance>1.0.0</org.aopalliance>
 
 
-          <junit.version>4.12</junit.version>
+          <junit.version>4.13.1</junit.version>
           <mybatis.version>3.2.6</mybatis.version>
           <slf4j-api.version>1.7.7</slf4j-api.version>
           <slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
