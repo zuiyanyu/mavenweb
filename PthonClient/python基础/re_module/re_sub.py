@@ -53,3 +53,26 @@ valueStr = 'A23G4HFD567'
 # ?P<value>  给匹配的结果取一个名字：value
 newValue = re.sub('(?P<value>\d+)', double, valueStr)
 print("newValue = "+str(newValue)) #newValue = A46G8HFD1134
+
+print("===================实际应用===========================")
+#将 {"name":""zhangsna""}  变为{"name":"zhangsna"} ,同时{"name":""}不变
+valueStr ='[{"name":"zhangsna"},{"name":""zhangsna""},{"name":" "}]'
+
+def newStr(matchedObj):
+
+    oldvalue = str(matchedObj.group(1))
+    print("oldvalue =" +str(oldvalue))
+
+    tmp = oldvalue.replace(" ","").replace('"',"")
+    if len(tmp) ==0 :
+        print("长度为0")
+        return ":"+oldvalue+"}"
+
+    newValue = oldvalue.replace('"',"")
+    print("newValue =" + str(newValue))
+
+    return str(':"'+ newValue +'"}')
+
+# .*? 非贪婪模式匹配
+newValue = re.sub(r':\s*(".*?")\s*}',  newStr  , valueStr)
+print(newValue)
