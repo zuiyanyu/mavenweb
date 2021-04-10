@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>nacos-spring-cloud-example</module>
+        <module>hsf-spring-boot-example</module>
     </modules>
 
 </project>

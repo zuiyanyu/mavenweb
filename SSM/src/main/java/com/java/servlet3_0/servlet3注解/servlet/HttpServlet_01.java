@@ -1,4 +1,4 @@
-package com.java.servlet3_0.WebServlet注解;
+package com.java.servlet3_0.servlet3注解.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -54,7 +54,7 @@ import java.util.Enumeration;
  * 属性urlPatterns定义访问的URL,或者使用属性value定义访问的URL.(定义访问的URL是必选属性)
  */
 @WebServlet(name = "Servlet3Demo", urlPatterns = "/Servlet3Demo", initParams = {@WebInitParam(name = "param1", value = "value1")})
-public class Servlet3Demo extends HttpServlet {
+public class HttpServlet_01 extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter writer = response.getWriter();

@@ -1,5 +1,7 @@
 package com.spring_stu.guo_ji_hua.Demo01;
 
+import org.junit.Test;
+
 import java.text.DateFormat;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
@@ -14,7 +16,8 @@ public class NumberFormatTest {
      *  TODO  MessageFormat在NumberFormat和DateFormat 的基础上提供了强大的占位符字符串的格式化功能。
      *  TODO 支持时间、货币、数字以及对象属性的格式化操作。
      */
-    public static void main(String[] args) {
+    @Test
+    public void test3(){
         //1) 信息格式化串，通过{n}占位符指定动态参数的替换位置索引
         // 这是简单形式的格式化信息串
         String pattern1 = "{0}，你好，你于{1}这天在我行存入{2}元" ;
@@ -41,7 +44,8 @@ public class NumberFormatTest {
 
 
     //格式化日期
-    public static void main2(String[] args) {
+    @Test
+    public void test2() {
         Locale locale = new Locale("zh","CN");
         /*
         第一个入参：指定的日期被格式化的样式
@@ -56,7 +60,8 @@ public class NumberFormatTest {
         System.out.println(dateInstance.format(date));
     }
     // 格式化金额
-    public static void main1(String[] args) {
+    @Test
+    public void test1() {
         Locale locale = new Locale("zh","CN"); // ￥123,456.79
         //locale = new Locale("en","US");  // $123,456.79
 

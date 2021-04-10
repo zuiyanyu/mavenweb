@@ -1,5 +1,7 @@
 package com.spring_stu.guo_ji_hua.resourceBundle;
 
+import org.junit.Test;
+
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -35,9 +37,8 @@ public class ResouceBoundleTest {
         System.out.println(locale.getDisplayName()+"=>"+formatedMessage);
         return formatedMessage;
      }
-
-
-    public static void main1(String[] args) {
+     @Test
+     public  void main1( ) {
         //资源路径/资源名
         String resourcePath = "com/spring_stu/guo_ji_hua/i18n/resource";
 
@@ -55,6 +56,24 @@ public class ResouceBoundleTest {
         //如果不指定本地化对象，将使用本地系统默认的本地化对象 ，这里为中文
         ResourceBundle defaultBundle = ResourceBundle.getBundle(resourcePath);
         System.out.println("default:"+defaultBundle.getString("greeting.common"));
+
+    }
+    // 使用resourceBundle进行解析 properties
+    @Test
+    public void main0(){
+        String baseName = "applicationContext" ;
+        //资源路径/资源名
+        String resourcePath = "com/spring_stu/guo_ji_hua/i18n/"+baseName;
+
+        //进行资源绑定
+        //TODO 底层
+        //  stream = classLoader.getResourceAsStream(resourceName);
+        //  bundle = new PropertyResourceBundle(stream);
+        ResourceBundle resouce = ResourceBundle.getBundle(resourcePath);
+        //开始或取某个key - value
+        String userName = resouce.getString("user.name");
+
+        System.out.println("userName = "+userName);
 
     }
 }

@@ -2,48 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="662a6e92-2c14-452d-a359-4103c648b572" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/scala_compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/Python导包/Student.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/Python导包/import_package.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/类对象/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Dict_Demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/List_Demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Set_demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/Tuple_demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/iter_demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/namedtuple_Demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python类型/集合/生成器.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/print_opts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_compile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_findall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_finditer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_match函数.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_split.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python基础/re_module/re_sub.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkClient/servicers/org.apache.spark.sql.sources.DataSourceRegister" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/ServletContainerInitializer/CustomServletContainerInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/servlet3注解/filter/UrlFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/servlet3注解/listener/ServletContextListener_01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/servlet3注解/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/servlet3注解/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SSM/src/main/resources/META-INF/services/javax.servlet.ServletContainerInitializer" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../alice.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../app-client/logs/ssm.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../app-service/logs/ssm.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mavenweb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/java/com/hsf/service/ICalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/java/com/hsf/service/SayHelloService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/java/com/hsf/service/impl/CalServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/java/com/hsf/service/impl/SayHelloServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/hsf-producer/src/test/java/com/hsf/test/HsfTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springCloudClient/hsf-spring-boot-example/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/artifacts/app_client_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/app_client_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaWeb/JavaWeb.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python基础/Python导包/__name__.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/Python导包/User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python基础/Python导包/__name__Test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python基础/python语法篇/input_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输入/input_01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python基础/python语法篇/stdout_opt.py" beforeDir="false" afterPath="$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM/SSM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/SSM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/commit/CustomSQLHadoopMapReduceCommitProtocol.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/commit/CustomSQLHadoopMapReduceCommitProtocol.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/df_write_csv.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../SparkClient/src/main/spark/sparkSql/load_write_data/write_data/df_write_csv.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/SSM.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/WebServlet注解/Servlet3Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/java/com/java/servlet3_0/servlet3注解/servlet/HttpServlet_01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/src/main/webapp/WEB-INF/context.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SparkClient/servicers/org.apache.spark.sql.sources.DataSourceRegister" beforeDir="false" afterPath="$PROJECT_DIR$/../SparkClient/src/main/resources/META-INF/servicers/org.apache.spark.sql.sources.DataSourceRegister" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app-client/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app-client/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app-java/app-java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/mavenweb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase-plugin/hbase-plugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mavenweb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-generator-maven-plugin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-generator-maven-plugin-extend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-generator-maven-plugin/src/main/java/com/mavenweb/mybatis_generator/MapperXMLGenerator/MyXmlFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-generator-maven-plugin-extend/src/main/java/com/mavenweb/mybatis_generator/MapperXMLGenerator/MyXmlFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-generator-maven-plugin/src/main/java/com/mavenweb/mybatis_generator/MapperXMLGenerator/XMLPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-generator-maven-plugin-extend/src/main/java/com/mavenweb/mybatis_generator/MapperXMLGenerator/XMLPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-generator-maven-plugin/src/main/java/com/mavenweb/mybatis_generator/MyCommentGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-generator-maven-plugin-extend/src/main/java/com/mavenweb/mybatis_generator/MyCommentGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-generator-maven-plugin/src/main/java/com/mavenweb/utils/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-generator-maven-plugin-extend/src/main/java/com/mavenweb/utils/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springCloudClient/nacos-spring-cloud-example/nacos-spring-cloud-discovery-example/nacos-spring-cloud-provider-example/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../springCloudClient/nacos-spring-cloud-example/nacos-spring-cloud-discovery-example/nacos-spring-cloud-provider-example/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springCloudClient/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springCloudClient/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springCloudClient/springCloudClient.iml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,28 +61,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python基础/python语法篇/print_opts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" selection-start-line="4" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python基础/re_module/re_match函数.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="36" column="17" selection-end-line="45" selection-end-column="23" />
+            <state relative-caret-position="594">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python基础/re_module/re_search.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python基础/re_module/re_sub.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+            <state relative-caret-position="279">
+              <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -84,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/python基础/re_module/re_compile.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="9" column="14" lean-forward="true" selection-end-line="75" />
+              <caret line="9" column="14" selection-end-line="75" />
             </state>
           </provider>
         </entry>
@@ -111,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
-              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -119,17 +126,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python基础/python类型/类对象/Student.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="528">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python基础/re_module/re_finditer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="26" column="31" selection-start-line="22" selection-end-line="30" selection-end-column="56" />
+            <state relative-caret-position="301">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -138,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/python基础/re_module/re_split.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
-              <caret line="3" column="9" lean-forward="true" selection-end-line="30" selection-end-column="30" />
+              <caret line="3" column="9" selection-end-line="30" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -194,17 +201,17 @@
         <option value="$PROJECT_DIR$/python基础/python语法篇/print_opts.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_match函数.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_search.py" />
-        <option value="$PROJECT_DIR$/python基础/re_module/re_sub.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_compile.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_findall.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_split.py" />
         <option value="$PROJECT_DIR$/python基础/python类型/类对象/MyClass.py" />
         <option value="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" />
         <option value="$PROJECT_DIR$/python基础/re_module/re_finditer.py" />
+        <option value="$PROJECT_DIR$/python基础/re_module/re_sub.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="195" />
     <option name="y" value="340" />
     <option name="width" value="1750" />
@@ -216,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,6 +258,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,7 +293,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.re_finditer">
+  <component name="RunManager" selected="Python.re_sub">
     <configuration name="Student" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PthonClient" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -301,28 +308,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/python类型/类对象/Student.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="re_compile" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="PthonClient" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_compile.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -397,13 +382,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="re_sub" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PthonClient" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python基础/re_module" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python基础/re_module/re_sub.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.re_sub" />
         <item itemvalue="Python.re_finditer" />
         <item itemvalue="Python.Student" />
         <item itemvalue="Python.re_split" />
         <item itemvalue="Python.re_findall" />
-        <item itemvalue="Python.re_compile" />
       </list>
     </recent_temporary>
   </component>
@@ -422,22 +429,38 @@
       <workItem from="1615947633369" duration="13339000" />
       <workItem from="1616379431818" duration="23784000" />
       <workItem from="1616739553721" duration="2411000" />
+      <workItem from="1617852017923" duration="3924000" />
     </task>
+    <task id="LOCAL-00001" summary="非贪婪模式的正则匹配">
+      <created>1617863543119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617863543119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="python">
+      <created>1617863579586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617863579586</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42443000" />
+    <option name="totallyTimeSpent" value="46367000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2386059" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21782842" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28186968" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.407932" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -457,6 +480,11 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="非贪婪模式的正则匹配" />
+    <MESSAGE value="python" />
+    <option name="LAST_COMMIT_MESSAGE" value="python" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PthonClient$Test.coverage" NAME="Test Coverage Results" MODIFIED="1615972711071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
@@ -485,7 +513,7 @@
     <SUITE FILE_PATH="coverage/PthonClient$re_finditer.coverage" NAME="re_finditer Coverage Results" MODIFIED="1616740753484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
     <SUITE FILE_PATH="coverage/PthonClient$Python2.coverage" NAME="Python内置函数2 Coverage Results" MODIFIED="1615959903489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python内置函数" />
     <SUITE FILE_PATH="coverage/PthonClient$__name__Test.coverage" NAME="__name__Test Coverage Results" MODIFIED="1616381293121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/Python导包" />
-    <SUITE FILE_PATH="coverage/PthonClient$re_sub.coverage" NAME="re_sub Coverage Results" MODIFIED="1616403493357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
+    <SUITE FILE_PATH="coverage/PthonClient$re_sub.coverage" NAME="re_sub Coverage Results" MODIFIED="1617856237189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/re_module" />
     <SUITE FILE_PATH="coverage/PthonClient$Student.coverage" NAME="Student Coverage Results" MODIFIED="1616411583391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/类对象" />
     <SUITE FILE_PATH="coverage/PthonClient$.coverage" NAME="生成器 Coverage Results" MODIFIED="1616398321058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python基础/python类型/集合" />
   </component>
@@ -599,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python基础/python语法篇/print_opts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -613,24 +634,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_match函数.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" column="17" selection-end-line="45" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_sub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python基础/re_module/re_compile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="9" column="14" lean-forward="true" selection-end-line="75" />
+          <caret line="9" column="14" selection-end-line="75" />
         </state>
       </provider>
     </entry>
@@ -651,28 +658,49 @@
     <entry file="file://$PROJECT_DIR$/python基础/python语法篇/输入和输出/输出/stdout_opt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/python类型/类对象/Student.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python基础/re_module/re_split.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="3" column="9" lean-forward="true" selection-end-line="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python基础/python类型/类对象/Student.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <caret line="3" column="9" selection-end-line="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python基础/re_module/re_finditer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="26" column="31" selection-start-line="22" selection-end-line="30" selection-end-column="56" />
+        <state relative-caret-position="301">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_match函数.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python基础/re_module/re_sub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
         </state>
       </provider>
     </entry>

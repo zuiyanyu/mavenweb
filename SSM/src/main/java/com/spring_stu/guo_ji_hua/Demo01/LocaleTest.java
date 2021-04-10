@@ -1,9 +1,13 @@
 package com.spring_stu.guo_ji_hua.Demo01;
 
+import org.junit.Test;
+
 import java.util.Locale;
 
-public class LocaleTest {
-    public static void main(String[] args) {
+public class LocaleTest  {
+
+    @Test
+    public void createLocal() {
         //1）带有语言和国家/地区信息的本地化对象
         Locale locale1 = new Locale("zh","CN");
 
@@ -18,6 +22,7 @@ public class LocaleTest {
 
         //5）获取本地系统默认的本地化对象
         Locale locale5 =   Locale.getDefault() ;
+
 
     }
 }

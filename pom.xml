@@ -22,6 +22,9 @@
         <module>HiveClient</module>
         <module>ZKClient</module>
         <module>springCloudClient</module>
+        <module>hsf-spring-boot-example</module>
+        <module>hsf-consumer</module>
+        <module>hsf-producer</module>
     </modules>
     <packaging>pom</packaging>
     <name>mavenweb</name>

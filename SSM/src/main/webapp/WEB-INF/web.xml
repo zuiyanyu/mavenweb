@@ -8,37 +8,36 @@
         这里就表示当前使用的是Servlet3.1的版本。
      -->
     <!--加载spring配置文件-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-        <!--<param-value>classpath:com/spring_stu/spring_scheduled/a_xml/applicationContext.xml</param-value>-->
-    </context-param>
+<!--    <context-param>-->
+<!--        <param-name>contextConfigLocation</param-name>-->
+<!--        <param-value>classpath:applicationContext.xml</param-value>-->
+<!--        &lt;!&ndash;<param-value>classpath:com/spring_stu/spring_scheduled/a_xml/applicationContext.xml</param-value>&ndash;&gt;-->
+<!--    </context-param>-->
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+<!--    <listener>-->
+<!--        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--    </listener>-->
 
-    <listener>
-        <display-name>HttpServletContextListenerTest</display-name>
-        <listener-class>com.mavenweb.servlet.HttpServletContextListenerTest</listener-class>
-
-    </listener>
+<!--    <listener>-->
+<!--        <display-name>HttpServletContextListenerTest</display-name>-->
+<!--        <listener-class>com.mavenweb.servlet.HttpServletContextListenerTest</listener-class>-->
+<!--    </listener>-->
 
 
     <!--加载springMvc配置文件-->
-    <servlet>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-mvc.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>dispatcherServlet</servlet-name>-->
+<!--        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>contextConfigLocation</param-name>-->
+<!--            <param-value>classpath:spring-mvc.xml</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>dispatcherServlet</servlet-name>-->
+<!--        <url-pattern>*.do</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 <!--    <welcome-file-list>-->
 <!--        <welcome-file>index.jsp</welcome-file>-->

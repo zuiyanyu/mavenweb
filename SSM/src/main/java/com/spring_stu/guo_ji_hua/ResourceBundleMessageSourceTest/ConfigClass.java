@@ -16,9 +16,11 @@ public class ConfigClass {
      */
     @Bean
     public ResourceBundleMessageSource messageSource(){
+        String baseName = "fmg_resource" ;
+        //对接收的信息进行资源绑定
         ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
         //通过基名指定资源，相对于类根路径
-        resourceBundleMessageSource.setBasename("com/spring_stu/guo_ji_hua/i18n/fmg_resource");
+        resourceBundleMessageSource.setBasename("com/spring_stu/guo_ji_hua/i18n/"+baseName);
         return resourceBundleMessageSource ;
     }
 
