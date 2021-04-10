@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <!-- HSF服务配置-->
+    <!--配置SayHelloService服务的实现 -->
+    <bean id="SayHelloServiceImpl" class="com.hsf_edas.service.impl.SayHelloServiceImpl"/>
+    <!--配置SayHelloService服务提供者-->
+    <bean id="SayHelloService" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean" init-method="init">
+        <!--配置服务提供者对外提供的接口SayHelloService-->
+        <property name="serviceInterface">
+            <value>com.hsf_edas.services.SayHelloService</value>
+        </property>
+        <!--服务的实现者-->
+        <property name="target">
+            <ref bean="SayHelloServiceImpl"/>
+        </property>
+        <property name="serviceName">
+            <value>SayHello</value>
+        </property>
+        <property name="serviceVersion">
+            <value>1.0.0.dev</value>
+        </property>
+        <!-- 组别一致的服务才能互相调用-->
+        <property name="serviceGroup">
+            <value>HSF</value>
+        </property>
+
+    </bean>
+    <!--&lt;!&ndash;配置SayHelloService服务的消费者&ndash;&gt;-->
+    <!--<bean id="SayHelloServiceConsumer" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean" init-method="init">-->
+        <!--&lt;!&ndash;服务的接口名和版本号须与服务提供者定义的一致&ndash;&gt;-->
+        <!--<property name="interfaceName">-->
+            <!--<value>com.hsf_edas.service.SayHelloService</value>-->
+        <!--</property>-->
+        <!--<property name="version">-->
+            <!--<value>1.0.0.dev</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+</beans>

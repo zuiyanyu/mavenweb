@@ -1,14 +1,22 @@
 package javaBase.数据类型;
 
 import org.junit.Test;
+import sun.util.locale.LocaleUtils;
 
 public class StringTest {
+    @Test
+    public void internTest(){
+        String language = "zh" ;
+        language = LocaleUtils.toLowerString(language).intern();
+        System.out.println(language);
+    }
     @Test
     public void join(){
         String all = String.join("|","a","b","c");
         System.out.println(all); // a|b|c
     }
 
+    @Test
     public void subString(){
         String greeting = "Hello";
         //在 substring 中从 0 开始计数，直到 3 为止， 但不包含 3
