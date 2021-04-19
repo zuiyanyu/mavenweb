@@ -3,6 +3,9 @@ package com.spring_stu.spring_PropertyEditor.customPropertyEditor;
 import java.beans.PropertyEditorSupport;
 
 public class CarEditor extends PropertyEditorSupport {
+    public CarEditor(){
+        System.out.println("CarEditor被创建了");
+    }
     /**
      * 将字面值转换为属性类型对象 。
      * 字面值采用逗号分隔的格式同时为brand、maxSpeed和price属性值提供设置，setAsText()方法解析这个字面值并生成对应的Car对象。
