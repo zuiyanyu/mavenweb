@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebListener;
 import java.util.Enumeration;
 
 /**
- * TODO ServletContextListener 监听 ServletContext(web容器)的创建和销毁
+ *
  *
  * TODO @WebListener(value) 监听注解
  *      value:对监听器的一些描述信息
@@ -27,6 +27,7 @@ import java.util.Enumeration;
  *         <listener-class>com.java.servlet3_0.servlet3注解.listener.ServletContextListener_01</listener-class>
  *     </listener>
  */
+//TODO ServletContextListener 监听 ServletContext(web容器)的创建和销毁
 @WebListener("ServletContextListener_test")
 public class ServletContextListener_01 implements ServletContextListener {
     //监听web容器的创建

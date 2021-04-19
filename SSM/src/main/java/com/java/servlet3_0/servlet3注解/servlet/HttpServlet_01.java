@@ -1,5 +1,7 @@
 package com.java.servlet3_0.servlet3注解.servlet;
 
+import org.springframework.lang.Nullable;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -53,8 +55,20 @@ import java.util.Enumeration;
  * 属性name描述Servlet的名字,可选
  * 属性urlPatterns定义访问的URL,或者使用属性value定义访问的URL.(定义访问的URL是必选属性)
  */
-@WebServlet(name = "Servlet3Demo", urlPatterns = "/Servlet3Demo", initParams = {@WebInitParam(name = "param1", value = "value1")})
+@WebServlet(name = "Servlet3Demo", urlPatterns = "/Servlet3Demo",
+        initParams = {@WebInitParam(name = "userName", value = "zhangsan")})
 public class HttpServlet_01 extends HttpServlet {
+
+    private String userName ;
+    private String contextConfigLocation ;
+    public void setUserName(String userName ){
+        this.userName = userName ;
+    }
+
+    public void setContextConfigLocation(@Nullable String contextConfigLocation) {
+        this.contextConfigLocation = contextConfigLocation;
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter writer = response.getWriter();
@@ -68,11 +82,12 @@ public class HttpServlet_01 extends HttpServlet {
             String paramValue = servletConfig.getInitParameter(paramName);
             writer.append(paramName + " = " + paramValue);
         }
-        writer.write(" \nHello Servlet3.0");
+        writer.write(" \nHello Servlet3.0，userName = " +userName);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.doGet(request, response);
     }
+
 }

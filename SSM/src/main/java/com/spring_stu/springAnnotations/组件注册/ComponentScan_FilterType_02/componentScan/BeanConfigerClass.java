@@ -16,12 +16,7 @@ import org.springframework.stereotype.Controller;
 //扫描包中类的时候，排除被@Controller注解的类
 // excludeFilters ={@ComponentScan.Filter(type = FilterType.ANNOTATION,value={Controller.class})})
 
-//只扫描包中  @Controller注解的类。 需要关闭自动扫描 useDefaultFilters=false
-@ComponentScan(basePackages = "com.spring_stu.springAnnotations.组件注册.dsc",
-         includeFilters ={@ComponentScan.Filter(type = FilterType.ANNOTATION,value={Controller.class})}
-        ,useDefaultFilters=false)
-
-/*
+    /*
   FilterType 属性讲解
       type : 要过滤的规则类型 ，有如下几种类型
       1） annotation     ： 根据注解进行过滤
@@ -30,6 +25,10 @@ import org.springframework.stereotype.Controller;
       4) regex     ：根据正则表达式进行过滤
       5) custom    ：用户自定义 过滤规则，需要实现 org.springframework.core.type.filter.TypeFilter 接口
  */
+//只扫描包中  @Controller注解的类。 需要关闭自动扫描 useDefaultFilters=false
+@ComponentScan(basePackages = "com.spring_stu.springAnnotations.组件注册.dsc",
+         includeFilters ={@ComponentScan.Filter(type = FilterType.ANNOTATION,value={Controller.class})}
+        ,useDefaultFilters=false)
 public class BeanConfigerClass  {
     public static void main(String[] args) {
         //加载配置类
