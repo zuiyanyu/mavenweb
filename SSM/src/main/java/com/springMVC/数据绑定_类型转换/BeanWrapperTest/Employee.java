@@ -1,4 +1,4 @@
-package com.springMVC.jdk.BeanWrapperTest;
+package com.springMVC.数据绑定_类型转换.BeanWrapperTest;
 
 import lombok.Data;
 

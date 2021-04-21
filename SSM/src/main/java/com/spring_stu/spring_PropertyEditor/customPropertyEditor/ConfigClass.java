@@ -1,12 +1,18 @@
 package com.spring_stu.spring_PropertyEditor.customPropertyEditor;
 
+import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.config.CustomEditorConfigurer;
 import org.springframework.context.annotation.*;
 
-import java.beans.PropertyEditor;
-import java.util.HashMap;
-
 /**
+ * PropertyEditor
+ * TODO 1. 它只能将字符串转换为一个Java对象
+ * TODO 2. 注册属性编辑器的时候，一个类型会绑定到一个属性编辑器，关系是 1对1的关系。
+ *
+ * TODO 3. 在web项目中，如果只看与前端交互的那一部分，这个功能的确已经足够了(只能将字符串转换为一个Java对象),
+ *         但是在后台项目内部可就得重新想办法了。Spring针对这个问题设计了Converter模块，它位于org.springframework.core.converter包中.
+ * TODO 4. Converter模块足以替代原生的PropertyEditor.
+ * TODO 5. 但是spring选择了同时支持两者，在Spring MVC处理参数绑定时就用到了。
  *
  注册其他自定义 PropertyEditor 实现
  当将 bean 属性设置为字符串值时，Spring IoC 容器最终使用标准 JavaBeans PropertyEditor实现，将这些字符串转换为属性的复杂类型。
@@ -25,13 +31,23 @@ import java.util.HashMap;
 @ComponentScan("com.spring_stu.spring_PropertyEditor.customPropertyEditor")
 @PropertySource("classpath:jdbcInfo.properties")
 public class ConfigClass {
+//    @Bean
+//    public CustomEditorConfigurer customEditorConfigurer(){
+//        //TODO 第三种注册属性编辑器的方式  CustomEditorConfigurer
+//        HashMap<Class<?>, Class<? extends PropertyEditor>> customEditors = new HashMap<>();
+//        customEditors.put(Car.class,CustomCarEditor.class);
+//        CustomEditorConfigurer customEditorConfigurer = new CustomEditorConfigurer();
+//        customEditorConfigurer.setCustomEditors(customEditors);
+//        return customEditorConfigurer;
+//    }
     @Bean
-    public CustomEditorConfigurer customEditorConfigurer(){
-        //TODO 第三种注册属性编辑器的方式
-        HashMap<Class<?>, Class<? extends PropertyEditor>> customEditors = new HashMap<>();
-        customEditors.put(Car.class,CustomCarEditor.class);
+    public CustomEditorConfigurer customEditorConfigurer(PropertyEditorRegistrar propertyEditorRegistrar){
+        //TODO 第四种注册属性编辑器的方式  PropertyEditorRegistrar
+        //com.spring_stu.spring_PropertyEditor.customPropertyEditor.CustomPropertyEditorRegistrar
+        System.out.println(propertyEditorRegistrar.getClass().getName());
+
         CustomEditorConfigurer customEditorConfigurer = new CustomEditorConfigurer();
-        customEditorConfigurer.setCustomEditors(customEditors);
+        customEditorConfigurer.setPropertyEditorRegistrars(new PropertyEditorRegistrar[]{propertyEditorRegistrar});
         return customEditorConfigurer;
     }
     public static void main(String[] args) {

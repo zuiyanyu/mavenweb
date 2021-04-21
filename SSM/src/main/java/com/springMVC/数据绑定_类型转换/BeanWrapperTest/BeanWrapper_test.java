@@ -1,4 +1,4 @@
-package com.springMVC.jdk.BeanWrapperTest;
+package com.springMVC.数据绑定_类型转换.BeanWrapperTest;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
@@ -28,7 +28,7 @@ public class BeanWrapper_test {
         //120.3=== lisi ===A
         System.out.println(""+salary + "=== " + nameList + " ===" + mapValue);
 
-        company.setPropertyValue("dataTime","java.util.Date");
+        company.setPropertyValue("dateTime", new java.util.Date());
 
 
 
