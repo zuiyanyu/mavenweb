@@ -37,6 +37,8 @@ public class Class_Supperclass_reject {
         method9.setAccessible(true); //需要设置权限为可访问的，才能执行父类的私有方法
         Reflect_util.printMethod(method3); //Human: public void play_public ()
         method9.invoke(superclass.newInstance());//private无参：play_private
+
+
     }
 
 

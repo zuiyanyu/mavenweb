@@ -1,5 +1,6 @@
 package javaBase.反射.reflect_class;
 
+import javaBase.反射.domain.IHuman;
 import javaBase.反射.domain.Person;
 import org.junit.Test;
 
@@ -37,13 +38,59 @@ public class Class_baseInfo_reflect {
         System.out.println("通过全类名获取: " + clazz);
     }
 
-    //TODO 5.获取全限定类名
+
+    /**
+     * TODO 5.获取类的名称信息
+     * 二进制名称表如下
+     * Element Type	Encoding
+     * boolean	Z
+     * byte	B
+     * char	C
+     * class or interface	Lclassname
+     * double	D
+     * float	F
+     * int	I
+     * long	J
+     * short	S
+     */
     @Test
     public void getName(){
+        //TODO 如果是一个实体类，则会返回完整包名路径名称,
         String name = clazz.getName();
         //name: javaBase.反射.domain.Person
         System.out.println(name);
+
+        //TODO 如果是一个数组类型，则返回内部嵌套深度的一个或多个"["字符，后面拼接上基本数据类型的二进制名称
+        int[] age = new int[]{2} ;
+        String arrayName = age.getClass().getName();
+        System.out.println(arrayName);//[I
+
+        Person[] peoples = new Person[]{} ;
+        System.out.println(peoples.getClass().getName());//[LjavaBase.反射.domain.Person;
+
     }
+    @Test
+    //TODO 返回源代码中给出的基础类的简单名称。 如果基础类是匿名的，则返回一个空字符串。
+    public void getSimpleName(){
+        String simpleName = clazz.getSimpleName();
+        System.out.println("simpleName:"+simpleName);
+
+        IHuman iHuman = new IHuman() {
+            @Override
+            public void eat() {
+
+            }
+
+            @Override
+            public void eat(String info) {
+
+            }
+        };
+        String simpleName1 = iHuman.getClass().getSimpleName();
+        System.out.println("simpleName1:"+simpleName1);
+
+    }
+
 
     //TODO 6.获取类所在的包名
     @Test
@@ -74,6 +121,7 @@ public class Class_baseInfo_reflect {
         Object obj = clazz.newInstance();
         System.out.println(obj);
     }
+
 
 
 

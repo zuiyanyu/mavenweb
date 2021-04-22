@@ -1,4 +1,4 @@
-package javaBase.反射.reflect_Type;
+package javaBase.反射.reflect_genertic;
 
 import java.lang.reflect.Type;
 

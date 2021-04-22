@@ -1,5 +1,7 @@
 package javaBase.反射.reflect_class;
 
+import java.lang.reflect.Type;
+
 public class Class_Interface_reject {
     Class clazz ;
     {
@@ -8,5 +10,8 @@ public class Class_Interface_reject {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void a(){
+        Type[] genericInterfaces = clazz.getGenericInterfaces();
     }
 }
