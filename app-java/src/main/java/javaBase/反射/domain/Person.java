@@ -1,6 +1,11 @@
 package javaBase.反射.domain;
 
 
+import javaBase.反射.domain.annotations.AgeValidator;
+import javaBase.反射.domain.annotations.Friend;
+
+@Friend(name = "lisi",age = 23)
+@Friend(name = "张三2",age = 32)
 @AgeValidator
 public class Person extends Human implements IHuman {
 
@@ -92,7 +97,7 @@ public class Person extends Human implements IHuman {
     //===========================================
     //反射机制获取类中的注解：注解(Annotation)
     @AgeValidator
-    public void setAge(int age ){
+    public void setAge(@AgeValidator int age ){
         this.age = age ;
     }
 

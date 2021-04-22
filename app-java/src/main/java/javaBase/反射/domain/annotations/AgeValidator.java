@@ -1,4 +1,4 @@
-package javaBase.反射.domain;
+package javaBase.反射.domain.annotations;
 
 import java.lang.annotation.*;
 
@@ -24,7 +24,7 @@ import java.lang.annotation.*;
 //自定义一个注解：检查年龄范围
 @Retention(RetentionPolicy.RUNTIME) //运行时检验
 //@Inherited
-@Target(value = {ElementType.METHOD,ElementType.FIELD,ElementType.TYPE})  //作用在方法上
+@Target(value = {ElementType.METHOD,ElementType.FIELD,ElementType.TYPE,ElementType.PARAMETER})  //作用在方法上
 public @interface AgeValidator {
     int min() default 0;
     int max() default 150;

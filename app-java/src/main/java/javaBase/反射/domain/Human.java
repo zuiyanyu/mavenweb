@@ -1,5 +1,7 @@
 package javaBase.反射.domain;
 
+import javaBase.反射.domain.annotations.NameMeta;
+
 @NameMeta
 public class Human {
     private String human_name ;

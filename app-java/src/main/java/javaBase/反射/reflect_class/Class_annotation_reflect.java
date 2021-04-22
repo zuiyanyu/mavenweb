@@ -1,7 +1,8 @@
 package javaBase.反射.reflect_class;
 
 import javaBase.反射.Reflect_util;
-import javaBase.反射.domain.AgeValidator;
+import javaBase.反射.domain.annotations.AgeValidator;
+import javaBase.反射.domain.annotations.Friend;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
@@ -62,11 +63,58 @@ public class Class_annotation_reflect {
         }
     }
 
+    /**
+     * TODO 判断这个类是否是一个注解类
+     */
+    @Test
+    public void isAnnotation(){
+        Annotation annotation = clazz.getAnnotation(AgeValidator.class);
+        Class<? extends Annotation> aClass ;
+
+        //这种方式得到的是 false
+        aClass = annotation.getClass();
+        System.out.println( aClass.isAnnotation());//false
+
+        //这种方式得到的是true
+        aClass = annotation.annotationType();
+        System.out.println( aClass.isAnnotation());//true
+
+    }
+
+    //TODO 获取传入的注解对象，如果不存在，则返回null
     @Test
     public void getAnnotation(){
         AgeValidator annotation = (AgeValidator)clazz.getAnnotation(AgeValidator.class);
         System.out.println(annotation);//@javaBase.反射.domain.AgeValidator(max=150, min=0)
 
+        //TODO @Friend 是重复注解，getAnnotation无法获取，必须使用getAnnotationsByType获取注解值
+        Annotation annotation1 = clazz.getAnnotation(Friend.class);
+        System.out.println(annotation1);//null
     }
+
+    @Test
+    //TODO 是否包含传入的注解类,效果与getAnnotation()!=null相同
+    public void isAnnotationPresent(){
+        //isAnnotationPresent(Class<? extends Annotation> annotationClass)
+        boolean annotationPresent = clazz.isAnnotationPresent(AgeValidator.class);
+        System.out.println(annotationPresent);//true
+    }
+
+    /**
+     *TODO 返回传入的注解对象数组，与getAnnotation()的区别是检测传入的注解是否是重复元素
+     */
+    @Test
+    public void getAnnotationsByType(){
+
+        Annotation[] annotationsByType = clazz.getAnnotationsByType(Friend.class);
+        /**
+         * @javaBase.反射.domain.annotations.Friend(name=lisi, age=23)
+         * @javaBase.反射.domain.annotations.Friend(name=张三2, age=32)
+         */
+        for (Annotation annotation1 : annotationsByType) {
+            System.out.println(annotation1); //@javaBase.反射.domain.AgeValidator(max=150, min=0)
+        }
+    }
+
 
 }

@@ -1,6 +1,6 @@
 package javaBase.反射;
 
-import javaBase.反射.domain.AgeValidator;
+import javaBase.反射.domain.annotations.AgeValidator;
 import org.apache.commons.lang.StringUtils;
 
 import java.lang.annotation.Annotation;
