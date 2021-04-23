@@ -7,7 +7,9 @@ import javaBase.反射.domain.annotations.Friend;
 @Friend(name = "lisi",age = 23)
 @Friend(name = "张三2",age = 32)
 @AgeValidator
-public class Person extends Human implements IHuman {
+public class Person<T,K extends Number> extends Human implements IHuman {
+    T t ;
+    K k ;
 
     //默认default修饰
     String name;

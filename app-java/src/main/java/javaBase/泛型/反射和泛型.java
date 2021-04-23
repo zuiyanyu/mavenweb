@@ -197,10 +197,8 @@ public class 反射和泛型 {
     }
     /*TODO java.lang.reflect.TypeVariable 5.0
     * •TypeVariable 接口，描述类型变量（如 T extends Comparable<? super T>)
-    *      •String getName( )
-    *          获得类型变量的名字。
-    *      •Type[] getBounds( )
-    *          获得类型变量的子类限定，否则， 如果该变量无限定， 则返回长度为 0 的数组
+    *      •String getName( )获得类型变量的名字。
+    *      •Type[] getBounds( ) 获得类型变量的子类限定，否则， 如果该变量无限定， 则返回长度为 0 的数组
     */
     public static <T> void TypeVariableTest(TypeVariable<Class<T>> typeParameter){
         System.out.println("===========TypeVariable==============");
@@ -213,8 +211,6 @@ public class 反射和泛型 {
             String typeName = bound.getTypeName();
             System.out.println("typeName ="+typeName); // java.lang.Comparable<? super R> ,java.io.Serializable
         }
-
-
 
     }
     /* TODO java.Iang.reflect.WildcardType 5.0

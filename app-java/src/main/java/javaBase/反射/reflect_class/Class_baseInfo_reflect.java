@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 
 
 //TODO 反射获取类的基本信息
-public class Class_baseInfo_reflect {
+public class Class_baseInfo_reflect{
     Class clazz ;
     {
         try {
@@ -121,6 +121,7 @@ public class Class_baseInfo_reflect {
         Object obj = clazz.newInstance();
         System.out.println(obj);
     }
+
 
 
 

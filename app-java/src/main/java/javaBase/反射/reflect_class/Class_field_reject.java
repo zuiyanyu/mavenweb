@@ -4,6 +4,7 @@ import javaBase.反射.Reflect_util;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 
 //TODO 反射获取类中的字段信息
 public class Class_field_reject {
@@ -39,6 +40,19 @@ public class Class_field_reject {
         Field[] declaredFields = clazz.getFields();
         for (Field field : declaredFields) {
             Reflect_util.printField(field);
+        }
+    }
+
+    /**
+     * TODO 获取泛型变量，其他变量不会获取到
+     * typeName = T
+     * typeName = K
+     */
+    @Test
+    public void getTypeParameters(){
+        Type[] types = clazz.getTypeParameters();
+        for (Type type : types) {
+            System.out.println("typeName = "+type.getTypeName());
         }
     }
 }
