@@ -13,9 +13,9 @@ public class BlockingQueueTest {
     private static ArrayBlockingQueue<File> queue = new ArrayBlockingQueue(FILE_QUEUE_SIZE);
 
     /**
-     * 我们使用一个小技巧在工作结束后终止这个应
-     * 用程序。为了发出完成信号， 枚举线程放置一个虚拟对象到队列中（这就像在行李输送带上
-     * 放一个写着“ 最后一个包” 的虚拟包。) 当搜索线程取到这个虚拟对象时， 将其放回并终止。
+     * 我们使用一个小技巧在工作结束后终止这个应用程序。
+     * 为了发出完成信号， 枚举线程放置一个虚拟对象到队列中（这就像在行李输送带上放一个写着“ 最后一个包” 的虚拟包。)
+     * 当搜索线程取到这个虚拟对象时， 将其放回并终止。
      *
      * 注意，不需要显式的线程同步。在这个应用程序中， 我们使用队列数据结构作为一种同步机制。
      * @param args
@@ -28,17 +28,20 @@ public class BlockingQueueTest {
 
             Runnable enumerator = () -> {
                 try{
+                    //一个线程扫描文件列表
                     enumerate(new File(directory));
+
+                    //当文件都扫描完后，放一个扫描结束的信号。
                     queue.put(DUMMY) ;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             };
-            //TODO 2. 启动文件扫描线程
+            //TODO 2. 启动文件扫描线程, 启动了一个线程进行文件扫描，但是每次阻塞队列中只能放10个文件目录，超过的时候就被阻塞。
             new Thread(enumerator).start();
 
-
-            //我们同时启动了大量搜索线程o 每个搜索线程从队列中取出一个文件进行搜索
+            //如果
+            //我们同时启动了大量搜索线程. 每个搜索线程从队列中取出一个文件进行搜索
             for (int i = 1; i <= SEARCH_THREADS; i++) {
                 Runnable searcher = () -> {
                     try{

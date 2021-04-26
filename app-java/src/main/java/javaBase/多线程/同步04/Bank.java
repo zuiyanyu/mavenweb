@@ -34,12 +34,13 @@ public class Bank {
     public   void transfer(int from ,int to ,double amount)  {
         Thread thread = Thread.currentThread();
         String name = thread.getName();
-        System.out.println("currentThread is "+ name);
+        //getTotalBalance() 获取银行总金额，总金额不应该改变
         System.out.println("currentThread is "+ name +" and getTotalBalance = "+ getTotalBalance());
 
         bankLock.lock();
         try{
             while (accounts[from] < amount){
+                //如果账户的钱少于当前要转的金额，就进行阻塞等待。
                 sufficientFunds.await();
             }
 
@@ -50,6 +51,7 @@ public class Bank {
             accounts[to] += amount;
             System.out.printf(name + ":Total Balance: %10.2f%n%n", getTotalBalance());
 
+            //唤醒所有正在等待的线程
             sufficientFunds .signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -58,6 +60,7 @@ public class Bank {
         }
     }
 
+    //获取银行总金额，总金额不应该改变
     private Object getTotalBalance() {
 
         bankLock.lock() ;

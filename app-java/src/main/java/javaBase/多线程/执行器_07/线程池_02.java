@@ -15,13 +15,27 @@ package javaBase.多线程.执行器_07;
  *  newSingleThreadExecutor 是一个退化了的大小为 1 的线程池： 由一个线程执行提交的任务， 一个接着一个。
  *----------------------------------------------------------------------------------------
  * TODO 2. 这 3 个方法返回实现了ExecutorService 接口的 ThreadPoolExecutor 类的对象
+ * TODO  ExecutorService是一个执行器： ExecutorService extends Executor  ，所以返回的是一个执行器。
+ *          ExecutorService executorService = Executors.newCachedThreadPool();
+ *          返回：
+ *                 return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+ *                                       60L, TimeUnit.SECONDS,
+ *                                       new SynchronousQueue<Runnable>());
+ *         ThreadPoolExecutor的构造方法：发现待处理的任务会放到一个阻塞队列中。
+ *                  public ThreadPoolExecutor(int corePoolSize,
+ *                               int maximumPoolSize,
+ *                               long keepAliveTime,
+ *                               TimeUnit unit,
+ *                               BlockingQueue<Runnable> workQueue)
+ *
  * TODO 3. 可用下面的方法之一将一个 Runnable 对象或 Callable 对象提交给 ExecutorService:
  *      Future<?> submit(Runnable task)
  *      Future<T> submit(Runnable task, T result)
  *      Future<T> submit(Callable<T> task)
  * 该池会在方便的时候尽早执行提交的任务。调用 submit 时，会得到一个 Future 对象， 可用来查询该任务的状态。
  *
- * 第一个 submit 方法返回一个奇怪样子的 Future<?>。 可以使用这样一个对象来调用isDone、 cancel 或 isCancelled。但是， get 方法在完成的时候只是简单地返回 null。
+ * 第一个版本的 submit 方法返回一个奇怪样子的 Future<?>。 可以使用这样一个对象来调用isDone、 cancel 或 isCancelled。
+ *            但是， get 方法在完成的时候只是简单地返回 null。
  * 第二个版本的 Submit 也提交一个 Runnable， 并且 Future 的 get 方法在完成的时候返回指定的 result 对象。
  * 第三个版本的 Submit 提交一个 Callable, 并且返回的 Future 对象将在计算结果准备好的时候得到它。
  *

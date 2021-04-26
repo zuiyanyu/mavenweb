@@ -7,11 +7,11 @@ import java.io.Serializable;
 /**
  * TODO 类型参数 （type parameters)
  * TODO 通配符类型 （wildcard type)
- * TODO 类型变量的限定（bound)            public static <T extends Coiparab1e> T min(T[] a)
- * TODO 类 型 擦 除  为了提高效率， 应该将标签（tagging) 接口（即没有方法的接口）放在边界列表的末尾。
+ * TODO 类型变量的限定（bound)   public static <T extends Coiparab1e> T min(T[] a)
+ * TODO 类型擦除： 为了提高效率， 应该将标签（tagging) 接口（即没有方法的接口）放在边界列表的末尾。
  * TODO 翻译泛型表达式   当程序调用泛型方法时， 如果擦除返回类型， 编译器插入强制类型转换，比如对返回结果的强制类型转换。
  *      String middle2 = (String)getMiddle("a", "b", "c");
- * TODO 翻译泛型方法   类型擦除也会出现在泛型方法中
+ * TODO 翻译泛型方法  类型擦除也会出现在泛型方法中
  *       public static <T extends Comparable> T min(T[] a)  是一个完整的方法族，而擦除类型之后， 只剩下一个方法：
  *       public static Comparable min(Comparable[] a)   类型参数 T 已经被擦除了， 只留下了限定类型 Comparable。
  *
@@ -23,35 +23,35 @@ import java.io.Serializable;
  * TODO K 和 V 分别表示表的关键字与值的类型。T ( 需要时还可以用临近的字母 U 和 S ) 表示“ 任意类型”。
  *================================================
  * 程序员可能想要将
- * ArrayList<Manager> 中的所有元素添加到 ArrayList<Employee> 中去。然而， 反过来就不行弟?章泛型程序?? 311
- * 了。如果只能允许前一个调用， 而不能允许后一个调用呢？ Java 语言的设计者发明了一个具
- * 有独创性的新概念，通配符类型 （wildcard type), 它解决了这个问题。
+ * ArrayList<Manager> 中的所有元素添加到 ArrayList<Employee> 中去。然而， 反过来就不行了。
+ * 如果只能允许前一个调用， 而不能允许后一个调用呢？
+ * Java 语言的设计者发明了一个具有独创性的新概念，通配符类型 （wildcard type), 它解决了这个问题。
  *
  *================================================
- *原始类型用第一个限定的类型变量来替换， 如果没有给定限定就用 Object 替换。 例如，
- * 类 Pair<T> 中的类型变量没有显式的限定， 因此， 原始类型用 Object 替换 T。假定声明了一
- * 个不同的类型。
+ * TODO 原始类型用第一个限定的类型变量来替换， 如果没有给定限定就用 Object 替换。
+ * 例如，类 Pair<T> 中的类型变量没有显式的限定， 因此， 原始类型用 Object 替换 T。
+ *
+ * 假定声明了一个不同的类型。
  * public class Interval <T extends Comparable & Serializable〉implements Serializable
  * {
- * private T lower;
- * private T upper;
- * public Interval (T first, T second)
- * {
- * if (first.compareTo(second) <= 0) { lower = first; upper = second; }
- * else { lower = second; upper = first; }
- * }
+ *      private T lower;
+ *      private T upper;
+ *      public Interval (T first, T second)
+ *      {
+ *          if (first.compareTo(second) <= 0) { lower = first; upper = second; }
+ *          else { lower = second; upper = first; }
+ *      }
  * }
  * 原始类型 Interval 如下所示：
  * public class Interval implements Serializable
  * {
- * private Comparable lower;
- * private Coiparable upper;
- * public Interval (Coiparable first, Coiparable second) { . . . }
+ *      private Comparable lower;
+ *      private Coiparable upper;
+ *      public Interval (Coiparable first, Coiparable second) { . . . }
  * }
- * 切换限定： class Interval<T extends Serializable & Comparable>
- * 会发生什么。 如果这样做， 原始类型用 Serializable 替换 T, 而编译器在必要时要向
- * Comparable 插入强制类型转换。 为了提高效率， 应该将标签（tagging) 接口（即没有方
- * 法的接口）放在边界列表的末尾。
+ * 切换限定： class Interval<T extends Serializable & Comparable>会发生什么。
+ * 如果这样做， 原始类型用 Serializable 替换 T, 而编译器在必要时要向Comparable 插入强制类型转换。
+ * 为了提高效率， 应该将标签（tagging) 接口（即没有方法的接口）放在边界列表的末尾。
  *
  * ================================================
  *

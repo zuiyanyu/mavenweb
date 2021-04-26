@@ -30,7 +30,7 @@ package javaBase.多线程.同步04;
  *TODO              // transfer funds
  *TODO              ...
  *TODO         }finally{
- *TODO             bankLock.unlockO；
+ *TODO             bankLock.unlock()；
  *TODO         }
  *TODO   }
  *TODO  现在， 当账户中没有足够的余额时， 应该做什么呢？ 等待直到另一个线程向账户中注入了资金。

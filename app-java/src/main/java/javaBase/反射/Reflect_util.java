@@ -3,6 +3,7 @@ package javaBase.反射;
 import javaBase.反射.domain.annotations.AgeValidator;
 import org.apache.commons.lang.StringUtils;
 
+import javax.lang.model.type.TypeVariable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 
@@ -84,5 +85,32 @@ public class Reflect_util {
             String name = aClass.getSimpleName();
             System.out.println("@"+name +" : " + annotation);
         }
+    }
+
+    //TODO 判断type 是哪一种泛型接口
+    public static void printGeneriticType(Type type){
+        String typeName = type.getTypeName();
+        if(type instanceof ParameterizedType){
+            System.out.println("ParameterizedType: " + typeName);
+        }
+        if(type instanceof GenericArrayType){
+            System.out.println("GenericArrayType: " + typeName);
+        }
+        if(type instanceof TypeVariable){
+            System.out.println("TypeVariable: " + typeName);
+        }
+        if(type instanceof GenericArrayType){
+            System.out.println("GenericArrayType: " + typeName);
+        }
+    }
+    //TODO 根据方法名获取方法
+    public static Method getMethodByName(Class clazz , String methodName){
+        Method[] declaredMethods = clazz.getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            if(methodName.equals(declaredMethod.getName())){
+                return declaredMethod ;
+            }
+        }
+        return null ;
     }
 }

@@ -104,7 +104,7 @@ class TalkingClock {
                 //Toolkit.getDefaultToolkit().beep();
                 System.out.println("发布通知... outer.beep="+outer.beep);
 
-                //表达式 OuterClass.this 表示外围类引用
+                //TODO 表达式 OuterClass.this 表示外围类引用
                 System.out.println("发布通知... beep="+beep); //
                 System.out.println("发布通知... TalkingClock.this.beep="+TalkingClock.this.beep);
             }

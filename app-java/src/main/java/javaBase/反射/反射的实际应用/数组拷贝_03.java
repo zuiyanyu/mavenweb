@@ -1,4 +1,4 @@
-package javaBase.对象与类.反射;
+package javaBase.反射.反射的实际应用;
 
 import javaBase.domain.Employee;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class ArrayTest {
+public class 数组拷贝_03 {
     /**
      *  int[] a = { 1,2, 3, 4, 5 };
      *  a = (int[]) arrayCopyOf(a,10);

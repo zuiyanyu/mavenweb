@@ -7,7 +7,7 @@ package javaBase.多线程.同步04;
  * TODO 竞争
  * TODO 1. 如果两个线程存取相同的对象， 并且每一个线程都调用了一个修改该对象状态的方法，将会发生什么呢？
  *         可以想象， 线程彼此踩了对方的脚。 根据各线程访问数据的次序， 可能会产生讹误的对象。这样一个情况通常称为竞争条件（race condition。)
- * TODO 2. 为了避免多线程引起的对共享数据的说误，必须学习如何同步存取。
+ * TODO 2. 为了避免多线程引起的对共享数据的错误，必须学习如何同步存取。
  * TODO 3. 竞争条件的一个例子:
  *      模拟一个有若干账户的银行。随机地生成在这些账户之间转移钱款的交易。
  *      每一个账户有一个线程。每一笔交易中， 会从线程所服务的账户中随机转移一定数目的钱款到另一个随机账户。
@@ -15,9 +15,9 @@ package javaBase.多线程.同步04;
  *
  */
 public class 竞争条件_01 {
-    public static final int NACCOUNTS = 100;
-    public static final double INITIAL_BALANCE = 1000 ;
-    public static final double MAX_AMOUNT = 1000;
+    public static final int NACCOUNTS = 100;//账号数量
+    public static final double INITIAL_BALANCE = 1000 ; //初始金额
+    public static final double MAX_AMOUNT = 1000; //最大金额
     public static  int DELAY = 10;
 
     public static void main(String[] args) {

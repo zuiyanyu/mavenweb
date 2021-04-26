@@ -30,10 +30,20 @@ public class Type_TypeVariable_reflect<K extends Number&List, T> {
             TypeVariable t = (TypeVariable) type;
             //输出名称
             /**
-             * --getTypeName(): K
-             * --getTypeName(): T
+             *getTypeName(): K
+             * getName(): K
+             * ----------------
+             * getTypeName(): T
+             * getName(): T
+             * ----------------
              */
-            System.out.println("--getTypeName(): " + t .getTypeName());
+            //getTypeName(): Returns a string describing this type, including information about any type parameters.
+            System.out.println("getTypeName(): " + t .getTypeName());
+
+            //获取源码中的变量名
+            System.out.println("getName(): " + t .getName());
+
+            System.out.println("----------------");
         }
     }
 

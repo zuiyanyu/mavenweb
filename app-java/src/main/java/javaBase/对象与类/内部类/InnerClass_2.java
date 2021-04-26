@@ -22,6 +22,7 @@ import java.util.Date;
  *TODO 5. 内部类中声明的所有静态域都必须是 final。
  * 原因：
  * 我们希望一个静态域只有一个实例， 不过对于每个外部对象， 会分别有一个单独的内部类实例。如果这个域不是 final, 它可能就不是唯一的。
+ * 每个 外部类的实例都会单独持有一个内部类Class，static 变量是绑定Class类上的， final static 存放到常量池中的 。
  * TODO 6. 内部类不能有 static 方法。
  */
 public class InnerClass_2 {

@@ -23,65 +23,83 @@ import org.junit.Test;
  * 4.1  • static void sleep(long minis)
  *          休眠给定的毫秒数。参数：millis 休眠的毫秒数
  *          调用Thread.sleep()不会创建一个新线程，sleep 是 Thread 类的静态方法，用于暂停当前线程的活动。
- *           sleep 方法可以抛出一个 IntermptedException 异常。线程在中断时被终止。
- *使用线程给其他任务提供机会
- * 4.2 • Thread.start 方法。这个方法将创建一个执行 ran 方法的新线程
+ *          sleep 方法可以抛出一个 InterruptedException 异常。线程在中断时被终止，使用线程给其他任务提供机会
+ * 4.2 • Thread.start 方法。这个方法将创建一个执行 run 方法的新线程.
  *
  * TODO 中 断 线 程  （正常任务执行完毕 或 遇到未捕获的异常，线程将终止）
  * 当线程的 run 方法执行方法体中最后一条语句后， 并经由执行 return 语句返冋时，线程将终止。
  * 或出现了在方法中没有捕获的异常时，线程将终止。
  *
  * 4.3 stop方法：其他线程可以调用它终止线程。(但是， 这个方法现在已经被弃用了)
- * 4.4 interrupt 方法： 没有可以强制线程终止的方法。然而， interrupt 方法可以用来请求终止线程。
- *      4.4.1 当对一个线程调用 interrupt 方法时，线程的中断状态将被置位。这是每一个线程都具有的 boolean 标志。每个线程都应该不时地检査这个标志， 以判断线程是否被中断。
+ * 4.4 interrupt 方法： interrupt 方法可以用来请求终止线程,没有强制线程终止。。
+ *      4.4.1 当对一个线程调用 interrupt() 方法时，线程的中断状态将被置位。这是每一个线程都具有的 boolean 标志。
+ *            每个线程都应该不时地检査这个标志， 以判断线程是否被中断。
  *      4.4.2 要想弄清中断状态是否被置位，首先调用静态的 Thread.currentThread 方法获得当前线程， 然后调用 islnterrupted() 方法
  *          while (!Thread.currentThread().islnterrupted() && more work to do)
  *          {
  *             do more work
  *          }
- *      4.4.3 但是， 如果线程被阻塞， 就无法检测中断状态。这是产生 InterruptedExceptioii 异常的地方。
+ *      4.4.3 但是， 如果线程被阻塞， 就无法检测中断状态。这是产生 InterruptedException 异常的地方。
  *            TODO 当在一个被阻塞的线程（调用 sleep 或 wait ) 上调用 interrupt 方法时， 阻塞调用将会被Interrupted Exception 异常中断。
- *           (存在不能被中断的阻塞 I/O 调用， 应该考虑选择可中断的调用)
- *      4.4.4 TODO 没有任何语言方面的需求要求一个被中断的线程应该终止。 1) 中断一个线程不过是引起它的注意。2) 被中断的线程可以决定如何响应中断。
- *                 3) 某些线程是如此重要以至于应该处理完异常后， 继续执行，而不理会中断。4) 但是，更普遍的情况是，线程将简单地将中断作为一个终止的请求。
+ *           (存在不能被中断的阻塞 I/O 调用时， 应该考虑选择可中断的调用)
+ *               //TODO 在 thread.sleep();执行前调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+ *               //TODO 在 thread.sleep();睡眠中调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+ *               //TODO  thread.wait() 和  thread.sleep() 类似 ；
+ *
+ *      4.4.4 TODO 没有任何语言方面的需求要求一个被中断的线程应该终止。
+ *                 1) 中断一个线程不过是引起它的注意。
+ *                 2) 被中断的线程可以决定如何响应中断。
+ *                 3) 某些线程是如此重要以至于应该处理完异常后，继续执行，而不理会中断。
+ *                 4) 但是，更普遍的情况是，线程简单地将中断作为一个终止的请求。
  *           这种线程的 run 方法具有如下形式：
  *           Runnable r = () -> {
  *                      try
  *                      {
- *                                while (!Thread.currentThread().islnterrupted() && more work to do)
+ *                              while (!Thread.currentThread().islnterrupted() && more work to do)
  *                              {
  *                                  do more work
  *                               }
  *                       }catch(InterruptedException e){
- *                          // thread was interr叩ted during sleep or wait
+ *                          //TODO 在 thread.sleep();执行前调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+ *                          //TODO 在 thread.sleep();睡眠中调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+ *                          //TODO  thread.wait() 和  thread.sleep() 类似 ；
+ *
+ *                         // 线程在sleep 或者 wait 期间，外部线程调用了此线程的 thread.interrupt() 方法。
+ *                          // thread was interrupted during sleep or wait
  *                      }finally{
  *                           cleanup, if required
  *                      }
+ *                      // 如果线程被中断了，进行一些必要处理后，退出run方法。
  *                      // exiting the run method terminates the thread
+ *                      return ;
  *              }；
- *         4.4.5 TODO 如果在每次工作迭代之后都调用 sleep 方法（或者其他的可中断方法，) islnterrupted 检测既没有必要也没有用处。
- *         如果在中断状态被置位时调用 sleep 方法，它不会休眠。相反，它将清除这一状态（!）并拋出 IntemiptedException。
+ *         4.4.5 TODO 如果在每次工作迭代之后都调用 sleep 方法（或者其他的可中断方法)， islnterrupted 检测既没有必要也没有用处。
+ *         如果在中断状态被置位时调用 sleep 方法，它不会休眠。相反，它将清除这一状态，并拋出 IntemiptedException。
  *         因此， 如果你的循环调用 sleep， 不会检测中断状态。相反，要如下所示捕获 InterruptedException 异常：
  *         Runnable r = 0 -> {
  *                 try{
  *                     while { more work to do)
  *                     {
  *                         do more work
- *                         Thread,sleep(delay);
+ *                         Thread.sleep(delay);
  *                     }
  *                 }catch(InterruptedException e){
  *                     // thread was interrupted during sleep
  *                 }finally{
  *                   cleanup,if required
- *                 }//exiting the run method terminates the thread
+ *                 }
+ *
+ *                 //exiting the run method terminates the thread
  *          }；
  *        4.4.6 interrupted 和 islnterrupted ：
  *               Interrupted   方法是一个静态方法， 它检测当前的线程是否被中断。而且， 调用 interrupted 方法会清除该线程的中断状态。
- *               islnterrupted 方法是一个实例方法， 可用来检验是否有线程被中断。调用这个方法不会改变中断状态。
+ *               islnterrupted 方法是一个实例方法， 可用来检验是某有线程是否被中断。调用这个方法不会改变中断状态。
+ *
  *        4.4.7   java.Iang.Thread 1.0
  *              • void interrupt()
- *                  向线程发送中断请求。线程的中断状态将被设置为 true。如果目前该线程被一个 sleep
- *                  调用阻塞，那么，InterruptedException 异常被抛出。
+ *                  向线程发送中断请求。线程的中断状态将被设置为 true。
+ *                  1.如果目前该线程被一个 sleep调用阻塞，那么，InterruptedException 异常被抛出，并清空中断状态。。
+ *                  2.如果线程的中断状态将被设置为 true后，再调用sleep阻塞，也会有InterruptedException 异常被抛出，并清空中断状态。
  *              • static boolean interrupted()
  *                  测试当前线程（即正在执行这一命令的线程）是否被中断。注意，这是一个静态方法。
  *                  这一调用会产生副作用—它将当前线程的中断状态重置为 false
@@ -106,7 +124,7 @@ public class Thread_Interrupte {
 
 
         try {
-            //TODO  如果在中断状态被置位时调用 sleep 方法，它不会休眠。相反，它将清除这一状态（!）并拋出 IntemiptedException。
+            //TODO  如果在中断状态调用 sleep 方法，它不会休眠。相反，它将清除这一状态（!）并拋出 IntemiptedException。
             Thread.sleep(100);  //中断状态由 true 清除为 false
         } catch (InterruptedException e) {
             // //TODO 中断状态由 true 清除为 false
@@ -120,6 +138,7 @@ public class Thread_Interrupte {
     }
     @Test
     public void interuptedTest2(){
+
         Thread thread = Thread.currentThread();
         thread.interrupt();
 
@@ -127,7 +146,7 @@ public class Thread_Interrupte {
         boolean interrupted2 = thread.isInterrupted();
         System.out.println("before interrupted : Thread.isInterrupted() = "+interrupted2); //true
 
-        //TODO Interrupted   方法是一个静态方法， 它检测当前的线程是否被中断。而且， 调用 interrupted 方法会清除该线程的中断状态。
+        //TODO Interrupted   方法是一个静态方法， 它检测当前的线程是否被中断。而且，调用 interrupted 方法会清除该线程的中断状态。
         boolean interrupted = Thread.interrupted();
         System.out.println("Thread.interrupted() ："+interrupted);  //true
 
@@ -135,23 +154,43 @@ public class Thread_Interrupte {
         boolean interrupted3 = thread.isInterrupted();
         System.out.println("after interrupted : Thread.isInterrupted() ="+interrupted3); //false
     }
+    //TODO 在 thread.sleep();执行前调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+    //TODO 在 thread.sleep();睡眠中调用 thread.interrupt() ; 会报Interrupted Exception 异常中断,并清空状态。
+    //TODO  thread.wait() 和  thread.sleep() 类似 ；
     @Test
     public  void interuptedTest() throws InterruptedException {
         // TODO 当在一个被阻塞的线程（调用 sleep 或 wait ) 上调用 interrupt 方法时， 阻塞调用将会被Interrupted Exception 异常中断。
         Thread thread = new Thread(()->{
-            boolean interrupted = Thread.currentThread().isInterrupted();
+            System.out.println("run方法被调用！");
 
-            Thread.currentThread().interrupt();
+            System.out.println("interrupted1 = " +Thread.currentThread().isInterrupted());//interrupted = false
+            //TODO 1.先中断置位后，调用sleep时候，会报中断异常，并清空状态。
+            //TODO 2.如果先sleep，设置中断会，会报中断异常，并清空状态。
+//            Thread.currentThread().interrupt();
+//            System.out.println("interrupted2 = " +Thread.currentThread().isInterrupted());//interrupted = false
             try {
-                System.out.println("111111111111111111111");
-                Thread.sleep(10000);
+                System.out.println("run()业务开始...");
+                Thread.sleep(3000);
+                System.out.println("run()业务结束！");
+
             } catch (InterruptedException e) {
                 System.out.println("中断异常");
+                System.out.println("interrupted3 = " +Thread.currentThread().isInterrupted());//interrupted = false
+
                 e.printStackTrace();
             }
         }) ;
         thread.start();
-        Thread.sleep(2000);
+
+        System.out.println("主线程中调用1："+thread.isInterrupted());
+        Thread.sleep(1000);  //注释掉此语句就会报 java.lang.InterruptedException: sleep interrupted
+        System.out.println("主线程睡眠1秒完毕");
+//        // start 后线程不一定立刻运行run()方法，如果  主线程的 thread.interrupt(); 先执行，那么run()方法就会报中断异常。
         thread.interrupt();
+        System.out.println("主线程中调用2："+thread.isInterrupted());
+
+        Thread.sleep(2000);
+        System.out.println("主线程sleep完毕！");
+
     }
 }

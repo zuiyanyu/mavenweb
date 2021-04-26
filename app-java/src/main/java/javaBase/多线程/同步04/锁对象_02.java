@@ -89,7 +89,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * TODO 7. 警告：
  *          7.1 要留心临界区中的代码， 不要因为异常的抛出而跳出临界区。
- *          7.2 如果在临界区代码结束之前抛出了异常， finally 子句将释放锁，但会使对象可能处于一种受损状态（即对象中的数据不再准确了，别损坏了）。
+ *          7.2 如果在临界区代码结束之前抛出了异常， finally 子句将释放锁，但会使对象可能处于一种受损状态（即对象中的数据不再准确了，被损坏了）。
  *
  *
  *TODO  java.util.concurrent.locks.Lock 5.0  是一个接口

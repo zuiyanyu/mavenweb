@@ -25,7 +25,7 @@ package javaBase.多线程.Callable与Future_06;
  *         }
  * TODO 5.1 第一个 get 方法的调用被阻塞， 直到计算完成。
  * TODO 5.2 如果在计算完成之前， 第二个方法的调用超时，拋出一个 TimeoutException 异常。
- * TODO 如果运行该计算的线程被中断， 两个方法都将拋出 IntermptedException。
+ * TODO 如果运行该计算的线程被中断， 两个方法都将拋出 InterruptedException。
  * TODO 如果计算已经完成， 那么 get 方法立即返回。
  *
  * TODO 5.3 如果计算还在进行，isDone 方法返回 false; 如果完成了， 则返回 true。
@@ -40,8 +40,6 @@ package javaBase.多线程.Callable与Future_06;
  * t.start()；
  * ...
  * Integer result = task.get()；// it's a Future
- *
- *
  *
  */
 public class Callable与Future_01 {

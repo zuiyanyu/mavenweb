@@ -30,6 +30,7 @@ package javaBase.多线程.同步04;
  * TODO 4. Volatile 变量不能提供原子性。例如， 方法
  *        public void flipDoneO { done = !done; } // not atomic
  *       不能确保翻转域中的值。不能保证读取、 翻转和写入不被中断。
+ *
  *TODO 5. 假设对共享变量除了赋值之外并不完成其他操作，那么可以将这些共享变量声明为 volatile.
  *
  */

@@ -57,6 +57,7 @@ class ThreadDemo implements Callable<Integer> {
             sum += i ;
             //Thread.sleep(20);
         }
+        System.out.println(Thread.currentThread().getName() +" ; sum = "+sum);
         return sum;
     }
 }

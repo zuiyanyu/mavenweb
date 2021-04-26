@@ -45,6 +45,7 @@ public class Class_field_reject {
 
     /**
      * TODO 获取泛型变量，其他变量不会获取到
+     * 如果这个类型被声明为泛型类型， 则获得泛型类型变量，否则获得一个长度为 0 的数组。
      * typeName = T
      * typeName = K
      */

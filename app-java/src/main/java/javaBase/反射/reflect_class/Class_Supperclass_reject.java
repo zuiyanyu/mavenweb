@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
 
 public class Class_Supperclass_reject {
     Class clazz ;
@@ -37,6 +40,41 @@ public class Class_Supperclass_reject {
         method9.setAccessible(true); //需要设置权限为可访问的，才能执行父类的私有方法
         Reflect_util.printMethod(method3); //Human: public void play_public ()
         method9.invoke(superclass.newInstance());//private无参：play_private
+
+
+    }
+
+    /**
+     * TODO Type getGenericSuperclass( ) 5.0
+     * TODO 获得超类的泛型类型； 如果这个类型是 Object 或不是一个类类型(class type), 则返回 null。
+     *
+     * 以如下接口为例：
+     * public class LinkedList<E>
+     *     extends AbstractSequentialList<E>
+     *     implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+     */
+    @Test
+    public void getGenericSuperclass(){
+        Class<LinkedList> aClass = LinkedList.class;
+
+        //TODO ParameterizedType 和 Class 是同级别的，是不能互相转换的。
+        /**
+         * java.util.AbstractSequentialList
+         * true
+         */
+        //获取 Class类型
+        Class<? super LinkedList> superclass = aClass.getSuperclass();
+        System.out.println(superclass.getName());
+        System.out.println(superclass instanceof Class);
+
+        /**
+         * java.util.AbstractSequentialList<E>
+         * true
+         */
+        //获取 ParameterizedType类型
+        Type genericSuperclass = aClass.getGenericSuperclass();
+        System.out.println(genericSuperclass.getTypeName());
+        System.out.println(genericSuperclass instanceof ParameterizedType);
 
 
     }

@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * TODO 局部内部类 :定义在方法中的类
  * TODO 局部类不能用 public 或 private 访问说明符进行声明。它的作用域被限定在声明这个局部类的块中
- * TODO 局部类有一个优势， 即对外部世界可以完全地隐藏起来。 即使 TalkingClock 类中的其他代码也不能访问它。
+ * TODO 局部类有一个优势， 即对外部世界可以完全地隐藏起来。 即使是 TalkingClock 类中的其他代码也不能访问它。
  * 如下示例：除 start 方法之外， 没有任何方法知道 TimePrinter 类的存在。
  *
  * TODO 与其他内部类相比较， 局部类还有一个优点。它们不仅能够访问包含它们的外部类， 还可以访问局部变量。
@@ -16,13 +16,13 @@ import java.util.Date;
  * 为了能够清楚地看到内部的问题， 让我们仔细地考査一下控制流程。
  * 1 ) 调用 start 方法。
  * 2 ) 调用内部类 TimePrinter 的构造器， 以便初始化对象变量 listener。
- * TODO  3 ) 将 listener 引用传递给 一个线程使用，并启动线程，定时器开始计时，start 方法结束。此时，start
+ * TODO 3) 将 listener 引用传递给 一个线程使用，并启动线程，定时器开始计时，start 方法结束。此时，start
  * TODO  方法的 beep 参数变量不复存在。但是外部类中的变量一直存在。(这就是根本原因所在了)
  * 4 ) 然后，actionPerformed方法执行 if (beep)..。.
  * 为了能够让 actionPerformed方法工作，TimePrinter 类在 beep 域释放之前将 beep 域用
  * start 方法的局部变量进行备份。实际上也是这样做的。在我们列举的例子中， 编译器为局
  * 部内部类构造了名字 TalkingClock$TimePrinter。 如果再次运行 ReflectionTest 程序， 查看
- * TalkingClock$Time- Printer 类，就会看到下列结果：
+ * TalkingClock$Time.Printer 类，就会看到下列结果：
  *TODO     classFullName=java基础.对象与类.内部类.TalkingClock3$1TimePrinter
  *TODO     {
  *TODO         java基础.对象与类.内部类.TalkingClock3$1TimePrinter(TalkingClock3, boolean, double, String);
@@ -37,7 +37,7 @@ import java.util.Date;
  * 请注意构造器的 boolean 参数和 val$beep2 实例变量。当创建一个对象的时候， beep2 就会
  * 被传递给构造器，并存储在 val$beep2 域中。编译器必须检测对局部变量的访问， 为每一个变
  * 量建立相应的数据域， 并将局部变量拷贝到构造器中， 以便将这些数据域初始化为局部变量的副本。
- * TODO 部类的方法只可以引用定义为 final 的局部变量,对它进行初始化后不能够再进行修改,因此，就使得局部变量与在局部类内建立的拷贝保持一致。
+ * TODO 局部类的方法只可以引用定义为 final 的局部变量,对它进行初始化后不能够再进行修改,因此，就使得局部变量与在局部类内建立的拷贝保持一致。
  */
 public class InnerClass_3 {
     public static void main(String[] args) throws InterruptedException {

@@ -11,13 +11,6 @@ import org.junit.Test;
 public class Tong_pei_fu {
 
     /**
-     * TODO *** 1. T: ? extends Employee   代表 T存储的是 所有Employee的子类类型(不包含Employee类型)。
-     * 即对于T类，Employee类及其超类，都是T的超类。
-     *TODO 这是设定泛型?参数的上限，给定的泛型类型只能是Employee的子类(不包含Employee类)
-     *
-     * 故，TODO 方法入参：? extends Employee  只能接收Employee的子类，但是又不确定是哪一个子类，也没有最小子类，所以无法接收入参
-     *                      （Object是其最大父类，不能充当最小子类）
-     *     TODO 方法出参：? extends Employee 的所有最小父类是Employee ，所以可以使用 Employee 类代替T，进行泛型擦除。
      * =====================================================================
      *TODO  public static void printBuddies(Pair<Employee> p)
      *TODO  {
@@ -25,13 +18,13 @@ public class Tong_pei_fu {
      *TODO      Employee second = p.getSecondO;
      *TODO      Systefn.out.println(first.getName() + " and " + second.getNameQ + " are buddies.");
      *TODO  }
-     * TODO 不能将 Pair<Manager> 传递给这个方法，这一点很受限制.
-     * TODO 解决的方法很简单：使用通配符类型： public static void printBuddies(Pair<? extends Eiployee> p)
+     *TODO 不能将 Pair<Manager> 传递给这个方法，这一点很受限制.
+     *TODO 解决的方法很简单：使用通配符类型： public static void printBuddies(Pair<? extends Eiployee> p)
      *      类型 Pair<Manager> 是 Pair<? extends Employee> 的子类型
      *      类型Pair<Employee> 也是 Pair<? extends Employee> 的子类型
      *      类型Pair<? extends Employee> 是 Pair的子类型 即 Pair<? extends Employee> 是Pair<Object>的子类
      *
-     *      如果A是B的父类：
+     *      如果A是B的父类（B extend A）：
      *          对于C[? extend A]类型：
      *          1. C[? extend A] 是 C[B]的父类 ；
      *          2. 特殊的： C是 C[? extend A] 的父类，C也是C[B]的父类
@@ -68,11 +61,19 @@ public class Tong_pei_fu {
         //只能访问不能设置：现在已经有办法区分安全的访问器方法和不安全的更改器方法了。
         Pair<? extends Employee> pair = managerBuddies ;
 
+
         //TODO ? extend 通配符的使用 ,可以使用返回值 ， 但不能为方法提供参数。
+        //public static void printBuddies(Pair<? extends  Employee> p)
         Employee.printBuddies(managerBuddies);
 
+        /**
+         * 特殊的： C是 C[? extend A] 的父类，C也是C[B]的父类
+         *           所以 ：Employee  是Employee<? extends Employee> 的基类
+         */
+        Pair p = pair ;
+
         /*
-          public ? extends Employee getFirst()
+          public <? extends Employee> getFirst()
           将 getFirst 的返回值赋给一个 Employee 的引用完全合法。
          */
         Employee first = pair.getFirst();
@@ -97,14 +98,13 @@ public class Tong_pei_fu {
 
     /**
      * TODO ***  T: ? super ClassType 代表T是 ClassType类的超类类型，ClassType类 及其子类都是T的子类。
-     * (不含ClassType类型，所以 set的时候，可以set ClassType 这个类型,因为也是超类T 的子类) 。
-     * 即T超类
-     * TODO 这是设定了泛型?的下限 , 给出的泛型类型必须 只能是 ClassType 类或其子类
+     * (不含ClassType类型，所以 set的时候，可以set ClassType 这个类型) 。
+     * TODO 这是设定了泛型?的下限 , 给出的泛型类型必须 ClassType的超类。
      *
      * TODO 2.通配符的超类型限定 ：  ? super ClassType   比如 ： ? super   Manager
      * TODO 这个通配符限制为 Manager 的所有超类型。
-     * TODO  可以为方法提供参数， 但不能使用返回值(非Object的，确定类型的返回值)。
-     *      TODO 提供参数：即 ? super  Manager  接收 Manager以及Manager的子类，作为参数
+     * TODO 可以为方法提供参数， 但不能使用返回值(非Object的，确定类型的返回值)。
+     *      TODO 提供参数：即 超类：? super  Manager  接收 Manager以及Manager的子类，作为参数
      *       （T是Manager的超类，肯定可以自动接收所有Manager的子类）
      *      TODO 返回值  ：即使用 Manager 或者 Manager的超类来接收 ? super  Manager的值
      *      （T是Manager的超类，肯定只能用最大的超类Object类接收 其他Manager的超类。）
@@ -162,10 +162,10 @@ public class Tong_pei_fu {
      *
      * TODO 可以调用 setFirst(null)
      * 为什么要使用这样脆弱的类型？ 它对于许多简单的操作非常有用。例如，下面这个方法
-     * 将用来测试一个 pair 是否包含一个 mill 引用，它不需要实际的类型。
+     * 将用来测试一个 pair 是否包含一个 null 引用，它不需要实际的类型。
      * TODO public static boolean hasNulls(Pair<?> p)
      *      {
-     *         return p.getFirstO = null || p.getSecondO = null;
+     *         return p.getFirst() == null || p.getSecond() == null;
      *      }
      * 通过将 hasNulls 转换成泛型方法，可以避免使用通配符类型：
      * public static <T> boolean hasNulls(Pair<T> p)
@@ -188,8 +188,10 @@ public class Tong_pei_fu {
     /**
      * TODO 4. 通配符捕获
      * 通配符捕获只有在有许多限制的情况下才是合法的。编译器必须能够确信通配符表达的
-     * 是单个、 确定的类型。 例如， ArrayList<Pair<T>> 中的 T 永远不能捕获 ArrayList<Pair<?»
-     * 中的通配符。数组列表可以保存两个 Pair<?>， 分别针对？的不同类型
+     * 是单个、 确定的类型。 例如， ArrayList<Pair<T>> 中的 T 永远不能捕获 ArrayList<Pair<?>>中的通配符。
+     * 因为：数组列表可以保存两个 Pair<?>， 分别针对？的不同类型
+     *
+     * TODO ArrayList<T> 可以捕获ArrayList<?>中的通配符，因为 ArrayList<T> 只能存储一种数据类型：T
      *
      * 实例
      * TODO 编写一个交换成对元素的方法：
@@ -215,7 +217,7 @@ public class Tong_pei_fu {
     }
 
     /**
-     * swapHelper 是一个泛型方法，它具有固定的 Pair<?> 类型的参数
+     * swapHelper 是一个泛型方法，它具有固定的 Pair<T> 类型的参数
      *
      * 在这种情况下，swapHelper 方法的参数 T 捕获通配符。它不知道是哪种类型的通配符， 但是，
      * 这是一个明确的类型，并且 <T>swapHelper 的定义只有在 T 指出类型时才有明确的含义。

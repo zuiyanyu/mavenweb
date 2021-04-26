@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *      如果两个线程都执行以下操作：
  *      String dateStamp = dateFormat.format(new Date());
  *      结果可能很混乱， 因为 dateFormat 使用的内部数据结构可能会被并发的访问所破坏。
- *      TODO 然可以使用同步，但开销很大；
+ *      TODO 虽然可以使用同步，但开销很大；
  *      TODO 或者也可以在需要时构造一个局部 SimpleDateFormat 对象，不过这也太浪费了。
  *
  * TODO 2. 要为每个线程构造一个实例，可以使用以下代码：

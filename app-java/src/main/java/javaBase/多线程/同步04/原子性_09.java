@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
  *           long id = nextNumber.increinentAndGet();
  *
  *      TODO incrementAndGet 方法以原子方式将 AtomicLong 自增， 并返回自增后的值。也就是说，
- *      TODO 获得值、 增 1 并设置然后生成新值的操作不会中断。
+ *      TODO 获得值、 增1 并设置,然后生成新值的操作不会中断。
  *      TODO 可以保证即使是多个线程并发地访问同一个实例，也会计算并返回正确的值。
  *
  *TODO 3. compareAndSet 方法

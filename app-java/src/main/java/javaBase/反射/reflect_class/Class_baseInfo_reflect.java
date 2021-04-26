@@ -6,6 +6,16 @@ import org.junit.Test;
 
 import java.lang.reflect.Type;
 
+/**
+ *  * TODO 3 利用反射分析类的能力 - 检查类的结构
+ *  * TODO 在 java.lang.reflect 包中有三个类 Field、 Method 和 Constructor 分别用于描述类的域、 方法和构造器。
+ *  * TODO 这三个类都有一个叫做 getName 的方法， 用来返回项目的名称。
+ *  *
+ *  * TODO Held 类有一个 getType 方法， 用来返回描述域所属类型的 Class 对象。
+ *  * TODO 1. Class类中的 getFields、 getMethods 和 getConstructors 方法将分别返回类提供的public 域、方法和构造器数组，其中包括超类的公有成员
+ *  * TODO 2. Class 类的 getDeclareFields、getDeclareMethods 和 getDeclaredConstructors 方法将
+ *  *          分别返回类中声明的全部域、 方法和构造器， 其中包括私有和受保护成员，但不包括超类的成员
+ */
 
 //TODO 反射获取类的基本信息
 public class Class_baseInfo_reflect{

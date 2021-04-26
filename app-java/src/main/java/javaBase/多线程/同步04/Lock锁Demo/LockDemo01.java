@@ -15,6 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 注意：是一个显示锁，需要通过lock() 方法上锁，必须在try-finally中通过unlock()释放锁
  *
  * 实例：解决多窗口卖票
+ * 有100张票,同时被多个窗口进行售卖
  */
 public class LockDemo01 {
     public static void main(String[] args) {
@@ -28,6 +29,7 @@ public class LockDemo01 {
     }
 }
 class SellTicks implements Runnable{
+    //有100张票
     private int ticks = 100 ;
     private Lock lock = new ReentrantLock();
     @Override
@@ -37,8 +39,7 @@ class SellTicks implements Runnable{
             try{
                 if(ticks>0){
                     --ticks;
-                    System.out.println(Thread.currentThread().getName()+"完成售票； "+
-                            "剩余票数为："+ ticks);
+                    System.out.println(Thread.currentThread().getName()+"完成售票； "+ "剩余票数为："+ ticks);
                 }else{
                     break ;
                 }

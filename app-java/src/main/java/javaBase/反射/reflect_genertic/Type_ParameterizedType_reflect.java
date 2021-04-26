@@ -51,7 +51,7 @@ public class Type_ParameterizedType_reflect<T> {
 
     /**
      * getOwnerType(): Type
-     * TODO 返回ParameterizedType类型所在的类的Type。
+     * TODO  如果是内部类型， 则返回其外部类型， 如果是一个顶级类型， 则返回 null。
      * 如Map.Entry<String, Object>这个参数化类型返回的是Map类型(因为Map.Entry这个类型所在的类是Map)。
      */
     @Test

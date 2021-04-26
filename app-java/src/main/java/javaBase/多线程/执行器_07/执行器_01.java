@@ -2,6 +2,7 @@ package javaBase.多线程.执行器_07;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * TODO 1. 执 行 器
@@ -26,6 +27,7 @@ import java.util.concurrent.Executors;
  *
  * • newSingleThreadExecutor
  *      只有一个线程的 “ 池”， 该线程顺序执行每一个提交的任务（类似于Swing 事件分配线程）
+ *      因为只有一个线程，所以不能成为池，应该成为一个执行器，所以命名后没有pool
  *
  * • newScheduledThreadPool
  *      用于预定执行而构建的固定线程池， 替代 java.util.Timer
@@ -43,5 +45,6 @@ import java.util.concurrent.Executors;
 public class 执行器_01 {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
     }
 }

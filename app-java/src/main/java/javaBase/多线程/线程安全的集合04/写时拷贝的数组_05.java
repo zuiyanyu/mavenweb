@@ -43,9 +43,7 @@ package javaBase.多线程.线程安全的集合04;
  *TODO   }
  *TODO   public E get(int index) {
  *TODO        return get(getArray(), index);
- *TODO    }
- *
- *
+ *TODO   }
  *
  */
 public class 写时拷贝的数组_05 {

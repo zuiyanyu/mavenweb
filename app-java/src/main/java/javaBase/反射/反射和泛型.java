@@ -1,4 +1,4 @@
-package javaBase.泛型;
+package javaBase.反射;
 
 import javaBase.domain.GenericReflect;
 import javaBase.domain.Pair;
