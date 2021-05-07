@@ -12,22 +12,48 @@
     <artifactId>HadoopClient</artifactId>
     <properties>
         <hadoop.version>2.7.3</hadoop.version>
+        <slf4j.version>1.7.20</slf4j.version>
+        <logback.version>1.0.7</logback.version>
     </properties>
     <dependencies>
-        <!-- log4j转为slf4j 日志-->
+
+        <!--阿里巴巴开源json解析框架-->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <!--<version>1.2.51</version>-->
+        </dependency>
+        <!--日志生成框架-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
+        <!-- log4j转为slf4j 日志-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--</dependency>-->
+        <!--flume-->
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>1.7.0</version>
+        </dependency>
         <!--hadoop-->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -54,10 +80,15 @@
             <artifactId>hadoop-hdfs</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
 
     </dependencies>
     <build>
         <plugins>
+            
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -75,9 +106,14 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>hadoop.mr.wordcount.WordCountDriver_type01</mainClass>
+                            <mainClass>com.hadoop.appclient.AppMain</mainClass>
                         </manifest>
                     </archive>
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<mainClass>hadoop.mr.wordcount.WordCountDriver_type01</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
                 </configuration>
                 <executions>
                     <execution>
