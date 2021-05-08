@@ -1,5 +1,7 @@
 package Scala方法与函数03
 
+import scala.runtime.Nothing$
+
 /**
   * 函数编程 - 高级   可变参数与调用； 参数设置默认值
   */
@@ -13,7 +15,7 @@ object FunctionHightTest_03 {
         f1("战三"); // f1 : name =战三
 
         //TODO 方法可变参数   在参数类型后面加*,表示可变参数
-        def f2(names :String* )={
+        def f2(names :String * )={
             println(s"f2 : names = $names");
         }
         f2("战三","李四"); //f2 : names =WrappedArray(战三, 李四)
@@ -32,6 +34,6 @@ object FunctionHightTest_03 {
         f4(12);//f4 : names = 战三 , age = 12
         f4(name= "王五");//带名参数 //f4 : names = 王五 , age = 20
         f4(12,"李四"); // f4 : names = 李四 , age = 12
-//        f4(null,null); //报错
+//        f4(null,null); //报错 String是引用类型，用null代表；int是AnyVal类型，不能用null
     }
 }

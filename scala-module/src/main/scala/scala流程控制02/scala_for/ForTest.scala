@@ -1,5 +1,7 @@
 package scala流程控制02.scala_for
 
+import org.junit.Test
+
 /**
   * 循环控制
   * TODO : scala中的循环方式和java不太相同,scala没有如下方式的循环
@@ -47,11 +49,11 @@ object ForTest {
     def test1: Unit = {
 
         val j = 0;
-        //for外面虽然定义了i 为val, 但是进入for里边,就不再使用了，重新定义为 val
+        //for外面虽然定义了j 为val, 但是进入for里边,就不再使用了，重新定义为 val
         for (j <- 1 to 10) {
             print("\t" + j);
         }
-        print("j = "+j) // j = 0
+        print(" j = "+j) // j = 0
         println;
 
 
@@ -61,13 +63,14 @@ object ForTest {
             //外层虽然定义了i 为var, 但是进入里边仍然是val类型
             //i = 9;
         }
-        print("i= " + i )  //j = 0
+        print("i= " + i )  //i = 0
         println;
 
     }
 
+    //包含10   ： 1	2	3	4	5	6	7	8	9	10
     def test2: Unit = {
-        //i 可以不声明
+        //i 可以不声明 i 被定义为final
         for (i <- 1 to 10) {
             print("\t" + i);
         }
@@ -87,10 +90,10 @@ object ForTest {
     //TODO 双重循环： 在 for 循环 中你可以使用分号 (;) 来设置多个区间，它将迭代给定区间所有的可能值。
     def test4: Unit = {
         //i 可以不声明  打印 九九乘法表
-        for (row <- 1 to 9; col <- 1 to row) {
+        for (row <- 1 to 9; col <- 1 to row+1) {
 
             // 行固定，打印列
-            if (col < row) {
+            if (col <= row) {
                 print(col + " x " + row + " = " + col * row + "\t");
             } else {
                 println;
@@ -124,16 +127,28 @@ object ForTest {
 
     //TODO for 使用 yield    你可以将 for 循环的返回值作为一个变量存储
     def test7(): Unit = {
+        //for循环返回的结果是 Unit
+        val unit: Unit = for (i <- 1 to 10 if i < 3){i}
+        unit ;
+
         var list = for {i <- 1 to 10 if i < 3} yield i;
         println(list);
 
         var list2 = for (i <- 1 to 10 if i < 3) yield i;
         println(list2);
+
+        var list3 = for (i <- 1 to 10 if i < 3)
+                    yield {
+                        i+2
+                    };
+        println(list3);
+
+
     }
 
     def test8() = {
         // TODO scala 可以在一个表达式式中使用多行语句，为了理解方便，将小括号便成花括号。
-        //TODO  for循环也有返回值，默认返回值为 Unit 即（）
+        // TODO for循环也有返回值，默认返回值为 Unit 即（）
         // TODO 将遍历过程中处理的结果返回到一个新的Vector集合中，使用yield关键字
 
         var result = for {
@@ -162,7 +177,7 @@ object ForTest {
         //    to1;
         //    to2 ;
         //    untilTest ;
-        test1;
+        test7;
     }
 }
 

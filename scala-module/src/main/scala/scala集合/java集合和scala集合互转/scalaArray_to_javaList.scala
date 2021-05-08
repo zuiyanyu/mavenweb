@@ -16,10 +16,12 @@ object scalaArray_to_javaList {
 
         //TODO 固定步骤
         import scala.collection.JavaConversions.bufferAsJavaList
-        val javaArr: ProcessBuilder = new ProcessBuilder(scalaArr)
-        val javaList: util.List[String] = javaArr.command()
-
-        println(javaList)
+//        val javaArr: ProcessBuilder = new ProcessBuilder(scalaArr)
+//        val javaList: util.List[String] = javaArr.command()
+//        println(javaList)
+        
+        val javaList2: util.List[String] =scalaArr
+        println(javaList2)
 
     }
 }

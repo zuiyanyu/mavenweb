@@ -43,7 +43,7 @@ object ArrayBufferTest {
 
         println("==============")
         // 将一个元素添加到可变数组后生成一个新数组，原始数组元素不变
-        //TODO  无论对于可变数组还是非可变数组，{ :+  :+  }都是生成一个新的数组
+        //TODO  无论对于可变数组还是非可变数组，  :+ ， +：  都是生成一个新的数组
         val newBuffer = arrayBuffer :+ ("f")
 
         this.printBuffer(arrayBuffer) //  d	e
@@ -102,9 +102,6 @@ object ArrayBufferTest {
         buffer += "b"
         this.printBuffer(buffer)
 
-
-
-
     }
     //TODO 2. 可变数组的遍历方式
     def arrayBufferGetElement(): Unit ={
@@ -132,12 +129,12 @@ object ArrayBufferTest {
         val buffer = new ArrayBuffer[Int]()
         buffer.append();
         buffer.append(1)
-        buffer.append(2)
+        buffer += 2
         println(buffer.toString()) //ArrayBuffer(1, 2)
 
         //声明方式2
         val builder:Builder[Int, ArrayBuffer[Int]] = ArrayBuffer.newBuilder[Int]
-        val buffer2 = builder.result()
+        val buffer2: ArrayBuffer[Int] = builder.result()
         buffer2.append(1)
         buffer2.append(2)
         println(buffer2.toString()) //ArrayBuffer(1, 2)

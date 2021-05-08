@@ -33,16 +33,16 @@ object Seq_List_01 {
         val list7 = Nil :+5
         printList(list7)
 
-        //使用 :: 为Nil对象添加元素，返回一个新的对象   运算顺序是从右往左
+        //TODO 使用 :: 为Nil对象添加元素，返回一个新的对象   运算顺序是从右往左
         val list8:List[Int] = 5 :: 4 :: 3 :: 2 ::  Nil
         printList(list8)// 5 	4	3	2
 
         val list9: List[Any] = 5::list::Nil
-        printList(list9) //5	List(1, 2, 3, 4)
+        printList(list9) //5 List(1, 2, 3, 4)
 
-        // ::: 扁平化操作。  将一个整体拆分成一个一个的个体。
+        // TODO ::: 扁平化操作。  将一个整体拆分成一个一个的个体。
         // 将list集合中元素逐个添加到 Nil当中，而不是将list整体当成一个元素放到Nil中
-         val list10: List[Int] = 5::list:::Nil  //5	1	2	3	4
+         val list10: List[Int] = 5::list:::Nil  //5  1	 2	 3	 4
         printList(list10)
 
         //修改数据元素 ,但是产生新的集合

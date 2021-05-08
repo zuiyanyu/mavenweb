@@ -9,6 +9,7 @@ package 类的继承 {
             //TODO 父类属性初始化的时候用到子类属性，那么就出出问题：子类属性还没初始化，父类就使用，必出问题。
             //TODO scala 中字段也能被重写，也会被动态绑定
             println(person.name) //null张三
+
             val person2 = new Student2();
             println(person2.name) //student1_张三
         }

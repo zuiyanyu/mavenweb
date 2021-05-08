@@ -42,11 +42,11 @@ package 特质的执行顺序{
             //TODO 3.  如果在supper关键字后面增加中括号，其中增加泛型，那么可以调用指定特质的方法。
             println("============3================")
             val mysql3 = new MySQL with  DB_2  with File_2
-            mysql3.insert(4)  //向file文件中向数据库中插入数据 = 4
+            mysql3.insert(4)  //向file文件中插入数据 = 4
 
             println("=============4===============")
             val mysql4 = new MySQL  with File_2 with  DB_2
-            mysql4.insert(4)  //向数据库中向file文件中插入数据 = 4
+            mysql4.insert(4)  //向数据库中插入数据 = 4
 
             /**
               * 运行结果： 是我们期望的结果

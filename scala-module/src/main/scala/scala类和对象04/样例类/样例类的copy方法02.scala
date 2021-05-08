@@ -12,8 +12,10 @@ object 样例类的copy方法02 {
 
         println(amt)  // Currency(29.95,RMB)
         println(amt.equals(amt1)) //true
-        amt.value=200.2 ;
+
+        amt.value=200.2 ; //将值改变后，引用地址不一样了。
         println(amt)  //Currency(200.2,RMB)
+        println(amt.equals(amt1)) //false
 
         println(amt1)  // Currency(29.95,RMB)
         println(amt2)  // Currency(19.95,RMB)

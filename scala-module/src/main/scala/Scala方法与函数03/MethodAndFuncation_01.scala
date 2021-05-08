@@ -1,11 +1,13 @@
 package Scala方法与函数03
 
+import java.lang.reflect.AnnotatedType
+
 
 /**
   * Scala的命名规范：
-  *   1. "$"开头的标识符为保留的 Scala 编译器产生的标志符使用，应用程序应该避免使用"$"开始的标识符，以免造成冲突。
+  *   1.  "$"开头的标识符为保留的 Scala 编译器产生的标志符使用，应用程序应该避免使用"$"开始的标识符，以免造成冲突。
   *   2.  该避免使用以下划线 _ 结尾的标志符以避免冲突.
-  *   3. Scala 的命名规则采用和 Java 类似的 camel 命名规则，首字符小写
+  *   3.  Scala 的命名规则采用和 Java 类似的 camel 命名规则，首字符小写
   *
   * 分割符：
   *   1. Scala 程序里,一行语句末尾的分号通常是可选的，可不写。如果一行里写多个语句那么分号是需要的
@@ -31,7 +33,7 @@ package Scala方法与函数03
   * 2. Scala 方法是类的一部分，而函数是一个对象 ,函数可以赋值给一个变量。   换句话来说在类中定义的函数即是方法。
   * 3. Scala 中的方法跟 Java 的类似，方法是组成类的一部分。Scala 中的函数则是一个完整的对象（Scala 中的函数其实就是继承了 Trait 的类的对象。）。
   *
-  *  4. Scala 中使用def 定义函数 。
+  *  4.Scala 中使用def 定义函数 。
   *  5.函数就是一个句柄/引用 。
   *
   *
@@ -62,20 +64,20 @@ object MethodAndFuncation {
     // scala采用Unit对象代替void
     // scala中方法的参数，类型放置在后声明，而java放置在前声明
     // scala中用中括号表示泛型
-     def main(args: Array[String]): Unit ={
+     def  main(args: Array[String]): Unit ={
        val obj = new MethodAndFuncation
 
        //方法的使用
        val method = obj.getUserInfo("李四",11)
        println(method) //name = 李四 ; age = 11
 
-       //函数的使用
-       val func = obj.user("张三",11)
+       //函数的使用 直接调用了 obj的user函数，返回函数的执行结果。
+       val func:String = obj.user("张三",11)
        println(func) //  name = 张三 ; age = 11
 
 
        //函数的使用  返回类型也是函数
-       val user = obj.user
+       val user: (String, Integer) => String = obj.user
        println(user)   // <function2>
        println(user("张三2",12))
 
@@ -88,9 +90,11 @@ object MethodAndFuncation {
 }
 
 class MethodAndFuncation{
+  //声明一个函数，因为在类中声明，所以也是一个方法。
   def getUserInfo(name : String ,age : Integer ): String ={
     " name = " + name + " ; age = " + age
   }
+  //使用匿名函数为 变量user 赋值
   val  user = (name : String ,age : Integer )  => {
     " name = " + name + " ; age = " + age
   }
@@ -99,5 +103,9 @@ class MethodAndFuncation{
 class User{
   def getUserName(userName : String ): String  ={
      userName + " ========"
+  }
+  //定义私有方法
+  private def getUserName2(userName : String ): String  ={
+    userName + " ========"
   }
 }

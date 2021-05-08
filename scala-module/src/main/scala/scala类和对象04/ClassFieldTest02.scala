@@ -1,5 +1,7 @@
 package scala类和对象04
 
+import lombok.Data
+
 import scala.beans.BeanProperty
 
 /**
@@ -17,7 +19,9 @@ object ClassFieldTest {
          emp.age_$eq(20)  //
          println( emp.age)  //0
          emp.age_=(40)  //  $eq 就是 =
-        println( emp.age)  //0
+         println( emp.age)  //0
+
+        emp.setAge2(20)
 
         //TODO @BeanProperty会 使.class文件多生成java形式的get 和 set方法
         emp.setAge2(30)
@@ -34,6 +38,7 @@ object ClassFieldTest {
   * public void setAge2(int x$1) { this.age2 = x$1; }
   * public int getAge2() { return age2(); }
   */
+//@Data
 class Emp{
 
     //可以将null 赋值给引用对象：String;
@@ -61,6 +66,4 @@ class Emp{
     //只有本类和子类可以访问
     protected
     var age5 :Int = _ ;
-
-
 }

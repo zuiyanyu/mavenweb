@@ -10,12 +10,18 @@ package 隐式转换
 object ImplicitTest4 {
     def main(args: Array[String]): Unit = {
         type1()  // comming into User2 ....
-        type2()  // comming into User1 ....
+//        type2()  // comming into User1 ....
     }
     //TODO 隐士转换功能扩展情景1
     def type1()={
         //要对父类进行功能扩展
         class Person{
+            def getName(): Unit ={
+                println("Person user name !")
+            }
+//            def logIn(): Unit ={
+//                println("comming into Person ....")
+//            }
         }
         class User2(){
             def logIn(): Unit ={
@@ -31,7 +37,9 @@ object ImplicitTest4 {
         }
         val person:Person = new Person();
         //person中没有logIn方法，但是却可以使用logIn()方法
-        person.logIn();  //
+        person.logIn();  // 如果Person类中没有logIn方法，就会进行隐士转换
+        person.getName() ;
+        println("===================");
     }
     //TODO 隐士转换功能扩展情景2
     def type2(): Unit ={

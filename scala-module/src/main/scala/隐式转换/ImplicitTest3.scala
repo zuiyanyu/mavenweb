@@ -10,7 +10,7 @@ object ImplicitTest3 {
 
         //TODO Scala 允许参数进行隐士转换
         //TODO 进行入参的隐士转换，动态为入参设置一个初始值，是动态可变的。比如从数据库中查询出来的值。
-        //取值顺序为：先取入参值，再取隐士值，最后取默认值
+        //TODO 取值顺序为：先取入参值，再取隐士值，最后取默认值
         def test2(implicit name :String = "固定值2" ): Unit ={
             println(s"入参为 $name")
         }
@@ -21,6 +21,14 @@ object ImplicitTest3 {
         //可以是从库中查询出来的动态值
         implicit val name  = "张三" ;
         test2 // 入参为 张三
+
+        //扩展
+        def test3(implicit name :String ): Unit ={
+            println(s"入参为 $name")
+        }
+        test3 //如果没有隐士转换，()是不能省略的，即是给参数设置了默认值
+        test3("lisi")
+
     }
 
 }

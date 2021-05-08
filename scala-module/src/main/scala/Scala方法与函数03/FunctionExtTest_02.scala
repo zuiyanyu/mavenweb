@@ -40,7 +40,9 @@ object FunctionExtTest_02 {
 
         //TODO 5.如果函数声明时候是无参函数，并且方法名后面声明了(),那么调用的时候可省略()
         //TODO    但是如果函数声明时候方法名后面没声明()，那么调用的时候也必须不能带()，否则会异常。
+        println("f1_1= " + f1_1)
         println("f1_2= " + f1_2)
+
         //无参无返回值，且方法名无()
         //TODO 这种形式 就和类声明的方式一样了，只是关键字是def 不是class而已
         def f1_2_1{
@@ -63,9 +65,10 @@ object FunctionExtTest_02 {
 
         //TODO 简化4  必须加 = 以明确方法名和方法体；
         def f1_4 = "zhangsan"
+
         //println("f1_4()= " + f1_4())  //f1_4() 方式调用报错
-        println("f1_4()= " + f1_4("zhangsan".length-1))  //f1_4() 正常执行
-        println("f1_4= " + f1_4)  //可以调用
+        println("f1_4()= " + f1_4("zhangsan".length-1))  //  f1_4()= n  f1_4() 正常执行等价于： "zhangsan"("zhangsan".length-1)
+        println("f1_4= " + f1_4)  //可以调用  f1_4= zhangsan
 
         //TODO 方法声明：可以看到此时和属性声明的形式一样  ，故：需要靠def 来区分成员变量和方法
         def f1_4_1 :String = "zhangsan"
@@ -88,9 +91,6 @@ object FunctionExtTest_02 {
 
 //        println("i()= " + i())
         println("k()= " + k(20)) // k()= zhangsan
-
-
-
 
     }
 }

@@ -12,9 +12,8 @@ object b模式匹配条件守卫 {
             ch match{
                 case '+' => sign = 1
                 case '-' => sign =2
-                case _   if ch.toString.equals("3")
-                          =>   digit =3 ;println("==========")
-                case _    => sign = -1
+                case _ if ch.toString.equals("3") =>   digit =3 ;println("==========")
+                case _   => sign = -1
             }
             println(s"ch => $ch ; sign => $sign; digit=> $digit")
         }

@@ -3,6 +3,7 @@ package scala类和对象04.scala的包
 //TODO scala可以将package 当成关键字用，但是包中可以放类和接口，因为受到了JVM限制
 //TODO scala为了让开发方便，使用了包对象的概念。其中可以声明属性和方法，类似于伴生对象
 package a{
+
     //包对象  (可以和包的名字一样)
     package object b {
         var userName = "张三李四" ;

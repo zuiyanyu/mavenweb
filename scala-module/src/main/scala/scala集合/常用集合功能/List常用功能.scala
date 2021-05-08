@@ -65,7 +65,7 @@ object List常用功能 {
     //归约 即化简 函数  reduce
     val list6: ListBuffer[Int] = ListBuffer(1,2,3,4)
     //TODO 折叠/聚合函数：从左往右，相邻的两个数据做聚合  入参：op: (A1, A1) => A1
-    val reduceRest: Int = list6.reduce((l, r) => l + r)  // list6.reduce( _+_)
+    val reduceRest: Int = list6.reduce((L, R) => L + R)  // list6.reduce( _+_)
     println(reduceRest);  // 10
 
     //TODO 折叠/聚合函数： 和 reduce 的作用一样 reduce 底层就是调用reduceLeft

@@ -28,6 +28,7 @@ object javaList_to_scalaBuffer {
         javaList.add("2")
         javaList.add("3")
 
+
         //java 的list转Scala数组 mutable.Buffer
         //TODO JavaConversions.asScalaBuffer的声明: implicit def asScalaBuffer[A](l: ju.List[A]): mutable.Buffer[A]
         //TODO ju就是java.util的缩写。 可以看出，是使用def的隐士转换方式进行了类型转换，将ju.List 转换为了mutable.Buffer

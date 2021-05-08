@@ -29,8 +29,6 @@ object Map_不可变 {
     this.print_(map)  //(a,1) (b,2)
     this.print_(map2)  //(a,233) (b,2)
 
-
-
     //删除一个元素
     val map3: Map[String, Int] = map - "a"
     this.print_(map)  //(a,1) (b,2)

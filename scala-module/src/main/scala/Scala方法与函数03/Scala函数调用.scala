@@ -22,11 +22,18 @@ object Scala函数调用 {
         3L ;
     }
 
-
     def main(args: Array[String]): Unit = {
         val t = ()=>{3L ;}
-        delayed(time);
+        println(t()) //3
+
+
         delayed(t());
+        //等价于
+        delayed(3L);
+
+
+        delayed(time);
+        //等价于
         delayed((()=>{3L;})())
     }
 }

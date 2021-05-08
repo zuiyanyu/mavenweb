@@ -17,15 +17,17 @@ import 泛型.a泛型上下界.BBBB
   */
 object b泛型的协变逆变 {
     def main(args: Array[String]): Unit = {
-        //TODO 斜边：从当前的类往下找，找子类型 ； 逆变：从子类型往上找，找父类型。
-        //TODO 上界 :<  也是 协变 (找子类型)；  下界 >: 也是逆变 (找父类型)；
+        //TODO 斜变：从当前的类往下找，找子类型 ； 逆变：从子类型往上找，找父类型。
+        //TODO 上界 :<  也是 协变 (找子类型)；    下界 >: 也是逆变 (找父类型)；
+        //     ? extend T                               ? supper T
         //TODO 不变：
 
-        //TODO 协变使用实例 :变量声明时候， DDDD的泛型是 BBBB，但是可以用CCCC的子类来代替 BBBB
+        //TODO 协变使用实例  DDDD[+BBBB]
         val dddd2:DDDD[BBBB] = new DDDD[BBBB] ;  // 正常声明
         val dddd1:DDDD[BBBB] = new DDDD[CCCC] ; // 可以：因为CCCC是BBBB的子类，所以 DDDD[CCCC] 是DDDD[BBBB]的子类
+        //val dddd3:DDDD[BBBB] = new DDDD[AAAA] ; //报错
 
-        //TODO 逆变的实例
+        //TODO 逆变的实例  EEEE[-BBBB]
         val eeee2: EEEE[BBBB] = new EEEE[BBBB];
         val eeee3: EEEE[CCCC] = new EEEE[BBBB];  // 因为BBBB是CCCC的父类，所以 EEEE[BBBB]是 EEEE[CCCC]的子类。
 
@@ -34,17 +36,20 @@ object b泛型的协变逆变 {
         val ffff:FFFF[BBBB] = new FFFF[BBBB]
         //val ffff2:FFFF[BBBB] = new FFFF[CCCC] //报错
         //val ffff2:FFFF[BBBB] = new FFFF[AAAA] //报错
-        val f     = new FFFF[CCCC]  //但是这样却可以，会忽略泛型
+        val f = new FFFF[CCCC]  //但是这样却可以，会忽略泛型 等价于：val f2:FFFF[CCCC] = new FFFF[CCCC] ，修改了不变的限定类型
         f.printInfo()  //FFFF
+
+
      }
-    //TODO 协变  如果BBBB是CCCC的父类, 那么数组 DDDD[BBBB] 是  DDDD[CCCC] 的父类。
-    //  TODO DDDD[+BBBB]数组中的元素只能是BBBB的子类。
+    //TODO 协变  如果BBBB是CCCC的父类, 那么 DDDD[BBBB] 是 DDDD[CCCC] 的父类。
+    //  TODO DDDD[+BBBB]中的元素只能是BBBB的子类。
     //  +BBBB 类比  泛型？ supper BBBB  ，
     class DDDD[+BBBB]{
     }
 
     //TODO 上下界 和 协逆变 的区别。
     //TODO 逆变 ：接受父类型。 这里的父子类型是针对 EEEE[BBBB父类型] 的。
+    //TODO 如果BBBB是CCCC的父类, 那么 DDDD[CCCC] 是 DDDD[BBBB] 的父类。
     // DDDD[+BBBB] 是 DDDD[BBBB] 、DDDD[BBBB的子类] 的父类
     class EEEE[-BBBB]{
     }

@@ -26,6 +26,7 @@ object Array一维数组 {
         println("========================")
         //TODO 功能1：  Array.copy  将一个数组中的元素拷贝到另一个数组中
          //val arrayCopy = Array.copy(array, 0, array2, array2.length, array.length) // java.lang.ArrayIndexOutOfBoundsException
+        //copy(src: AnyRef, srcPos: Int, dest: AnyRef, destPos: Int, length: Int)  将src的数据拷贝到 dest数组中。
         Array.copy(array, 0, array2, array2.length-1, array.length)
         println(array2.mkString(":")); // a:b:d
 
@@ -35,7 +36,7 @@ object Array一维数组 {
         println(array3.mkString(":")); // a:b:d
 
         println("========================")
-        //TODO 功能2  :+  添加元素生到集合尾部，生成一个新的Array
+        //TODO 功能2  :+  添加元素到集合尾部，生成一个新的Array
         val newArray1 = array.:+("李四")
         //简化
         val newArray1_1 = array :+ "李四"
@@ -48,7 +49,7 @@ object Array一维数组 {
         val newArray2 = "李四" +: array ;
         println(newArray2.mkString(":"))
 
-        //        if(array.contains("张三")) println("存在")
+        //if(array.contains("张三")) println("存在")
     }
     //TODO 3. 访问 不可变Array集合方法数组元素
     def arrayGetElement()={
@@ -80,8 +81,6 @@ object Array一维数组 {
         val str = array.mkString("[", ":", "]")
         println(str);// [张三:李四:王五]
         println( array.mkString(":")) // 张三:李四:王五
-
-
 
     }
     // TODO 2. 不可变Array集合添加元素  scala 中的集合默认是不可改变的，添加元素后会返回一个新的集合

@@ -13,7 +13,7 @@ package dsdfsddf {
     //声明父类
     abstract class Parent() {
 
-        //声明抽闲属性   如果一个属性没有被初始化，那么就是抽象属性
+        //声明抽象属性  如果一个属性没有被初始化，那么就是抽象属性
         var name: String;
         //声明非抽象属性(进行了初始化)
         val age: Int = 20;
@@ -48,7 +48,6 @@ package dsdfsddf {
             println(s"son name is $name  ...")
             name;
         }
-
     }
 }
 

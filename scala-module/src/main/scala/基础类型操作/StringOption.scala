@@ -40,6 +40,6 @@ object StringOption {
 
         // 插值打印字符串    ${表达式} ：代表取表达式的结果值
         print(s"Hello $name \n") // s ：代表使用插值打印
-        print(raw"Hello ${name.length} and age + 2 = ${age + 2}\\n") // raw 不会替换字符串中的特殊字符。
+        print(raw"Hello ${name.length} and age + 2 = ${age + 2}\n") // raw 不会替换字符串中的特殊字符。
     }
 }

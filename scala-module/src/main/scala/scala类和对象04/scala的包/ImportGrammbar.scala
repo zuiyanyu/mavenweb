@@ -1,6 +1,6 @@
 package scala类和对象04.scala的包
 
-//0.  默认情况下，Scala 总会引入 java.lang._ 、 scala._ 和 Predef._，这里也能解释，为什么以scala开头的包，在使用时都是省去scala.的。
+//0.  默认情况下，Scala 总会引入 java.lang._ 、 scala._ 和 Predef._，这里也能解释，为什么以scala开头的包，在使用时都是省去scala.的原因。
 
 //1. 方式1   直接引入某个类
 import scala.collection.mutable.Map
@@ -21,7 +21,7 @@ import java.util.{HashMap => JavaHashMap}
 //方式6  scala为了防止使用包的时候差生误会，可以使用绝对报名
 // var map = new  _root_.java.util.HashMap()
 
-//自定义的相对报名，使用 java.util.HashMap会找此相对报名下的HashMap 即 scala类和对象.scala的包.util.HashMap，而不是绝对包名。
+//自定义的相对包名，使用 java.util.HashMap会找此相对包名下的HashMap 即 scala类和对象.scala的包.java.util.HashMap，而不是绝对包名。
 //package java.util{
 //  class HashMap{}
 //}

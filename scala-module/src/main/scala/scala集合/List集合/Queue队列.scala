@@ -8,10 +8,10 @@ import scala.collection.mutable
   */
 object Queue队列 {
   def main(args: Array[String]): Unit = {
-    function
+//    function
     add
-    query()
-    define
+//    query()
+//    define
   }
   //TODO 4.  功能介绍
   def function(): Unit ={
@@ -29,10 +29,14 @@ object Queue队列 {
     queue += 2
     this.printQueue(queue) // 1	2
 
+    val head: Int = queue.head
+    println("head = " + head)//head = 1 先进先出
+    this.printQueue(queue) // 1	2
+
     //方式2
     queue.enqueue(3);
     queue.enqueue(4,5,6);
-    this.printQueue(queue) // 1	2	3	4	5	6
+    this.printQueue(queue) // 1	 2	3	4	5	6
 
 
   }

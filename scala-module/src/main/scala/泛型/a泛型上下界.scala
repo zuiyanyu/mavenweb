@@ -17,9 +17,13 @@ object a泛型上下界 {
 
         //TODO 下限
         //sj[BBBB](aaaa) //报错
+        sj[AAAA](aaaa)
         sj[BBBB](bbbb)
-        sj[BBBB](cccc) //不知为何，CCCC是BBBB的子类，却也能传递成功
-        sj(aaaa) // 这样可以成功传递,会忽略泛型？
+        sj[BBBB](cccc) //不知为何，CCCC是BBBB的子类，却也能传递成功; 能传递成功，但是不能调用其中的方法。
+
+        sj(aaaa) //
+        sj(bbbb) //
+        sj(cccc) //
 
         //TODO 上限
         //xj(aaaa); //报错 没有忽略泛型
@@ -30,18 +34,19 @@ object a泛型上下界 {
     }
 
 
-    //TODO 3. scala泛型的上界  等价java的 ？extends BBBB
+    //TODO 3. scala泛型的上界  等价java的 T extends BBBB
     //TODO ？能代表的最上层类型为BBBB，所以任何
-    //TODO 只能传递 BBBB或者BBBB的父类
+    //TODO 只能传递 BBBB或者BBBB的子类
     def xj[T <: BBBB](t:T): Unit ={
         //可以调用BBBB类中的方法
         println("sj:"+t.getInfo)
     }
 
-    //TODO 2. scala泛型的下界   等价java的 ？super BBBB
-    //TODO 只能传递BBBB 或BBBB的子类
+    //TODO 2. scala泛型的下界   等价java的 T super BBBB
+    //TODO 只能传递BBBB 或BBBB的父类
     def sj[T >: BBBB](t:T): Unit ={
         //不可以调用BBBB类中的方法，因为入参是BBBB或其父类，无法确定固定的方法
+        //T >: BBBB： t 代表的是BBBB的父类，不可以调用BBBB或者子类中的方法。
         println("sj:"+t.getClass.getName)
     }
 

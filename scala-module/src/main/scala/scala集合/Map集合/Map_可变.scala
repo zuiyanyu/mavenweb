@@ -33,7 +33,6 @@ object Map_可变 {
     println("-------------")
 
 
-
     //删除一个元素
     val map3: mutable.Map[String, Int] = map - "a"
     this.print_(map)  //(a,1) (b,2)
