@@ -6,6 +6,7 @@ object reduce_01 extends SC{
     def main(args: Array[String]): Unit = {
         val rdd1 = sc.makeRDD(1 to 10,2)
 
+
         //聚合RDD[Int]所有元素
         val i: Int = rdd1.reduce(_+_)
         println(i) // 55

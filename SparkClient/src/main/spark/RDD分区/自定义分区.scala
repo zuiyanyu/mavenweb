@@ -11,7 +11,7 @@ import org.apache.spark.rdd.RDD
   *
   */
 object 自定义分区 extends SC{
-    //需求：将相同后缀的数据写入相同的文件.
+    // 需求：将相同后缀的数据写入相同的文件.
     // 实现思路：通过将相同后缀的数据分区到相同的分区并保存输出来实现。
     def main(args: Array[String]): Unit = {
         val dataRDD = sc.parallelize(Array((11,2),(21,2),(13,3),(43,6),(56,3),(6,6)))

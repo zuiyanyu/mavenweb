@@ -1,11 +1,15 @@
 package sparkSql.load_write_data.load_data
 
+//import javax.servlet.FilterRegistration
+//import javax.servlet.http.HttpServlet
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.catalyst.ScalaReflection
 import org.apache.spark.sql.types.{StructField, StructType}
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
 object SparkRead_csv {
+    //FilterRegistration
+//    HttpServlet
     private val spark = SparkSession.builder()
             .appName("SparkRead")
             .master("local[2]")
@@ -33,7 +37,7 @@ object SparkRead_csv {
 
     //TODO 自动推断csv每一列数据类型 ：有header 头信息
     def sparkRead_csv_a_01: Unit = {
-        val df: DataFrame = spark.read.format("csv")
+        val df: DataFrame = spark.read.format("mycsv") // format("csv")
                 .option("delimiter", ",")        // 分隔符，默认为逗号,
                 .option("encoding", "UTF-8")     // 使用UTF-8进行数据读取
                 .option("header", "true")        // true:首行作为标题  false:首行作为数据内容(默认为false)

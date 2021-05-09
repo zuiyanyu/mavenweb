@@ -16,5 +16,7 @@ object foreach_11 extends SC{
 
         //对该RDD每个元素进行打印
          rdd.foreach(print(_)) // 34512
+
+        rdd.foreachPartition(iter=>iter.foreach(println))
     }
 }

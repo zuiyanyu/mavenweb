@@ -1,8 +1,11 @@
 package sparkSql.dataFrame.createDataFrame
 
-import org.apache.spark.sql.types.{StructField, StructType}
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.sql.{DataFrame, SparkSession}
+// import javax.servlet.ServletRegistration
+
+ import org.apache.spark.sql.types.{StructField, StructType}
+ import org.apache.spark.{SparkConf, SparkContext}
+ import org.apache.spark.sql.{DataFrame, SparkSession}
+
 
 /**
   * 在Spark SQL中SparkSession是创建DataFrame和执行SQL的入口，创建DataFrame有三种方式：
@@ -43,6 +46,6 @@ object SparkRead {
     }
 
     def main(args: Array[String]): Unit = {
-
+//         ServletRegistration
     }
 }
