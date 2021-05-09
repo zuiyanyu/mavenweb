@@ -46,8 +46,6 @@ object 集合线程安全基本介绍 {
     println("======================")
     val result2: ParSeq[String] = (1 to 10).par.map{case i => Thread.currentThread.getName +":"+i}
     result2.foreach(println)
-
-
   }
 }
 

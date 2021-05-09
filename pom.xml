@@ -22,9 +22,10 @@
         <module>HiveClient</module>
         <module>ZKClient</module>
         <module>springCloudClient</module>
-        <module>hsf-spring-boot-example</module>
-        <module>hsf-consumer</module>
-        <module>hsf-producer</module>
+        <module>spark-client</module>
+        <!--<module>hsf-spring-boot-example</module>-->
+        <!--<module>hsf-consumer</module>-->
+        <!--<module>hsf-producer</module>-->
     </modules>
     <packaging>pom</packaging>
     <name>mavenweb</name>
@@ -67,6 +68,7 @@
 
         <!--<spark.version>2.4.0</spark.version>-->
         <spark.version>2.1.1</spark.version>
+        <!--<spark.version>2.2.0</spark.version>-->
         <hadoop.version>2.7.3</hadoop.version>
         <hbase.version>1.3.1</hbase.version>
         <scala.library>2.11.0</scala.library>
@@ -87,14 +89,32 @@
             <version>${junit.version}</version>
             <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 
     <!--子工程选择性继承的依赖jar包 -->
     <!-- maven依赖查询网址：https://mvnrepository.com/   -->
     <dependencyManagement>
-
         <dependencies>
+            <!--flume-->
+            <dependency>
+                <groupId>org.apache.flume</groupId>
+                <artifactId>flume-ng-core</artifactId>
+                <version>1.7.0</version>
+            </dependency>
+
+            <!--<dependency>-->
+            <!--<groupId>org.projectlombok</groupId>-->
+            <!--<artifactId>lombok</artifactId>-->
+            <!--<version>1.16.18</version>-->
+            <!--<scope>provided</scope>-->
+            <!--</dependency>-->
             <!-- redis 核心包 -->
             <dependency>
                 <groupId>redis.clients</groupId>
@@ -181,12 +201,22 @@
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
-                <version>2.1.1</version>
+                <!--<version>2.1.1</version>-->
+                <version>2.2.0</version>
             </dependency>
+            <!--kafka 消费者-->
             <dependency>
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-clients</artifactId>
                 <version>0.11.0.2</version>
+            </dependency>
+
+            <!--kafka 生产者 -->
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.12</artifactId>
+                <version>0.11.0.0</version>
             </dependency>
 
             <!--  =======hbase的依赖包 =======-->
@@ -407,7 +437,11 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax.servlet-api}</version>
-                <scope>provided</scope>
+                <!--如果是web项目，tomcat已经持有此包，无需打包的时候将此依赖包打包进去-->
+                <!--<scope>provided</scope>-->
+                <!--spark-core对此包有依赖，并且会优先使用这里的版本和范围的servlet配置
+                所以这里设置为了compile的范围。否则报类找不到异常-->
+                <scope>compile</scope>
             </dependency>
 
             <!-- junit测试包-->
@@ -485,11 +519,11 @@
                 <version>0.9.1.2</version>
             </dependency>
             <!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
-<!--            <dependency>-->
-<!--                <groupId>commons-dbcp</groupId>-->
-<!--                <artifactId>commons-dbcp</artifactId>-->
-<!--                <version>1.2.2</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>commons-dbcp</groupId>-->
+            <!--                <artifactId>commons-dbcp</artifactId>-->
+            <!--                <version>1.2.2</version>-->
+            <!--            </dependency>-->
             <!-- end-->
             <!-- spring 其他参考选择的依赖jar包 start-->
             <!-- Spring 3.0 的一个新特性是 O/X Mapper。O/X 映射器这个概念并不新鲜，O 代表 Object，X 代表 XML。
@@ -580,7 +614,6 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
@@ -620,7 +653,8 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>1.1.26</version>
+                <!--<version>1.1.26</version>-->
+                <version>1.2.51</version>
             </dependency>
             <!-- 配置fastjson end -->
 
@@ -635,7 +669,6 @@
                 <version>1.9</version>
             </dependency>
 
-
             <!-- 配置支持servlet的jar包。应该叫servlet-api.jar
                  编写servlet要用到HttpServletRequest和HttpServletResponse等对象，这些对象都是要靠这个jar包才能使用的。
                  如果安装了Tomcat,这个jar包一般在tomcat安装目录\lib 文件夹下面有，
@@ -648,36 +681,36 @@
 
     <build>
         <finalName>${project.name}.${project.version}</finalName>
-        <!--&lt;!&ndash;配置打包静态资源：maven打包的时候将静态资源也进行打包&ndash;&gt;-->
-        <!--<resources>-->
-        <!--<resource>-->
-        <!--<directory>src/main/java</directory>-->
-        <!--<includes>-->
-        <!--<include>**/*.xml</include>-->
-        <!--</includes>-->
-        <!--<filtering>false</filtering>-->
-        <!--</resource>-->
-        <!--<resource>-->
-        <!--<directory>src/main/resources</directory>-->
-        <!--</resource>-->
+        <!--配置打包静态资源：maven打包的时候将静态资源也进行打包-->
+        <resources>
+            <resource>
+                <directory>src/main</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
 
-        <!--</resources> -->
+        </resources>
         <plugins>
-            <!--<plugin>-->
-            <!--<artifactId>maven-compiler-plugin</artifactId>-->
-            <!--<version>3.8.0</version>-->
-            <!--<configuration>-->
-            <!--&lt;!&ndash; 一般而言，target与source是保持一致的，但是，-->
-            <!--有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法)，-->
-            <!--会存在target不同于source的情况 &ndash;&gt;-->
-            <!--<encoding>utf-8</encoding>  &lt;!&ndash; 字符集编码 &ndash;&gt;-->
-            <!--<source>1.8</source>        &lt;!&ndash; 源代码使用的JDK版本 &ndash;&gt;-->
-            <!--<target>1.8</target>        &lt;!&ndash; 需要生成的目标class文件的编译版本 &ndash;&gt;-->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <!-- 一般而言，target与source是保持一致的，但是，
+                    有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法)，
+                    会存在target不同于source的情况 -->
+                    <encoding>utf-8</encoding>  <!-- 字符集编码 -->
+                    <source>1.8</source>        <!-- 源代码使用的JDK版本 -->
+                    <target>1.8</target>        <!-- 需要生成的目标class文件的编译版本 -->
 
-            <!--<meminitial>128m</meminitial>&lt;!&ndash; 编译器使用的初始内存 &ndash;&gt;-->
-            <!--<maxmem>512m</maxmem>&lt;!&ndash; 编译器使用的最大内存 &ndash;&gt;-->
-            <!--</configuration>-->
-            <!--</plugin>-->
+                    <meminitial>128m</meminitial><!-- 编译器使用的初始内存 -->
+                    <maxmem>512m</maxmem><!-- 编译器使用的最大内存 -->
+                </configuration>
+            </plugin>
 
         </plugins>
 
@@ -689,6 +722,11 @@
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>${tomcat7.version}</version>
+                    <configuration>
+                        <!--解决get请求中文乱码-->
+                        <charset>UTF-8</charset>
+                        <useBodyEncodingForURI>true</useBodyEncodingForURI>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>

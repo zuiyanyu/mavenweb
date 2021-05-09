@@ -1,6 +1,5 @@
 package scala类和对象04
 
-import lombok.Data
 
 import scala.beans.BeanProperty
 

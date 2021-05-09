@@ -14,7 +14,7 @@ package javaBase.集合.Collection;
  * HashSet            一种没有重复元素的无序集合
  * TreeSet            —种没有重复元素的有序集
  * EnumSet            一种包含枚举类型值的集
- * LinkedHashSet      一种可以记住元素插人次序的集
+ * LinkedHashSet      一种可以记住元素插入次序的集
  * PriorityQueue      一种允许高效删除最小元素的集合
  * HashMap            一种存储键 / 值关联的数据结构
  * TreeMap            —种键值有序排列的映射表
