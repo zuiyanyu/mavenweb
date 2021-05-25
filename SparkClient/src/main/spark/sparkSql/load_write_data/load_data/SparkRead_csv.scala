@@ -78,6 +78,7 @@ object SparkRead_csv {
                 .load(person_without_header)
                 // TODO 没有header 头信息， 手动添加头信息
                 .toDF("id"," name","age")
+                //.toDF(Array("id"," name","age").mkString(","))
         df.show()
         df.printSchema()
 
