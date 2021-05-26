@@ -17,8 +17,8 @@ import sparkcore.SC.SC
   */
 object HDFS_File extends SC{
     def main(args: Array[String]): Unit = {
-        val path = "D:\\hadoop\\input"
-        sc.textFile("")
+        val path = "hdfs://hadoop102:9000/input/fruit.txt"
+        sc.textFile(path)
 
 
 
